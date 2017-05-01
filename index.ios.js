@@ -1,3 +1,5 @@
-import App from './src/app'
+import App from './src/app';
 
-const app = new App()
+const app = new App();
+
+export default app;
