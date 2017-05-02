@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Container, Content, Button } from 'native-base';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { Container, Content, Button, Icon } from 'native-base';
 
 class LandingScreen extends Component {
 
@@ -9,25 +9,32 @@ class LandingScreen extends Component {
 
 		return (
 		<View style={styles.container}>
+
+			<StatusBar
+				backgroundColor="#1ba39c"
+				barStyle="dark-content"
+			/>
 			<View style={styles.logoContainer}>
 				<Text>Carikotax</Text>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button onPress={() => navigate('Login')} full primary>
-					<Text>Continue With Facebook</Text>
+				<Button onPress={() => navigate('Login')} full primary rounded iconRight>
+					<Icon name="logo-facebook" style={{ position: 'absolute', left: 16 }} />
+					<Text style={styles.lightText}>Continue With Facebook</Text>
 				</Button>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button onPress={() => navigate('Login')} full error>
-					<Text>Continue With Google</Text>
+				<Button onPress={() => navigate('Login')} full danger rounded iconLeft>
+					<Icon name="logo-google" style={{ position: 'absolute', left: 16 }} />
+					<Text style={styles.lightText}>Continue With Google</Text>
 				</Button>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button onPress={() => navigate('Login')} full light rounded>
-					<Text style={styles.accentText}>Login With Email</Text>
+				<Button onPress={() => navigate('Register')} full light bordered rounded>
+					<Text style={styles.lightText}>Create New Account</Text>
 				</Button>
 			</View>
 		</View>
@@ -57,9 +64,9 @@ const styles = StyleSheet.create({
 		marginTop: 8,
 		marginBottom: 8
 	},
-	accentText: {
-		color: '#1ba39c',
-		fontSize: 16
+	lightText: {
+		color: '#FFFFFF',
+		fontSize: 18
 	}
 });
 

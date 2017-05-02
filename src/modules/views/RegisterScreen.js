@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
 	StyleSheet,
 	View,
@@ -8,9 +9,9 @@ import {
 	StatusBar
 } from 'react-native';
 
-class LoginScreen extends Component {
+class RegisterScreen extends Component {
 
-	_doLogin() {
+	_doRegister () {
 		//
 	};
 
@@ -34,7 +35,7 @@ class LoginScreen extends Component {
 				</View>
 
 				<View style={styles.formGroup}>
-					<Button onPress={this._doLogin} title="Login" />
+					<Button onPress={this._doRegister} title="Login" />
 				</View>
 
 				<View style={styles.formGroup}>
@@ -50,7 +51,7 @@ class LoginScreen extends Component {
 		);
 	}
 
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
@@ -72,4 +73,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default LoginScreen;
+export default RegisterScreen;
