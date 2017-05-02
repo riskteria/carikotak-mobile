@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { Container, Content, Button, Icon } from 'native-base';
 
+import styles from './styles';
+
 class LandingScreen extends Component {
 
 	render() {
@@ -21,14 +23,14 @@ class LandingScreen extends Component {
 			<View style={styles.buttonContainer}>
 				<Button onPress={() => navigate('Login')} full primary rounded iconRight>
 					<Icon name="logo-facebook" style={{ position: 'absolute', left: 16 }} />
-					<Text style={styles.lightText}>Continue With Facebook</Text>
+					<Text style={styles.lightText}>Continue with Facebook</Text>
 				</Button>
 			</View>
 
 			<View style={styles.buttonContainer}>
 				<Button onPress={() => navigate('Login')} full danger rounded iconLeft>
 					<Icon name="logo-google" style={{ position: 'absolute', left: 16 }} />
-					<Text style={styles.lightText}>Continue With Google</Text>
+					<Text style={styles.lightText}>Continue with Google</Text>
 				</Button>
 			</View>
 
@@ -41,33 +43,5 @@ class LandingScreen extends Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#1ba39c',
-		padding: 16
-	},
-	logoContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		alignSelf: 'stretch',
-	},
-	buttonContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		alignSelf: 'stretch',
-		marginTop: 8,
-		marginBottom: 8
-	},
-	lightText: {
-		color: '#FFFFFF',
-		fontSize: 18
-	}
-});
 
 export default LandingScreen;

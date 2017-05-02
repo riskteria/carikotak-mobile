@@ -1,8 +1,8 @@
 import { StackNavigator } from 'react-navigation';
 
-import LandingScreen from './modules/views/LandingScreen';
-import LoginScreen from './modules/views/LoginScreen';
-import RegisterScreen from './modules/views/RegisterScreen';
+import LandingScreen from './components/landing/LandingScreen';
+import LoginScreen from './components/login/LoginScreen';
+import RegisterScreen from './components/register/RegisterScreen';
 
 const RouteConfigs = {
 	Home: {
