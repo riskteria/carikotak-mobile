@@ -8,48 +8,53 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 class LandingScreen extends Component {
 	static navigationOptions = {
 		title: 'Carikotak'
 	};
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+	render() {
+		const { navigate } = this.props.navigation;
+
+		return (
+		<View style={styles.container}>
+			<View style={styles.logoContainer}>
+				<Text>Carikotak</Text>
+			</View>
+
+			<View style={styles.buttonContainer}>
+				<Button style={styles.buttonLogin} onPress={() => navigate('Login')} title="Login with email" />
+			</View>
+		</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1ba39c',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+	container: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#1ba39c'
+	},
+	logoContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	buttonContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	buttonLogin: {
+		flex: 1,
+		backgroundColor: '#000'
+	}
 });
 
 export default LandingScreen;
