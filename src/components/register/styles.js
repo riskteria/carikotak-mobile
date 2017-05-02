@@ -1,22 +1,28 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../styles/_colors';
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#1ba39c'
+		backgroundColor: '#1ba39c',
+		padding: 20,
+		paddingTop: 64,
+		paddingBottom: 48
 	},
 	formGroup: {
-		flex: 1
+		marginBottom: 24
 	},
 	controlLabel: {
-		flex: 1
+		//
 	},
 	formControl: {
-		flex: 1
-	}
+		//
+	},
+	lightText: {
+		color: colors.colorLightOpacity,
+		fontSize: 18
+	},
 });
 
 export default styles;

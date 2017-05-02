@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { Container, Content, Button, Icon } from 'native-base';
+import { Text, View, StatusBar, Image } from 'react-native';
+import { Button, Icon } from 'native-base';
 
 import styles from './styles';
 
@@ -16,19 +16,24 @@ class LandingScreen extends Component {
 				backgroundColor="#1ba39c"
 				barStyle="dark-content"
 			/>
+
+			<View style={styles.topContainer}>
+				<Text onPress={() => navigate('Login')} style={styles.signInButton}>Sign in</Text>
+			</View>
+
 			<View style={styles.logoContainer}>
-				<Text>Carikotax</Text>
+				<Text style={styles.logoText}>Carikotak</Text>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button onPress={() => navigate('Login')} full primary rounded iconRight>
+				<Button full primary rounded iconRight>
 					<Icon name="logo-facebook" style={{ position: 'absolute', left: 16 }} />
 					<Text style={styles.lightText}>Continue with Facebook</Text>
 				</Button>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button onPress={() => navigate('Login')} full danger rounded iconLeft>
+				<Button full danger rounded iconLeft>
 					<Icon name="logo-google" style={{ position: 'absolute', left: 16 }} />
 					<Text style={styles.lightText}>Continue with Google</Text>
 				</Button>

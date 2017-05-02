@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../styles/_colors';
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#1ba39c',
-		padding: 16
+		backgroundColor: colors.colorAccent,
+		padding: 20,
+		paddingBottom: 48
 	},
 	logoContainer: {
 		flex: 1,
@@ -23,8 +26,20 @@ const styles = StyleSheet.create({
 		marginBottom: 8
 	},
 	lightText: {
-		color: '#FFFFFF',
+		color: colors.colorLightOpacity,
 		fontSize: 18
+	},
+	topContainer: {
+		alignSelf: 'stretch'
+	},
+	signInButton: {
+		textAlign: 'right',
+		color: colors.colorLightOpacity,
+		fontSize: 16
+	},
+	logoText: {
+		fontSize: 64,
+		color: colors.colorLightOpacity
 	}
 });
 
