@@ -3,9 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Container, Content, Button } from 'native-base';
 
 class LandingScreen extends Component {
-	static navigationOptions = {
-		title: 'Carikotak'
-	};
+
 	render() {
 		const { navigate } = this.props.navigation;
 

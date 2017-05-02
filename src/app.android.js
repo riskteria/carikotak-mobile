@@ -3,13 +3,25 @@ import { StackNavigator } from 'react-navigation';
 import LandingScreen from './modules/views/LandingScreen';
 import LoginScreen from './modules/views/LoginScreen';
 
-const CarikotakApp = StackNavigator({
+const RouteConfigs = {
 	Home: {
-		screen: LandingScreen
+		screen: LandingScreen,
+		navigationOptions: ({ navigation }) => ({
+			header: null
+		})
 	},
 	Login: {
-		screen: LoginScreen
+		screen: LoginScreen,
+		navigationOptions: ({ navigation }) => ({
+			title: 'Sign In With Email'
+		})
 	}
-});
+};
 
-export default CarikotakApp;
+const StackNavigatorConfig = {
+	//
+};
+
+const AppStack = StackNavigator(RouteConfigs, StackNavigatorConfig);
+
+export default AppStack;

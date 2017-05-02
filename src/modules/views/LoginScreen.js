@@ -9,10 +9,6 @@ import {
 
 class LoginScreen extends Component {
 
-	static navigationOptions = {
-		title: 'Login to Your Account'
-	};
-
 	_doLogin() {
 		//
 	};
