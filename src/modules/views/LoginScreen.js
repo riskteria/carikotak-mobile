@@ -13,15 +13,6 @@ class LoginScreen extends Component {
 		title: 'Login to Your Account'
 	};
 
-	getInitialState () {
-		return {
-			user: {
-				email: '',
-				password: ''
-			}
-		}
-	};
-
 	_doLogin() {
 		//
 	};
@@ -31,12 +22,12 @@ class LoginScreen extends Component {
 			<View style={styles.container}>
 
 				<View style={styles.formGroup}>
-					<Text value={this.state.user.email} style={styles.controlLabel}>Email address</Text>
+					<Text style={styles.controlLabel}>Email address</Text>
 					<TextInput style={styles.formControl} />
 				</View>
 
 				<View style={styles.formGroup}>
-					<Text value={this.state.user.password} style={styles.controlLabel}>Password</Text>
+					<Text style={styles.controlLabel}>Password</Text>
 					<TextInput style={styles.formControl} />
 				</View>
 

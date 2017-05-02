@@ -2318,7 +2318,7 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-invariant@^2.2.0, invariant@^2.2.1:
+invariant@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -3717,13 +3717,6 @@ react-native-keyboard-aware-scroll-view@0.2.7:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-oauth@^2.1.16:
-  version "2.1.16"
-  resolved "https://registry.yarnpkg.com/react-native-oauth/-/react-native-oauth-2.1.16.tgz#0f0bebf99d162d24d5e102fd7172b66c959b493c"
-  dependencies:
-    invariant "^2.2.1"
-    valib "^2.0.0"
-
 react-native-scrollable-tab-view@^0.7.1:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.7.4.tgz#623a047cbfab35a27b8689095af524e9aac74b62"
@@ -4619,10 +4612,6 @@ utils-merge@1.0.0:
 uuid@3.0.1, uuid@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
-
-valib@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/valib/-/valib-2.0.0.tgz#e0d455b10e17ae605c0f33971adac73564ee18a7"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.1"
