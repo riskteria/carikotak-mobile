@@ -5,12 +5,8 @@
  */
 
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Container, Content, Button } from 'native-base';
 
 class LandingScreen extends Component {
 	static navigationOptions = {
@@ -22,11 +18,25 @@ class LandingScreen extends Component {
 		return (
 		<View style={styles.container}>
 			<View style={styles.logoContainer}>
-				<Text>Carikotak</Text>
+				<Text>Carikotax</Text>
 			</View>
 
 			<View style={styles.buttonContainer}>
-				<Button style={styles.buttonLogin} onPress={() => navigate('Login')} title="Login with email" />
+				<Button onPress={() => navigate('Login')} full primary>
+					<Text>Continue With Facebook</Text>
+				</Button>
+			</View>
+
+			<View style={styles.buttonContainer}>
+				<Button onPress={() => navigate('Login')} full error>
+					<Text>Continue With Google</Text>
+				</Button>
+			</View>
+
+			<View style={styles.buttonContainer}>
+				<Button onPress={() => navigate('Login')} full light rounded>
+					<Text style={styles.accentText}>Login With Email</Text>
+				</Button>
 			</View>
 		</View>
 		);
@@ -39,21 +49,25 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#1ba39c'
+		backgroundColor: '#1ba39c',
+		padding: 16
 	},
 	logoContainer: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		alignSelf: 'stretch',
 	},
 	buttonContainer: {
-		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		alignSelf: 'stretch',
+		marginTop: 8,
+		marginBottom: 8
 	},
-	buttonLogin: {
-		flex: 1,
-		backgroundColor: '#000'
+	accentText: {
+		color: '#1ba39c',
+		fontSize: 16
 	}
 });
 
