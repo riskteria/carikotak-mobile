@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, StatusBar } from 'react-native';
+import { View, Text, TextInput, StatusBar } from 'react-native';
+import { Button, Item, Label, Icon, Input, Form } from 'native-base';
 
 import styles from './styles';
 
 class LoginScreen extends Component {
 
+	static navigationOptions = {
+		headerRight: (<Button light transparent onPress={this._doLogin}>
+						<Text style={styles.signInbutton}>Login</Text>
+					</Button>)
+	}
+
 	_doLogin() {
 		//
-	};
+	}
 
 	render () {
+		const { navigate } = this.props.navigation;
+
 		return (
 			<View style={styles.container}>
 
@@ -18,27 +27,26 @@ class LoginScreen extends Component {
 					barStyle="dark-content"
 				/>
 
-				<View style={styles.formGroup}>
-					<Text style={styles.controlLabel}>Email address</Text>
-					<TextInput style={styles.formControl} />
-				</View>
+				<Form>
 
-				<View style={styles.formGroup}>
-					<Text style={styles.controlLabel}>Password</Text>
-					<TextInput style={styles.formControl} />
-				</View>
+					<Item floatingLabel>
+						<Label>Email</Label>
+						<Input />
+					</Item>
 
-				<View style={styles.formGroup}>
-					<Button onPress={this._doLogin} title="Login" />
-				</View>
+					<Item floatingLabel>
+						<Label>Password</Label>
+						<Input secureTextEntry />
+					</Item>
+
+				</Form>
 
 				<View style={styles.formGroup}>
 					<Text>Forgot Password</Text>
 				</View>
 
 				<View style={styles.formGroup}>
-					<Text>Don't have an account?</Text>
-					<Text>Create new account</Text>
+					<Text onPress={() => navigate('Register')}>Don't have an account?</Text>
 				</View>
 
 			</View>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, StatusBar } from 'react-native';
-import { Input, Button, Item, Icon } from 'native-base'
+import { View, Text, StatusBar } from 'react-native';
+import { Input, Button, Item, Icon } from 'native-base';
 
 import styles from './styles';
 
@@ -16,12 +16,18 @@ class RegisterScreen extends Component {
 				email: '',
 				password: ''
 			}
-		}
-	};
+		};
+	}
+
+	static navigationOptions = {
+		headerRight: (<Button light transparent onPress={this._doRegister}>
+						<Text style={styles.signInbutton}>Register</Text>
+					</Button>)
+	}
 
 	_doRegister () {
 		//
-	};
+	}
 
 	render () {
 		const { navigate } = this.props.navigation;
@@ -31,31 +37,26 @@ class RegisterScreen extends Component {
 
 				<StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />
 
+				<Text>Name</Text>
 				<Item style={styles.formGroup}>
-					<Icon active name="person" />
-					<Input placeholder="Your name" onChangeText={name => this.setState({ name })} />
+					<Input onChangeText={name => this.setState({ name })} />
 				</Item>
 
+				<Text>Username</Text>
 				<Item style={styles.formGroup}>
-					<Icon active name="person" />
-					<Input placeholder="Username" onChangeText={username => this.setState({ username })} />
+					<Input onChangeText={username => this.setState({ username })} />
 				</Item>
 
+				<Text>Email</Text>
 				<Item style={styles.formGroup}>
-					<Icon active name="person" />
-					<Input placeholder="Email address" onChangeText={email => this.setState({ email })} />
+					<Input onChangeText={email => this.setState({ email })} />
 				</Item>
 
+				<Text>Password</Text>
 				<Item style={styles.formGroup}>
+					<Input secureTextEntry onChangeText={password => this.setState({ password })} />
 					<Icon name="unlock" />
-					<Input placeholder="Minimum 6 characters" secureTextEntry onChangeText={password => this.setState({ password })} />
 				</Item>
-
-				<View style={styles.formGroup}>
-					<Button onPress={this._doRegister} full light bordered rounded>
-						<Text style={styles.lightText}>Create Account</Text>
-					</Button>
-				</View>
 
 				<View style={styles.formGroup}>
 					<Text onPress={() => navigate('Login')}>I have an Account</Text>
@@ -65,6 +66,6 @@ class RegisterScreen extends Component {
 		);
 	}
 
-};
+}
 
 export default RegisterScreen;

@@ -12,7 +12,6 @@ const RouteConfigs = {
 	Login: {
 		screen: LoginScreen,
 		navigationOptions: ({ navigation }) => ({
-			title: 'Sign In With Email',
 			headerStyle: {
 				position: 'absolute',
 				backgroundColor: 'transparent',
@@ -26,7 +25,6 @@ const RouteConfigs = {
 	Register: {
 		screen: RegisterScreen,
 		navigationOptions: ({ navigation }) => ({
-			title: 'Create new account',
 			headerStyle: {
 				position: 'absolute',
 				backgroundColor: 'transparent',

@@ -14,15 +14,19 @@ const styles = StyleSheet.create({
 		marginBottom: 24
 	},
 	controlLabel: {
-		//
+		backgroundColor: 'transparent'
 	},
 	formControl: {
-		//
+		backgroundColor: 'transparent'
 	},
 	lightText: {
 		color: colors.colorLightOpacity,
 		fontSize: 18
 	},
+	signInbutton: {
+		color: colors.colorLightOpacity,
+		fontSize: 16
+	}
 });
 
 export default styles;

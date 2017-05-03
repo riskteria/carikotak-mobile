@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../styles/_colors';
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -9,13 +11,17 @@ const styles = StyleSheet.create({
 		paddingBottom: 48
 	},
 	formGroup: {
-		//
+		backgroundColor: 'transparent'
 	},
 	controlLabel: {
-		//
+		backgroundColor: 'transparent'
 	},
 	formControl: {
-		//
+		backgroundColor: 'transparent'
+	},
+	signInbutton: {
+		color: colors.colorLightOpacity,
+		fontSize: 16
 	}
 });
 
