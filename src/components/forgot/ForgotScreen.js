@@ -7,6 +7,8 @@ import styles from './styles';
 class ForgotScreen extends Component {
 
 	static navigationOptions = {
+		headerTintColor: '#fff',
+		headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
 		headerRight: (<Button light transparent onPress={this._doLogin}>
 						<Text style={styles.signInbutton}>Send Reset Link</Text>
 					</Button>)
