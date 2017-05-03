@@ -16,12 +16,22 @@ const styles = StyleSheet.create({
 	controlLabel: {
 		backgroundColor: 'transparent'
 	},
-	formControl: {
-		backgroundColor: 'transparent'
+	inputGroup: {
+		marginBottom: 24
 	},
 	signInbutton: {
 		color: colors.colorLightOpacity,
 		fontSize: 16
+	},
+	lightColor: {
+		color: colors.colorLightOpacity
+	},
+	forgotPassword: {
+		textAlign: 'center',
+		fontSize: 12,
+		color: colors.colorLightOpacity,
+		textDecorationLine: 'underline',
+		fontWeight: '100'
 	}
 });
 

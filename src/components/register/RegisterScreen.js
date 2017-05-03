@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StatusBar } from 'react-native';
-import { Input, Button, Item, Icon } from 'native-base';
+import { View, Text, StatusBar, StyleSheet } from 'react-native';
+import { Input, Button, Item, Label } from 'native-base';
 
 import styles from './styles';
 
@@ -37,29 +37,28 @@ class RegisterScreen extends Component {
 
 				<StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />
 
-				<Text>Name</Text>
-				<Item style={styles.formGroup}>
-					<Input onChangeText={name => this.setState({ name })} />
-				</Item>
+				<View>
 
-				<Text>Username</Text>
-				<Item style={styles.formGroup}>
-					<Input onChangeText={username => this.setState({ username })} />
-				</Item>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Name</Label>
+						<Input />
+					</Item>
 
-				<Text>Email</Text>
-				<Item style={styles.formGroup}>
-					<Input onChangeText={email => this.setState({ email })} />
-				</Item>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Username</Label>
+						<Input />
+					</Item>
 
-				<Text>Password</Text>
-				<Item style={styles.formGroup}>
-					<Input secureTextEntry onChangeText={password => this.setState({ password })} />
-					<Icon name="unlock" />
-				</Item>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Email</Label>
+						<Input />
+					</Item>
 
-				<View style={styles.formGroup}>
-					<Text onPress={() => navigate('Login')}>I have an Account</Text>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Password</Label>
+						<Input secureTextEntry />
+					</Item>
+
 				</View>
 
 			</View>

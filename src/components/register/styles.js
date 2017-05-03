@@ -10,22 +10,15 @@ const styles = StyleSheet.create({
 		paddingTop: 64,
 		paddingBottom: 48
 	},
-	formGroup: {
-		//
-	},
-	controlLabel: {
-		backgroundColor: 'transparent'
-	},
-	formControl: {
-		backgroundColor: 'transparent'
-	},
-	lightText: {
-		color: colors.colorLightOpacity,
-		fontSize: 18
-	},
 	signInbutton: {
 		color: colors.colorLightOpacity,
 		fontSize: 16
+	},
+	inputGroup: {
+		marginBottom: 24
+	},
+	lightColor: {
+		color: colors.colorLightOpacity
 	}
 });
 

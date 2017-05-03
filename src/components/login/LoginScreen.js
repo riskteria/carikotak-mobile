@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StatusBar } from 'react-native';
-import { Button, Item, Label, Icon, Input, Form } from 'native-base';
+import { View, Text, StatusBar, StyleSheet } from 'react-native';
+import { Button, Item, Label, Icon, Input } from 'native-base';
 
 import styles from './styles';
 
@@ -24,29 +24,24 @@ class LoginScreen extends Component {
 
 				<StatusBar
 					backgroundColor="#1ba39c"
-					barStyle="dark-content"
-				/>
+					barStyle="dark-content" />
 
-				<Form>
+				<View>
 
-					<Item floatingLabel>
-						<Label>Email</Label>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Email</Label>
 						<Input />
 					</Item>
 
-					<Item floatingLabel>
-						<Label>Password</Label>
+					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>Password</Label>
 						<Input secureTextEntry />
 					</Item>
 
-				</Form>
-
-				<View style={styles.formGroup}>
-					<Text>Forgot Password</Text>
 				</View>
 
 				<View style={styles.formGroup}>
-					<Text onPress={() => navigate('Register')}>Don't have an account?</Text>
+					<Text onPress={() => navigate('Forgot')} style={styles.forgotPassword}>Forgot Password?</Text>
 				</View>
 
 			</View>

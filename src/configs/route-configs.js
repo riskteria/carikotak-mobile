@@ -1,6 +1,7 @@
 import LandingScreen from '../components/landing/LandingScreen';
 import LoginScreen from '../components/login/LoginScreen';
 import RegisterScreen from '../components/register/RegisterScreen';
+import ForgotScreen from '../components/forgot/ForgotScreen';
 
 const RouteConfigs = {
 	Home: {
@@ -34,6 +35,9 @@ const RouteConfigs = {
 				right: 0
 			}
 		})
+	},
+	Forgot: {
+		screen: ForgotScreen
 	}
 };
 
