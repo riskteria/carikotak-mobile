@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 48
 	},
 	formGroup: {
-		marginBottom: 24
+		//
 	},
 	controlLabel: {
 		backgroundColor: 'transparent'
