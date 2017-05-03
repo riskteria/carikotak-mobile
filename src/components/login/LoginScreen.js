@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StatusBar, StyleSheet } from 'react-native';
-import { Button, Item, Label, Icon, Input } from 'native-base';
+import { Button, Item, Label, Input } from 'native-base';
 
 import styles from './styles';
 
