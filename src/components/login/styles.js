@@ -10,12 +10,6 @@ const styles = StyleSheet.create({
 		paddingTop: 64,
 		paddingBottom: 48
 	},
-	formGroup: {
-		backgroundColor: 'transparent'
-	},
-	controlLabel: {
-		backgroundColor: 'transparent'
-	},
 	inputGroup: {
 		marginBottom: 24
 	},
