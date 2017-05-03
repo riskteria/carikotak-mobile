@@ -10,15 +10,6 @@ const styles = StyleSheet.create({
 		paddingTop: 64,
 		paddingBottom: 48
 	},
-	formGroup: {
-		backgroundColor: 'transparent'
-	},
-	controlLabel: {
-		backgroundColor: 'transparent'
-	},
-	inputGroup: {
-		marginBottom: 24
-	},
 	signInbutton: {
 		color: colors.colorLightOpacity,
 		fontSize: 16
@@ -27,12 +18,16 @@ const styles = StyleSheet.create({
 		color: colors.colorLightOpacity,
 		fontWeight: 'bold'
 	},
-	forgotPassword: {
-		textAlign: 'center',
-		fontSize: 12,
-		color: colors.colorLightOpacity,
-		textDecorationLine: 'underline',
-		fontWeight: '100'
+	inputGroup: {
+		marginBottom: 24
+	},
+	inputInstruction: {
+		marginTop: 24,
+		marginBottom: 24,
+	},
+	inputInstructionText: {
+		fontSize: 18,
+		color: colors.colorLightOpacity
 	}
 });
 

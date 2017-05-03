@@ -40,22 +40,22 @@ class RegisterScreen extends Component {
 				<View>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>Name</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>NAME</Label>
 						<Input />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>Username</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>USERNAME</Label>
 						<Input />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>Email</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>EMAIL</Label>
 						<Input />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>Password</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>PASSWORD</Label>
 						<Input secureTextEntry />
 					</Item>
 

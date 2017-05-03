@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
 		marginBottom: 24
 	},
 	lightColor: {
-		color: colors.colorLightOpacity
+		color: colors.colorLightOpacity,
+		fontWeight: 'bold'
 	}
 });
 

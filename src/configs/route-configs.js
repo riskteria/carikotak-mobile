@@ -37,7 +37,17 @@ const RouteConfigs = {
 		})
 	},
 	Forgot: {
-		screen: ForgotScreen
+		screen: ForgotScreen,
+		navigationOptions: ({ navigation }) => ({
+			headerStyle: {
+				position: 'absolute',
+				backgroundColor: 'transparent',
+				zIndex: 100,
+				top: 0,
+				left: 0,
+				right: 0
+			}
+		})
 	}
 };
 
