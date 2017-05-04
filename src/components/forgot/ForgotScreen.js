@@ -6,16 +6,36 @@ import styles from './styles';
 
 class ForgotScreen extends Component {
 
-	static navigationOptions = {
-		headerTintColor: '#fff',
-		headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-		headerRight: (<Button light transparent onPress={this._doLogin}>
-						<Text style={styles.signInbutton}>Send Reset Link</Text>
-					</Button>)
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			user: {
+				email: ''
+			}
+		}
 	}
 
-	_doLogin () {
-		//
+	static navigationOptions = ({ navigation }) => {
+		const { state } = navigation;
+
+		return {
+			headerTintColor: '#fff',
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
+			headerRight: (<Button light transparent onPress={() => { state.params.sendResetLink() }}>
+							<Text style={styles.signInbutton}>Send Reset Link</Text>
+						</Button>)
+		}
+	}
+
+	_sendResetLink () {
+		const user = this.state.user;
+	}
+
+	componentWillMount () {
+		this.props.navigation.setParams({
+			sendResetLink: this._sendResetLink.bind(this)
+		});
 	}
 
 	render () {
@@ -30,7 +50,7 @@ class ForgotScreen extends Component {
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>EMAIL ADDRESS</Label>
-						<Input />
+						<Input onChangeText={email => this.setState({ user: {email} })} />
 					</Item>
 
 				</View>

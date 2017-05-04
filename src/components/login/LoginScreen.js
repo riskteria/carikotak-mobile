@@ -6,16 +6,37 @@ import styles from './styles';
 
 class LoginScreen extends Component {
 
-	static navigationOptions = {
-		headerTintColor: '#fff',
-		headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-		headerRight: (<Button light transparent onPress={this._doLogin}>
-						<Text style={styles.signInbutton}>Login</Text>
-					</Button>)
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			user: {
+				email: '',
+				password: ''
+			}
+		};
 	}
 
-	_doLogin() {
-		//
+	static navigationOptions = ({ navigation }) => {
+		const { state } = navigation;
+
+		return {
+			headerTintColor: '#fff',
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
+			headerRight: (<Button light transparent onPress={() => { state.params.doLogin() }}>
+							<Text style={styles.signInbutton}>Login</Text>
+						</Button>)
+		}
+	}
+
+	_doLogin () {
+		const user = this.state.user;
+	}
+
+	componentWillMount () {
+		this.props.navigation.setParams({
+			doLogin: this._doLogin.bind(this)
+		});
 	}
 
 	render () {
@@ -32,12 +53,12 @@ class LoginScreen extends Component {
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>EMAIL</Label>
-						<Input />
+						<Input onChangeText={email => this.setState({ user: { email } })} />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>PASSWORD</Label>
-						<Input secureTextEntry />
+						<Input onChangeText={password => this.setState({ user: {password} })} secureTextEntry />
 					</Item>
 
 				</View>

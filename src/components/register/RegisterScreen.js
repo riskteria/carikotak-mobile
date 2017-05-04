@@ -19,20 +19,29 @@ class RegisterScreen extends Component {
 		};
 	}
 
-	static navigationOptions = {
-		headerTintColor: '#fff',
-		headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-		headerRight: (<Button light transparent onPress={this._doRegister}>
-						<Text style={styles.signInbutton}>Register</Text>
-					</Button>)
+	static navigationOptions = ({ navigation }) => {
+		const { state } = navigation;
+
+		return {
+			headerTintColor: '#fff',
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
+			headerRight: (<Button light transparent onPress={() => { state.params.doRegister() }}>
+							<Text style={styles.signInbutton}>Register</Text>
+						</Button>)
+		}
 	}
 
 	_doRegister () {
-		//
+		const user = this.state.user;
+	}
+
+	componentWillMount () {
+		this.props.navigation.setParams({
+			doRegister: this._doRegister.bind(this)
+		});
 	}
 
 	render () {
-		const { navigate } = this.props.navigation;
 
 		return (
 			<View style={styles.container}>
@@ -43,22 +52,22 @@ class RegisterScreen extends Component {
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>NAME</Label>
-						<Input />
+						<Input onChangeText={name => this.setState({ user: { name } })} />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>USERNAME</Label>
-						<Input />
+						<Input onChangeText={username => this.setState({ user: { username } })} />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>EMAIL</Label>
-						<Input />
+						<Input onChangeText={email => this.setState({ user: { email } }) } />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
 						<Label style={ StyleSheet.flatten(styles.lightColor) }>PASSWORD</Label>
-						<Input secureTextEntry />
+						<Input onChangeText={password => this.setState({ user: {password} })} secureTextEntry />
 					</Item>
 
 				</View>
