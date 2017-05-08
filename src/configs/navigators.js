@@ -134,11 +134,12 @@ const AppNavigator = StackNavigator({
 	Main: {
 		screen: MainNavigator,
 		navigationOptions: {
-			title: 'Carikotak',
+			title: 'CARIKOTAK',
+			headerLeft: null,
 			headerTitleStyle: {
+				alignSelf: 'center',
 				textAlign: 'center'
 			},
-			headerLeft: null
 		}
 	}
 }, {
