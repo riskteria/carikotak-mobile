@@ -31,6 +31,7 @@ class LoginScreen extends Component {
 
 	_doLogin () {
 		const user = this.state.user;
+		this.props.navigation.navigate('Main');
 	}
 
 	componentWillMount () {

@@ -1,8 +1,23 @@
-import { StackNavigator } from 'react-navigation';
+import React, { Component } from 'react';
+import { AppRegistry } from 'react-native';
+import { StyleProvider } from 'native-base';
 
-import RouteConfigs from './configs/route-configs';
-import StackNavigatorConfig from './configs/stack-navigator-config';
+import App from './configs/navigators';
+import getTheme from '../native-base-theme/components';
+import platform from '../native-base-theme/variables/platform';
 
-const AppStack = StackNavigator(RouteConfigs, StackNavigatorConfig);
+class CarikotakApp extends Component {
 
-export default AppStack;
+	render () {
+		return (
+			<StyleProvider style={getTheme(platform)}>
+				<App />
+			</StyleProvider>
+		);
+	}
+
+}
+
+AppRegistry.registerComponent('carikotak', () => CarikotakApp);
+
+export default CarikotakApp;
