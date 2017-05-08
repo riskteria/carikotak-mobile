@@ -65,6 +65,7 @@ const MainNavigator = TabNavigator({
 }, {
 	tabBarPosition: 'bottom',
 	swipeEnabled: false,
+	lazy: true,
 	tabBarOptions: {
 		activeTintColor: '#1ba39c',
 		inactiveTintColor: '#4d4d4d',
@@ -77,7 +78,7 @@ const MainNavigator = TabNavigator({
 			backgroundColor: '#fff'
 		},
 		indicatorStyle: {
-			backgroundColor: '#1ba39c'
+			height: 0
 		},
 		tabStyle: {
 			paddingBottom: 0
