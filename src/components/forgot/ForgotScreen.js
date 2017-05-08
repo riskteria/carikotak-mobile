@@ -13,7 +13,7 @@ class ForgotScreen extends Component {
 			user: {
 				email: ''
 			}
-		}
+		};
 	}
 
 	static navigationOptions = ({ navigation }) => {
@@ -22,10 +22,10 @@ class ForgotScreen extends Component {
 		return {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.sendResetLink() }}>
+			headerRight: (<Button light transparent onPress={() => { state.params.sendResetLink(); }}>
 							<Text style={styles.signInbutton}>Send Reset Link</Text>
 						</Button>)
-		}
+		};
 	}
 
 	_sendResetLink () {

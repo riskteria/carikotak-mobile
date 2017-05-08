@@ -16,7 +16,6 @@ const MainNavigator = TabNavigator({
 	Feed: {
 		screen: FeedScreen,
 		navigationOptions: ({ navigation }) => ({
-			tabBarLabel: 'Feed'
 		})
 	},
 	Favorite: {

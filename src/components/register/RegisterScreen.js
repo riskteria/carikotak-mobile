@@ -25,10 +25,10 @@ class RegisterScreen extends Component {
 		return {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.doRegister() }}>
+			headerRight: (<Button light transparent onPress={() => { state.params.doRegister(); }}>
 							<Text style={styles.signInbutton}>Register</Text>
 						</Button>)
-		}
+		};
 	}
 
 	_doRegister () {

@@ -23,10 +23,10 @@ class LoginScreen extends Component {
 		return {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.doLogin() }}>
+			headerRight: (<Button light transparent onPress={() => { state.params.doLogin(); }}>
 							<Text style={styles.signInbutton}>Login</Text>
 						</Button>)
-		}
+		};
 	}
 
 	_doLogin () {
