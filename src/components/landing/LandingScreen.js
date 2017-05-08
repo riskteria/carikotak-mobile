@@ -17,7 +17,7 @@ class LandingScreen extends Component {
 					barStyle="dark-content" />
 
 				<View style={styles.topContainer}>
-					<Text onPress={() => navigate('Login')} style={styles.signInButton}>Sign in</Text>
+					<Text onPress={() => navigate('Login')} style={styles.signInButton}>Masuk</Text>
 				</View>
 
 				<View style={styles.logoContainer}>
@@ -27,20 +27,20 @@ class LandingScreen extends Component {
 				<View style={styles.buttonContainer}>
 					<Button full primary rounded iconRight>
 						<Icon name="logo-facebook" style={{ position: 'absolute', left: 16 }} />
-						<Text style={styles.lightText}>Continue with Facebook</Text>
+						<Text style={styles.lightText}>Masuk dengan Facebook</Text>
 					</Button>
 				</View>
 
 				<View style={styles.buttonContainer}>
 					<Button full danger rounded iconLeft>
 						<Icon name="logo-google" style={{ position: 'absolute', left: 16 }} />
-						<Text style={styles.lightText}>Continue with Google</Text>
+						<Text style={styles.lightText}>Masuk dengan Google</Text>
 					</Button>
 				</View>
 
 				<View style={styles.buttonContainer}>
 					<Button onPress={() => navigate('Register')} full light bordered rounded>
-						<Text style={styles.lightText}>Create New Account</Text>
+						<Text style={styles.lightText}>Daftar Akun Baru</Text>
 					</Button>
 				</View>
 			</View>

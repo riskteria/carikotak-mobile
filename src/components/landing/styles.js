@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 	},
 	lightText: {
 		color: colors.colorLightOpacity,
-		fontSize: 18
+		fontSize: 16
 	},
 	topContainer: {
 		alignSelf: 'stretch'

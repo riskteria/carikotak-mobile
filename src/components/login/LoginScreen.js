@@ -24,7 +24,7 @@ class LoginScreen extends Component {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
 			headerRight: (<Button light transparent onPress={() => { state.params.doLogin(); }}>
-							<Text style={styles.signInbutton}>Login</Text>
+							<Text style={styles.signInbutton}>Lanjutkan</Text>
 						</Button>)
 		};
 	}
@@ -58,14 +58,14 @@ class LoginScreen extends Component {
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>PASSWORD</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>KATA SANDI</Label>
 						<Input onChangeText={password => this.setState({ user: {password} })} secureTextEntry />
 					</Item>
 
 				</View>
 
 				<View style={styles.formGroup}>
-					<Text onPress={() => navigate('Forgot')} style={styles.forgotPassword}>Forgot Password?</Text>
+					<Text onPress={() => navigate('Forgot')} style={styles.forgotPassword}>Lupa Kata Sandi?</Text>
 				</View>
 
 			</View>

@@ -23,7 +23,7 @@ class ForgotScreen extends Component {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
 			headerRight: (<Button light transparent onPress={() => { state.params.sendResetLink(); }}>
-							<Text style={styles.signInbutton}>Send Reset Link</Text>
+							<Text style={styles.signInbutton}>Perbaharui Kata Sandi</Text>
 						</Button>)
 		};
 	}
@@ -43,13 +43,13 @@ class ForgotScreen extends Component {
 			<View style={styles.container}>
 
 				<View style={styles.inputInstruction}>
-					<Text style={styles.inputInstructionText}>Enter your email address so we can send reset instruction to your email.</Text>
+					<Text style={styles.inputInstructionText}>Masukkan alamat email yang anda gunakan untuk masuk ke akun Carikotak</Text>
 				</View>
 
 				<View>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>EMAIL ADDRESS</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>ALAMAT EMAIL</Label>
 						<Input onChangeText={email => this.setState({ user: {email} })} />
 					</Item>
 

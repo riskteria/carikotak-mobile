@@ -26,7 +26,7 @@ class RegisterScreen extends Component {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
 			headerRight: (<Button light transparent onPress={() => { state.params.doRegister(); }}>
-							<Text style={styles.signInbutton}>Register</Text>
+							<Text style={styles.signInbutton}>Lanjutkan</Text>
 						</Button>)
 		};
 	}
@@ -51,12 +51,12 @@ class RegisterScreen extends Component {
 				<View>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>NAME</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>NAMA</Label>
 						<Input onChangeText={name => this.setState({ user: { name } })} />
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>USERNAME</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>NAMA pENGGUNA</Label>
 						<Input onChangeText={username => this.setState({ user: { username } })} />
 					</Item>
 
@@ -66,7 +66,7 @@ class RegisterScreen extends Component {
 					</Item>
 
 					<Item floatingLabel style={ StyleSheet.flatten(styles.inputGroup) }>
-						<Label style={ StyleSheet.flatten(styles.lightColor) }>PASSWORD</Label>
+						<Label style={ StyleSheet.flatten(styles.lightColor) }>KATA SANDI</Label>
 						<Input onChangeText={password => this.setState({ user: {password} })} secureTextEntry />
 					</Item>
 
