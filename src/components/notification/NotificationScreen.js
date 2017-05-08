@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
+import styles from './styles';
+
 class NotificationScreen extends Component {
 
 	render () {
