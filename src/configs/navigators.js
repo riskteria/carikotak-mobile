@@ -15,32 +15,32 @@ const MainNavigator = TabNavigator({
 
 	Feed: {
 		screen: FeedScreen,
-		navigationOptions: ({ navigation }) => ({
-		})
+		navigationOptions: {
+		}
 	},
 	Favorite: {
 		screen: FavoriteScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			tabBarLabel: 'Fav'
-		})
+		}
 	},
 	Create: {
 		screen: CreateScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			tabBarLabel: 'Create'
-		})
+		}
 	},
 	Notification: {
 		screen: NotificationScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			tabBarLabel: 'Notif'
-		})
+		}
 	},
 	Profile: {
 		screen: ProfileScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			tabBarLabel: 'Profile'
-		})
+		}
 	}
 
 }, {
@@ -60,13 +60,13 @@ const MainNavigator = TabNavigator({
 const AppNavigator = StackNavigator({
 	Home: {
 		screen: LandingScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			header: null
-		})
+		}
 	},
 	Login: {
 		screen: LoginScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			headerStyle: {
 				position: 'absolute',
 				backgroundColor: 'transparent',
@@ -75,11 +75,11 @@ const AppNavigator = StackNavigator({
 				left: 0,
 				right: 0
 			}
-		})
+		}
 	},
 	Register: {
 		screen: RegisterScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			headerStyle: {
 				position: 'absolute',
 				backgroundColor: 'transparent',
@@ -88,11 +88,11 @@ const AppNavigator = StackNavigator({
 				left: 0,
 				right: 0
 			}
-		})
+		}
 	},
 	Forgot: {
 		screen: ForgotScreen,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			headerStyle: {
 				position: 'absolute',
 				backgroundColor: 'transparent',
@@ -101,17 +101,17 @@ const AppNavigator = StackNavigator({
 				left: 0,
 				right: 0
 			}
-		})
+		}
 	},
 	Main: {
 		screen: MainNavigator,
-		navigationOptions: ({ navigation }) => ({
+		navigationOptions: {
 			title: 'Carikotak',
 			headerTitleStyle: {
 				textAlign: 'center'
 			},
 			headerLeft: null
-		})
+		}
 	}
 }, {
 	headerMode: 'float'
