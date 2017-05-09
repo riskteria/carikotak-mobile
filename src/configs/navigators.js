@@ -66,10 +66,12 @@ const MainNavigator = TabNavigator({
 	tabBarPosition: 'bottom',
 	swipeEnabled: false,
 	lazy: true,
+	animationEnabled: true,
 	tabBarOptions: {
 		activeTintColor: '#1ba39c',
 		inactiveTintColor: '#4d4d4d',
 		showIcon: true,
+		pressColor: '#f8f8f8',
 		labelStyle: {
 			fontSize: 8,
 			paddingBottom: 0
