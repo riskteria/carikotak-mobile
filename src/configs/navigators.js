@@ -71,7 +71,7 @@ const MainNavigator = TabNavigator({
 		activeTintColor: '#1ba39c',
 		inactiveTintColor: '#4d4d4d',
 		showIcon: true,
-		pressColor: '#f8f8f8',
+		pressColor: '#e8e8e8',
 		labelStyle: {
 			fontSize: 8,
 			paddingBottom: 0
