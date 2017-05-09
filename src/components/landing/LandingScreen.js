@@ -21,7 +21,7 @@ class LandingScreen extends Component {
 				</View>
 
 				<View style={styles.logoContainer}>
-					<Text style={styles.logoText}>Carikotak</Text>
+					<Image source={require('../../../images/logo-carikotak-putih.png')} style={styles.logo} />
 				</View>
 
 				<View style={styles.buttonContainer}>

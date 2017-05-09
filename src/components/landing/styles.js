@@ -38,8 +38,12 @@ const styles = StyleSheet.create({
 		fontSize: 16
 	},
 	logoText: {
-		fontSize: 64,
+		fontSize: 32,
 		color: colors.colorLightOpacity
+	},
+	logo: {
+		width: 200,
+		height: 200
 	}
 });
 
