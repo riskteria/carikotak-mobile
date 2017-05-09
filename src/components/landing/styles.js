@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
 		color: colors.colorLightOpacity
 	},
 	logo: {
-		width: 200,
-		height: 200
+		width: 300,
+		height: 50
 	}
 });
 
