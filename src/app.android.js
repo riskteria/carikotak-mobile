@@ -18,6 +18,6 @@ class CarikotakApp extends Component {
 
 }
 
-AppRegistry.registerComponent('carikotak', () => CarikotakApp);
+AppRegistry.registerComponent('CariKotak', () => CarikotakApp);
 
 export default CarikotakApp;
