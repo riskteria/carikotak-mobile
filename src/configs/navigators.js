@@ -3,16 +3,16 @@ import { Icon } from 'native-base';
 
 import { StackNavigator, TabNavigator } from 'react-navigation';
 
-import LandingScreen from '../components/landing/LandingScreen';
-import LoginScreen from '../components/login/LoginScreen';
-import RegisterScreen from '../components/register/RegisterScreen';
-import ForgotScreen from '../components/forgot/ForgotScreen';
+import LandingScreen from 'components/landing/LandingScreen';
+import LoginScreen from 'components/login/LoginScreen';
+import RegisterScreen from 'components/register/RegisterScreen';
+import ForgotScreen from 'components/forgot/ForgotScreen';
 
-import FeedScreen from '../components/feed/FeedScreen';
-import FavoriteScreen from '../components/favorite/FavoriteScreen';
-import CreateScreen from '../components/create/CreateScreen';
-import NotificationScreen from '../components/notification/NotificationScreen';
-import ProfileScreen from '../components/profile/ProfileScreen';
+import FeedScreen from 'components/feed/FeedScreen';
+import FavoriteScreen from 'components/favorite/FavoriteScreen';
+import CreateScreen from 'components/create/CreateScreen';
+import NotificationScreen from 'components/notification/NotificationScreen';
+import ProfileScreen from 'components/profile/ProfileScreen';
 
 const MainNavigator = TabNavigator({
 
