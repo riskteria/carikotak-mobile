@@ -1,12 +1,30 @@
 {
-  "presets": ["react-native"],
-  "plugins": [
-	  ["module-alias", [
-		  { "src": "./images/", "expose": "images" },
-		  { "src": "./native-base-theme/", "expose": "theme" },
-		  { "src": "./src/components/", "expose": "components" },
-		  { "src": "./src/configs/", "expose": "configs" },
-		  { "src": "./src/styles/", "expose": "styles" }
-	  ]]
-  ]
+	"presets": ["react-native"],
+	"plugins": [
+		["module-alias", [{
+				"src": "./images/",
+				"expose": "images"
+			},
+			{
+				"src": "./native-base-theme/",
+				"expose": "theme"
+			},
+			{
+				"src": "./src/components/",
+				"expose": "components"
+			},
+			{
+				"src": "./src/configs/",
+				"expose": "configs"
+			},
+			{
+				"src": "./src/styles/",
+				"expose": "styles"
+			},
+			{
+				"src": "./src/components/_shared",
+				"expose": "shared"
+			}
+		]]
+	]
 }
