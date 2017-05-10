@@ -3,8 +3,8 @@ import { AppRegistry } from 'react-native';
 import { StyleProvider } from 'native-base';
 
 import App from './configs/navigators';
-import getTheme from '../native-base-theme/components';
-import platform from '../native-base-theme/variables/platform';
+import getTheme from 'theme/components';
+import platform from 'theme/variables/platform';
 
 class CarikotakApp extends Component {
 

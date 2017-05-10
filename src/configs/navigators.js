@@ -147,12 +147,12 @@ const AppNavigator = StackNavigator({
 	}
 }, {
 	navigationOptions: {
-		header: {
-			style: {
-				elevation: 0,
-				shadowOpacity: 0
-			}
-		}
+		// header: {
+		// 	style: {
+		// 		elevation: 0,
+		// 		shadowOpacity: 0
+		// 	}
+		// }
 	},
 	headerMode: 'float'
 });

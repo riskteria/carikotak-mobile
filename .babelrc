@@ -1,3 +1,9 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native"],
+  "plugins": [
+	  ["module-alias", [
+		  { "src": "./images/", "expose": "images" },
+		  { "src": "./native-base-theme", "expose": "theme" }
+	  ]]
+  ]
 }

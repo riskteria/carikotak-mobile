@@ -3,6 +3,7 @@ import { Text, View, StatusBar, Image } from 'react-native';
 import { Button, Icon } from 'native-base';
 
 import styles from './styles';
+import logo from 'images/logo-carikotak-putih.png';
 
 class LandingScreen extends Component {
 
@@ -21,7 +22,7 @@ class LandingScreen extends Component {
 				</View>
 
 				<View style={styles.logoContainer}>
-					<Image source={require('../../../images/logo-carikotak-putih.png')} style={styles.logo} />
+					<Image source={logo} style={styles.logo} />
 				</View>
 
 				<View style={styles.buttonContainer}>
