@@ -11,9 +11,12 @@ class FeedSwiper extends Component {
 		return (
 			<Swiper style={styles.slideWrapper}
 				autoplay={true}
-				loop={false}
+				loop={true}
 				height={200}
-				loadMinimal={false}>
+				loadMinimal={true}
+				loadMinimalSize={1}
+				dotStyle={{ width: 5, height: 5 }}
+				dotColor={'rgba(255, 255, 255, 0.2'}>
 
 				<View style={styles.slideInner}>
 					<Text style={styles.slideText}>Kotak Hadiah</Text>
