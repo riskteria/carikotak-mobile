@@ -3,7 +3,10 @@
   "plugins": [
 	  ["module-alias", [
 		  { "src": "./images/", "expose": "images" },
-		  { "src": "./native-base-theme", "expose": "theme" }
+		  { "src": "./native-base-theme/", "expose": "theme" },
+		  { "src": "./src/components/", "expose": "component" },
+		  { "src": "./src/configs/", "expose": "configs" },
+		  { "src": "./src/styles/", "expose": "styles" }
 	  ]]
   ]
 }
