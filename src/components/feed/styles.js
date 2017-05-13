@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#97CAE5'
+		backgroundColor: colors.colorLight
 	},
 	slideText: {
 		color: '#fff',
