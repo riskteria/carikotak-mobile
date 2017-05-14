@@ -8,7 +8,7 @@ import FeedFindMyBox from './FeedFindMyBox';
 
 class FeedScreen extends Component {
 
-	static navigationOptions = ({ navigation }) => {
+	/*static navigationOptions = ({ navigation }) => {
 		return {
 			headerTintColor: '#000',
 			headerRight: (
@@ -17,7 +17,7 @@ class FeedScreen extends Component {
 				</Button>
 			)
 		};
-	}
+	}*/
 
 	render () {
 		return (

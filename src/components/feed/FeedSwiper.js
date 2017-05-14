@@ -16,7 +16,7 @@ class FeedSwiper extends Component {
 				loadMinimal={true}
 				loadMinimalSize={1}
 				dotStyle={{ width: 5, height: 5 }}
-				dotColor={'rgba(255, 255, 255, 0.2)'}>
+				dotColor={'rgba(0, 0, 0, 0.1)'}>
 
 				<View style={styles.slideInner}>
 					<Text style={styles.slideText}>Kotak Hadiah</Text>
