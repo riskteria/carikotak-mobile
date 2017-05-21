@@ -22,7 +22,7 @@ class FeedScreen extends Component {
 
 	render () {
 		return (
-			<ScrollView>
+			<ScrollView style={styles.parentView}>
 				<FeedSwiper />
 				<View style={styles.container}>
 					<FeedFindMyBox />

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 		fontWeight: '100'
 	},
 	parentView: {
-		backgroundColor: '#fff',
+		backgroundColor: colors.colorLight,
 		flex: 1
 	},
 	container: {

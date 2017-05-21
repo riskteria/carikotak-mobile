@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 
 import styles from './styles';
 
@@ -7,7 +7,9 @@ class ProfileScreen extends Component {
 
 	render () {
 		return (
-			<View><Text>Profile Screen</Text></View>
+			<ScrollView style={styles.parentView}>
+				<Text>Profile Screen</Text>
+			</ScrollView>
 		);
 	}
 
