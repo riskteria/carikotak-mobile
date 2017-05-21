@@ -5,6 +5,7 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 import FeedSwiper from './FeedSwiper';
 import FeedFindMyBox from './FeedFindMyBox';
+import FeedContentTab from './FeedContentTab';
 
 class FeedScreen extends Component {
 
@@ -25,6 +26,7 @@ class FeedScreen extends Component {
 				<FeedSwiper />
 				<View style={styles.container}>
 					<FeedFindMyBox />
+					<FeedContentTab />
 				</View>
 			</ScrollView>
 		);

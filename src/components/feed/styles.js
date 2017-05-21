@@ -17,12 +17,17 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: '100'
 	},
+	parentView: {
+		backgroundColor: '#fff',
+		flex: 1
+	},
 	container: {
 		padding: 20
 	},
 	buttonFindTextInside: {
 		flex: 1,
-		padding: 20
+		paddingLeft: 20,
+		paddingRight: 20
 	},
 	buttonFindTextTitle: {
 		fontSize: 14,
@@ -31,6 +36,9 @@ const styles = StyleSheet.create({
 	buttonFindTextSubtitle: {
 		fontSize: 10,
 		color: colors.colorGrey
+	},
+	sectionContent: {
+		marginBottom: 16
 	}
 });
 
