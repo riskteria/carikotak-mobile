@@ -16,6 +16,21 @@ const styles = StyleSheet.create({
 		color: colors.colorLight,
 		fontSize: 24,
 		fontWeight: '100'
+	},
+	container: {
+		padding: 20
+	},
+	buttonFindTextInside: {
+		flex: 1,
+		padding: 20
+	},
+	buttonFindTextTitle: {
+		fontSize: 14,
+		color: colors.colorDark
+	},
+	buttonFindTextSubtitle: {
+		fontSize: 10,
+		color: colors.colorGrey
 	}
 });
 

@@ -23,7 +23,9 @@ class FeedScreen extends Component {
 		return (
 			<ScrollView>
 				<FeedSwiper />
-				<FeedFindMyBox />
+				<View style={styles.container}>
+					<FeedFindMyBox />
+				</View>
 			</ScrollView>
 		);
 	}

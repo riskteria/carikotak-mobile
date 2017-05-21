@@ -3,6 +3,7 @@ import { View, Text, StatusBar, StyleSheet } from 'react-native';
 import { Input, Button, Item, Label } from 'native-base';
 
 import styles from './styles';
+import validate from './validator';
 
 class RegisterScreen extends Component {
 
@@ -33,6 +34,8 @@ class RegisterScreen extends Component {
 
 	_doRegister () {
 		const user = this.state.user;
+		const validation = validate(user);
+		alert(validation);
 	}
 
 	componentWillMount () {
