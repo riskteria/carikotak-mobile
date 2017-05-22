@@ -8,8 +8,23 @@ const styles = StyleSheet.create({
 		marginBottom: 8,
 		backgroundColor: '#f4f4f4'
 	},
+	tabProductSection: {
+		paddingBottom: 16,
+		borderBottomWidth: 1,
+		borderBottomColor: colors.colorAlmostLight
+	},
+	tabProductSectionTop: {
+		paddingTop: 16,
+		paddingBottom: 16,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	tabProductSectionLink: {
+		fontSize: 14,
+		color: colors.colorAccent
+	},
 	cardProductContainer: {
-		margin: 8,
+		marginRight: 16,
 		backgroundColor: '#ffffff',
 		width: 180
 	},
