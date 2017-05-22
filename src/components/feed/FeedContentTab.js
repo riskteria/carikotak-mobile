@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Tabs, Tab, Text } from 'native-base';
+import { Tabs, Tab } from 'native-base';
 
 import styles from './styles';
 import TabProduct from './TabProduct';
@@ -11,7 +11,7 @@ class FeedContentTab extends Component {
 	render () {
 		return (
 			<View style={styles.sectionContent}>
-				<Tabs tabBarUnderlineStyle={{ height: 2, backgroundColor: '#1ba39c' }}>
+				<Tabs locked={true} tabBarUnderlineStyle={{ height: 2, backgroundColor: '#1ba39c' }}>
 					<Tab heading="CERITA"
 						tabStyle={{ backgroundColor: '#fff' }}
 						textStyle={{ color: '#95989a' }}

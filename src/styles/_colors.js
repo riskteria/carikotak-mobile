@@ -1,5 +1,6 @@
 export default {
 	colorAccent: '#1ba39c',
+	colorAlmostLight: 'rgba(0, 0, 0, 0.05)',
 	colorDark: '#4d4d4d',
 	colorGrey: '#95989a',
 	colorLight: '#FFFFFF',

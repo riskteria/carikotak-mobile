@@ -3,6 +3,71 @@ import { StyleSheet } from 'react-native';
 import colors from 'styles/_colors';
 
 const styles = StyleSheet.create({
+	cardContainer: {
+		marginTop: 8,
+		marginBottom: 8,
+		backgroundColor: '#f4f4f4'
+	},
+	cardProductContainer: {
+		margin: 8,
+		backgroundColor: '#ffffff',
+		width: 180
+	},
+	cardStoryHeader: {
+		paddingTop: 8,
+		paddingBottom: 8,
+		paddingLeft: 16,
+		paddingRight: 16,
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	cardStoryHeaderName: {
+		paddingLeft: 8,
+		paddingRight: 8,
+		fontSize: 16,
+		fontWeight: 'bold'
+	},
+	cardStoryFooter: {
+		paddingTop: 8,
+		paddingBottom: 8,
+		paddingLeft: 16,
+		paddingRight: 16
+	},
+	cardStoryTitle: {
+		fontSize: 16,
+		fontWeight: 'bold'
+	},
+	cardStoryDescription: {
+		fontSize: 14,
+		color: colors.colorGrey
+	},
+	cardProductFooter: {
+		paddingTop: 8,
+		paddingBottom: 8
+	},
+	cardProductFooterCol: {
+		paddingTop: 1.6,
+		paddingBottom: 1.6,
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
+	cardProductName: {
+		fontWeight: 'bold'
+	},
+	cardProductOwner: {
+		//
+	},
+	cardProductStatus: {
+		//
+	},
+	cardProductPrice: {
+		//
+	},
+	cardProductLocation: {
+		//
+	},
 	slideWrapper: {
 		flex: 1
 	},
@@ -22,7 +87,7 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	container: {
-		padding: 20
+		padding: 16
 	},
 	buttonFindTextInside: {
 		flex: 1,

@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+
+import CardStory from './CardStory';
 
 class TabStory extends Component {
 
 	render () {
 		return (
 			<View>
-				<Text>Tab Story</Text>
+				<CardStory />
+				<CardStory />
+				<CardStory />
+				<CardStory />
+				<CardStory />
 			</View>
 		)
 	}
