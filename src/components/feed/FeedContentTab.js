@@ -16,14 +16,14 @@ class FeedContentTab extends Component {
 						tabStyle={{ backgroundColor: '#fff' }}
 						textStyle={{ color: '#95989a' }}
 						activeTabStyle={{ backgroundColor: '#fff' }}
-						activeTextStyle={{ color: '#1ba39c', fontWeight: 'normal' }}>
+						activeTextStyle={{ color: '#1ba39c', fontWeight: 'bold' }}>
 						<TabStory></TabStory>
 					</Tab>
 					<Tab heading="KOTAK"
 						tabStyle={{ backgroundColor: '#fff' }}
 						textStyle={{ color: '#95989a' }}
 						activeTabStyle={{ backgroundColor: '#fff' }}
-						activeTextStyle={{ color: '#1ba39c', fontWeight: 'normal' }}>
+						activeTextStyle={{ color: '#1ba39c', fontWeight: 'bold' }}>
 						<TabProduct></TabProduct>
 					</Tab>
 				</Tabs>

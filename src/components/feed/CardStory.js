@@ -17,8 +17,8 @@ class CardStory extends Component {
 					<Image style={{ flex: 1}} source={{ uri: 'https://unsplash.it/300x300?random' }} />
 				</View>
 				<View style={styles.cardStoryFooter}>
-					<Text style={styles.cardStoryTitle}>This is kotak</Text>
-					<Text numberOfLines={1} style={styles.cardStoryDescription}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod blanditiis maiores, itaque, sapiente minus voluptates?</Text>
+					<Text numberOfLines={4} style={styles.cardStoryTitle}>Aliquam dolorum! Dolores, blanditiis, excepturi. Quas officiis, id.</Text>
+					<Text numberOfLines={4} style={styles.cardStoryDescription}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quisquam amet tenetur numquam cupiditate incidunt maxime quibusdam, modi suscipit porro vitae accusantium, aliquam dolorum! Dolores, blanditiis, excepturi. Quas officiis, id.</Text>
 				</View>
 			</View>
 		)

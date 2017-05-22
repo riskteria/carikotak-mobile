@@ -16,10 +16,15 @@ const styles = StyleSheet.create({
 	tabProductSectionTop: {
 		padding: 16,
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		alignItems: 'center'
+	},
+	tabProductSectionLabel: {
+		fontSize: 18,
+		color: colors.colorDark
 	},
 	tabProductSectionLink: {
-		fontSize: 14,
+		fontSize: 12,
 		color: colors.colorAccent
 	},
 	productListHorizontal: {
@@ -34,7 +39,7 @@ const styles = StyleSheet.create({
 		marginLeft: 8,
 		marginRight: 8,
 		backgroundColor: colors.colorLight,
-		width: 250
+		width: 200
 	},
 	cardStoryHeader: {
 		paddingTop: 8,
@@ -48,8 +53,9 @@ const styles = StyleSheet.create({
 	cardStoryHeaderName: {
 		paddingLeft: 8,
 		paddingRight: 8,
-		fontSize: 16,
-		fontWeight: 'bold'
+		fontSize: 14,
+		fontWeight: 'bold',
+		color: colors.colorBlack
 	},
 	cardStoryFooter: {
 		paddingTop: 8,
@@ -58,12 +64,15 @@ const styles = StyleSheet.create({
 		paddingRight: 16
 	},
 	cardStoryTitle: {
-		fontSize: 16,
-		fontWeight: 'bold'
+		fontSize: 22,
+		fontWeight: 'bold',
+		color: colors.colorBlack
 	},
 	cardStoryDescription: {
 		fontSize: 14,
-		color: colors.colorGrey
+		lineHeight: 24,
+		color: colors.colorDark,
+		fontWeight: '100'
 	},
 	cardProductFooter: {
 		paddingTop: 8,
@@ -77,19 +86,25 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	cardProductName: {
-		fontWeight: 'bold'
+		color: colors.colorDark,
+		fontSize: 16,
+		fontWeight: '500'
 	},
 	cardProductOwner: {
-		//
+		fontSize: 12,
+		color: colors.colorGrey
 	},
 	cardProductStatus: {
-		//
+		fontSize: 12,
+		color: colors.colorGrey
 	},
 	cardProductPrice: {
-		//
+		color: colors.colorAccent,
+		fontWeight: 'bold'
 	},
 	cardProductLocation: {
-		//
+		fontWeight: 'bold',
+		color: colors.colorDark
 	},
 	slideWrapper: {
 		flex: 1
@@ -125,6 +140,11 @@ const styles = StyleSheet.create({
 	buttonFindTextSubtitle: {
 		fontSize: 10,
 		color: colors.colorGrey
+	},
+	sectionFindMyBox: {
+		paddingLeft: 16,
+		paddingRight: 16,
+		marginBottom: 16
 	},
 	sectionContent: {
 		marginBottom: 16

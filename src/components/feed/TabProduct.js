@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text } from 'react-native';
+import { Icon } from 'native-base';
 
 import CardProduct from './CardProduct';
 import styles from './styles';
@@ -18,7 +19,7 @@ class TabStory extends Component {
 		const ScrollProduct = ProductSectionNumber.map((number) => (
 			<View style={styles.tabSection}>
 				<View style={styles.tabProductSectionTop}>
-					<Text>Kotak Product</Text>
+					<Text style={styles.tabProductSectionLabel}>Kotak Produk</Text>
 					<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
 				</View>
 				<ScrollView

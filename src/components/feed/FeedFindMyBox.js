@@ -8,14 +8,14 @@ class FeedFindMyBox extends Component {
 
 	render () {
 		return (
-			<View style={ styles.sectionContent }>
-				<Button iconLeft iconRight full large rounded bordered dark>
-					<Icon name="md-search" style={{ color: '#4d4d4d' }} />
+			<View style={ styles.sectionFindMyBox }>
+				<Button iconLeft iconRight full large rounded bordered dark style={{ borderColor: '#c4c4c4' }}>
+					<Icon name="md-search" style={{ color: '#c4c4c4' }} />
 					<View style={styles.buttonFindTextInside}>
 						<Text style={ styles.buttonFindTextTitle }>Temukan kotak</Text>
 						<Text style={ styles.buttonFindTextSubtitle }>Temukan kotak kebutuhan anda</Text>
 					</View>
-					<Icon name="ios-arrow-forward" style={{ color: '#4d4d4d' }} />
+					<Icon name="ios-arrow-forward" style={{ color: '#c4c4c4' }} />
 				</Button>
 			</View>
 		);
