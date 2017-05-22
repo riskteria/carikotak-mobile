@@ -6,16 +6,15 @@ const styles = StyleSheet.create({
 	cardContainer: {
 		marginTop: 8,
 		marginBottom: 8,
-		backgroundColor: '#f4f4f4'
-	},
-	tabProductSection: {
 		paddingBottom: 16,
 		borderBottomWidth: 1,
-		borderBottomColor: colors.colorAlmostLight
+		borderBottomColor: colors.colorBorderLight
+	},
+	tabSection: {
+		flex: 1
 	},
 	tabProductSectionTop: {
-		paddingTop: 16,
-		paddingBottom: 16,
+		padding: 16,
 		flexDirection: 'row',
 		justifyContent: 'space-between'
 	},
@@ -23,10 +22,19 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		color: colors.colorAccent
 	},
+	productListHorizontal: {
+		flexDirection: 'row',
+		paddingRight: 8,
+		paddingLeft: 8,
+		borderBottomWidth: 1,
+		paddingBottom: 16,
+		borderBottomColor: colors.colorBorderLight
+	},
 	cardProductContainer: {
-		marginRight: 16,
-		backgroundColor: '#ffffff',
-		width: 180
+		marginLeft: 8,
+		marginRight: 8,
+		backgroundColor: colors.colorLight,
+		width: 250
 	},
 	cardStoryHeader: {
 		paddingTop: 8,
@@ -102,7 +110,8 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	container: {
-		padding: 16
+		paddingTop: 16,
+		paddingBottom: 16
 	},
 	buttonFindTextInside: {
 		flex: 1,

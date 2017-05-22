@@ -7,44 +7,36 @@ import styles from './styles';
 class TabStory extends Component {
 
 	render () {
+
+		const ProductSectionNumber = [1, 2, 3, 4, 5];
+		const ProductNumber = [1, 2, 3, 4, 5];
+
+		const ProductCard = ProductNumber.map((number) => (
+			<CardProduct />
+		));
+
+		const ScrollProduct = ProductSectionNumber.map((number) => (
+			<View style={styles.tabSection}>
+				<View style={styles.tabProductSectionTop}>
+					<Text>Kotak Product</Text>
+					<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
+				</View>
+				<ScrollView
+					horizontal
+					automaticallyAdjustContentInsets={false}
+					showsHorizontalScrollIndicator={false}>
+					<View style={styles.productListHorizontal}>
+						{ ProductCard }
+					</View>
+				</ScrollView>
+			</View>
+		));
+
 		return (
 			<View>
-				<View style={styles.tabProductSection}>
-					<View style={styles.tabProductSectionTop}>
-						<Text>Kotak Product</Text>
-						<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
-					</View>
-					<ScrollView horizontal automaticallyAdjustContentInsets={false} showsHorizontalScrollIndicator={false}>
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-					</ScrollView>
-				</View>
-				<View style={styles.tabProductSection}>
-					<View style={styles.tabProductSectionTop}>
-						<Text>Kotak Product</Text>
-						<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
-					</View>
-					<ScrollView horizontal automaticallyAdjustContentInsets={false} showsHorizontalScrollIndicator={false}>
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-					</ScrollView>
-				</View>
-				<View style={styles.tabProductSection}>
-					<View style={styles.tabProductSectionTop}>
-						<Text>Kotak Product</Text>
-						<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
-					</View>
-					<ScrollView horizontal automaticallyAdjustContentInsets={false} showsHorizontalScrollIndicator={false}>
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-						<CardProduct />
-					</ScrollView>
-				</View>
+
+				{ ScrollProduct }
+
 			</View>
 		)
 	}
