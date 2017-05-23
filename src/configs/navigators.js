@@ -28,6 +28,7 @@ const MainNavigator = TabNavigator({
 	Favorite: {
 		screen: FavoriteScreen,
 		navigationOptions: {
+			title: 'Favorit',
 			tabBarLabel: 'Favorit',
 			tabBarIcon: ({ tintColor }) => (
 				<Icon style={{ color: tintColor }} name="ios-heart-outline" />

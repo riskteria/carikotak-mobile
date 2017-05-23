@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 
 import styles from './styles';
+import FavoriteContentTab from './FavoriteContentTab';
 
 class FavoriteScreen extends Component {
 
 	render () {
 		return (
 			<ScrollView style={styles.parentView}>
-				<Text>Favorite Screen</Text>
+				<FavoriteContentTab />
 			</ScrollView>
 		);
 	}
