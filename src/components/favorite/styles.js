@@ -17,22 +17,8 @@ const styles = StyleSheet.create({
 	tabSection: {
 		flex: 1
 	},
-	tabProductSectionTop: {
-		padding: 16,
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center'
-	},
-	tabProductSectionLabel: {
-		fontSize: 18,
-		color: colors.colorDark
-	},
-	tabProductSectionLink: {
-		fontSize: 12,
-		color: colors.colorAccent
-	},
 	tabStyle: {
-		backgroundColor: colors.colorAlmostLight
+		backgroundColor: colors.colorLight
 	},
 	tabTextStyle: {
 		fontSize: 14,
@@ -48,19 +34,15 @@ const styles = StyleSheet.create({
 		height: 1,
 		backgroundColor: colors.colorAccent
 	},
-	productListHorizontal: {
-		flexDirection: 'row',
-		paddingRight: 8,
-		paddingLeft: 8,
-		borderBottomWidth: 1,
-		paddingBottom: 16,
-		borderBottomColor: colors.colorBorderLight
+	productListVertical: {
 	},
 	cardProductContainer: {
-		marginLeft: 8,
-		marginRight: 8,
 		backgroundColor: colors.colorLight,
-		width: 200
+		flex: 1,
+		paddingLeft: 16,
+		paddingRight: 16,
+		borderBottomWidth: 1,
+		borderBottomColor: colors.colorBorderLight
 	},
 	cardStoryHeader: {
 		paddingTop: 8,
@@ -88,12 +70,6 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: 'bold',
 		color: colors.colorBlack
-	},
-	cardStoryDescription: {
-		fontSize: 14,
-		lineHeight: 24,
-		color: colors.colorDark,
-		fontWeight: '100'
 	},
 	cardProductFooter: {
 		paddingTop: 8,

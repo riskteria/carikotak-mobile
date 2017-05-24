@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		color: colors.colorAccent
 	},
 	tabStyle: {
-		backgroundColor: colors.colorAlmostLight
+		backgroundColor: colors.colorLight
 	},
 	tabTextStyle: {
 		fontSize: 14,

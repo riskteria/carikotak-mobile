@@ -14,14 +14,14 @@ class FeedContentTab extends Component {
 				<Tabs locked={true} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
 					<Tab heading="CERITA"
 						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						textStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }
+						textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
 						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
 						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
 						<TabStory></TabStory>
 					</Tab>
 					<Tab heading="KOTAK"
 						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						textStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }
+						textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
 						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
 						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
 						<TabProduct></TabProduct>

@@ -9,10 +9,6 @@ class CardProduct extends Component {
 	render () {
 		return (
 			<View style={styles.cardProductContainer}>
-				<View style={{ height: 200 }}>
-					<Image style={{ flex: 1}} source={{ uri: 'https://unsplash.it/300x300?random' }} />
-					<Icon name="ios-heart" style={{ position: 'absolute', right: 8, top: 8, color: 'rgba(255, 255, 255, 0.8)' }} />
-				</View>
 				<View style={styles.cardProductFooter}>
 					<Text style={styles.cardProductName} numberOfLines={2}>This is a great of sample box product</Text>
 					<View style={styles.cardProductFooterCol}>
