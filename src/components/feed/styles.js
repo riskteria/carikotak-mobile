@@ -27,6 +27,23 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		color: colors.colorAccent
 	},
+	tabStyle: {
+		backgroundColor: colors.colorAlmostLight
+	},
+	tabTextStyle: {
+		fontSize: 14,
+		fontWeight: 'bold',
+		color: colors.colorGrey
+	},
+	tabActiveTextStyle: {
+		fontSize: 14,
+		fontWeight: 'bold',
+		color: colors.colorAccent
+	},
+	tabUnderlineStyle: {
+		height: 1,
+		backgroundColor: colors.colorAccent
+	},
 	productListHorizontal: {
 		flexDirection: 'row',
 		paddingRight: 8,

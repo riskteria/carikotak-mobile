@@ -138,6 +138,7 @@ const AppNavigator = StackNavigator({
 	Main: {
 		screen: MainNavigator,
 		navigationOptions: {
+			header: null,
 			title: 'CARIKOTAK',
 			headerLeft: null,
 			headerTitleStyle: {

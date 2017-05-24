@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import { Tabs, Tab } from 'native-base';
+import { View, StyleSheet } from 'react-native';
+import { Tabs, Tab, Header, Container } from 'native-base';
 
 import styles from './styles';
 import TabProduct from './TabProduct';
@@ -11,19 +11,20 @@ class FeedContentTab extends Component {
 	render () {
 		return (
 			<View style={styles.sectionContent}>
-				<Tabs locked={true} tabBarUnderlineStyle={{ height: 0 }}>
+				<Header hasTabs />
+				<Tabs locked={false} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
 					<Tab heading="CERITA"
-						tabStyle={{ backgroundColor: '#fff' }}
-						textStyle={{ fontSize: 12, fontWeight: 'bold', color: '#95989a' }}
-						activeTabStyle={{ backgroundColor: '#fff' }}
-						activeTextStyle={{ fontSize: 12, color: '#1ba39c', fontWeight: 'bold' }}>
+						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
+						textStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }
+						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
+						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
 						<TabStory></TabStory>
 					</Tab>
 					<Tab heading="KOTAK"
-						tabStyle={{ backgroundColor: '#fff' }}
-						textStyle={{ fontSize: 12, fontWeight: 'bold', color: '#95989a' }}
-						activeTabStyle={{ backgroundColor: '#fff' }}
-						activeTextStyle={{ fontSize: 12, color: '#1ba39c', fontWeight: 'bold' }}>
+						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
+						textStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }
+						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
+						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
 						<TabProduct></TabProduct>
 					</Tab>
 				</Tabs>
