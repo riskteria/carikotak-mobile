@@ -22,7 +22,7 @@ class CardStory extends Component {
 					<Text numberOfLines={4} style={styles.cardStoryDescription}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quisquam amet tenetur numquam cupiditate incidunt maxime quibusdam, modi suscipit porro vitae accusantium, aliquam dolorum! Dolores, blanditiis, excepturi. Quas officiis, id.</Text>
 				</View>
 			</View>
-		)
+		);
 	}
 
 }

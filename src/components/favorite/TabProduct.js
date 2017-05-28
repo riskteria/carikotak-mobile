@@ -10,7 +10,7 @@ class TabStory extends Component {
 	render () {
 		const ProductNumber = [1, 2, 3, 4, 5];
 
-		const ProductCard = ProductNumber.map((number) => (
+		const ProductCard = ProductNumber.map((number, index) => (
 			<CardProduct />
 		));
 

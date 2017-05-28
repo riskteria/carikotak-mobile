@@ -14,10 +14,32 @@ import CreateScreen from 'components/create/CreateScreen';
 import NotificationScreen from 'components/notification/NotificationScreen';
 import ProfileScreen from 'components/profile/ProfileScreen';
 
-const MainNavigator = TabNavigator({
+import FindScreen from 'components/find/FindScreen';
+
+const FeedSection = StackNavigator({
 
 	Feed: {
 		screen: FeedScreen,
+		navigationOptions: {
+			header: null
+		}
+	},
+
+	Find: {
+		screen: FindScreen,
+		navigationOptions: {
+			title: 'Temukan kotak'
+		}
+	}
+
+}, {
+	headerMode: 'float'
+});
+
+const MainNavigator = TabNavigator({
+
+	FeedSection: {
+		screen: FeedSection,
 		navigationOptions: {
 			tabBarLabel: 'Beranda',
 			tabBarIcon: ({ tintColor }) => (
@@ -25,6 +47,7 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
+
 	Favorite: {
 		screen: FavoriteScreen,
 		navigationOptions: {

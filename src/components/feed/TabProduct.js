@@ -12,11 +12,11 @@ class TabStory extends Component {
 		const ProductSectionNumber = [1, 2, 3, 4, 5];
 		const ProductNumber = [1, 2, 3, 4, 5];
 
-		const ProductCard = ProductNumber.map((number) => (
+		const ProductCard = ProductNumber.map((number, index) => (
 			<CardProduct />
 		));
 
-		const ScrollProduct = ProductSectionNumber.map((number) => (
+		const ScrollProduct = ProductSectionNumber.map((number, index) => (
 			<View style={styles.tabSection}>
 				<View style={styles.tabProductSectionTop}>
 					<Text style={styles.tabProductSectionLabel}>Kotak Produk</Text>

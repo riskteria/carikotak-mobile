@@ -21,11 +21,13 @@ class FeedScreen extends Component {
 	}*/
 
 	render () {
+		const { navigate } = this.props.navigation;
+
 		return (
 			<ScrollView style={styles.parentView}>
 				<FeedSwiper />
 				<View style={styles.container}>
-					<FeedFindMyBox />
+					<FeedFindMyBox navigate={navigate} />
 					<FeedContentTab />
 				</View>
 			</ScrollView>
