@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Button, Item, Label, Input } from 'native-base';
+import { View, ScrollView, StyleSheet } from 'react-native';
+import { Button, Text, Item, Label, Input } from 'native-base';
 
+import colors from 'styles/_colors';
 import styles from './styles';
 
 class ForgotScreen extends Component {
@@ -17,14 +18,9 @@ class ForgotScreen extends Component {
 	}
 
 	static navigationOptions = ({ navigation }) => {
-		const { state } = navigation;
-
 		return {
 			headerTintColor: '#fff',
-			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.sendResetLink(); }}>
-							<Text style={styles.signInbutton}>Perbaharui Kata Sandi</Text>
-						</Button>)
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
 		};
 	}
 
@@ -32,18 +28,14 @@ class ForgotScreen extends Component {
 		const user = this.state.user;
 	}
 
-	componentWillMount () {
-		this.props.navigation.setParams({
-			sendResetLink: this._sendResetLink.bind(this)
-		});
-	}
-
 	render () {
 		return (
-			<View style={styles.container}>
+			<ScrollView style={styles.container}>
 
 				<View style={styles.inputInstruction}>
-					<Text style={styles.inputInstructionText}>Masukkan alamat email yang anda gunakan untuk masuk ke akun Carikotak</Text>
+					<Text style={StyleSheet.flatten(styles.inputInstructionText)}>
+						Masukkan alamat email yang anda gunakan untuk masuk ke akun Carikotak
+					</Text>
 				</View>
 
 				<View>
@@ -53,9 +45,13 @@ class ForgotScreen extends Component {
 						<Input onChangeText={email => this.setState({ user: {email} })} />
 					</Item>
 
+					<Button onPress={() => { this._sendResetLink(); }} light rounded block >
+						<Text style={{ color: colors.colorAccent }}>Atur ulang kata sandi</Text>
+					</Button>
+
 				</View>
 
-			</View>
+			</ScrollView>
 		);
 	}
 }

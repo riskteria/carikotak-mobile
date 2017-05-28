@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
 	inputGroup: {
 		marginBottom: 24
 	},
+	formGroup: {
+		marginTop: 16
+	},
 	signInbutton: {
 		color: colors.colorLightOpacity,
 		fontSize: 16

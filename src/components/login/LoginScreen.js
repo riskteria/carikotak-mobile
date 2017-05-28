@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StatusBar, StyleSheet } from 'react-native';
-import { Button, Item, Label, Input } from 'native-base';
+import { ActivityIndicator, Alert, View, StatusBar, StyleSheet, ScrollView } from 'react-native';
+import { Button, Item, Label, Input, Text } from 'native-base';
 
 import styles from './styles';
+import colors from 'styles/_colors';
 
 class LoginScreen extends Component {
 
@@ -13,7 +14,8 @@ class LoginScreen extends Component {
 			user: {
 				email: '',
 				password: ''
-			}
+			},
+			isLoading: false
 		};
 	}
 
@@ -22,29 +24,21 @@ class LoginScreen extends Component {
 
 		return {
 			headerTintColor: '#fff',
-			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.doLogin(); }}>
-							<Text style={styles.signInbutton}>Lanjutkan</Text>
-						</Button>)
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
 		};
 	}
 
 	_doLogin () {
 		const user = this.state.user;
+		this.state.isLoading = true;
 		this.props.navigation.navigate('Main');
-	}
-
-	componentWillMount () {
-		this.props.navigation.setParams({
-			doLogin: this._doLogin.bind(this)
-		});
 	}
 
 	render () {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<View style={styles.container}>
+			<ScrollView style={styles.container}>
 
 				<StatusBar
 					backgroundColor="#1ba39c"
@@ -64,11 +58,15 @@ class LoginScreen extends Component {
 
 				</View>
 
+				<Button light rounded block onPress={() => { this._doLogin(); }}>
+					<Text style={{ color: colors.colorAccent }}>Login</Text>
+				</Button>
+
 				<View style={styles.formGroup}>
-					<Text onPress={() => navigate('Forgot')} style={styles.forgotPassword}>Lupa Kata Sandi?</Text>
+					<Text onPress={() => navigate('Forgot')} style={StyleSheet.flatten(styles.forgotPassword)}>Lupa Kata Sandi?</Text>
 				</View>
 
-			</View>
+			</ScrollView>
 		);
 	}
 

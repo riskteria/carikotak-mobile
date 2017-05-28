@@ -5,7 +5,7 @@ import colors from 'styles/_colors';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#1ba39c',
+		backgroundColor: colors.colorAccent,
 		padding: 20,
 		paddingTop: 64,
 		paddingBottom: 48

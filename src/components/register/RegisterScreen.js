@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StatusBar, StyleSheet } from 'react-native';
-import { Input, Button, Item, Label } from 'native-base';
+import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
+import { Input, Button, Text, Item, Label } from 'native-base';
 
+import colors from 'styles/_colors';
 import styles from './styles';
 import validate from './validator';
 
@@ -21,33 +22,20 @@ class RegisterScreen extends Component {
 	}
 
 	static navigationOptions = ({ navigation }) => {
-		const { state } = navigation;
-
 		return {
 			headerTintColor: '#fff',
-			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)',
-			headerRight: (<Button light transparent onPress={() => { state.params.doRegister(); }}>
-							<Text style={styles.signInbutton}>Lanjutkan</Text>
-						</Button>)
+			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
 		};
 	}
 
 	_doRegister () {
 		const user = this.state.user;
 		const validation = validate(user);
-		alert(validation);
-	}
-
-	componentWillMount () {
-		this.props.navigation.setParams({
-			doRegister: this._doRegister.bind(this)
-		});
 	}
 
 	render () {
-
 		return (
-			<View style={styles.container}>
+			<ScrollView style={styles.container}>
 
 				<StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />
 
@@ -73,9 +61,13 @@ class RegisterScreen extends Component {
 						<Input onChangeText={password => this.setState({ user: {password} })} secureTextEntry />
 					</Item>
 
+					<Button light rounded block onPress={() => { this._doRegister(); }}>
+						<Text style={{ color: colors.colorAccent }}>Buat akun</Text>
+					</Button>
+
 				</View>
 
-			</View>
+			</ScrollView>
 		);
 	}
 
