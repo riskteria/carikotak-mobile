@@ -10,24 +10,22 @@ class FeedContentTab extends Component {
 
 	render () {
 		return (
-			<View style={styles.sectionContent}>
-				<Tabs locked={false} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
-					<Tab heading="CERITA"
-						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
-						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
-						<TabStory></TabStory>
-					</Tab>
-					<Tab heading="KOTAK"
-						tabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
-						activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
-						activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
-						<TabProduct></TabProduct>
-					</Tab>
-				</Tabs>
-			</View>
+			<Tabs locked={true} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
+				<Tab heading="CERITA"
+					tabStyle={ StyleSheet.flatten(styles.tabStyle) }
+					textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
+					activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
+					activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
+					<TabStory></TabStory>
+				</Tab>
+				<Tab heading="KOTAK"
+					tabStyle={ StyleSheet.flatten(styles.tabStyle) }
+					textStyle={ StyleSheet.flatten(styles.tabTextStyle) }
+					activeTabStyle={ StyleSheet.flatten(styles.tabStyle) }
+					activeTextStyle={ StyleSheet.flatten(styles.tabActiveTextStyle) }>
+					<TabProduct></TabProduct>
+				</Tab>
+			</Tabs>
 		)
 	}
 

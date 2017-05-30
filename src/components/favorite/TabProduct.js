@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import CardProduct from './CardProduct';
 
@@ -13,11 +13,11 @@ class TabStory extends Component {
 		));
 
 		return (
-			<View>
+			<ScrollView>
 
 				{ ProductCard }
 
-			</View>
+			</ScrollView>
 		);
 	}
 
