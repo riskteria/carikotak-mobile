@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text } from 'react-native';
-import { Icon } from 'native-base';
 
 import CardProduct from './CardProduct';
 import styles from './styles';
@@ -13,11 +12,11 @@ class TabStory extends Component {
 		const ProductNumber = [1, 2, 3, 4, 5];
 
 		const ProductCard = ProductNumber.map((number, index) => (
-			<CardProduct />
+			<CardProduct key={index} />
 		));
 
 		const ScrollProduct = ProductSectionNumber.map((number, index) => (
-			<View style={styles.tabSection}>
+			<View style={styles.tabSection} key={index}>
 				<View style={styles.tabProductSectionTop}>
 					<Text style={styles.tabProductSectionLabel}>Kotak Produk</Text>
 					<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
@@ -39,7 +38,7 @@ class TabStory extends Component {
 				{ ScrollProduct }
 
 			</View>
-		)
+		);
 	}
 
 }

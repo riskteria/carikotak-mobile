@@ -25,7 +25,7 @@ class ForgotScreen extends Component {
 	}
 
 	_sendResetLink () {
-		const user = this.state.user;
+		// const user = this.state.user;
 	}
 
 	render () {

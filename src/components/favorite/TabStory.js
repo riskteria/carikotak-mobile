@@ -7,15 +7,17 @@ import styles from './styles';
 class TabStory extends Component {
 
 	render () {
+
+		const storyNumber = [1, 2, 3, 4, 5];
+		const storyCard = storyNumber.map((number, index) => (
+			<CardStory key={index} />
+		));
+
 		return (
 			<View style={styles.tabSection}>
-				<CardStory />
-				<CardStory />
-				<CardStory />
-				<CardStory />
-				<CardStory />
+				{ storyCard }
 			</View>
-		)
+		);
 	}
 
 }

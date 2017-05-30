@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text } from 'react-native';
-import { Icon } from 'native-base';
+import { View } from 'react-native';
 
 import CardProduct from './CardProduct';
-import styles from './styles';
 
 class TabStory extends Component {
 
@@ -11,7 +9,7 @@ class TabStory extends Component {
 		const ProductNumber = [1, 2, 3, 4, 5];
 
 		const ProductCard = ProductNumber.map((number, index) => (
-			<CardProduct />
+			<CardProduct key={index} />
 		));
 
 		return (
@@ -20,7 +18,7 @@ class TabStory extends Component {
 				{ ProductCard }
 
 			</View>
-		)
+		);
 	}
 
 }
