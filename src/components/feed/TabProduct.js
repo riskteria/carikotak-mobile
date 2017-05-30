@@ -33,11 +33,11 @@ class TabStory extends Component {
 		));
 
 		return (
-			<View>
+			<ScrollView>
 
 				{ ScrollProduct }
 
-			</View>
+			</ScrollView>
 		);
 	}
 

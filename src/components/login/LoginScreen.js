@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Alert, View, StatusBar, StyleSheet, ScrollView } from 'react-native';
+import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
 import { Button, Item, Label, Input, Text } from 'native-base';
 
 import styles from './styles';
@@ -20,8 +20,6 @@ class LoginScreen extends Component {
 	}
 
 	static navigationOptions = ({ navigation }) => {
-		const { state } = navigation;
-
 		return {
 			headerTintColor: '#fff',
 			headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
@@ -29,7 +27,7 @@ class LoginScreen extends Component {
 	}
 
 	_doLogin () {
-		const user = this.state.user;
+		// const user = this.state.user;
 		this.state.isLoading = true;
 		this.props.navigation.navigate('Main');
 	}
