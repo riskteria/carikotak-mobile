@@ -7,7 +7,8 @@
 		"android": "react-native run-android",
 		"ios": "react-native run-ios",
 		"link": "react-native link",
-		"test": "jest"
+		"test": "jest",
+		"release": "cd android && ./gradlew assembleRelease && cd .."
 	},
 	"dependencies": {
 		"babel-plugin-module-alias": "^1.6.0",
