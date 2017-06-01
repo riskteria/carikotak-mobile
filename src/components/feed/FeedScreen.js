@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
-import { Container } from 'native-base';
+import { ScrollView, Image } from 'react-native';
+import { Header, Body, Title, Right, Container, Button, Icon } from 'native-base';
 
 import styles from './styles';
-import FeedSwiper from './FeedSwiper';
 import FeedFindMyBox from './FeedFindMyBox';
-import FeedContentTab from './FeedContentTab';
+import SectionStory from './SectionStory';
+import SectionProduct from './SectionProduct';
+import logo from 'images/logo-carikotak-hijau.png';
 
 class FeedScreen extends Component {
 
@@ -13,13 +14,23 @@ class FeedScreen extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<ScrollView style={styles.parentView}>
-				<FeedSwiper />
-				<FeedFindMyBox navigate={navigate} />
-				<View style={{ flex: 1 }}>
-					<FeedContentTab />
-				</View>
-			</ScrollView>
+			<Container>
+
+				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
+					<Body style={{ alignItems: 'center', flex: 1}}>
+						<Image source={logo} style={{ width: 100, height:15 }} />
+					</Body>
+					<Right style={{ position: 'absolute', right: 8 }}>
+						<Button transparent dark><Icon name="ios-search" /></Button>
+					</Right>
+				</Header>
+
+				<ScrollView style={styles.parentView}>
+					<SectionStory />
+					<FeedFindMyBox navigate={navigate} />
+					<SectionProduct />
+				</ScrollView>
+			</Container>
 		);
 	}
 

@@ -88,8 +88,8 @@ const MainNavigator = TabNavigator({
 
 }, {
 	tabBarPosition: 'bottom',
-	swipeEnabled: true,
-	lazy: true,
+	swipeEnabled: false,
+	lazy: false,
 	animationEnabled: true,
 	tabBarOptions: {
 		activeTintColor: '#1ba39c',
@@ -109,6 +109,9 @@ const MainNavigator = TabNavigator({
 		tabStyle: {
 			paddingBottom: 0
 		}
+	},
+	navigationOptions: {
+		statusBarStyle: 'light-content'
 	}
 });
 

@@ -4,12 +4,12 @@ import { View, ScrollView, Text } from 'react-native';
 import CardProduct from './CardProduct';
 import styles from './styles';
 
-class TabStory extends Component {
+class SectionProduct extends Component {
 
 	render () {
 
-		const ProductSectionNumber = [1, 2, 3, 4, 5];
-		const ProductNumber = [1, 2, 3, 4, 5];
+		const ProductSectionNumber = [1, 2];
+		const ProductNumber = [1, 2];
 
 		const ProductCard = ProductNumber.map((number, index) => (
 			<CardProduct key={index} />
@@ -33,14 +33,14 @@ class TabStory extends Component {
 		));
 
 		return (
-			<ScrollView>
+			<View style={{ flex: 1 }}>
 
 				{ ScrollProduct }
 
-			</ScrollView>
+			</View>
 		);
 	}
 
 }
 
-export default TabStory;
+export default SectionProduct;

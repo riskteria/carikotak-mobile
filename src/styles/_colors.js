@@ -7,5 +7,7 @@ export default {
 	colorLight: '#FFFFFF',
 	colorLightOpacity: 'rgba(255, 255, 255, 0.7)',
 	colorBorderPrimary: '#dadada',
-	colorBorderLight: '#edeff2'
+	colorBorderLight: '#edeff2',
+	colorHeart: '#ED4A6A',
+	colorTransparent: 'transparent'
 }

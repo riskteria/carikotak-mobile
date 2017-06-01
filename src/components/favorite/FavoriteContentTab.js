@@ -10,7 +10,7 @@ class FeedContentTab extends Component {
 
 	render () {
 		return (
-			<Tabs locked={true} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
+			<Tabs locked={false} tabBarUnderlineStyle={ StyleSheet.flatten(styles.tabUnderlineStyle) }>
 				<Tab heading="CERITA"
 					tabStyle={ StyleSheet.flatten(styles.tabStyle) }
 					textStyle={ StyleSheet.flatten(styles.tabTextStyle) }

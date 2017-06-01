@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import {
+	StyleSheet
+} from 'react-native';
 
 import colors from 'styles/_colors';
 
@@ -58,38 +60,39 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.colorLight,
 		width: 200
 	},
-	cardStoryHeader: {
-		paddingTop: 8,
-		paddingBottom: 8,
+	cardStoryDeckContainer: {
+		height: 'auto',
+		minHeight: 275,
+		marginTop: 14,
 		paddingLeft: 16,
-		paddingRight: 16,
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center'
+		paddingRight: 16
+	},
+	cardStoryContainer: {
+		height: 250,
+		elevation: 0,
+		borderRadius: 10,
+		backgroundColor: '#000'
+	},
+	cardStoryImageBackground: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		borderRadius: 10,
+		top: 0,
+		bottom: 0,
+		opacity: 0.5
 	},
 	cardStoryHeaderName: {
 		paddingLeft: 8,
 		paddingRight: 8,
 		fontSize: 14,
 		fontWeight: 'bold',
-		color: colors.colorBlack
-	},
-	cardStoryFooter: {
-		paddingTop: 8,
-		paddingBottom: 8,
-		paddingLeft: 16,
-		paddingRight: 16
+		color: colors.colorAlmostLight
 	},
 	cardStoryTitle: {
-		fontSize: 24,
+		fontSize: 22,
 		fontWeight: 'bold',
-		color: colors.colorBlack
-	},
-	cardStoryDescription: {
-		fontSize: 14,
-		lineHeight: 24,
-		color: colors.colorDark,
-		fontWeight: '100'
+		color: colors.colorAlmostLight
 	},
 	cardProductFooter: {
 		paddingTop: 8,
