@@ -15,6 +15,8 @@ import NotificationScreen from 'components/notification/NotificationScreen';
 import ProfileScreen from 'components/profile/ProfileScreen';
 
 import FindScreen from 'components/find/FindScreen';
+import LocationScreen from 'components/location/LocationScreen';
+import SearchScreen from 'components/search/SearchScreen';
 
 const FeedSection = StackNavigator({
 
@@ -29,6 +31,20 @@ const FeedSection = StackNavigator({
 		screen: FindScreen,
 		navigationOptions: {
 			title: 'Temukan kotak'
+		}
+	},
+
+	Search: {
+		screen: SearchScreen,
+		navigationOptions: {
+			header: null
+		}
+	},
+
+	Location: {
+		screen: LocationScreen,
+		navigationOptions: {
+			header: null
 		}
 	}
 

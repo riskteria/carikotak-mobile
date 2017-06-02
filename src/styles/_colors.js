@@ -10,4 +10,4 @@ export default {
 	colorBorderLight: '#edeff2',
 	colorHeart: '#ED4A6A',
 	colorTransparent: 'transparent'
-}
+};

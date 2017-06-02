@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Image } from 'react-native';
-import { Header, Body, Title, Right, Container, Button, Icon } from 'native-base';
+import { Header, Body, Right, Container, Button, Icon } from 'native-base';
 
 import styles from './styles';
 import FeedFindMyBox from './FeedFindMyBox';
@@ -21,7 +21,7 @@ class FeedScreen extends Component {
 						<Image source={logo} style={{ width: 100, height:15 }} />
 					</Body>
 					<Right style={{ position: 'absolute', right: 8 }}>
-						<Button transparent dark><Icon name="ios-search" /></Button>
+						<Button transparent dark onPress={() => navigate('Search')}><Icon name="ios-search" /></Button>
 					</Right>
 				</Header>
 

@@ -4,7 +4,6 @@ import {
 	Container,
 	Icon,
 	Button,
-	View,
 	DeckSwiper,
 	Card,
 	CardItem,
@@ -80,7 +79,7 @@ class SectionStory extends Component {
 				/>
 
             </Container>
-		)
+		);
 	}
 
 }
