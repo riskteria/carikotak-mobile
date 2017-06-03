@@ -7,6 +7,8 @@ import LandingScreen from 'components/landing/LandingScreen';
 import LoginScreen from 'components/login/LoginScreen';
 import RegisterScreen from 'components/register/RegisterScreen';
 import ForgotScreen from 'components/forgot/ForgotScreen';
+import ProductScreen from 'components/product/ProductScreen';
+import StoryScreen from 'components/story/StoryScreen';
 
 import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
@@ -187,6 +189,18 @@ const AppNavigator = StackNavigator({
 				alignSelf: 'center',
 				textAlign: 'center'
 			},
+		}
+	},
+	Product: {
+		screen: ProductScreen,
+		navigationOptions: {
+			title: 'Produk'
+		}
+	},
+	Story: {
+		screen: StoryScreen,
+		navigationOptions: {
+			title: 'Story'
 		}
 	}
 }, {
