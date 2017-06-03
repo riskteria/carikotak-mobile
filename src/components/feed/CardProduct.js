@@ -25,7 +25,7 @@ class CardProduct extends Component {
 					</View>
 				</View>
 			</TouchableOpacity>
-		)
+		);
 	}
 
 }

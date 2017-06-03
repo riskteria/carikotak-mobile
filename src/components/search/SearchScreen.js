@@ -10,7 +10,6 @@ import {
 	Icon,
 	Text,
 	Title,
-	Item,
 	Subtitle,
 	InputGroup,
 	Input
@@ -19,6 +18,15 @@ import {
 import colors from 'styles/_colors';
 
 class SearchScreen extends Component {
+
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			query: '',
+			location: ''
+		};
+	}
 
 	render () {
 
@@ -41,11 +49,11 @@ class SearchScreen extends Component {
 				<Content>
 
 					<View style={{ padding: 16 }}>
-						<Item rounded style={{ backgroundColor: '#fff', paddingLeft: 8, paddingRight: 8 }}>
+						<InputGroup  rounded style={{ backgroundColor: '#fff', paddingLeft: 8, paddingRight: 8 }}>
 							<Icon name="ios-search-outline" />
 							<Input placeholder="Cari sesuatu" />
-							<Icon name="md-close-circle" style={{ color: '#999' }} />
-						</Item>
+							<Icon name="md-close-circle" style={{ color: '#999' }} onPress={() => { this.state.query = ''; }} />
+						</InputGroup>
 					</View>
 
 					<View style={{ flex: 1, flexDirection: 'row', paddingLeft: 8, paddingRight: 8 }}>
