@@ -4,7 +4,7 @@ import { Header, Body, Right, Container, Button, Icon } from 'native-base';
 
 import styles from './styles';
 import FeedFindMyBox from './FeedFindMyBox';
-import SectionStory from './SectionStory';
+import StoryCarousel from './StoryCarousel';
 import SectionProduct from './SectionProduct';
 import logo from 'images/logo-carikotak-hijau.png';
 
@@ -26,7 +26,8 @@ class FeedScreen extends Component {
 				</Header>
 
 				<ScrollView style={styles.parentView}>
-					<SectionStory />
+					{/*<SectionStory />*/}
+					<StoryCarousel />
 					<FeedFindMyBox navigate={navigate} />
 					<SectionProduct />
 				</ScrollView>

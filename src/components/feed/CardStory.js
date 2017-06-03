@@ -1,27 +1,65 @@
-import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import { Thumbnail, Icon } from 'native-base';
+import React, { Component, PropTypes } from 'react';
+import {
+	StyleSheet,
+	TouchableOpacity,
+	Image
+} from 'react-native';
+import {
+	Icon,
+	Button,
+	Card,
+	CardItem,
+	Thumbnail,
+	Text,
+	Left,
+	Body
+} from 'native-base';
 
+import colors from 'styles/_colors';
 import styles from './styles';
 
 class CardStory extends Component {
 
+	static propTypes = {
+		item: PropTypes.object.isRequired
+	};
+
 	render () {
+
+		const { item } = this.props;
+
 		return (
-			<View style={styles.cardContainer}>
-				<View style={styles.cardStoryHeader}>
-					<Thumbnail circle small source={{ uri: 'https://unsplash.it/300x300?random' }} />
-					<Text style={styles.cardStoryHeaderName}>John Artileri</Text>
-				</View>
-				<View style={{ flex: 1, height: 250 }}>
-					<Image style={{ flex: 1}} source={{ uri: 'https://unsplash.it/300x300?random' }} />
-					<Icon name="ios-heart" style={{ position: 'absolute', right: 8, top: 8, color: 'rgba(255, 255, 255, 0.8)', fontSize: 40 }} />
-				</View>
-				<View style={styles.cardStoryFooter}>
-					<Text numberOfLines={4} style={styles.cardStoryTitle}>Aliquam dolorum! Dolores, blanditiis, excepturi. Quas officiis, id.</Text>
-					<Text numberOfLines={4} style={styles.cardStoryDescription}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quisquam amet tenetur numquam cupiditate incidunt maxime quibusdam, modi suscipit porro vitae accusantium, aliquam dolorum! Dolores, blanditiis, excepturi. Quas officiis, id.</Text>
-				</View>
-			</View>
+			<TouchableOpacity
+				activeOpacity={0.8}
+				style={styles.slideInnerContainer}>
+				<Card style={ StyleSheet.flatten(styles.cardStoryContainer) }>
+					<Image style={ StyleSheet.flatten(styles.cardStoryImageBackground) } source={ item.image } />
+					<CardItem style={{ backgroundColor: colors.colorTransparent }}>
+						<Left>
+							<Thumbnail small circle source={item.user.picture} />
+							<Body>
+								<Text style={StyleSheet.flatten(styles.cardStoryHeaderName)}>
+									{ item.user.name }
+								</Text>
+							</Body>
+						</Left>
+					</CardItem>
+					<CardItem style={{ backgroundColor: colors.colorTransparent, flex: 1 }}>
+						<Text numberOfLines={3} style={StyleSheet.flatten(styles.cardStoryTitle)}>
+							{ item.title }
+						</Text>
+					</CardItem>
+					<CardItem style={{ backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'space-between' }}>
+						<Button light transparent small style={{ paddingLeft: 0, paddingRight: 0 }}>
+							<Icon name="ios-heart" style={{ color: colors.colorHeart }} />
+							<Text style={{ fontSize: 12 }}>200</Text>
+						</Button>
+						<Button light transparent small style={{ paddingLeft: 0, paddingRight: 0 }}>
+							<Text style={{ fontSize: 12 }}>200 Komentar</Text>
+						</Button>
+					</CardItem>
+				</Card>
+			</TouchableOpacity>
 		);
 	}
 
