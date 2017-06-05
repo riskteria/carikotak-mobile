@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 		marginLeft: 8,
 		marginRight: 8,
 		backgroundColor: colors.colorLight,
-		width: 200
+		width: 150
 	},
 	slideInnerContainer: {
         width: itemWidth,
@@ -139,11 +139,11 @@ const styles = StyleSheet.create({
 	},
 	cardProductPrice: {
 		color: colors.colorAccent,
-		fontWeight: 'bold'
+		fontSize: 14
 	},
 	cardProductLocation: {
-		fontWeight: 'bold',
-		color: colors.colorDark
+		color: colors.colorDark,
+		fontSize: 14
 	},
 	parentView: {
 		backgroundColor: colors.colorLight,

@@ -8,8 +8,8 @@ class SectionProduct extends Component {
 
 	render () {
 
-		const ProductSectionNumber = [1, 2];
-		const ProductNumber = [1, 2];
+		const ProductSectionNumber = [1, 2, 3];
+		const ProductNumber = [1, 2, 3];
 
 		const ProductCard = ProductNumber.map((number, index) => (
 			<CardProduct key={index} />

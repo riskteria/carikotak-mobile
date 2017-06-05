@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import CardStory from './CardStory';
 
@@ -35,22 +36,29 @@ class StoryCarousel extends Component {
 		));
 
 		return (
-			<Carousel
-				sliderWidth={sliderWidth}
-				itemWidth={itemWidth}
-				firstItem={1}
-				inactiveSlideScale={0.94}
-				inactiveSlideOpacity={0.6}
-				enableMomentum={false}
-				containerCustomStyle={styles.slider}
-				contentContainerCustomStyle={styles.sliderContainer}
-				showsHorizontalScrollIndicator={false}
-				snapOnAndroid={true}
-				removeClippedSubviews={false}>
+			<View>
 
-					{ CardSwipe }
+				<View style={styles.tabProductSectionTop}>
+					<Text style={styles.tabProductSectionLabel}>Cerita Terpopuler</Text>
+					<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
+				</View>
 
+				<Carousel
+					sliderWidth={sliderWidth}
+					itemWidth={itemWidth}
+					firstItem={1}
+					inactiveSlideScale={0.94}
+					inactiveSlideOpacity={0.6}
+					enableMomentum={false}
+					containerCustomStyle={styles.slider}
+					contentContainerCustomStyle={styles.sliderContainer}
+					showsHorizontalScrollIndicator={false}
+					snapOnAndroid={true}
+					removeClippedSubviews={false}>
+						{ CardSwipe }
 				</Carousel>
+
+			</View>
 		);
 	}
 
