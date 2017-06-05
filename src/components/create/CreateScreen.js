@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { Container, Header, Title, Body, Right} from 'native-base';
 
 import styles from './styles';
+import colors from 'styles/_colors';
 
 class CreateScreen extends Component {
 
 	render () {
 		return (
-			<ScrollView style={styles.parentView}>
-				<Text>Create Screen</Text>
-			</ScrollView>
+			<Container>
+				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
+					<Body style={{ alignItems: 'flex-start', flex: 1}}>
+						<Title style={{ color: colors.colorDark }}>Kiriman Baru</Title>
+					</Body>
+				</Header>
+			</Container>
 		);
 	}
 

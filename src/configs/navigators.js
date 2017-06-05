@@ -15,6 +15,7 @@ import FavoriteScreen from 'components/favorite/FavoriteScreen';
 import CreateScreen from 'components/create/CreateScreen';
 import NotificationScreen from 'components/notification/NotificationScreen';
 import ProfileScreen from 'components/profile/ProfileScreen';
+import MessageScreen from 'components/message/MessageScreen';
 
 import FindScreen from 'components/find/FindScreen';
 import LocationScreen from 'components/location/LocationScreen';
@@ -24,27 +25,6 @@ const FeedSection = StackNavigator({
 
 	Feed: {
 		screen: FeedScreen,
-		navigationOptions: {
-			header: null
-		}
-	},
-
-	Find: {
-		screen: FindScreen,
-		navigationOptions: {
-			title: 'Temukan kotak'
-		}
-	},
-
-	Search: {
-		screen: SearchScreen,
-		navigationOptions: {
-			header: null
-		}
-	},
-
-	Location: {
-		screen: LocationScreen,
 		navigationOptions: {
 			header: null
 		}
@@ -85,12 +65,12 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
-	Notification: {
-		screen: NotificationScreen,
+	Message: {
+		screen: MessageScreen,
 		navigationOptions: {
 			tabBarLabel: 'Pesan',
 			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-notifications-outline" />
+				<Icon style={{ color: tintColor }} name="ios-mail-outline" />
 			)
 		}
 	},
@@ -201,6 +181,33 @@ const AppNavigator = StackNavigator({
 		screen: StoryScreen,
 		navigationOptions: {
 			title: 'Story'
+		}
+	},
+	Notification: {
+		screen: NotificationScreen,
+		navigationOptions: {
+			title: 'Pemberitahuan'
+		}
+	},
+
+	Find: {
+		screen: FindScreen,
+		navigationOptions: {
+			title: 'Temukan kotak'
+		}
+	},
+
+	Search: {
+		screen: SearchScreen,
+		navigationOptions: {
+			header: null
+		}
+	},
+
+	Location: {
+		screen: LocationScreen,
+		navigationOptions: {
+			header: null
 		}
 	}
 }, {
