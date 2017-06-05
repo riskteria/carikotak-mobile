@@ -5,8 +5,6 @@ import {
 
 import colors from 'styles/_colors';
 
-
-
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 function wp (percentage) {
@@ -146,20 +144,6 @@ const styles = StyleSheet.create({
 	cardProductLocation: {
 		fontWeight: 'bold',
 		color: colors.colorDark
-	},
-	slideWrapper: {
-		flex: 1
-	},
-	slideInner: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: colors.colorAccent
-	},
-	slideText: {
-		color: colors.colorLight,
-		fontSize: 24,
-		fontWeight: '100'
 	},
 	parentView: {
 		backgroundColor: colors.colorLight,
