@@ -1,0 +1,44 @@
+import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native';
+import {
+	Card,
+	CardItem,
+	Left,
+	Thumbnail,
+	Body,
+	Text,
+	Right,
+	Button
+} from 'native-base';
+
+
+class NotificationCard extends Component {
+
+	render () {
+		return (
+			<TouchableOpacity activeOpacity={0.8}>
+				<Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
+					<CardItem>
+						<Left>
+							<Thumbnail medium source={{ uri: 'https://unsplash.it/300x300?random' }} />
+							<Body>
+								<Text>
+									<Text style={{ fontSize: 14 }}>alexander</Text>
+									<Text style={{ fontSize: 14 }} note> starts following you</Text>
+								</Text>
+							</Body>
+						</Left>
+						<Right style={{ flex: 0 }}>
+							<Button light small style={{ paddingLeft: 8, paddingRight: 8, borderRadius: 5 }}>
+								<Text>Follow</Text>
+							</Button>
+						</Right>
+					</CardItem>
+				</Card>
+			</TouchableOpacity>
+		);
+	}
+
+}
+
+export default NotificationCard;

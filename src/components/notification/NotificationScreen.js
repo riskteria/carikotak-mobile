@@ -1,16 +1,39 @@
 import React, { Component } from 'react';
 import { ScrollView} from 'react-native';
-import { Container, Text, Header, Body, Left, Icon, Button } from 'native-base';
+import { Container, Title, Header, Body, Left, Icon, Button, Content } from 'native-base';
 
-import styles from './styles';
+// import styles from './styles';
+import colors from 'styles/_colors';
+
+import NotificationList from './NotificationList';
 
 class NotificationScreen extends Component {
 
 	render () {
 
+		const { goBack } = this.props.navigation;
+
 		return (
-			<Container>
-				{/**/}
+			<Container style={{ backgroundColor: colors.colorLight }}>
+				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
+					<Left>
+						<Button transparent dark onPress={() => goBack()}>
+							<Icon name="md-arrow-back" />
+						</Button>
+					</Left>
+					<Body>
+						<Title style={{ color: colors.colorDark }}>
+							Pemberitahuan
+						</Title>
+					</Body>
+				</Header>
+
+				<Content>
+					<ScrollView>
+						<NotificationList />
+					</ScrollView>
+				</Content>
+
 			</Container>
 		);
 	}

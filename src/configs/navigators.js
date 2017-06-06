@@ -186,6 +186,7 @@ const AppNavigator = StackNavigator({
 	Notification: {
 		screen: NotificationScreen,
 		navigationOptions: {
+			header: null,
 			title: 'Pemberitahuan'
 		}
 	},
