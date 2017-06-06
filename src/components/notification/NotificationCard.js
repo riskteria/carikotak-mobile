@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableNativeFeedback } from 'react-native';
 import {
 	Card,
 	CardItem,
@@ -11,14 +11,15 @@ import {
 	Button
 } from 'native-base';
 
+import colors from 'styles/_colors';
 
 class NotificationCard extends Component {
 
 	render () {
 		return (
-			<TouchableOpacity activeOpacity={0.8}>
+			<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()}>
 				<Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
-					<CardItem>
+					<CardItem style={{ backgroundColor: 'transparent' }}>
 						<Left>
 							<Thumbnail medium source={{ uri: 'https://unsplash.it/300x300?random' }} />
 							<Body>
@@ -35,7 +36,7 @@ class NotificationCard extends Component {
 						</Right>
 					</CardItem>
 				</Card>
-			</TouchableOpacity>
+			</TouchableNativeFeedback>
 		);
 	}
 

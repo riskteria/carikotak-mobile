@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableNativeFeedback } from 'react-native';
 import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 
 class MessageCard extends Component {
 
 	render () {
 		return (
-			<TouchableOpacity activeOpacity={0.8}>
+			<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()}>
 				<Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
-					<CardItem>
+					<CardItem style={{ backgroundColor: 'transparent' }}>
 						<Left>
 							<Thumbnail source={{ uri: 'https://unsplash.it/300x300?random' }} />
 							<Body>
@@ -18,7 +18,7 @@ class MessageCard extends Component {
 						</Left>
 					</CardItem>
 				</Card>
-			</TouchableOpacity>
+			</TouchableNativeFeedback>
 		);
 	}
 

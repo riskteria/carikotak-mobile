@@ -1,5 +1,6 @@
 export default {
 	colorAccent: '#1ba39c',
+	colorAccentRipple: 'rgba(#1ba39c, 0.5)',
 	colorAlmostLight: '#f4f4f4',
 	colorBlack: '#212121',
 	colorDark: '#4d4d4d',
