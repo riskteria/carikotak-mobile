@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
 import { Button, Item, Label, Input, Text } from 'native-base';
+import Config from 'react-native-config';
 
 import styles from './styles';
 import colors from 'styles/_colors';
+
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
 
 class LoginScreen extends Component {
 
@@ -12,8 +20,11 @@ class LoginScreen extends Component {
 
 		this.state = {
 			user: {
-				email: '',
-				password: ''
+				username: 'admin@admin.com',
+				password: 'password',
+				grant_type: 'password',
+				client_id: '2',
+				client_secret: 's8SulETPcMJ1DzRoMO0PwObdp3MNYLreOZU6RObq'
 			},
 			isLoading: false
 		};
@@ -27,9 +38,31 @@ class LoginScreen extends Component {
 	}
 
 	_doLogin () {
-		// const user = this.state.user;
+		const user = this.state.user;
+
 		this.state.isLoading = true;
-		this.props.navigation.navigate('Main');
+
+		fetch('https://www.buburbulan.xyz/api/oauth/token', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			body: JSON.stringify(user)
+		})
+		.then((response) => {
+			if (!response.ok) {
+				throw Error(response);
+			}
+			return response.json();
+		})
+		.then(responseJson => {
+			this.props.navigation('Main');
+			this.state.isLoading = false;
+		})
+		.catch(error => {
+			this.state.isLoading = false;
+		});
 	}
 
 	render () {

@@ -17,7 +17,8 @@ class RegisterScreen extends Component {
 				username: '',
 				email: '',
 				password: ''
-			}
+			},
+			isLoading: false
 		};
 	}
 
@@ -31,6 +32,29 @@ class RegisterScreen extends Component {
 	_doRegister () {
 		const user = this.state.user;
 		const validation = validate(user);
+
+		this.state.isLoading = true;
+
+		fetch('https://www.buburbulan.xyz/register', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			body: JSON.stringify(user)
+		})
+		.then((response) => {
+			if (!response.ok) {
+				throw Error(response);
+			}
+			return response.json();
+		})
+		.then((responseJson) => {
+			this.state.isLoading = false;
+		})
+		.then((error) => {
+			this.state.isLoading = false;
+		})
 	}
 
 	render () {
