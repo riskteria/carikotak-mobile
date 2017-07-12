@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
 import { Input, Button, Text, Item, Label } from 'native-base';
 
+import { API } from 'services/APIService';
+
 import colors from 'styles/_colors';
 import styles from './styles';
 import validate from './validator';
@@ -35,26 +37,15 @@ class RegisterScreen extends Component {
 
 		this.state.isLoading = true;
 
-		fetch('https://www.buburbulan.xyz/register', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'X-Requested-With': 'XMLHttpRequest'
-			},
-			body: JSON.stringify(user)
-		})
-		.then((response) => {
-			if (!response.ok) {
-				throw Error(response);
-			}
-			return response.json();
-		})
-		.then((responseJson) => {
-			this.state.isLoading = false;
-		})
-		.then((error) => {
-			this.state.isLoading = false;
-		})
+		API.post('register', user)
+			.then((response) => {
+				this.state.isLoading = false;
+			})
+			.catch((error) => {
+				this.state.isLoading = false;
+			})
+
+
 	}
 
 	render () {

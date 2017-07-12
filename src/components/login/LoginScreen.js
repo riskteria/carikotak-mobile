@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
 import { Button, Item, Label, Input, Text } from 'native-base';
-import Config from 'react-native-config';
+import { OAUTH_GRANT_TYPE, OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET } from 'react-native-dotenv';
 
 import styles from './styles';
 import colors from 'styles/_colors';
 
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}
+import { API } from 'services/APIService';
 
 class LoginScreen extends Component {
 
@@ -21,10 +16,10 @@ class LoginScreen extends Component {
 		this.state = {
 			user: {
 				username: 'admin@admin.com',
-				password: 'password',
-				grant_type: 'password',
-				client_id: '2',
-				client_secret: 's8SulETPcMJ1DzRoMO0PwObdp3MNYLreOZU6RObq'
+				password: 'passwordx',
+				grant_type: OAUTH_GRANT_TYPE,
+				client_id: OAUTH_CLIENT_ID,
+				client_secret: OAUTH_CLIENT_SECRET
 			},
 			isLoading: false
 		};
@@ -42,25 +37,12 @@ class LoginScreen extends Component {
 
 		this.state.isLoading = true;
 
-		fetch('https://www.buburbulan.xyz/api/oauth/token', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'X-Requested-With': 'XMLHttpRequest'
-			},
-			body: JSON.stringify(user)
-		})
+		API.post('api/tes', user)
 		.then((response) => {
-			if (!response.ok) {
-				throw Error(response);
-			}
-			return response.json();
-		})
-		.then(responseJson => {
-			this.props.navigation('Main');
 			this.state.isLoading = false;
+			this.props.navigation.navigate('Main');
 		})
-		.catch(error => {
+		.catch((error) => {
 			this.state.isLoading = false;
 		});
 	}

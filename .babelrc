@@ -1,5 +1,5 @@
 {
-	"presets": ["react-native"],
+	"presets": ["react-native", "react-native-dotenv"],
 	"plugins": [
 		["module-alias", [{
 				"src": "./images/",
@@ -16,6 +16,10 @@
 			{
 				"src": "./src/configs/",
 				"expose": "configs"
+			},
+			{
+				"src": "./src/services",
+				"expose": "services"
 			},
 			{
 				"src": "./src/styles/",
