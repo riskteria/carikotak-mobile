@@ -4,13 +4,15 @@
 	android:gravity="center_vertical"
 	android:layout_width="match_parent"
     android:layout_height="match_parent"
+	android:paddingLeft="64dp"
+	android:paddingRight="64dp"
     android:background="#1ba39c">
 
 	<ImageView
 		android:src="@drawable/launch_screen"
 		android:scaleType="centerCrop"
 		android:adjustViewBounds="true"
-		android:layout_width="fill_parent"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content" />
 
 </LinearLayout>
