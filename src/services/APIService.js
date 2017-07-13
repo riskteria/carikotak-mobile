@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from 'react-native-simple-store';
 import { API_URL } from 'react-native-dotenv';
 
 export const API = axios.create({
@@ -6,6 +7,8 @@ export const API = axios.create({
 	timeout: 12000,
 	headers: {
 		'Accept': 'application/json',
-		'X-Requested-With': 'XMLHttpRequest'
+		'Content': 'application/json',
+		'X-Requested-With': 'XMLHttpRequest',
+		'Authorization': 'Bearer ' + store.get('AUTHORIZATION_KEY')
 	}
 });

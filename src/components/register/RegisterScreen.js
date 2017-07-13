@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StatusBar, StyleSheet, ScrollView } from 'react-native';
+import { View, StatusBar, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
 import { Input, Button, Text, Item, Label } from 'native-base';
+import store from 'react-native-simple-store';
 
 import { API } from 'services/APIService';
 
@@ -40,11 +41,20 @@ class RegisterScreen extends Component {
 		API.post('register', user)
 			.then((response) => {
 				this.state.isLoading = false;
+
+				store
+					.save('AUTHORIZATION_KEY', response.data.access_token)
+					.then((res) => {
+						this.props.navigation.navigate('Main');
+					})
+					.catch((err) => {
+						ToastAndroid.show('unable to save the key', ToastAndroid.SHORT);
+					});
 			})
 			.catch((error) => {
+				ToastAndroid.show('Credential did not match', ToastAndroid.SHORT);
 				this.state.isLoading = false;
-			})
-
+			});
 
 	}
 
