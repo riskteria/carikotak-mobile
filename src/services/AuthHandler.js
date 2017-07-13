@@ -1,9 +1,14 @@
 import store from 'react-native-simple-store';
 
-export const AUTHORIZATION_KEY = 'AUTHORIZATION_KEY';
+export const ACCESS_TOKEN = 'ACCESS_TOKEN';
+export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 
-export const onSignedIn = (key) => store.save(AUTHORIZATION_KEY, key);
+export const onSignedIn = (access_token = null, refresh_token = null) => store
+	.save(ACCESS_TOKEN, access_token)
+	.save(REFRESH_TOKEN, refresh_token);
 
-export const onSignedOut = () => store.delete(AUTHORIZATION_KEY);
+export const onSignedOut = () => store
+	.delete(ACCESS_TOKEN)
+	.delete(REFRESH_TOKEN);
 
-export const isSignedIn = () => store.get(AUTHORIZATION_KEY);
+export const isSignedIn = () => store.get(ACCESS_TOKEN);
