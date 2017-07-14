@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
 	StyleSheet,
 	TouchableOpacity,
@@ -19,10 +19,6 @@ import colors from 'styles/_colors';
 import styles from './styles';
 
 class CardStory extends Component {
-
-	static propTypes = {
-		item: PropTypes.object.isRequired
-	};
 
 	render () {
 

@@ -5,10 +5,11 @@ export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 
 export const onSignedIn = (access_token = null, refresh_token = null) => store
 	.save(ACCESS_TOKEN, access_token)
-	.save(REFRESH_TOKEN, refresh_token);
+	.then(() => store.save(REFRESH_TOKEN, refresh_token));
+
 
 export const onSignedOut = () => store
 	.delete(ACCESS_TOKEN)
-	.delete(REFRESH_TOKEN);
+	.then(store.delete(REFRESH_TOKEN))
 
 export const isSignedIn = () => store.get(ACCESS_TOKEN);

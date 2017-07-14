@@ -8,7 +8,6 @@ export const API = axios.create({
 	headers: {
 		'Accept': 'application/json',
 		'Content': 'application/json',
-		'X-Requested-With': 'XMLHttpRequest',
-		'Authorization': 'Bearer ' + store.get('AUTHORIZATION_KEY')
+		'X-Requested-With': 'XMLHttpRequest'
 	}
 });

@@ -33,7 +33,7 @@ class LoginScreen extends Component {
 		};
 	}
 
-	_doLogin () {
+	_onPressLogin () {
 		const user = this.state.user;
 
 		this.state.isLoading = true;
@@ -42,11 +42,11 @@ class LoginScreen extends Component {
 			.then((response) => {
 				this.state.isLoading = false;
 
-				onSignedIn(response.data.access_token)
+				onSignedIn(response.data.access_token, response.data.refresh_token)
 					.then((res) => {
 						this.props.navigation.navigate('Main');
 					})
-					.catch((err) => {
+					.catch(() => {
 						ToastAndroid.show('unable to save the key', ToastAndroid.SHORT);
 					});
 			})
@@ -80,7 +80,7 @@ class LoginScreen extends Component {
 
 				</View>
 
-				<Button light rounded block onPress={() => { this._doLogin(); }}>
+				<Button light rounded block onPress={() => { this._onPressLogin(); }}>
 					<Text style={{ color: colors.colorAccent }}>Login</Text>
 				</Button>
 

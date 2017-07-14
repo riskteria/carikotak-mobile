@@ -21,6 +21,8 @@ import FindScreen from 'components/find/FindScreen';
 import LocationScreen from 'components/location/LocationScreen';
 import SearchScreen from 'components/search/SearchScreen';
 
+import { isSignedIn } from 'services/AuthHandler';
+
 const FeedSection = StackNavigator({
 
 	Feed: {
@@ -113,7 +115,7 @@ const MainNavigator = TabNavigator({
 	}
 });
 
-const AppNavigator = StackNavigator({
+const AppNavigator = (signedIn = false) => StackNavigator({
 	Home: {
 		screen: LandingScreen,
 		navigationOptions: {
@@ -220,7 +222,8 @@ const AppNavigator = StackNavigator({
 		// 	}
 		// }
 	},
-	headerMode: 'float'
+	headerMode: 'float',
+	initialRouteName: signedIn ? 'Main': 'Home'
 });
 
 export default AppNavigator;
