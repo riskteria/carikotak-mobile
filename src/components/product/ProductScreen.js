@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Container }  from 'native-base';
+import { Container, Text }  from 'native-base';
 
 class ProductScreen extends Component {
 
 	render () {
 		return (
 			<Container>
-				{/**/}
+				<Text>Product Screen</Text>
 			</Container>
 		);
 	}
