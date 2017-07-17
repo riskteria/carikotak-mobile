@@ -16,8 +16,13 @@ import colors from 'styles/_colors';
 class NotificationCard extends Component {
 
 	render () {
+
+		const navigate = this.props.navigate;
+
 		return (
-			<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()}>
+			<TouchableNativeFeedback
+				onPress={() => navigate('Product')}
+				background={TouchableNativeFeedback.Ripple()}>
 				<Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
 					<CardItem style={{ backgroundColor: 'transparent' }}>
 						<Left>

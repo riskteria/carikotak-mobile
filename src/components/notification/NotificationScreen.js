@@ -11,7 +11,7 @@ class NotificationScreen extends Component {
 
 	render () {
 
-		const { goBack } = this.props.navigation;
+		const { goBack, navigate } = this.props.navigation;
 
 		return (
 			<Container style={{ backgroundColor: colors.colorLight }}>
@@ -30,7 +30,7 @@ class NotificationScreen extends Component {
 
 				<Content>
 					<ScrollView>
-						<NotificationList />
+						<NotificationList navigate={navigate} />
 					</ScrollView>
 				</Content>
 
