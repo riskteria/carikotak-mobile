@@ -7,9 +7,12 @@ import FavoriteContentTab from './FavoriteContentTab';
 class FavoriteScreen extends Component {
 
 	render () {
+
+		const { navigate } = this.props.navigation;
+
 		return (
 			<Container>
-				<FavoriteContentTab />
+				<FavoriteContentTab navigate={navigate} />
 			</Container>
 		);
 	}
