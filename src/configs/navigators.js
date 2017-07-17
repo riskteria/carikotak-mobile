@@ -8,6 +8,7 @@ import LoginScreen from 'components/login/LoginScreen';
 import RegisterScreen from 'components/register/RegisterScreen';
 import ForgotScreen from 'components/forgot/ForgotScreen';
 import ProductScreen from 'components/product/ProductScreen';
+import ProductListScreen from 'components/product-list/ProductListScreen';
 import StoryScreen from 'components/story/StoryScreen';
 import StoryListScreen from 'components/story-list/StoryListScreen';
 
@@ -186,10 +187,16 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 			title: 'Story'
 		}
 	},
-	StoryScreen: {
+	StoryList: {
 		screen: StoryListScreen,
 		navigationOptions: {
 			title: 'Story List'
+		}
+	},
+	ProductList: {
+		screen: ProductListScreen,
+		navigationOptions: {
+			title: 'Product List'
 		}
 	},
 	Notification: {

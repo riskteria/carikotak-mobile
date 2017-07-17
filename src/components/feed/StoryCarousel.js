@@ -39,7 +39,7 @@ class StoryCarousel extends Component {
 				activeOpacity={0.8}
 				style={styles.slideInnerContainer}
 				onPress={() => navigate('Story')}>
-				<CardStory key={index} item={item} onPress={() => alert('ok')} />
+				<CardStory key={index} item={item} />
 			</TouchableOpacity>
 		));
 
@@ -48,7 +48,7 @@ class StoryCarousel extends Component {
 
 				<View style={styles.tabProductSectionTop}>
 					<Text style={styles.tabProductSectionLabel}>Cerita Terpopuler</Text>
-					<Text onPress={() => navigate('StoryScreen')} style={styles.tabProductSectionLink}>Lihat Semua</Text>
+					<Text onPress={() => navigate('StoryList')} style={styles.tabProductSectionLink}>Lihat Semua</Text>
 				</View>
 
 				<Carousel

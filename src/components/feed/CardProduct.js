@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Icon } from 'native-base';
+import { View, Text, Image } from 'react-native';
 
 import styles from './styles';
 
@@ -8,7 +7,7 @@ class CardProduct extends Component {
 
 	render () {
 		return (
-			<TouchableOpacity activeOpacity={0.9} style={styles.cardProductContainer}>
+			<View>
 				<View style={{ height: 200 }}>
 					<Image style={{ flex: 1}} source={{ uri: 'https://unsplash.it/300x300?random' }} />
 				</View>
@@ -23,7 +22,7 @@ class CardProduct extends Component {
 						<Text style={styles.cardProductLocation}>Medan</Text>
 					</View>
 				</View>
-			</TouchableOpacity>
+			</View>
 		);
 	}
 
