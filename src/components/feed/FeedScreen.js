@@ -26,8 +26,7 @@ class FeedScreen extends Component {
 				</Header>
 
 				<ScrollView style={styles.parentView}>
-					{/*<SectionStory />*/}
-					<StoryCarousel />
+					<StoryCarousel navigate={navigate} />
 					<FeedFindMyBox navigate={navigate} />
 					<SectionProduct />
 				</ScrollView>

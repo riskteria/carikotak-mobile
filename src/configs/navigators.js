@@ -9,6 +9,7 @@ import RegisterScreen from 'components/register/RegisterScreen';
 import ForgotScreen from 'components/forgot/ForgotScreen';
 import ProductScreen from 'components/product/ProductScreen';
 import StoryScreen from 'components/story/StoryScreen';
+import StoryListScreen from 'components/story-list/StoryListScreen';
 
 import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
@@ -183,6 +184,12 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 		screen: StoryScreen,
 		navigationOptions: {
 			title: 'Story'
+		}
+	},
+	StoryScreen: {
+		screen: StoryListScreen,
+		navigationOptions: {
+			title: 'Story List'
 		}
 	},
 	Notification: {

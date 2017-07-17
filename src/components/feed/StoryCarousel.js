@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import CardStory from './CardStory';
 
@@ -31,8 +31,16 @@ class StoryCarousel extends Component {
 
 	render () {
 
+		const navigate = this.props.navigate;
+
 		const CardSwipe = cards.map((item, index) => (
-			<CardStory key={index} item={item} />
+			<TouchableOpacity
+				key={index}
+				activeOpacity={0.8}
+				style={styles.slideInnerContainer}
+				onPress={() => navigate('Story')}>
+				<CardStory key={index} item={item} onPress={() => alert('ok')} />
+			</TouchableOpacity>
 		));
 
 		return (
@@ -40,7 +48,7 @@ class StoryCarousel extends Component {
 
 				<View style={styles.tabProductSectionTop}>
 					<Text style={styles.tabProductSectionLabel}>Cerita Terpopuler</Text>
-					<Text style={styles.tabProductSectionLink}>Lihat Semua</Text>
+					<Text onPress={() => navigate('StoryScreen')} style={styles.tabProductSectionLink}>Lihat Semua</Text>
 				</View>
 
 				<Carousel
