@@ -11,13 +11,14 @@ import ProductScreen from 'components/product/ProductScreen';
 import ProductListScreen from 'components/product-list/ProductListScreen';
 import StoryScreen from 'components/story/StoryScreen';
 import StoryListScreen from 'components/story-list/StoryListScreen';
+import MessageScreen from 'components/message/MessageScreen';
 
 import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
 import CreateScreen from 'components/create/CreateScreen';
 import NotificationScreen from 'components/notification/NotificationScreen';
 import ProfileScreen from 'components/profile/ProfileScreen';
-import MessageScreen from 'components/message/MessageScreen';
+import MessageListScreen from 'components/message-list/MessageListScreen';
 
 import FindScreen from 'components/find/FindScreen';
 import LocationScreen from 'components/location/LocationScreen';
@@ -69,8 +70,8 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
-	Message: {
-		screen: MessageScreen,
+	MessageList: {
+		screen: MessageListScreen,
 		navigationOptions: {
 			tabBarLabel: 'Pesan',
 			tabBarIcon: ({ tintColor }) => (
@@ -199,6 +200,14 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 			title: 'Product List'
 		}
 	},
+
+	Message: {
+		screen: MessageScreen,
+		navigationOptions: {
+			title: 'Message'
+		}
+	},
+
 	Notification: {
 		screen: NotificationScreen,
 		navigationOptions: {

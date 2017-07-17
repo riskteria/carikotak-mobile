@@ -5,8 +5,13 @@ import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 class MessageCard extends Component {
 
 	render () {
+
+		const navigate = this.props.navigate;
+
 		return (
-			<TouchableNativeFeedback background={TouchableNativeFeedback.Ripple()}>
+			<TouchableNativeFeedback
+				background={TouchableNativeFeedback.Ripple()}
+				onPress={() => navigate('Message')}>
 				<Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
 					<CardItem style={{ backgroundColor: 'transparent' }}>
 						<Left>
