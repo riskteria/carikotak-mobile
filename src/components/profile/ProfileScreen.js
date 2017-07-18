@@ -26,9 +26,14 @@ class ProfileScreen extends Component {
 	}
 
 	render() {
+
+		const { navigate } = this.props.navigation;
+
 		return (
 			<ScrollView style={styles.parentView}>
 				<Button onPress={() => { this._onPressLogout() }}><Text>Logout</Text></Button>
+				<Button onPress={() => navigate('AccountSetting')}><Text>Account Settings</Text></Button>
+				<Button onPress={() => navigate('ProfileSetting')}><Text>Profile Settings</Text></Button>
 			</ScrollView>
 		);
 	}

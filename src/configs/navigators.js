@@ -12,6 +12,8 @@ import ProductListScreen from 'components/product-list/ProductListScreen';
 import StoryScreen from 'components/story/StoryScreen';
 import StoryListScreen from 'components/story-list/StoryListScreen';
 import MessageScreen from 'components/message/MessageScreen';
+import AccountSetting from 'components/account-setting/AccountSettingScreen';
+import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
 
 import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
@@ -119,6 +121,19 @@ const MainNavigator = TabNavigator({
 });
 
 const AppNavigator = (signedIn = false) => StackNavigator({
+
+	AccountSetting: {
+		screen: AccountSetting,
+		navigationOptions: {
+			title: 'Account Setting'
+		}
+	},
+	ProfileSetting: {
+		screen: ProfileSetting,
+		navigationOptions: {
+			title: 'Profile Setting'
+		}
+	},
 	Home: {
 		screen: LandingScreen,
 		navigationOptions: {
