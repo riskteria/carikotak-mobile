@@ -14,6 +14,7 @@ import StoryListScreen from 'components/story-list/StoryListScreen';
 import MessageScreen from 'components/message/MessageScreen';
 import AccountSetting from 'components/account-setting/AccountSettingScreen';
 import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
+import ProfileOptionScreen from 'components/profile-option/ProfileOptionScreen';
 
 import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
@@ -134,6 +135,12 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 			title: 'Profile Setting'
 		}
 	},
+	ProfileOption: {
+		screen: ProfileOptionScreen,
+		navigationOptions: {
+			header: null
+		}
+	},
 	Home: {
 		screen: LandingScreen,
 		navigationOptions: {
@@ -219,7 +226,7 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 	Message: {
 		screen: MessageScreen,
 		navigationOptions: {
-			title: 'Message'
+			header: null
 		}
 	},
 

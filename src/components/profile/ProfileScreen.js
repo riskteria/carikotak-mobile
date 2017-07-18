@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
-import { ScrollView, ToastAndroid } from 'react-native';
-import { Button, Text } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Button, Icon, Body, Title, Header, Right, Container } from 'native-base';
 
 import styles from './styles';
-import { onSignedOut, isSignedIn } from 'services/AuthHandler';
+import colors from 'styles/_colors';
+import { isSignedIn } from 'services/AuthHandler';
 
 class ProfileScreen extends Component {
-
-	_onPressLogout() {
-		onSignedOut()
-			.then(() => {
-				this.props.navigation.navigate('Home')
-			})
-			.catch(() => {
-				ToastAndroid.show('Could not signed out', ToastAndroid.SHORT);
-			});
-	}
 
 	componentDidMount() {
 		isSignedIn().then(res => {
 			console.log('ok' + res);
 		}).catch(err => {
-			console.log('err');
+			throw err;
 		});
 	}
 
@@ -30,11 +21,26 @@ class ProfileScreen extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<ScrollView style={styles.parentView}>
-				<Button onPress={() => { this._onPressLogout() }}><Text>Logout</Text></Button>
-				<Button onPress={() => navigate('AccountSetting')}><Text>Account Settings</Text></Button>
-				<Button onPress={() => navigate('ProfileSetting')}><Text>Profile Settings</Text></Button>
-			</ScrollView>
+			<Container>
+
+				<Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
+
+					<Body>
+						<Title>Profile Screen</Title>
+					</Body>
+
+					<Right>
+						<Button transparent dark onPress={() => navigate('ProfileOption')}>
+							<Icon name="md-more" />
+						</Button>
+					</Right>
+				</Header>
+
+				<ScrollView style={styles.parentView}>
+				</ScrollView>
+
+			</Container>
+
 		);
 	}
 

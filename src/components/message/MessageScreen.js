@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Container } from 'native-base';
+import { Container, Header, Body, Left, Button, Icon, Title } from 'native-base';
 import { GiftedChat } from 'react-native-gifted-chat';
+
+import colors from 'styles/_colors';
 
 class MessageScreen extends Component {
 
@@ -29,8 +31,24 @@ class MessageScreen extends Component {
 	}
 
 	render() {
+
+		const { goBack } = this.props.navigation;
+
 		return (
-			<Container>
+			<Container style={{ backgroundColor: colors.colorLight }}>
+
+				<Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
+					<Left>
+						<Button transparent dark onPress={() => goBack() }>
+							<Icon name="md-arrow-back" />
+						</Button>
+					</Left>
+
+					<Body style={{ position: 'absolute', left: 0, right: 0, alignItems: 'center' }}>
+						<Title style={{ color: colors.colorDark }}>Mikasa Ackerman</Title>
+					</Body>
+				</Header>
+
 				<GiftedChat
 					messages={this.state.messages}
 					onSend={(messages) => this.onSend(messages)}
