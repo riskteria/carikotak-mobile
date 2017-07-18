@@ -26,7 +26,7 @@ class CarikotakApp extends Component {
 	componentWillMount() {
 		isSignedIn()
 			.then((res) => {
-				this.setState({ signedIn: res, checkedSignIn: true })
+				this.setState({ signedIn: res, checkedSignIn: true });
 			})
 			.catch((err) => err);
 	}
