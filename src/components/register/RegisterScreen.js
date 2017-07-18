@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
 import { Input, Button, Text, Item, Label } from 'native-base';
 import store from 'react-native-simple-store';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import { API } from 'services/APIService';
 
@@ -36,24 +37,26 @@ class RegisterScreen extends Component {
 		const user = this.state.user;
 		const validation = validate(user);
 
-		this.state.isLoading = true;
+		this.setState({ isLoading: true });
 
-		API.post('register', user)
+		API.post('oauth/register', user)
 			.then((response) => {
 				this.state.isLoading = false;
 
 				store
 					.save('AUTHORIZATION_KEY', response.data.access_token)
 					.then((res) => {
+						this.setState({ isLoading: false });
 						this.props.navigation.navigate('Main');
 					})
 					.catch((err) => {
+						this.setState({ isLoading: false });
 						ToastAndroid.show('unable to save the key', ToastAndroid.SHORT);
 					});
 			})
 			.catch((error) => {
+				this.setState({ isLoading: false });
 				ToastAndroid.show('Credential did not match', ToastAndroid.SHORT);
-				this.state.isLoading = false;
 			});
 
 	}
@@ -63,6 +66,8 @@ class RegisterScreen extends Component {
 			<ScrollView style={styles.container}>
 
 				<StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />
+
+				<Spinner visible={this.state.isLoading} textContent={'please wait'} textStyle={{color: '#FFF'}} />
 
 				<View>
 

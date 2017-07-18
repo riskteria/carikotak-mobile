@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
 import { Button, Item, Label, Input, Text } from 'native-base';
 import { OAUTH_GRANT_TYPE, OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET } from 'react-native-dotenv';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import styles from './styles';
 import colors from 'styles/_colors';
@@ -36,23 +37,24 @@ class LoginScreen extends Component {
 	_onPressLogin () {
 		const user = this.state.user;
 
-		this.state.isLoading = true;
+		this.setState({ isLoading: true });
 
 		API.post('oauth/token', user)
 			.then((response) => {
-				this.state.isLoading = false;
 
 				onSignedIn(response.data.access_token, response.data.refresh_token)
 					.then((res) => {
+						this.setState({ isLoading: false });
 						this.props.navigation.navigate('Main');
 					})
 					.catch(() => {
+						this.setState({ isLoading: false });
 						ToastAndroid.show('unable to save the key', ToastAndroid.SHORT);
 					});
 			})
 			.catch((error) => {
 				ToastAndroid.show('Credential did not match', ToastAndroid.SHORT);
-				this.state.isLoading = false;
+				this.setState({ isLoading: false });
 			});
 	}
 
@@ -65,6 +67,8 @@ class LoginScreen extends Component {
 				<StatusBar
 					backgroundColor="#1ba39c"
 					barStyle="dark-content" />
+
+				<Spinner visible={this.state.isLoading} textContent={'signing in'} textStyle={{color: '#FFF'}} />
 
 				<View>
 
