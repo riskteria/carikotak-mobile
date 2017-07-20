@@ -11,14 +11,11 @@ import ProductScreen from 'components/product/ProductScreen';
 
 import StoryScreen from 'components/story/StoryScreen';
 
-
-import CreateScreen from 'components/create/CreateScreen';
-
-
-import { FeedTabNavigator } from './FeedTabNavigator';
-import { ProfileTabNavigator } from './ProfileTabNavigator';
-import { MessageTabNavigator } from './MessageTabNavigator';
+import { CreateTabNavigator } from './CreateTabNavigator';
 import { FavoriteTabNavigator } from './FavoriteTabNavigator';
+import { FeedTabNavigator } from './FeedTabNavigator';
+import { MessageTabNavigator } from './MessageTabNavigator';
+import { ProfileTabNavigator } from './ProfileTabNavigator';
 
 const MainNavigator = TabNavigator({
 
@@ -43,7 +40,7 @@ const MainNavigator = TabNavigator({
 		}
 	},
 	CreateTab: {
-		screen: CreateScreen,
+		screen: CreateTabNavigator,
 		navigationOptions: {
 			tabBarLabel: 'Pasang',
 			tabBarIcon: ({ tintColor }) => (
