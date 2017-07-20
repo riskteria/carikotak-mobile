@@ -12,21 +12,19 @@ import ProductScreen from 'components/product/ProductScreen';
 import StoryScreen from 'components/story/StoryScreen';
 
 import MessageScreen from 'components/message/MessageScreen';
-import AccountSetting from 'components/account-setting/AccountSettingScreen';
-import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
-import ProfileOptionScreen from 'components/profile-option/ProfileOptionScreen';
+
 
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
 import CreateScreen from 'components/create/CreateScreen';
 import NotificationScreen from 'components/notification/NotificationScreen';
-import ProfileScreen from 'components/profile/ProfileScreen';
 import MessageListScreen from 'components/message-list/MessageListScreen';
 
 import { FeedTabNavigator } from './FeedTabNavigator';
+import { ProfileTabNavigator } from './ProfileTabNavigator';
 
 const MainNavigator = TabNavigator({
 
-	FeedSection: {
+	FeedTab: {
 		screen: FeedTabNavigator,
 		navigationOptions: {
 			tabBarLabel: 'Beranda',
@@ -36,7 +34,7 @@ const MainNavigator = TabNavigator({
 		}
 	},
 
-	Favorite: {
+	FavoriteTab: {
 		screen: FavoriteScreen,
 		navigationOptions: {
 			title: 'Favorit',
@@ -46,7 +44,7 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
-	Create: {
+	CreateTab: {
 		screen: CreateScreen,
 		navigationOptions: {
 			tabBarLabel: 'Pasang',
@@ -55,7 +53,7 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
-	MessageList: {
+	MessageTab: {
 		screen: MessageListScreen,
 		navigationOptions: {
 			tabBarLabel: 'Pesan',
@@ -64,8 +62,8 @@ const MainNavigator = TabNavigator({
 			)
 		}
 	},
-	Profile: {
-		screen: ProfileScreen,
+	ProfileTab: {
+		screen: ProfileTabNavigator,
 		navigationOptions: {
 			tabBarLabel: 'Profil',
 			tabBarIcon: ({ tintColor }) => (
@@ -105,24 +103,7 @@ const MainNavigator = TabNavigator({
 
 const AppNavigator = (signedIn = false) => StackNavigator({
 
-	AccountSetting: {
-		screen: AccountSetting,
-		navigationOptions: {
-			title: 'Account Setting'
-		}
-	},
-	ProfileSetting: {
-		screen: ProfileSetting,
-		navigationOptions: {
-			title: 'Profile Setting'
-		}
-	},
-	ProfileOption: {
-		screen: ProfileOptionScreen,
-		navigationOptions: {
-			header: null
-		}
-	},
+
 	Home: {
 		screen: LandingScreen,
 		navigationOptions: {
