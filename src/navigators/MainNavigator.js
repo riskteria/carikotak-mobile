@@ -11,16 +11,13 @@ import ProductScreen from 'components/product/ProductScreen';
 
 import StoryScreen from 'components/story/StoryScreen';
 
-import MessageScreen from 'components/message/MessageScreen';
-
-
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
 import CreateScreen from 'components/create/CreateScreen';
-import NotificationScreen from 'components/notification/NotificationScreen';
-import MessageListScreen from 'components/message-list/MessageListScreen';
+
 
 import { FeedTabNavigator } from './FeedTabNavigator';
 import { ProfileTabNavigator } from './ProfileTabNavigator';
+import { MessageTabNavigator } from './MessageTabNavigator';
 
 const MainNavigator = TabNavigator({
 
@@ -54,7 +51,7 @@ const MainNavigator = TabNavigator({
 		}
 	},
 	MessageTab: {
-		screen: MessageListScreen,
+		screen: MessageTabNavigator,
 		navigationOptions: {
 			tabBarLabel: 'Pesan',
 			tabBarIcon: ({ tintColor }) => (
@@ -171,21 +168,6 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 		screen: StoryScreen,
 		navigationOptions: {
 			title: 'Story'
-		}
-	},
-
-	Message: {
-		screen: MessageScreen,
-		navigationOptions: {
-			header: null
-		}
-	},
-
-	Notification: {
-		screen: NotificationScreen,
-		navigationOptions: {
-			header: null,
-			title: 'Pemberitahuan'
 		}
 	},
 }, {
