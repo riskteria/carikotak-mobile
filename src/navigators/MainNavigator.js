@@ -82,9 +82,7 @@ const routeConfiguration = {
 	}
 }
 
-const AppNavigator = (signedIn = false) => StackNavigator(routeConfiguration, {
+export const MainNavigator = (signedIn = false) => StackNavigator(routeConfiguration, {
 	headerMode: 'float',
 	initialRouteName: signedIn ? 'Main': 'Landing'
 });
-
-export default AppNavigator;

@@ -4,7 +4,7 @@ import { StyleProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 
-import MainNavigator from './navigators/MainNavigator';
+import { MainNavigator } from './navigators/MainNavigator';
 import getTheme from 'theme/components';
 import platform from 'theme/variables/platform';
 import store from './store';
