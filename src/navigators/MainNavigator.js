@@ -8,44 +8,26 @@ import LoginScreen from 'components/login/LoginScreen';
 import RegisterScreen from 'components/register/RegisterScreen';
 import ForgotScreen from 'components/forgot/ForgotScreen';
 import ProductScreen from 'components/product/ProductScreen';
-import ProductListScreen from 'components/product-list/ProductListScreen';
+
 import StoryScreen from 'components/story/StoryScreen';
-import StoryListScreen from 'components/story-list/StoryListScreen';
+
 import MessageScreen from 'components/message/MessageScreen';
 import AccountSetting from 'components/account-setting/AccountSettingScreen';
 import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
 import ProfileOptionScreen from 'components/profile-option/ProfileOptionScreen';
 
-import FeedScreen from 'components/feed/FeedScreen';
 import FavoriteScreen from 'components/favorite/FavoriteScreen';
 import CreateScreen from 'components/create/CreateScreen';
 import NotificationScreen from 'components/notification/NotificationScreen';
 import ProfileScreen from 'components/profile/ProfileScreen';
 import MessageListScreen from 'components/message-list/MessageListScreen';
 
-import FindScreen from 'components/find/FindScreen';
-import LocationScreen from 'components/location/LocationScreen';
-import SearchScreen from 'components/search/SearchScreen';
-
-import { isSignedIn } from 'services/AuthHandler';
-
-const FeedSection = StackNavigator({
-
-	Feed: {
-		screen: FeedScreen,
-		navigationOptions: {
-			header: null
-		}
-	}
-
-}, {
-	headerMode: 'float'
-});
+import { FeedTabNavigator } from './FeedTabNavigator';
 
 const MainNavigator = TabNavigator({
 
 	FeedSection: {
-		screen: FeedSection,
+		screen: FeedTabNavigator,
 		navigationOptions: {
 			tabBarLabel: 'Beranda',
 			tabBarIcon: ({ tintColor }) => (
@@ -210,18 +192,6 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 			title: 'Story'
 		}
 	},
-	StoryList: {
-		screen: StoryListScreen,
-		navigationOptions: {
-			title: 'Story List'
-		}
-	},
-	ProductList: {
-		screen: ProductListScreen,
-		navigationOptions: {
-			title: 'Product List'
-		}
-	},
 
 	Message: {
 		screen: MessageScreen,
@@ -237,27 +207,6 @@ const AppNavigator = (signedIn = false) => StackNavigator({
 			title: 'Pemberitahuan'
 		}
 	},
-
-	Find: {
-		screen: FindScreen,
-		navigationOptions: {
-			title: 'Temukan kotak'
-		}
-	},
-
-	Search: {
-		screen: SearchScreen,
-		navigationOptions: {
-			header: null
-		}
-	},
-
-	Location: {
-		screen: LocationScreen,
-		navigationOptions: {
-			header: null
-		}
-	}
 }, {
 	navigationOptions: {
 		// header: {
