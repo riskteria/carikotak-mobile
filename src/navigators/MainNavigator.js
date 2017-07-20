@@ -11,7 +11,7 @@ import StoryScreen from 'components/story/StoryScreen';
 import { MainTabNavigator } from './MainTabNavigator';
 
 const routeConfiguration = {
-	Home: {
+	Landing: {
 		screen: LandingScreen,
 		navigationOptions: {
 			header: null
@@ -84,7 +84,7 @@ const routeConfiguration = {
 
 const AppNavigator = (signedIn = false) => StackNavigator(routeConfiguration, {
 	headerMode: 'float',
-	initialRouteName: signedIn ? 'Main': 'Home'
+	initialRouteName: signedIn ? 'Main': 'Landing'
 });
 
 export default AppNavigator;
