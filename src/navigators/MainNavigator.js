@@ -11,13 +11,14 @@ import ProductScreen from 'components/product/ProductScreen';
 
 import StoryScreen from 'components/story/StoryScreen';
 
-import FavoriteScreen from 'components/favorite/FavoriteScreen';
+
 import CreateScreen from 'components/create/CreateScreen';
 
 
 import { FeedTabNavigator } from './FeedTabNavigator';
 import { ProfileTabNavigator } from './ProfileTabNavigator';
 import { MessageTabNavigator } from './MessageTabNavigator';
+import { FavoriteTabNavigator } from './FavoriteTabNavigator';
 
 const MainNavigator = TabNavigator({
 
@@ -32,7 +33,7 @@ const MainNavigator = TabNavigator({
 	},
 
 	FavoriteTab: {
-		screen: FavoriteScreen,
+		screen: FavoriteTabNavigator,
 		navigationOptions: {
 			title: 'Favorit',
 			tabBarLabel: 'Favorit',
