@@ -11,10 +11,10 @@ const routeConfiguration = {
 		}
 	}
 
-}
+};
 
 const stackNavigatorConfiguration = {
 	//
-}
+};
 
 export const FavoriteTabNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
