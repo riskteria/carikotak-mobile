@@ -2,7 +2,7 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'native-base';
 
-import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
+import CreateTabContainer from '../tabCreate/CreateTabContainer';
 import FavoriteTabContainer from '../tabFavorite/FavoriteTabContainer';
 import FeedTabContainer from '../tabFeed/FeedTabContainer';
 import MessageTabContainer from '../tabMessage/MessageTabContainer';
@@ -14,16 +14,10 @@ const routeConfiguration = {
 
 	FavoriteTab: { screen: FavoriteTabContainer },
 
-	CreateTab: {
-		screen: CreateTabNavigator,
-		navigationOptions: {
-			tabBarLabel: 'Pasang',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-add-circle-outline" />
-			)
-		}
-	},
+	CreateTab: { screen: CreateTabContainer },
+
 	MessageTab: { screen: MessageTabContainer },
+
 	ProfileTab: { screen: ProfileTabContainer }
 };
 
