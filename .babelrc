@@ -22,6 +22,10 @@
 				"expose": "services"
 			},
 			{
+				"src": "./src/navigators",
+				"expose": "navigators"
+			},
+			{
 				"src": "./src/styles/",
 				"expose": "styles"
 			},

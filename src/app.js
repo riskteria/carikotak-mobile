@@ -35,7 +35,7 @@ class CarikotakApp extends Component {
 
 	render () {
 
-		const { signedIn, checkedSignIn } = this.state;
+		const { signedIn } = this.state;
 
 		const AppLayout = MainNavigator(signedIn);
 
