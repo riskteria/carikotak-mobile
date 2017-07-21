@@ -80,9 +80,16 @@ const routeConfiguration = {
 			title: 'Story'
 		}
 	}
-}
+};
 
 export const MainNavigator = (signedIn = false) => StackNavigator(routeConfiguration, {
 	headerMode: 'float',
-	initialRouteName: signedIn ? 'Main': 'Landing'
+	initialRouteName: signedIn ? 'Main' : 'Landing'
 });
+
+export const MainNavigatorReducer = (state, action) => {
+	switch (action.type) {
+		default:
+			return MainNavigator().router.getStateForAction(action, state);
+	}
+};
