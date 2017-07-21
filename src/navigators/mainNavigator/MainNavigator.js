@@ -8,7 +8,7 @@ import ForgotScreen from 'components/forgot/ForgotScreen';
 import ProductScreen from 'components/product/ProductScreen';
 import StoryScreen from 'components/story/StoryScreen';
 
-import { MainTabNavigator } from '../mainTab/MainTabNavigator';
+import MainTabContainer from '../mainTab/MainTabContainer';
 
 const routeConfiguration = {
 	Landing: {
@@ -56,18 +56,8 @@ const routeConfiguration = {
 			}
 		}
 	},
-	Main: {
-		screen: MainTabNavigator,
-		navigationOptions: {
-			header: null,
-			title: 'CARIKOTAK',
-			headerLeft: null,
-			headerTitleStyle: {
-				alignSelf: 'center',
-				textAlign: 'center'
-			},
-		}
-	},
+	Main: { screen: MainTabContainer },
+
 	Product: {
 		screen: ProductScreen,
 		navigationOptions: {

@@ -1,6 +1,4 @@
-import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import { Icon } from 'native-base';
 
 import CreateTabContainer from '../tabCreate/CreateTabContainer';
 import FavoriteTabContainer from '../tabFavorite/FavoriteTabContainer';

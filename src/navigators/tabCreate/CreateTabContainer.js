@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => {
 	return {
 		navigationState: state.createTabNavigator
-	}
-}
+	};
+};
 
 class CreateTabContainer extends Component {
 
