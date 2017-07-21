@@ -4,7 +4,7 @@ import { StyleProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 
-import { MainNavigator } from './navigators/MainNavigator';
+import AppNavigator from './navigators/AppNavigator';
 import getTheme from 'theme/components';
 import platform from 'theme/variables/platform';
 import store from './store';
@@ -37,12 +37,10 @@ class CarikotakApp extends Component {
 
 		const { signedIn } = this.state;
 
-		const AppLayout = MainNavigator(signedIn);
-
 		return (
 			<StyleProvider style={ getTheme(platform) }>
 				<Provider store={ store }>
-					<AppLayout />
+					<AppNavigator isSignedIn={ signedIn } />
 				</Provider>
 			</StyleProvider>
 		);
