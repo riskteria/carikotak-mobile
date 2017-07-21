@@ -4,21 +4,13 @@ import { Icon } from 'native-base';
 
 import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
 import { FavoriteTabNavigator } from '../tabFavorite/FavoriteTabNavigator';
-import { FeedTabNavigator } from '../tabFeed/FeedTabNavigator';
+import FeedTabContainer from '../tabFeed/FeedTabContainer';
 import MessageTabContainer from '../tabMessage/MessageTabContainer';
 import ProfileTabContainer from '../tabProfile/ProfileTabContainer';
 
 const routeConfiguration = {
 
-	FeedTab: {
-		screen: FeedTabNavigator,
-		navigationOptions: {
-			tabBarLabel: 'Beranda',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-home-outline" />
-			)
-		}
-	},
+	FeedTab: { screen: FeedTabContainer },
 
 	FavoriteTab: {
 		screen: FavoriteTabNavigator,
