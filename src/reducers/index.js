@@ -1,15 +1,18 @@
 import { combineReducers } from 'redux';
 
 import { MainNavigatorReducer } from 'navigators/MainNavigator';
-import { FeedTabNavigator } from 'navigators/FeedTabNavigator';
-import { FavoriteTabNavigator } from 'navigators/FavoriteTabNavigator';
-import { CreateTabNavigator } from 'navigators/CreateTabNavigator';
-import { MessageTabNavigator } from 'navigators/MessageTabNavigator';
-import { ProfileTabNavigator } from 'navigators/ProfileTabNavigator';
+import { MainTabReducer } from 'navigators/mainTab/MainTabNavigator';
+import { FeedTabNavigator } from 'navigators/tabFeed/FeedTabNavigator';
+import { FavoriteTabNavigator } from 'navigators/tabFavorite/FavoriteTabNavigator';
+import { CreateTabNavigator } from 'navigators/tabCreate/CreateTabNavigator';
+import { MessageTabNavigator } from 'navigators/tabMessage/MessageTabNavigator';
+import { ProfileTabNavigator } from 'navigators/tabProfile/ProfileTabNavigator';
 
 const reducers = combineReducers({
 
 	mainNavigator: MainNavigatorReducer,
+
+	mainTabNavigator: MainTabReducer,
 
 	feedTabNavigator: (state, action) => FeedTabNavigator.router.getStateForAction(action, state),
 

@@ -2,11 +2,11 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'native-base';
 
-import { CreateTabNavigator } from './CreateTabNavigator';
-import { FavoriteTabNavigator } from './FavoriteTabNavigator';
-import { FeedTabNavigator } from './FeedTabNavigator';
-import { MessageTabNavigator } from './MessageTabNavigator';
-import { ProfileTabNavigator } from './ProfileTabNavigator';
+import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
+import { FavoriteTabNavigator } from '../tabFavorite/FavoriteTabNavigator';
+import { FeedTabNavigator } from '../tabFeed/FeedTabNavigator';
+import { MessageTabNavigator } from '../tabMessage/MessageTabNavigator';
+import { ProfileTabNavigator } from '../tabProfile/ProfileTabNavigator';
 
 const routeConfiguration = {
 
@@ -89,3 +89,12 @@ const tabNavigatorConfiguration = {
 };
 
 export const MainTabNavigator = TabNavigator(routeConfiguration, tabNavigatorConfiguration);
+
+export const MainTabReducer = (state, action) => {
+	switch (action.type) {
+		case 'JUMP_TO_TAB':
+			return { ...state, index: 0 }
+		default:
+			return MainTabNavigator.router.getStateForAction(action, state);
+	}
+};

@@ -39,6 +39,6 @@ const routeConfiguration = {
 
 const stackNavigatorConfiguration = {
 	headerMode: 'float'
-}
+};
 
 export const ProfileTabNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
