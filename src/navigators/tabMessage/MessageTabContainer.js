@@ -2,22 +2,22 @@ import React, { Component } from 'react';
 import { Icon } from 'native-base';
 
 import { addNavigationHelpers } from 'react-navigation';
-import { ProfileTabNavigator } from './ProfileTabNavigator';
+import { MessageTabNavigator } from './MessageTabNavigator';
 
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
 	return {
-		navigationState: state.profileTabNavigator
+		navigationState: state.messageTabNavigator
 	};
 };
 
-class ProfileTabContainer extends Component {
+class MessageTabContainer extends Component {
 
 	static navigationOptions = {
-		tabBarLabel: 'Profil',
+		tabBarLabel: 'Pesan',
 		tabBarIcon: ({ tintColor }) => (
-			<Icon style={{ color: tintColor }} name="ios-person" />
+			<Icon style={{ color: tintColor }} name="ios-mail-outline" />
 		)
 	}
 
@@ -25,7 +25,7 @@ class ProfileTabContainer extends Component {
 		const { dispatch, navigationState } = this.props;
 
 		return (
-			<ProfileTabNavigator
+			<MessageTabNavigator
 				navigation={addNavigationHelpers({
 					dispatch: dispatch,
 					state: navigationState
@@ -35,4 +35,4 @@ class ProfileTabContainer extends Component {
 	}
 }
 
-export default connect(mapStateToProps)(ProfileTabContainer);
+export default connect(mapStateToProps)(MessageTabContainer);

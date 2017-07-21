@@ -5,7 +5,7 @@ import reducers from '../reducers';
 
 const middleware = () => {
 	return applyMiddleware(thunk, logger);
-}
+};
 
 export default createStore(
 	reducers,

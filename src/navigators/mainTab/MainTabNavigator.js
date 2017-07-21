@@ -5,7 +5,7 @@ import { Icon } from 'native-base';
 import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
 import { FavoriteTabNavigator } from '../tabFavorite/FavoriteTabNavigator';
 import { FeedTabNavigator } from '../tabFeed/FeedTabNavigator';
-import { MessageTabNavigator } from '../tabMessage/MessageTabNavigator';
+import MessageTabContainer from '../tabMessage/MessageTabContainer';
 import ProfileTabContainer from '../tabProfile/ProfileTabContainer';
 
 const routeConfiguration = {
@@ -39,24 +39,8 @@ const routeConfiguration = {
 			)
 		}
 	},
-	MessageTab: {
-		screen: MessageTabNavigator,
-		navigationOptions: {
-			tabBarLabel: 'Pesan',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-mail-outline" />
-			)
-		}
-	},
-	ProfileTab: {
-		screen: ProfileTabContainer,
-		navigationOptions: {
-			tabBarLabel: 'Profil',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-person" />
-			)
-		}
-	}
+	MessageTab: { screen: MessageTabContainer },
+	ProfileTab: { screen: ProfileTabContainer }
 };
 
 const tabNavigatorConfiguration = {
@@ -93,7 +77,7 @@ export const MainTabNavigator = TabNavigator(routeConfiguration, tabNavigatorCon
 export const MainTabReducer = (state, action) => {
 	switch (action.type) {
 		case 'JUMP_TO_TAB':
-			return { ...state, index: 0 }
+			return { ...state, index: 0 };
 		default:
 			return MainTabNavigator.router.getStateForAction(action, state);
 	}
