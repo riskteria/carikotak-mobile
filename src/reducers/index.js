@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { MainNavigatorReducer } from 'navigators/MainNavigator';
+import { MainNavigatorReducer } from 'navigators/mainNavigator/MainNavigator';
 import { MainTabReducer } from 'navigators/mainTab/MainTabNavigator';
 import { FeedTabNavigator } from 'navigators/tabFeed/FeedTabNavigator';
 import { FavoriteTabNavigator } from 'navigators/tabFavorite/FavoriteTabNavigator';

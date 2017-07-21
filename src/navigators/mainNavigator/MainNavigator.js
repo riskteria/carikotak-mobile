@@ -8,7 +8,7 @@ import ForgotScreen from 'components/forgot/ForgotScreen';
 import ProductScreen from 'components/product/ProductScreen';
 import StoryScreen from 'components/story/StoryScreen';
 
-import { MainTabNavigator } from './mainTab/MainTabNavigator';
+import { MainTabNavigator } from '../mainTab/MainTabNavigator';
 
 const routeConfiguration = {
 	Landing: {
