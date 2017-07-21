@@ -6,7 +6,7 @@ import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
 import { FavoriteTabNavigator } from '../tabFavorite/FavoriteTabNavigator';
 import { FeedTabNavigator } from '../tabFeed/FeedTabNavigator';
 import { MessageTabNavigator } from '../tabMessage/MessageTabNavigator';
-import { ProfileTabNavigator } from '../tabProfile/ProfileTabNavigator';
+import ProfileTabContainer from '../tabProfile/ProfileTabContainer';
 
 const routeConfiguration = {
 
@@ -49,7 +49,7 @@ const routeConfiguration = {
 		}
 	},
 	ProfileTab: {
-		screen: ProfileTabNavigator,
+		screen: ProfileTabContainer,
 		navigationOptions: {
 			tabBarLabel: 'Profil',
 			tabBarIcon: ({ tintColor }) => (
