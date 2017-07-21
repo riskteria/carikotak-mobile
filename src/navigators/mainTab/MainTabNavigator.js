@@ -3,7 +3,7 @@ import { TabNavigator } from 'react-navigation';
 import { Icon } from 'native-base';
 
 import { CreateTabNavigator } from '../tabCreate/CreateTabNavigator';
-import { FavoriteTabNavigator } from '../tabFavorite/FavoriteTabNavigator';
+import FavoriteTabContainer from '../tabFavorite/FavoriteTabContainer';
 import FeedTabContainer from '../tabFeed/FeedTabContainer';
 import MessageTabContainer from '../tabMessage/MessageTabContainer';
 import ProfileTabContainer from '../tabProfile/ProfileTabContainer';
@@ -12,16 +12,8 @@ const routeConfiguration = {
 
 	FeedTab: { screen: FeedTabContainer },
 
-	FavoriteTab: {
-		screen: FavoriteTabNavigator,
-		navigationOptions: {
-			title: 'Favorit',
-			tabBarLabel: 'Favorit',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon style={{ color: tintColor }} name="ios-heart-outline" />
-			)
-		}
-	},
+	FavoriteTab: { screen: FavoriteTabContainer },
+
 	CreateTab: {
 		screen: CreateTabNavigator,
 		navigationOptions: {
