@@ -6,19 +6,19 @@
       "module-alias",
       [
         {
-          "src": "./images/",
+          "src": "./images",
           "expose": "images"
         },
         {
-          "src": "./native-base-theme/",
+          "src": "./native-base-theme",
           "expose": "theme"
         },
         {
-          "src": "./src/components/",
+          "src": "./src/components",
           "expose": "components"
         },
         {
-          "src": "./src/configs/",
+          "src": "./src/configs",
           "expose": "configs"
         },
         {
@@ -30,12 +30,20 @@
           "expose": "navigators"
         },
         {
-          "src": "./src/styles/",
+          "src": "./src/styles",
           "expose": "styles"
         },
         {
           "src": "./src/components/_shared",
           "expose": "shared"
+        },
+        {
+          "src": "./src/actions",
+          "expose": "actions"
+        },
+        {
+          "src": "./src/reducers",
+          "expose": "reducers"
         }
       ]
     ]
