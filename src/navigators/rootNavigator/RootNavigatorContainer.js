@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BackHandler } from 'react-native';
-import { NavigationActions, addNavigationHelpers } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import { RootNavigator } from './RootNavigator';
@@ -38,16 +38,7 @@ class RootNavigatorContainer extends Component {
   }
 
   render() {
-    const { dispatch, navigationState } = this.props;
-
-    return (
-      <RootNavigator
-        navigation={addNavigationHelpers({
-          dispatch: dispatch,
-          state: navigationState
-        })}
-      />
-    );
+    return <RootNavigator />;
   }
 }
 

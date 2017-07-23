@@ -1,39 +1,26 @@
 import React, { Component } from 'react';
 import { Icon } from 'native-base';
 
-import { addNavigationHelpers } from 'react-navigation';
 import { FeedTabNavigator } from './FeedTabNavigator';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
-	return {
-		navigationState: state.feedTabNavigator
-	};
+const mapStateToProps = state => {
+  return {
+    navigationState: state.feedTabNavigator
+  };
 };
 
 class FeedTabContainer extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Beranda',
+    tabBarIcon: ({ tintColor }) =>
+      <Icon style={{ color: tintColor }} name="ios-home-outline" />
+  };
 
-	static navigationOptions = {
-		tabBarLabel: 'Beranda',
-		tabBarIcon: ({ tintColor }) => (
-			<Icon style={{ color: tintColor }} name="ios-home-outline" />
-		)
-	}
-
-	render() {
-		const { dispatch, navigationState } = this.props;
-
-		return (
-			<FeedTabNavigator
-				navigation={addNavigationHelpers({
-					dispatch: dispatch,
-					state: navigationState
-				})}
-			/>
-		);
-	}
-
+  render() {
+    return <FeedTabNavigator />;
+  }
 }
 
 export default connect(mapStateToProps)(FeedTabContainer);

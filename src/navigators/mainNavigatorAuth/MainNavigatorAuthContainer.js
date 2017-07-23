@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import { MainNavigatorAuth } from './MainNavigatorAuth';
@@ -16,16 +15,7 @@ class MainNavigatorAuthContainer extends Component {
   }
 
   render() {
-    const { dispatch, navigationState } = this.props;
-
-    return (
-      <MainNavigatorAuth
-        navigation={addNavigationHelpers({
-          state: navigationState,
-          dispatch: dispatch
-        })}
-      />
-    );
+    return <MainNavigatorAuth />;
   }
 }
 

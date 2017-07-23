@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import { MainNavigatorNoAuth } from './MainNavigatorNoAuth';
@@ -16,16 +15,7 @@ class MainNavigatorNoAuthContainer extends Component {
   }
 
   render() {
-    const { dispatch, navigationState } = this.props;
-
-    return (
-      <MainNavigatorNoAuth
-        navigation={addNavigationHelpers({
-          state: navigationState,
-          dispatch: dispatch
-        })}
-      />
-    );
+    return <MainNavigatorNoAuth />;
   }
 }
 
