@@ -3,15 +3,15 @@ import { BackHandler } from 'react-native';
 import { NavigationActions, addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
-import { MainNavigator } from './MainNavigator';
+import { RootNavigator } from './RootNavigator';
 
 const mapStateToProps = state => {
   return {
-    navigationState: state.mainNavigator
+    navigationState: state.rootNavigator
   };
 };
 
-class AppNavigator extends Component {
+class RootNavigatorContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -29,27 +29,26 @@ class AppNavigator extends Component {
     return false;
   };
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-  }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress');
   }
 
-  render() {
-    const { dispatch, navigationState, isSignedIn } = this.props;
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
 
-    const MainNavigatorWithState = MainNavigator(isSignedIn);
+  render() {
+    const { dispatch, navigationState } = this.props;
 
     return (
-      <MainNavigatorWithState
+      <RootNavigator
         navigation={addNavigationHelpers({
-          state: navigationState,
-          dispatch: dispatch
+          dispatch: dispatch,
+          state: navigationState
         })}
       />
     );
   }
 }
 
-export default connect(mapStateToProps)(AppNavigator);
+export default connect(mapStateToProps)(RootNavigatorContainer);

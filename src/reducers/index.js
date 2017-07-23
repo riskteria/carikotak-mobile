@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { MainNavigatorReducer } from 'navigators/mainNavigator/MainNavigator';
+import { RootNavigator } from 'navigators/rootNavigator/RootNavigator';
+import { MainNavigatorAuth } from 'navigators/mainNavigatorAuth/MainNavigatorAuth';
+import { MainNavigatorNoAuth } from 'navigators/mainNavigatorNoAuth/MainNavigatorNoAuth';
 import { MainTabReducer } from 'navigators/mainTab/MainTabNavigator';
 import { FeedTabNavigator } from 'navigators/tabFeed/FeedTabNavigator';
 import { FavoriteTabNavigator } from 'navigators/tabFavorite/FavoriteTabNavigator';
@@ -9,21 +11,31 @@ import { MessageTabNavigator } from 'navigators/tabMessage/MessageTabNavigator';
 import { ProfileTabNavigator } from 'navigators/tabProfile/ProfileTabNavigator';
 
 const reducers = combineReducers({
+  rootNavigator: (state, action) =>
+    RootNavigator.router.getStateForAction(action, state),
 
-	mainNavigator: MainNavigatorReducer,
+  mainNavigatorAuth: (state, action) =>
+    MainNavigatorAuth.router.getStateForAction(action, state),
 
-	mainTabNavigator: MainTabReducer,
+  mainNavigatorNoAuth: (state, action) =>
+    MainNavigatorNoAuth.router.getStateForAction(action, state),
 
-	feedTabNavigator: (state, action) => FeedTabNavigator.router.getStateForAction(action, state),
+  mainTabNavigator: MainTabReducer,
 
-	favoriteTabNavigator: (state, action) => FavoriteTabNavigator.router.getStateForAction(action, state),
+  feedTabNavigator: (state, action) =>
+    FeedTabNavigator.router.getStateForAction(action, state),
 
-	createTabNavigator: (state, action) => CreateTabNavigator.router.getStateForAction(action, state),
+  favoriteTabNavigator: (state, action) =>
+    FavoriteTabNavigator.router.getStateForAction(action, state),
 
-	messageTabNavigator: (state, action) => MessageTabNavigator.router.getStateForAction(action, state),
+  createTabNavigator: (state, action) =>
+    CreateTabNavigator.router.getStateForAction(action, state),
 
-	profileTabNavigator: (state, action) => ProfileTabNavigator.router.getStateForAction(action, state)
+  messageTabNavigator: (state, action) =>
+    MessageTabNavigator.router.getStateForAction(action, state),
 
+  profileTabNavigator: (state, action) =>
+    ProfileTabNavigator.router.getStateForAction(action, state)
 });
 
 export default reducers;
