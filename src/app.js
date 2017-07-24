@@ -4,7 +4,7 @@ import { StyleProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 
-import RootNavigatorContainer from 'navigators/rootNavigator/RootNavigatorContainer';
+import { createRootNavigator } from 'navigators/rootNavigator/RootNavigator';
 
 import getTheme from 'theme/components';
 import platform from 'theme/variables/platform';
@@ -41,10 +41,12 @@ class CarikotakApp extends Component {
       return null;
     }
 
+    const Layout = createRootNavigator(signedIn);
+
     return (
       <StyleProvider style={getTheme(platform)}>
         <Provider store={store}>
-          <RootNavigatorContainer />
+          <Layout />
         </Provider>
       </StyleProvider>
     );

@@ -1,18 +1,18 @@
 import { StackNavigator } from 'react-navigation';
 
-import MainNavigatorAuthContainer from 'navigators/mainNavigatorAuth/MainNavigatorAuthContainer';
-import MainNavigatorNoAuthContainer from 'navigators/mainNavigatorNoAuth/MainNavigatorNoAuthContainer';
+import { MainNavigatorAuth } from 'navigators/mainNavigatorAuth/MainNavigatorAuth';
+import { MainNavigatorNoAuth } from 'navigators/mainNavigatorNoAuth/MainNavigatorNoAuth';
 
 const routeConfiguration = {
   SignedIn: {
-    screen: MainNavigatorAuthContainer,
+    screen: MainNavigatorAuth,
     navigationOptions: {
       header: null
     }
   },
 
   SignedOut: {
-    screen: MainNavigatorNoAuthContainer,
+    screen: MainNavigatorNoAuth,
     navigationOptions: {
       header: null
     }
@@ -21,10 +21,9 @@ const routeConfiguration = {
 
 export const RootNavigator = StackNavigator(routeConfiguration);
 
-// export const createRootNavigator = (signedIn = false) => {
-//   return StackNavigator(routeConfiguration, {
-//     mode: 'modal',
-//     // initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
-//     initialRouteName: 'SignedOut'
-//   });
-// };
+export const createRootNavigator = (signedIn = false) => {
+  return StackNavigator(routeConfiguration, {
+    mode: 'modal',
+    initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
+  });
+};
