@@ -1,6 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 
-import ProductScreen from 'components/product/ProductScreen';
+import ProductScreenContainer from 'components/product/ProductScreenContainer';
 import StoryScreenContainer from 'components/story/StoryScreenContainer';
 
 // Feed Components
@@ -25,7 +25,7 @@ const routeConfiguration = {
   Main: { screen: MainTabNavigator },
 
   Product: {
-    screen: ProductScreen,
+    screen: ProductScreenContainer,
     navigationOptions: {
       title: 'Produk'
     }
