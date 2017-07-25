@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container } from 'native-base';
 import { startLoadingSpin, stopLoadingSpin } from 'actions/spinnerAction';
-
 import ProgressBarContainer from 'components/_shared/progress-bar/ProgressBarContainer';
+
 import { API } from 'services/APIService';
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    loadingSpin: state.loadingSpin
+  };
 };
 
 const mapDispatchToProps = dispatch => {

@@ -65,7 +65,7 @@ class StoryCarousel extends Component {
         key={index}
         activeOpacity={0.8}
         style={styles.slideInnerContainer}
-        onPress={() => navigate('Story')}
+        onPress={() => navigate('Story', { slug: story.slug })}
       >
         <CardStory key={index} story={story} />
       </TouchableOpacity>
