@@ -11,6 +11,7 @@ import {
   Body
 } from 'native-base';
 
+import { loadImageUser, loadImageProduct } from 'services/ImageFetcher';
 import colors from 'styles/_colors';
 import styles from './styles';
 
@@ -22,14 +23,14 @@ class CardStory extends Component {
       <Card style={StyleSheet.flatten(styles.cardStoryContainer)}>
         <Image
           style={StyleSheet.flatten(styles.cardStoryImageBackground)}
-          source={{ uri: 'https://unsplash.it/300x300??image=10' }}
+          source={{ uri: loadImageProduct(story.image, 'medium') }}
         />
         <CardItem style={{ backgroundColor: colors.colorTransparent }}>
           <Left>
             <Thumbnail
               small
               circle
-              source={{ uri: 'https://unsplash.it/300x300??image=10' }}
+              source={{ uri: loadImageUser(story.user.avatar, 'small') }}
             />
             <Body>
               <Text style={StyleSheet.flatten(styles.cardStoryHeaderName)}>
