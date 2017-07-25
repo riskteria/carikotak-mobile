@@ -26,6 +26,7 @@ const routeConfiguration = {
 
   Product: {
     screen: ProductScreenContainer,
+    path: 'product/:slug',
     navigationOptions: {
       title: 'Produk'
     }

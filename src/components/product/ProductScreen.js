@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container } from 'native-base';
+import { Container, Text } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import { API } from 'services/APIService';
 
 class ProductScreen extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class ProductScreen extends Component {
     this._onGetProduct = this._onGetProduct.bind(this);
 
     this.state = {
+      product: false,
       loadingSpin: false
     };
   }
@@ -17,9 +19,17 @@ class ProductScreen extends Component {
   _onGetProduct() {
     this.setState({ loadingSpin: true });
 
-    setTimeout(() => {
-      this.setState({ loadingSpin: false });
-    }, 1000);
+    API.get(`api/product/${this.props.navigation.state.params.slug}`)
+      .then(res => {
+        this.setState({
+          loadingSpin: false,
+          product: res.data
+        });
+      })
+      .catch(err => {
+        this.setState({ loadingSpin: false });
+        throw err;
+      });
   }
 
   componentWillMount() {
@@ -27,11 +37,16 @@ class ProductScreen extends Component {
   }
 
   render() {
-    const { loadingSpin } = this.state;
+    const { loadingSpin, product } = this.state;
+
+    const ProductDetail = () =>
+      <Text>
+        {product.name}
+      </Text>;
 
     return (
       <Container>
-        {loadingSpin ? <ProgressBar /> : null}
+        {loadingSpin ? <ProgressBar /> : <ProductDetail />}
       </Container>
     );
   }

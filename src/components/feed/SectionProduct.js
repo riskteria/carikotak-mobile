@@ -46,7 +46,7 @@ class SectionProduct extends Component {
           activeOpacity={0.9}
           style={styles.cardProductContainer}
           key={index}
-          onPress={() => navigate('Product')}
+          onPress={() => navigate('Product', { slug: product.slug })}
         >
           <CardProduct key={index} product={product} />
         </TouchableOpacity>
