@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import { LoadingSpinReducer } from './loadingSpinReducer';
+
 import { RootNavigator } from 'navigators/rootNavigator/RootNavigator';
 import { MainNavigatorAuth } from 'navigators/mainNavigatorAuth/MainNavigatorAuth';
 import { MainNavigatorNoAuth } from 'navigators/mainNavigatorNoAuth/MainNavigatorNoAuth';
@@ -11,6 +13,7 @@ import { MessageTabNavigator } from 'navigators/tabMessage/MessageTabNavigator';
 import { ProfileTabNavigator } from 'navigators/tabProfile/ProfileTabNavigator';
 
 const reducers = combineReducers({
+  loadingSpin: LoadingSpinReducer,
   rootNavigator: (state, action) =>
     RootNavigator.router.getStateForAction(action, state),
 

@@ -44,6 +44,10 @@
         {
           "src": "./src/reducers",
           "expose": "reducers"
+        },
+        {
+          "src": "./src/constants",
+          "expose": "constants"
         }
       ]
     ]

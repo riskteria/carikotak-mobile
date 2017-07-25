@@ -1,0 +1,5 @@
+export const NAVIGATE = 'NAVIGATE';
+export const BACK_SCREEN = 'BACK_SCREEN';
+
+export const START_LOADING_SPIN = 'START_LOADING_SPIN';
+export const STOP_LOADING_SPIN = 'STOP_LOADING_SPIN';
