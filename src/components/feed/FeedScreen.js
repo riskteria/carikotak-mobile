@@ -9,31 +9,32 @@ import SectionProduct from './SectionProduct';
 import logo from 'images/logo-carikotak-hijau.png';
 
 class FeedScreen extends Component {
+  render() {
+    const { navigate } = this.props.navigation;
 
-	render () {
-		const { navigate } = this.props.navigation;
+    return (
+      <Container>
+        <Header style={{ backgroundColor: '#fff', elevation: 1 }}>
+          <Body style={{ alignItems: 'center', flex: 1 }}>
+            <Image source={logo} style={{ width: 100, height: 15 }} />
+          </Body>
+          <Right style={{ position: 'absolute', right: 8 }}>
+            <Button transparent dark onPress={() => navigate('Search')}>
+              <Icon name="ios-search" />
+            </Button>
+          </Right>
+        </Header>
 
-		return (
-			<Container>
+        <ScrollView style={styles.parentView}>
+          <StoryCarousel navigate={navigate} />
 
-				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
-					<Body style={{ alignItems: 'center', flex: 1}}>
-						<Image source={logo} style={{ width: 100, height:15 }} />
-					</Body>
-					<Right style={{ position: 'absolute', right: 8 }}>
-						<Button transparent dark onPress={() => navigate('Search')}><Icon name="ios-search" /></Button>
-					</Right>
-				</Header>
+          <FeedFindMyBox navigate={navigate} />
 
-				<ScrollView style={styles.parentView}>
-					<StoryCarousel navigate={navigate} />
-					<FeedFindMyBox navigate={navigate} />
-					<SectionProduct navigate={navigate} />
-				</ScrollView>
-			</Container>
-		);
-	}
-
+          <SectionProduct navigate={navigate} />
+        </ScrollView>
+      </Container>
+    );
+  }
 }
 
 export default FeedScreen;
