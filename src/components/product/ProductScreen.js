@@ -30,6 +30,10 @@ class ProductScreen extends Component {
 
   _onGetProduct() {
     this.props.startSpin();
+
+    setTimeout(() => {
+      this.props.stopSpin();
+    }, 1000);
   }
 
   componentWillMount() {

@@ -1,8 +1,8 @@
-import { START_LOADING_SCREEN, STOP_LOADING_SPIN } from 'constants/actionTypes';
+import { START_LOADING_SPIN, STOP_LOADING_SPIN } from 'constants/actionTypes';
 
 export function startLoadingSpin() {
   return {
-    type: START_LOADING_SCREEN
+    type: START_LOADING_SPIN
   };
 }
 
