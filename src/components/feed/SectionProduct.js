@@ -21,7 +21,7 @@ class SectionProduct extends Component {
   _onGetCategories() {
     this.setState({ loadingSpinner: true });
 
-    API.get('api/category')
+    API.get('api/category?with=product')
       .then(res => {
         this.setState({ loadingSpinner: false });
         this.setState({ categories: res.data });
@@ -38,20 +38,21 @@ class SectionProduct extends Component {
 
   render() {
     const { navigate } = this.props;
-    const ProductNumber = [1, 2, 3];
+    const { categories } = this.state;
 
-    const ProductCard = ProductNumber.map((number, index) =>
-      <TouchableOpacity
-        activeOpacity={0.9}
-        style={styles.cardProductContainer}
-        key={index}
-        onPress={() => navigate('Product')}
-      >
-        <CardProduct key={index} />
-      </TouchableOpacity>
-    );
+    const ProductCard = products =>
+      products.map((product, index) =>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          style={styles.cardProductContainer}
+          key={index}
+          onPress={() => navigate('Product')}
+        >
+          <CardProduct key={index} product={product} />
+        </TouchableOpacity>
+      );
 
-    const Categories = this.state.categories.map((category, index) =>
+    const Categories = categories.map((category, index) =>
       <View style={styles.tabSection} key={index}>
         <View style={styles.tabProductSectionTop}>
           <Text style={styles.tabProductSectionLabel}>
@@ -70,7 +71,7 @@ class SectionProduct extends Component {
           showsHorizontalScrollIndicator={false}
         >
           <View style={styles.productListHorizontal}>
-            {ProductCard}
+            {ProductCard(category.product)}
           </View>
         </ScrollView>
       </View>
