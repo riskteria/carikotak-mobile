@@ -1,28 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Container, Text } from 'native-base';
-
-import { startLoadingSpin, stopLoadingSpin } from 'actions/spinnerAction';
 import ProgressBarContainer from 'components/_shared/progress-bar/ProgressBarContainer';
 
 import { API } from 'services/APIService';
-
-const mapStateToProps = state => {
-  return {
-    loadingSpin: state.loadingSpin
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    startSpin: () => {
-      dispatch(startLoadingSpin());
-    },
-    stopSpin: () => {
-      dispatch(stopLoadingSpin());
-    }
-  };
-};
 
 class StoryScreen extends Component {
   constructor(props) {
@@ -70,4 +50,4 @@ class StoryScreen extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryScreen);
+export default StoryScreen;

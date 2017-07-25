@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import ProductScreen from 'components/product/ProductScreen';
-import StoryScreen from 'components/story/StoryScreen';
+import StoryScreenContainer from 'components/story/StoryScreenContainer';
 
 // Feed Components
 import FindScreen from 'components/find/FindScreen';
@@ -31,7 +31,7 @@ const routeConfiguration = {
     }
   },
   Story: {
-    screen: StoryScreen,
+    screen: StoryScreenContainer,
     path: 'story/:slug',
     navigationOptions: {
       title: 'Story'
