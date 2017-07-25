@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
 import Carousel from 'react-native-snap-carousel';
 
 import CardStory from './CardStory';
-import { startLoadingSpin, stopLoadingSpin } from 'actions/spinnerAction';
-import ProgressBarContainer from 'components/_shared/progress-bar/ProgressBarContainer';
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import { API } from 'services/APIService';
 import styles, { sliderWidth, itemWidth } from './styles';
-
-const mapStateToProps = state => {
-  return {
-    loadingSpin: state.loadingSpin
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    startSpin: () => {
-      dispatch(startLoadingSpin());
-    },
-    stopSpin: () => {
-      dispatch(stopLoadingSpin());
-    }
-  };
-};
 
 class StoryCarousel extends Component {
   constructor(props) {
@@ -34,22 +15,21 @@ class StoryCarousel extends Component {
     this._getStories = this._getStories.bind(this);
 
     this.state = {
-      stories: []
+      stories: [],
+      loadingSpin: false
     };
   }
 
   _getStories() {
-    const { startSpin, stopSpin } = this.props;
-
-    startSpin();
+    this.setState({ loadingSpin: true });
 
     API.get('api/post?page=1&&per_page=5')
       .then(res => {
-        stopSpin();
+        this.setState({ loadingSpin: false });
         this.setState({ stories: res.data });
       })
       .catch(() => {
-        stopSpin();
+        this.setState({ loadingSpin: false });
       });
   }
 
@@ -58,7 +38,8 @@ class StoryCarousel extends Component {
   }
 
   render() {
-    const { navigate, loadingSpin } = this.props;
+    const { navigate } = this.props;
+    const { loadingSpin } = this.state;
 
     const CardSwipe = this.state.stories.map((story, index) =>
       <TouchableOpacity
@@ -99,10 +80,10 @@ class StoryCarousel extends Component {
             Lihat Semua
           </Text>
         </View>
-        {loadingSpin.show ? <ProgressBarContainer /> : <CarouselStory />}
+        {loadingSpin ? <ProgressBar /> : <CarouselStory />}
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryCarousel);
+export default StoryCarousel;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Text } from 'native-base';
-import ProgressBarContainer from 'components/_shared/progress-bar/ProgressBarContainer';
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import { API } from 'services/APIService';
 
@@ -11,21 +11,21 @@ class StoryScreen extends Component {
     this._onGetStory = this._onGetStory.bind(this);
 
     this.state = {
-      story: false
+      story: false,
+      loadingSpin: false
     };
   }
 
   _onGetStory() {
-    const { startSpin, stopSpin } = this.props;
+    this.setState({ loadingSpin: true });
 
-    startSpin();
     API.get(`api/post/${this.props.navigation.state.params.slug}`)
       .then(res => {
-        stopSpin();
+        this.setState({ loadingSpin: false });
         this.setState({ story: res.data });
       })
       .catch(err => {
-        stopSpin();
+        this.setState({ loadingSpin: false });
         throw err;
       });
   }
@@ -35,7 +35,7 @@ class StoryScreen extends Component {
   }
 
   render() {
-    const { loadingSpin } = this.props;
+    const { loadingSpin } = this.state;
 
     const StoryDetail = () =>
       <Text>
@@ -44,7 +44,7 @@ class StoryScreen extends Component {
 
     return (
       <Container>
-        {loadingSpin.show ? <ProgressBarContainer /> : <StoryDetail />}
+        {loadingSpin ? <ProgressBar /> : <StoryDetail />}
       </Container>
     );
   }
