@@ -32,6 +32,7 @@ const routeConfiguration = {
   },
   Story: {
     screen: StoryScreen,
+    path: 'story/:slug',
     navigationOptions: {
       title: 'Story'
     }

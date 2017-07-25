@@ -20,7 +20,9 @@ class ProgressBar extends Component {
 const styles = StyleSheet.create({
   progressBar: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: 16,
+    paddingBottom: 16
   }
 });
 
