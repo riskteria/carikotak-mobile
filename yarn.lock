@@ -4047,6 +4047,12 @@ react-native-easy-grid@0.1.9:
   dependencies:
     lodash "^4.11.1"
 
+react-native-easy-grid@^0.1.14:
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/react-native-easy-grid/-/react-native-easy-grid-0.1.14.tgz#087810ae7ad7c60593c66ee66bdb4602dccd5164"
+  dependencies:
+    lodash "^4.11.1"
+
 react-native-gifted-chat@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/react-native-gifted-chat/-/react-native-gifted-chat-0.2.2.tgz#a336f5d2f4d0e6034f50a26a3a831f743d76b150"

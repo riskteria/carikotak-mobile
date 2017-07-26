@@ -21,7 +21,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.colorLight
   },
   mainContainer: {
-    backgroundColor: colors.colorSmoke
+    backgroundColor: colors.colorSmoke,
+    flex: 1
+  },
+  footerCol: {
+    backgroundColor: colors.colorAccent
+  },
+  footerColButton: {
+    flex: 1
   }
 });
 
