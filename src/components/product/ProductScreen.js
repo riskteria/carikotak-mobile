@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import {
+  Container,
+  Text,
+  Header,
+  Left,
+  Right,
+  Title,
+  Button,
+  Icon,
+  Body
+} from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import colors from 'styles/_colors';
 import { API } from 'services/APIService';
 
 class ProductScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.title
-  });
-
   constructor(props) {
     super(props);
 
@@ -21,12 +28,10 @@ class ProductScreen extends Component {
   }
 
   _onGetProduct() {
-    const { navigation } = this.props;
     this.setState({ loadingSpin: true });
 
     API.get(`api/product/${this.props.navigation.state.params.slug}`)
       .then(res => {
-        navigation.setParams({ title: res.data.name });
         this.setState({
           loadingSpin: false,
           product: res.data
@@ -44,6 +49,7 @@ class ProductScreen extends Component {
 
   render() {
     const { loadingSpin, product } = this.state;
+    const { goBack } = this.props.navigation;
 
     const ProductDetail = () =>
       <Text>
@@ -52,6 +58,20 @@ class ProductScreen extends Component {
 
     return (
       <Container>
+        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
+          <Left>
+            <Button transparent dark onPress={() => goBack()}>
+              <Icon name="md-arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={{ color: colors.colorBlack }}>
+              {product.name}
+            </Title>
+          </Body>
+          <Right />
+        </Header>
+
         {loadingSpin ? <ProgressBar /> : <ProductDetail />}
       </Container>
     );

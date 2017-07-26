@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
-import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import {
+  Container,
+  Text,
+  Header,
+  Left,
+  Right,
+  Title,
+  Button,
+  Icon,
+  Body
+} from 'native-base';
 
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import colors from 'styles/_colors';
 import { API } from 'services/APIService';
 
 class StoryScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.title
-  });
-
   constructor(props) {
     super(props);
 
@@ -21,12 +28,10 @@ class StoryScreen extends Component {
   }
 
   _onGetStory() {
-    const { navigation } = this.props;
     this.setState({ loadingSpin: true });
 
     API.get(`api/post/${this.props.navigation.state.params.slug}`)
       .then(res => {
-        navigation.setParams({ title: res.data.title });
         this.setState({ loadingSpin: false });
         this.setState({ story: res.data });
       })
@@ -41,7 +46,8 @@ class StoryScreen extends Component {
   }
 
   render() {
-    const { loadingSpin } = this.state;
+    const { loadingSpin, story } = this.state;
+    const { goBack } = this.props.navigation;
 
     const StoryDetail = () =>
       <Text>
@@ -50,6 +56,19 @@ class StoryScreen extends Component {
 
     return (
       <Container>
+        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
+          <Left>
+            <Button transparent dark onPress={() => goBack()}>
+              <Icon name="md-arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={{ color: colors.colorBlack }}>
+              {story.title}
+            </Title>
+          </Body>
+          <Right />
+        </Header>
         {loadingSpin ? <ProgressBar /> : <StoryDetail />}
       </Container>
     );

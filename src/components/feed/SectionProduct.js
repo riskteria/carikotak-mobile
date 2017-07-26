@@ -3,6 +3,7 @@ import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 import CardProduct from './CardProduct';
 import styles from './styles';
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import { API } from 'services/APIService';
 
@@ -38,7 +39,7 @@ class SectionProduct extends Component {
 
   render() {
     const { navigate } = this.props;
-    const { categories } = this.state;
+    const { categories, loadingSpinner } = this.state;
 
     const ProductCard = products =>
       products.map((product, index) =>
@@ -79,7 +80,7 @@ class SectionProduct extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        {Categories}
+        {loadingSpinner ? <ProgressBar /> : Categories}
       </View>
     );
   }
