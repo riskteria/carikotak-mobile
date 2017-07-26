@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Text,
-  Header,
-  Left,
-  Right,
-  Title,
-  Button,
-  Icon,
-  Body
-} from 'native-base';
+import { Container, Text } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
-import colors from 'styles/_colors';
+
+import ProductScreenHeader from './ProductScreenHeader';
+
 import { API } from 'services/APIService';
 
 class ProductScreen extends Component {
@@ -49,7 +41,7 @@ class ProductScreen extends Component {
 
   render() {
     const { loadingSpin, product } = this.state;
-    const { goBack } = this.props.navigation;
+    const { navigation } = this.props;
 
     const ProductDetail = () =>
       <Text>
@@ -58,20 +50,7 @@ class ProductScreen extends Component {
 
     return (
       <Container>
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Left>
-            <Button transparent dark onPress={() => goBack()}>
-              <Icon name="md-arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={{ color: colors.colorBlack }}>
-              {product.name}
-            </Title>
-          </Body>
-          <Right />
-        </Header>
-
+        <ProductScreenHeader product={product} navigation={navigation} />
         {loadingSpin ? <ProgressBar /> : <ProductDetail />}
       </Container>
     );
