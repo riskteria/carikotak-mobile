@@ -4,6 +4,7 @@ import { Footer, Button, Icon, Text } from 'native-base';
 import { Grid, Col } from 'react-native-easy-grid';
 
 import styles from './styles';
+import colors from 'styles/_colors';
 
 class ProductScreenFooter extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class ProductScreenFooter extends Component {
     return (
       <Footer>
         <Grid>
-          <Col style={StyleSheet.flatten(styles.footerCol)}>
+          <Col style={{ flex: 1, backgroundColor: colors.colorAccent }}>
             <Button
               small
               transparent
@@ -26,7 +27,7 @@ class ProductScreenFooter extends Component {
               <Text>Send Message</Text>
             </Button>
           </Col>
-          <Col style={StyleSheet.flatten(styles.footerCol)}>
+          <Col style={{ flex: 1, backgroundColor: colors.colorTomato }}>
             <Button
               small
               transparent

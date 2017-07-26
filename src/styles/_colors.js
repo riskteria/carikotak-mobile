@@ -5,6 +5,7 @@ export default {
   colorBlack: '#212121',
   colorDark: '#4d4d4d',
   colorSmoke: '#F5F5F5',
+  colorTomato: '#ff6347',
   colorGrey: '#95989a',
   colorLight: '#FFFFFF',
   colorLightOpacity: 'rgba(255, 255, 255, 0.7)',
