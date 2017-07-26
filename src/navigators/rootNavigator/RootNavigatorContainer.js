@@ -38,7 +38,9 @@ class RootNavigatorContainer extends Component {
   }
 
   render() {
-    return <RootNavigator />;
+    const { authenticated } = this.props;
+
+    return <RootNavigator authenticated={authenticated} />;
   }
 }
 

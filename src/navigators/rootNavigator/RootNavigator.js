@@ -21,9 +21,9 @@ const routeConfiguration = {
 
 export const RootNavigator = StackNavigator(routeConfiguration);
 
-export const createRootNavigator = (signedIn = false) => {
+export const createRootNavigator = (authenticated = false) => {
   return StackNavigator(routeConfiguration, {
     mode: 'modal',
-    initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
+    initialRouteName: authenticated ? 'SignedIn' : 'SignedOut'
   });
 };

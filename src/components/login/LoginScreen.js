@@ -44,7 +44,8 @@ class LoginScreen extends Component {
   };
 
   _onPressLogin() {
-    const user = this.state.user;
+    const { user } = this.state;
+    const { updateAccessToken } = this.props;
 
     this.setState({ isLoading: true });
 
@@ -52,6 +53,7 @@ class LoginScreen extends Component {
       .then(response => {
         onSignedIn(response.data.access_token, response.data.refresh_token)
           .then(res => {
+            updateAccessToken(response.data.access_token);
             this.setState({ isLoading: false });
             this.props.navigation.navigate('SignedIn');
           })

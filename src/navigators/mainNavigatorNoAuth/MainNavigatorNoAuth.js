@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import LandingScreen from 'components/landing/LandingScreen';
-import LoginScreen from 'components/login/LoginScreen';
+import LoginScreenContainer from 'components/login/LoginScreenContainer';
 import RegisterScreen from 'components/register/RegisterScreen';
 import ForgotScreen from 'components/forgot/ForgotScreen';
 
@@ -13,7 +13,7 @@ const routeConfiguration = {
     }
   },
   Login: {
-    screen: LoginScreen,
+    screen: LoginScreenContainer,
     navigationOptions: {
       headerStyle: {
         position: 'absolute',

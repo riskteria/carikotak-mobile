@@ -16,16 +16,19 @@ class CarikotakApp extends Component {
     super(props);
 
     this.state = {
-      signedIn: false,
+      authenticated: false,
       checkedSignIn: false
     };
   }
 
   componentWillMount() {
     isSignedIn()
-      .then(() => {
-        this.setState({ signedIn: true, checkedSignIn: true });
-        this.props.navigation.navigate();
+      .then(res => {
+        if (res) {
+          this.setState({ authenticated: true });
+          // this.props.navigation.navigate();
+        }
+        this.setState({ checkedSignIn: true });
       })
       .catch(err => err);
   }
@@ -35,13 +38,13 @@ class CarikotakApp extends Component {
   }
 
   render() {
-    const { signedIn, checkedSignIn } = this.state;
+    const { authenticated, checkedSignIn } = this.state;
 
     if (!checkedSignIn) {
       return null;
     }
 
-    const Layout = createRootNavigator(signedIn);
+    const Layout = createRootNavigator(authenticated);
 
     return (
       <StyleProvider style={getTheme(platform)}>
