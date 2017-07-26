@@ -4,6 +4,8 @@ import { ScrollView, TouchableOpacity } from 'react-native';
 import CardProduct from './CardProduct';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
+import { API } from 'services/APIService';
+
 class TabStory extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +21,14 @@ class TabStory extends Component {
   _onFetchFavorites() {
     this.setState({ loadingSpinner: true });
 
-    setTimeout(() => {
-      this.setState({ loadingSpinner: false });
-    }, 1000);
+    API.get('api/me/favorite-products')
+      .then(res => {
+        this.setState({ loadingSpinner: false, favorites: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpinner: false });
+        throw err;
+      });
   }
 
   componentWillMount() {
@@ -30,17 +37,15 @@ class TabStory extends Component {
 
   render() {
     const { navigate } = this.props;
-    const { loadingSpinner } = this.state;
+    const { loadingSpinner, favorites } = this.state;
 
-    const ProductNumber = [1, 2, 3, 4, 5];
-
-    const ProductCard = ProductNumber.map((number, index) =>
+    const ProductCard = favorites.map((product, index) =>
       <TouchableOpacity
         activeOpacity={0.9}
         key={index}
-        onPress={() => navigate('Product')}
+        onPress={() => navigate('Product', { slug: product.slug })}
       >
-        <CardProduct key={index} />
+        <CardProduct key={index} product={product} />
       </TouchableOpacity>
     );
 

@@ -60,7 +60,12 @@ class CardStory extends Component {
             small
             style={{ paddingLeft: 0, paddingRight: 0 }}
           >
-            <Icon name="ios-heart" style={{ color: colors.colorHeart }} />
+            <Icon
+              name="ios-heart"
+              style={{
+                color: story.favorited ? colors.colorHeart : colors.colorLight
+              }}
+            />
             <Text style={{ fontSize: 12 }}>
               {story.total_favoriters}
             </Text>

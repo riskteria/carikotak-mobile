@@ -5,6 +5,8 @@ import CardStory from './CardStory';
 import styles from './styles';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
+import { API } from 'services/APIService';
+
 class TabStory extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +22,14 @@ class TabStory extends Component {
   _onFetchFavorites() {
     this.setState({ loadingSpinner: true });
 
-    setTimeout(() => {
-      this.setState({ loadingSpinner: false });
-    }, 1000);
+    API.get('api/me/favorite-posts')
+      .then(res => {
+        this.setState({ loadingSpinner: false, favorites: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpinner: false });
+        throw err;
+      });
   }
 
   componentWillMount() {
@@ -31,17 +38,15 @@ class TabStory extends Component {
 
   render() {
     const { navigate } = this.props;
-    const { loadingSpinner } = this.props;
+    const { loadingSpinner, favorites } = this.state;
 
-    const storyNumber = [1, 2, 3, 4, 5];
-
-    const storyCard = storyNumber.map((number, index) =>
+    const storyCard = favorites.map((story, index) =>
       <TouchableOpacity
         activeOpacity={0.9}
         key={index}
-        onPress={() => navigate('Story')}
+        onPress={() => navigate('Story', { slug: story.slug })}
       >
-        <CardStory key={index} />
+        <CardStory key={index} story={story} />
       </TouchableOpacity>
     );
 
