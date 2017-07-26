@@ -57,7 +57,7 @@ class ProductScreen extends Component {
           </Content>
         </ScrollView>
 
-        <ProductScreenFooter product={product} />
+        <ProductScreenFooter product={product} navigation={navigation} />
       </View>;
 
     return (
