@@ -5,7 +5,7 @@ import LoginScreen from './LoginScreen';
 
 const mapStateToProps = state => {
   return {
-    access_token: state.authSessionHandler
+    access_token: state.authSessionHandler.access_token
   };
 };
 

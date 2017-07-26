@@ -12,17 +12,28 @@ import {
 
 import styles from './styles';
 import colors from 'styles/_colors';
-import { isSignedIn } from 'services/AuthHandler';
+
+import { API } from 'services/APIService';
 
 class ProfileScreen extends Component {
-  componentDidMount() {
-    isSignedIn()
+  constructor(props) {
+    super(props);
+
+    this._onFetchProfileData = this._onFetchProfileData.bind(this);
+  }
+
+  _onFetchProfileData() {
+    API.get('api/me')
       .then(res => {
-        // console.log('ok' + res);
+        console.log(res.data);
       })
       .catch(err => {
-        throw err;
+        console.log(err.response);
       });
+  }
+
+  componentWillMount() {
+    this._onFetchProfileData();
   }
 
   render() {

@@ -10,6 +10,7 @@ import getTheme from 'theme/components';
 import platform from 'theme/variables/platform';
 import store from './store';
 import { isSignedIn } from 'services/AuthHandler';
+import { updateAccessToken } from 'actions/authAction';
 
 class CarikotakApp extends Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class CarikotakApp extends Component {
   componentWillMount() {
     isSignedIn()
       .then(res => {
+        store.dispatch(updateAccessToken(res));
         if (res) {
           this.setState({ authenticated: true });
-          // this.props.navigation.navigate();
         }
         this.setState({ checkedSignIn: true });
       })
