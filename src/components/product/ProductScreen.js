@@ -5,9 +5,11 @@ import { Container, View, Content } from 'native-base';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import ProductScreenHeader from './ProductScreenHeader';
+import ProductScreenInfo from './ProductScreenInfo';
 import ProductScreenSwiper from './ProductScreenSwiper';
 
 import { API } from 'services/APIService';
+import styles from './styles';
 
 class ProductScreen extends Component {
   constructor(props) {
@@ -48,10 +50,11 @@ class ProductScreen extends Component {
     const ProductDetail = () =>
       <View>
         <ProductScreenSwiper product={product} />
+        <ProductScreenInfo product={product} />
       </View>;
 
     return (
-      <ScrollView>
+      <ScrollView style={styles.mainContainer}>
         <Container>
           <ProductScreenHeader product={product} navigation={navigation} />
 

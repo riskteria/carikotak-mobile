@@ -10,6 +10,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.colorAccent
+  },
+  infoSection: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginTop: 4,
+    marginBottom: 4,
+    backgroundColor: colors.colorLight
+  },
+  mainContainer: {
+    backgroundColor: colors.colorSmoke
   }
 });
 
