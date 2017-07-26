@@ -61,7 +61,9 @@ class CardStory extends Component {
             style={{ paddingLeft: 0, paddingRight: 0 }}
           >
             <Icon name="ios-heart" style={{ color: colors.colorHeart }} />
-            <Text style={{ fontSize: 12 }}>200</Text>
+            <Text style={{ fontSize: 12 }}>
+              {story.total_favoriters}
+            </Text>
           </Button>
           <Button
             light
@@ -69,7 +71,9 @@ class CardStory extends Component {
             small
             style={{ paddingLeft: 0, paddingRight: 0 }}
           >
-            <Text style={{ fontSize: 12 }}>200 Komentar</Text>
+            <Text style={{ fontSize: 12 }}>
+              {story.total_comments} Komentar
+            </Text>
           </Button>
         </CardItem>
       </Card>
