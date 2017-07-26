@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Container, View, Content } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import ProductScreenHeader from './ProductScreenHeader';
+import ProductScreenSwiper from './ProductScreenSwiper';
 
 import { API } from 'services/APIService';
 
@@ -44,15 +46,20 @@ class ProductScreen extends Component {
     const { navigation } = this.props;
 
     const ProductDetail = () =>
-      <Text>
-        {product.name}
-      </Text>;
+      <View>
+        <ProductScreenSwiper product={product} />
+      </View>;
 
     return (
-      <Container>
-        <ProductScreenHeader product={product} navigation={navigation} />
-        {loadingSpin ? <ProgressBar /> : <ProductDetail />}
-      </Container>
+      <ScrollView>
+        <Container>
+          <ProductScreenHeader product={product} navigation={navigation} />
+
+          <Content>
+            {loadingSpin ? <ProgressBar /> : <ProductDetail />}
+          </Content>
+        </Container>
+      </ScrollView>
     );
   }
 }

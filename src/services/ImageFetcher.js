@@ -28,7 +28,11 @@ export const loadImageProduct = (images = null, size = 'small') => {
     return PRODUCT_DEFAULT_IMAGE;
   }
 
-  const image = images[0];
+  let image = images;
+
+  if (images instanceof Array) {
+    image = images[0];
+  }
 
   switch (size) {
     case 'medium':
