@@ -26,17 +26,11 @@ const routeConfiguration = {
 
   Product: {
     screen: ProductScreenContainer,
-    path: 'product/:slug',
-    navigationOptions: {
-      title: 'Produk'
-    }
+    path: 'product/:slug'
   },
   Story: {
     screen: StoryScreenContainer,
-    path: 'story/:slug',
-    navigationOptions: {
-      title: 'Story'
-    }
+    path: 'story/:slug'
   },
 
   // Feed Tab Components

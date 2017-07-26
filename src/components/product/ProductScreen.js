@@ -5,6 +5,10 @@ import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import { API } from 'services/APIService';
 
 class ProductScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title
+  });
+
   constructor(props) {
     super(props);
 
@@ -17,10 +21,12 @@ class ProductScreen extends Component {
   }
 
   _onGetProduct() {
+    const { navigation } = this.props;
     this.setState({ loadingSpin: true });
 
     API.get(`api/product/${this.props.navigation.state.params.slug}`)
       .then(res => {
+        navigation.setParams({ title: res.data.name });
         this.setState({
           loadingSpin: false,
           product: res.data
