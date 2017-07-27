@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container } from 'native-base';
 
-import SearchScreenHeader from './SearchScreenHeader';
 import SearchScreenCategory from './SearchScreenCategory';
+import SearchScreenHeader from './SearchScreenHeader';
+import SearchScreenSearchbox from './SearchScreenSearchbox';
 
 class SearchScreen extends Component {
   constructor(props) {
@@ -20,8 +21,8 @@ class SearchScreen extends Component {
     return (
       <Container>
         <SearchScreenHeader navigation={navigation} />
-
-        <SearchScreenCategory />
+        <SearchScreenSearchbox navigation={navigation} />
+        <SearchScreenCategory navigation={navigation} />
       </Container>
     );
   }
