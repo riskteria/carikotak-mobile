@@ -61,8 +61,7 @@ class SectionProduct extends Component {
           </Text>
           <Text
             style={styles.tabProductSectionLink}
-            onPress={() =>
-              navigate('ProductListCategory', { categoryId: category.id })}
+            onPress={() => navigate('ProductList', { categoryId: category.id })}
           >
             Lihat Semua
           </Text>

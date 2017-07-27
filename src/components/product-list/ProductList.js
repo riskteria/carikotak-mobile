@@ -42,7 +42,7 @@ class ProductList extends Component {
         <Picker
           selectedValue={this.state.category}
           onValueChange={(value, index) =>
-            navigate('ProductListCategory', { categoryId: value })}
+            navigate('ProductList', { categoryId: value })}
         >
           {_itemPicker()}
         </Picker>
