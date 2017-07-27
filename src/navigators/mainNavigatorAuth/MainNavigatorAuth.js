@@ -63,6 +63,13 @@ const routeConfiguration = {
       header: null
     }
   },
+  ProductListCategory: {
+    screen: ProductListScreen,
+    path: 'product-list/:categoryId',
+    navigationOptions: {
+      header: null
+    }
+  },
   ProductList: {
     screen: ProductListScreen,
     navigationOptions: {

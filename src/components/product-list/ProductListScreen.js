@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import { Container, Text } from 'native-base';
+import { Container, Text, View } from 'native-base';
 
-import { API } from 'components/_shared/progress-bar/ProgressBar';
+import { API } from 'services/APIService';
 
 import ProductListScreenHeader from './ProductListScreenHeader';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
@@ -12,6 +12,7 @@ class ProductListScreen extends Component {
     super(props);
 
     this._onFetchProducts = this._onFetchProducts.bind(this);
+    this._fetchProductsByCategory = this._fetchProductsByCategory.bind(this);
 
     this.state = {
       products: [],
@@ -19,9 +20,7 @@ class ProductListScreen extends Component {
     };
   }
 
-  _onFetchProducts() {
-    this.setState({ loadingSpin: true });
-
+  _fetchAllProducts() {
     API.get('api/product')
       .then(res => {
         this.setState({ loadingSpin: false, products: res.data });
@@ -32,19 +31,51 @@ class ProductListScreen extends Component {
       });
   }
 
+  _fetchProductsByCategory(categoryId) {
+    API.get('api/product?category=' + categoryId)
+      .then(res => {
+        this.setState({ loadingSpin: false, products: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpin: false });
+        throw err;
+      });
+  }
+
+  _onFetchProducts() {
+    const { navigation } = this.props;
+    const params = navigation.state.params;
+
+    this.setState({ loadingSpin: true });
+
+    if (params.hasOwnProperty('categoryId')) {
+      const categoryId = params.categoryId;
+      this._fetchProductsByCategory(categoryId);
+    }
+  }
+
+  componentWillMount() {
+    this._onFetchProducts();
+  }
+
   render() {
-    const { loadingSpin } = this.state;
+    const { loadingSpin, products } = this.state;
     const { navigation } = this.props;
 
-    const ProductList = () => <Text>Daftar Produk</Text>;
+    const ProductList = () =>
+      <View>
+        <ScrollView>
+          <Text>
+            Product List, Total: {products.length}
+          </Text>
+        </ScrollView>
+      </View>;
 
     return (
       <Container>
         <ProductListScreenHeader navigation={navigation} />
 
-        <ScrollView>
-          {loadingSpin ? <ProgressBar /> : <ProductList />}
-        </ScrollView>
+        {loadingSpin ? <ProgressBar /> : <ProductList />}
       </Container>
     );
   }
