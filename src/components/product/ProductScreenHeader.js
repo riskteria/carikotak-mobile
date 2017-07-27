@@ -41,6 +41,16 @@ class ProductScreenHeader extends Component {
     const { goBack, navigate } = this.props.navigation;
     const { product } = this.props;
 
+    const RightButton = () =>
+      <Right>
+        <Button transparent dark onPress={() => this._onPressedShare()}>
+          <Icon name="md-share" />
+        </Button>
+        <Button transparent danger onPress={() => navigate('Report')}>
+          <Icon name="ios-alert-outline" />
+        </Button>
+      </Right>;
+
     return (
       <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
         <Left>
@@ -53,14 +63,8 @@ class ProductScreenHeader extends Component {
             {product.name}
           </Title>
         </Body>
-        <Right>
-          <Button transparent dark onPress={() => this._onPressedShare()}>
-            <Icon name="md-share" />
-          </Button>
-          <Button transparent danger onPress={() => navigate('Report')}>
-            <Icon name="ios-alert-outline" />
-          </Button>
-        </Right>
+
+        {product ? <RightButton /> : <Right />}
       </Header>
     );
   }
