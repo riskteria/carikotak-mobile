@@ -77,7 +77,7 @@ class CardStory extends Component {
             style={{ paddingLeft: 0, paddingRight: 0 }}
           >
             <Text style={{ fontSize: 12 }}>
-              {story.total_comments} Komentar
+              {story.total_comments + ' Komentar'}
             </Text>
           </Button>
         </CardItem>
