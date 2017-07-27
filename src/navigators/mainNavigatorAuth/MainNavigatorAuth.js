@@ -66,7 +66,7 @@ const routeConfiguration = {
   ProductList: {
     screen: ProductListScreen,
     navigationOptions: {
-      title: 'Product List'
+      header: null
     }
   },
   Search: {
