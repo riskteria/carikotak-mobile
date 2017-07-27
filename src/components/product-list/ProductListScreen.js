@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
-import { Container, Text, View } from 'native-base';
+import { Container } from 'native-base';
 
 import { API } from 'services/APIService';
 
 import ProductListScreenHeader from './ProductListScreenHeader';
+import ProductList from './ProductList';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 class ProductListScreen extends Component {
   constructor(props) {
     super(props);
 
+    this._onRefresh = this._onRefresh.bind(this);
     this._onFetchProducts = this._onFetchProducts.bind(this);
     this._fetchProductsByCategory = this._fetchProductsByCategory.bind(this);
+    this._fetchAllCategories = this._fetchAllCategories.bind(this);
 
     this.state = {
       products: [],
+      categories: [],
+      refreshing: false,
       loadingSpin: false
     };
   }
@@ -23,7 +27,11 @@ class ProductListScreen extends Component {
   _fetchAllProducts() {
     API.get('api/product')
       .then(res => {
-        this.setState({ loadingSpin: false, products: res.data });
+        this.setState({
+          loadingSpin: false,
+          refreshing: false,
+          products: res.data
+        });
       })
       .catch(err => {
         this.setState({ loadingSpin: false });
@@ -34,10 +42,24 @@ class ProductListScreen extends Component {
   _fetchProductsByCategory(categoryId) {
     API.get('api/product?category=' + categoryId)
       .then(res => {
-        this.setState({ loadingSpin: false, products: res.data });
+        this.setState({
+          refreshing: false,
+          loadingSpin: false,
+          products: res.data
+        });
       })
       .catch(err => {
-        this.setState({ loadingSpin: false });
+        this.setState({ refreshing: false, loadingSpin: false });
+        throw err;
+      });
+  }
+
+  _fetchAllCategories() {
+    API.get('api/category')
+      .then(res => {
+        this.setState({ categories: res.data });
+      })
+      .catch(err => {
         throw err;
       });
   }
@@ -46,7 +68,19 @@ class ProductListScreen extends Component {
     const { navigation } = this.props;
     const params = navigation.state.params;
 
-    this.setState({ loadingSpin: true });
+    this.setState({ loadingSpin: true, refreshing: true });
+
+    if (params.hasOwnProperty('categoryId')) {
+      const categoryId = params.categoryId;
+      this._fetchProductsByCategory(categoryId);
+    }
+  }
+
+  _onRefresh() {
+    const { navigation } = this.props;
+    const params = navigation.state.params;
+
+    this.setState({ refreshing: true });
 
     if (params.hasOwnProperty('categoryId')) {
       const categoryId = params.categoryId;
@@ -55,27 +89,32 @@ class ProductListScreen extends Component {
   }
 
   componentWillMount() {
+    this._fetchAllCategories();
     this._onFetchProducts();
   }
 
   render() {
-    const { loadingSpin, products } = this.state;
+    const { loadingSpin, products, categories } = this.state;
     const { navigation } = this.props;
+    const { categoryId } = navigation.state.params;
 
-    const ProductList = () =>
-      <View>
-        <ScrollView>
-          <Text>
-            Product List, Total: {products.length}
-          </Text>
-        </ScrollView>
-      </View>;
+    const ProductListWrapper = () =>
+      <Container>
+        <ProductList
+          navigation={navigation}
+          categories={categories}
+          categoryId={categoryId}
+          products={products}
+          _onRefresh={this._onRefresh}
+          refreshing={this.state.refreshing}
+        />
+      </Container>;
 
     return (
       <Container>
         <ProductListScreenHeader navigation={navigation} />
 
-        {loadingSpin ? <ProgressBar /> : <ProductList />}
+        {loadingSpin ? <ProgressBar /> : <ProductListWrapper />}
       </Container>
     );
   }

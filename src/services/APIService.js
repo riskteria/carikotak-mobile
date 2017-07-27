@@ -7,7 +7,7 @@ const accessToken =
 
 export const API = axios.create({
   baseURL: API_URL,
-  timeout: 12000,
+  timeout: 120000,
   headers: {
     Accept: 'application/json',
     Content: 'application/json',
