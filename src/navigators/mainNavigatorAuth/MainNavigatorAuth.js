@@ -19,6 +19,9 @@ import AccountSetting from 'components/account-setting/AccountSettingScreen';
 import ProfileOptionScreen from 'components/profile-option/ProfileOptionScreen';
 import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
 
+// Report Component
+import ReportScreen from 'components/report/ReportScreen';
+
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
 const routeConfiguration = {
@@ -36,6 +39,13 @@ const routeConfiguration = {
     path: 'story/:slug',
     navigationOptions: {
       header: null
+    }
+  },
+
+  Report: {
+    screen: ReportScreen,
+    navigationOptions: {
+      title: 'Laporkan'
     }
   },
 

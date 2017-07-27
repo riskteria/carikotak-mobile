@@ -38,7 +38,7 @@ class ProductScreenHeader extends Component {
   }
 
   render() {
-    const { goBack } = this.props.navigation;
+    const { goBack, navigate } = this.props.navigation;
     const { product } = this.props;
 
     return (
@@ -57,7 +57,7 @@ class ProductScreenHeader extends Component {
           <Button transparent dark onPress={() => this._onPressedShare()}>
             <Icon name="md-share" />
           </Button>
-          <Button transparent danger onPress={() => null}>
+          <Button transparent danger onPress={() => navigate('Report')}>
             <Icon name="ios-alert-outline" />
           </Button>
         </Right>
