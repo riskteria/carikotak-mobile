@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, ToastAndroid } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
@@ -17,11 +17,32 @@ class ProductScreen extends Component {
     super(props);
 
     this._onGetProduct = this._onGetProduct.bind(this);
+    this._onFavoritePressed = this._onFavoritePressed.bind(this);
 
     this.state = {
       product: false,
       loadingSpin: false
     };
+  }
+
+  _onFavoritePressed() {
+    const { product } = this.state;
+
+    API.put('api/favorite/' + product.id + '?type=product')
+      .then(() => {
+        this.setState({
+          product: Object.assign({}, product, {
+            favorited: true
+          })
+        });
+        ToastAndroid.show('Produk ditambahkan ke favorit', ToastAndroid.SHORT);
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   _onGetProduct() {
@@ -57,7 +78,11 @@ class ProductScreen extends Component {
           </Content>
         </ScrollView>
 
-        <ProductScreenFooter product={product} navigation={navigation} />
+        <ProductScreenFooter
+          product={product}
+          navigation={navigation}
+          _onFavoritePressed={this._onFavoritePressed}
+        />
       </View>;
 
     return (

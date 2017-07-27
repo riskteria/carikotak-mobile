@@ -30,6 +30,13 @@ const styles = StyleSheet.create({
   footerColButton: {
     flex: 1
   },
+  footerColButtonIcon: {
+    fontSize: 14
+  },
+  footerColButtonText: {
+    fontSize: 12,
+    paddingLeft: 4
+  },
   infoContent: {
     paddingTop: 4,
     paddingBottom: 4,

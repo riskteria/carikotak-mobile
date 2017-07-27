@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ToastAndroid } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Footer, Button, Icon, Text } from 'native-base';
 import { Grid, Col } from 'react-native-easy-grid';
 
@@ -9,16 +9,11 @@ import colors from 'styles/_colors';
 class ProductScreenFooter extends Component {
   constructor(props) {
     super(props);
-
-    this._onFavoriteClicked = this._onFavoriteClicked.bind(this);
-  }
-
-  _onFavoriteClicked() {
-    ToastAndroid.show('Product added into favorite', ToastAndroid.SHORT);
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, product } = this.props;
+    const { _onFavoritePressed } = this.props;
 
     return (
       <Footer>
@@ -32,21 +27,31 @@ class ProductScreenFooter extends Component {
               light
               style={StyleSheet.flatten(styles.footerColButton)}
             >
-              <Icon name="md-mail" />
-              <Text>Send Message</Text>
+              <Icon
+                name="md-mail"
+                style={StyleSheet.flatten(styles.footerColButtonIcon)}
+              />
+              <Text style={StyleSheet.flatten(styles.footerColButtonText)}>
+                Kirim Pesan
+              </Text>
             </Button>
           </Col>
           <Col style={{ flex: 1, backgroundColor: colors.colorTomato }}>
             <Button
-              onPress={() => this._onFavoriteClicked()}
+              onPress={() => _onFavoritePressed()}
               small
               transparent
               block
               light
               style={StyleSheet.flatten(styles.footerColButton)}
             >
-              <Icon name="md-heart" />
-              <Text>Add to Favorite</Text>
+              <Icon
+                name="md-heart"
+                style={StyleSheet.flatten(styles.footerColButtonIcon)}
+              />
+              <Text style={StyleSheet.flatten(styles.footerColButtonText)}>
+                {product.favorited ? 'Hapus Favorit' : 'Tambah Favorit'}
+              </Text>
             </Button>
           </Col>
         </Grid>
