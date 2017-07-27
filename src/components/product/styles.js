@@ -63,7 +63,13 @@ const styles = StyleSheet.create({
   },
   infoUserChild: {
     justifyContent: 'center',
-    padding: 16
+    padding: 16,
+    borderColor: 'transparent',
+    borderWidth: 0
+  },
+  infoUserChildText: {
+    fontSize: 14,
+    color: colors.colorGrey
   }
 });
 
