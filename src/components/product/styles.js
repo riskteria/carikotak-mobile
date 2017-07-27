@@ -29,6 +29,41 @@ const styles = StyleSheet.create({
   },
   footerColButton: {
     flex: 1
+  },
+  infoContent: {
+    paddingTop: 4,
+    paddingBottom: 4,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  infoContentRating: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 4,
+    paddingBottom: 4
+  },
+  ratingText: {
+    marginLeft: 8,
+    fontSize: 14,
+    color: colors.colorAccent
+  },
+  infoName: {
+    fontSize: 28,
+    color: colors.colorDark,
+    fontWeight: '600'
+  },
+  infoPrice: {
+    fontSize: 16,
+    color: colors.colorAccent
+  },
+  infoOwner: {
+    color: colors.colorTomato
+  },
+  infoUserChild: {
+    justifyContent: 'center',
+    padding: 16
   }
 });
 
