@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Text,
-  Header,
-  Left,
-  Right,
-  Title,
-  Button,
-  Icon,
-  Body
-} from 'native-base';
+import { Container, Text } from 'native-base';
 
+import StoryScreenHeader from './StoryScreenHeader';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
-import colors from 'styles/_colors';
 import { API } from 'services/APIService';
 
 class StoryScreen extends Component {
@@ -47,7 +37,7 @@ class StoryScreen extends Component {
 
   render() {
     const { loadingSpin, story } = this.state;
-    const { goBack } = this.props.navigation;
+    const { navigation } = this.props;
 
     const StoryDetail = () =>
       <Text>
@@ -56,19 +46,7 @@ class StoryScreen extends Component {
 
     return (
       <Container>
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Left>
-            <Button transparent dark onPress={() => goBack()}>
-              <Icon name="md-arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={{ color: colors.colorBlack }}>
-              {story.title}
-            </Title>
-          </Body>
-          <Right />
-        </Header>
+        <StoryScreenHeader story={story} navigation={navigation} />
         {loadingSpin ? <ProgressBar /> : <StoryDetail />}
       </Container>
     );
