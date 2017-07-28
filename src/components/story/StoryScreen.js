@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { View, ScrollView } from 'react-native';
+import { Container, Content } from 'native-base';
 
 import StoryScreenHeader from './StoryScreenHeader';
+import StoryScreeninfo from './StoryScreenInfo';
+import StoryScreenSwiper from './StoryScreenSwiper';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import { API } from 'services/APIService';
 
@@ -22,8 +25,7 @@ class StoryScreen extends Component {
 
     API.get(`api/post/${this.props.navigation.state.params.slug}`)
       .then(res => {
-        this.setState({ loadingSpin: false });
-        this.setState({ story: res.data });
+        this.setState({ loadingSpin: false, story: res.data });
       })
       .catch(err => {
         this.setState({ loadingSpin: false });
@@ -40,9 +42,14 @@ class StoryScreen extends Component {
     const { navigation } = this.props;
 
     const StoryDetail = () =>
-      <Text>
-        {this.state.story.title}
-      </Text>;
+      <View>
+        <ScrollView>
+          <Content>
+            <StoryScreenSwiper story={story} />
+            <StoryScreeninfo story={story} />
+          </Content>
+        </ScrollView>
+      </View>;
 
     return (
       <Container>

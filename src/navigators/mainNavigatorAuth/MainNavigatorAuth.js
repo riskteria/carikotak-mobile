@@ -78,7 +78,7 @@ const routeConfiguration = {
   StoryList: {
     screen: StoryListScreen,
     navigationOptions: {
-      title: 'Story List'
+      header: null
     }
   },
 
