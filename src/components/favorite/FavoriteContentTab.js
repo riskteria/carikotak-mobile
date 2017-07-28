@@ -12,7 +12,7 @@ class FeedContentTab extends Component {
 
     return (
       <Tabs
-        locked={false}
+        locked={true}
         tabBarUnderlineStyle={StyleSheet.flatten(styles.tabUnderlineStyle)}
       >
         <Tab

@@ -23,7 +23,15 @@ class TabStory extends Component {
   }
 
   _onRefresh() {
-    //
+    this.setState({ refreshing: true });
+    API.get('api/me/favorite-posts')
+      .then(res => {
+        this.setState({ refreshing: false, stories: res.data });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        throw err;
+      });
   }
 
   _onFetchFavorites() {
