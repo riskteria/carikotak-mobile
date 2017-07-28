@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
   cardProductContainer: {
     backgroundColor: colors.colorLight,
     flex: 1,
+    marginTop: 8,
+    marginBottom: 8,
     paddingLeft: 16,
     paddingRight: 16,
     borderBottomWidth: 1,

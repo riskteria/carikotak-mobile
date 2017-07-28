@@ -49,7 +49,7 @@ class ProductScreen extends Component {
   _onUnFavoritePressed() {
     const { product } = this.state;
 
-    API.delete('api/favorite/' + product.id + '?type=post')
+    API.delete('api/favorite/' + product.id + '?type=product')
       .then(() => {
         this.setState({
           product: Object.assign({}, product, {

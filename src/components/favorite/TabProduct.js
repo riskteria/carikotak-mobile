@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { Container } from 'native-base';
 
-import CardProduct from './CardProduct';
+import ProductList from './ProductList';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 
 import { API } from 'services/APIService';
@@ -11,11 +11,26 @@ class TabStory extends Component {
     super(props);
 
     this._onFetchFavorites = this._onFetchFavorites.bind(this);
+    this._onRefresh = this._onRefresh.bind(this);
 
     this.state = {
-      favorites: [],
+      products: [],
+      refreshing: false,
       loadingSpinner: false
     };
+  }
+
+  _onRefresh() {
+    this.setState({ refreshing: true });
+
+    API.get('api/me/favorite-products')
+      .then(res => {
+        this.setState({ refreshing: false, products: res.data });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        throw err;
+      });
   }
 
   _onFetchFavorites() {
@@ -23,7 +38,7 @@ class TabStory extends Component {
 
     API.get('api/me/favorite-products')
       .then(res => {
-        this.setState({ loadingSpinner: false, favorites: res.data });
+        this.setState({ loadingSpinner: false, products: res.data });
       })
       .catch(err => {
         this.setState({ loadingSpinner: false });
@@ -37,23 +52,22 @@ class TabStory extends Component {
 
   render() {
     const { navigation } = this.props;
-    const { navigate } = navigation;
-    const { loadingSpinner, favorites } = this.state;
+    const { loadingSpinner, products } = this.state;
 
-    const ProductCard = favorites.map((product, index) =>
-      <TouchableOpacity
-        activeOpacity={0.9}
-        key={index}
-        onPress={() => navigate('Product', { slug: product.slug })}
-      >
-        <CardProduct key={index} product={product} />
-      </TouchableOpacity>
-    );
+    const ProductListWrapper = () =>
+      <Container>
+        <ProductList
+          navigation={navigation}
+          products={products}
+          _onRefresh={this._onRefresh}
+          refreshing={this.state.refreshing}
+        />
+      </Container>;
 
     return (
-      <ScrollView>
-        {loadingSpinner ? <ProgressBar /> : ProductCard}
-      </ScrollView>
+      <Container>
+        {loadingSpinner ? <ProgressBar /> : <ProductListWrapper />}
+      </Container>
     );
   }
 }

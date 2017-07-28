@@ -72,7 +72,7 @@ class StoryCarousel extends Component {
     return (
       <View>
         <View style={styles.tabProductSectionTop}>
-          <Text style={styles.tabProductSectionLabel}>Cerita Terpopuler</Text>
+          <Text style={styles.tabProductSectionLabel}>Cerita Terbaru</Text>
           <Text
             onPress={() => navigate('StoryList')}
             style={styles.tabProductSectionLink}

@@ -19,7 +19,7 @@ class StoryListHeader extends Component {
           </Button>
         </Left>
         <Body>
-          <Title style={{ color: colors.colorBlack }}>Cerita</Title>
+          <Title style={{ color: colors.colorBlack }}>Cerita Terbaru</Title>
         </Body>
         <Right />
       </Header>

@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
+import { loadImageProduct } from 'services/ImageFetcher';
 import styles from './styles';
 
 class CardProduct extends Component {
   render() {
-    const { product } = this.props;
+    const { product, navigation } = this.props;
+    const { navigate } = navigation;
 
     return (
-      <View style={styles.cardProductContainer}>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        style={styles.cardProductContainer}
+        onPress={() => navigate('Product', { slug: product.slug })}
+      >
+        <View style={{ height: 200 }}>
+          <Image
+            style={{ flex: 1 }}
+            source={{ uri: loadImageProduct(product.image, 'medium') }}
+          />
+        </View>
         <View style={styles.cardProductFooter}>
           <Text style={styles.cardProductName} numberOfLines={2}>
             {product.name}
@@ -28,7 +40,7 @@ class CardProduct extends Component {
             <Text style={styles.cardProductLocation}>Medan</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
