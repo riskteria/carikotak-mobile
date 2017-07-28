@@ -17,6 +17,7 @@ class StoryScreen extends Component {
 
     this._onGetStory = this._onGetStory.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
+    this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
 
     this.state = {
       story: false,
@@ -35,6 +36,26 @@ class StoryScreen extends Component {
           })
         });
         ToastAndroid.show('Produk ditambahkan ke favorit', ToastAndroid.SHORT);
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onUnFavoritePressed() {
+    const { story } = this.state;
+
+    API.delete('api/favorite/' + story.id + '?type=post')
+      .then(() => {
+        this.setState({
+          story: Object.assign({}, story, {
+            favorited: false
+          })
+        });
+        ToastAndroid.show('Produk dihapus dari favorit', ToastAndroid.SHORT);
       })
       .catch(err => {
         ToastAndroid.show(
@@ -78,6 +99,7 @@ class StoryScreen extends Component {
           story={story}
           navigation={navigation}
           _onFavoritePressed={this._onFavoritePressed}
+          _onUnFavoritePressed={this._onUnFavoritePressed}
         />
       </View>;
 

@@ -13,14 +13,15 @@ class StoryScrennFooter extends Component {
 
   render() {
     const { story } = this.props;
-    const { _onFavoritePressed } = this.props;
+    const { _onFavoritePressed, _onUnFavoritePressed } = this.props;
 
     return (
       <Footer>
         <Grid>
           <Col style={{ flex: 1, backgroundColor: colors.colorTomato }}>
             <Button
-              onPress={() => _onFavoritePressed()}
+              onPress={() =>
+                story.favorited ? _onUnFavoritePressed() : _onFavoritePressed()}
               small
               transparent
               block
