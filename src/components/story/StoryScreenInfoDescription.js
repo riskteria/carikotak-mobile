@@ -6,15 +6,15 @@ import HTMLView from 'react-native-htmlview';
 import htmlStyleSheet from './htmlStyleSheet';
 import styles from './styles';
 
-class ProductScreenInfoDescription extends Component {
+class StoryScreenInfoDescription extends Component {
   render() {
-    const { product } = this.props;
+    const { story } = this.props;
 
     return (
       <Content style={StyleSheet.flatten(styles.infoSection)}>
         <Content>
           <HTMLView
-            value={product.description}
+            value={story.body}
             stylesheet={htmlStyleSheet}
             style={styles.htmlViewStyle}
           />
@@ -24,4 +24,4 @@ class ProductScreenInfoDescription extends Component {
   }
 }
 
-export default ProductScreenInfoDescription;
+export default StoryScreenInfoDescription;

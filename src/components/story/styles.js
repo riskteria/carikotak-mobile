@@ -56,5 +56,11 @@ export default StyleSheet.create({
   infoUserChildText: {
     fontSize: 14,
     color: colors.colorGrey
+  },
+  htmlViewStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap'
   }
 });
