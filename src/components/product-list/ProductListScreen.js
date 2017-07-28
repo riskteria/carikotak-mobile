@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
 
 import { API } from 'services/APIService';
@@ -6,6 +7,8 @@ import { API } from 'services/APIService';
 import ProductListScreenHeader from './ProductListScreenHeader';
 import ProductList from './ProductList';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+
+import styles from './styles';
 
 class ProductListScreen extends Component {
   constructor(props) {
@@ -104,7 +107,7 @@ class ProductListScreen extends Component {
     const { navigation } = this.props;
 
     const ProductListWrapper = () =>
-      <Container>
+      <Container style={StyleSheet.flatten(styles.productListScreenContainer)}>
         <ProductList
           navigation={navigation}
           categories={categories}

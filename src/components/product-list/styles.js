@@ -7,6 +7,10 @@ width = width / 2;
 import colors from 'styles/_colors';
 
 export default StyleSheet.create({
+  productListScreenContainer: {
+    backgroundColor: colors.colorLight,
+    flex: 1
+  },
   cardProductFooterCol: {
     paddingTop: 3.2,
     paddingBottom: 1.6,
