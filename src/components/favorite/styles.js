@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   cardContainer: {
+    elevation: 0,
     marginTop: 8,
     marginBottom: 8,
     paddingBottom: 16,
@@ -101,6 +102,11 @@ const styles = StyleSheet.create({
   cardProductLocation: {
     fontWeight: 'bold',
     color: colors.colorDark
+  },
+  cardFooterInfo: {
+    fontSize: 14,
+    color: colors.colorTomato,
+    marginRight: 4
   }
 });
 

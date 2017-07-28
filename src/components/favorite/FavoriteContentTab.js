@@ -8,7 +8,7 @@ import TabStory from './TabStory';
 
 class FeedContentTab extends Component {
   render() {
-    const navigate = this.props.navigate;
+    const { navigation } = this.props;
 
     return (
       <Tabs
@@ -22,7 +22,7 @@ class FeedContentTab extends Component {
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
           activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
         >
-          <TabStory navigate={navigate} />
+          <TabStory navigation={navigation} />
         </Tab>
         <Tab
           heading="KOTAK"
@@ -31,7 +31,7 @@ class FeedContentTab extends Component {
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
           activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
         >
-          <TabProduct navigate={navigate} />
+          <TabProduct navigation={navigation} />
         </Tab>
       </Tabs>
     );

@@ -36,7 +36,8 @@ class TabStory extends Component {
   }
 
   render() {
-    const { navigate } = this.props;
+    const { navigation } = this.props;
+    const { navigate } = navigation;
     const { loadingSpinner, favorites } = this.state;
 
     const ProductCard = favorites.map((product, index) =>

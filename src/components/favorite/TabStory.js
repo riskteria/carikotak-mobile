@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { Container } from 'native-base';
 
-import CardStory from './CardStory';
 import styles from './styles';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import StoryList from './StoryList';
 
 import { API } from 'services/APIService';
 
@@ -12,11 +12,17 @@ class TabStory extends Component {
     super(props);
 
     this._onFetchFavorites = this._onFetchFavorites.bind(this);
+    this._onRefresh = this._onRefresh.bind(this);
 
     this.state = {
-      favorites: [],
+      sotries: [],
+      refreshing: false,
       loadingSpinner: false
     };
+  }
+
+  _onRefresh() {
+    //
   }
 
   _onFetchFavorites() {
@@ -24,7 +30,7 @@ class TabStory extends Component {
 
     API.get('api/me/favorite-posts')
       .then(res => {
-        this.setState({ loadingSpinner: false, favorites: res.data });
+        this.setState({ loadingSpinner: false, stories: res.data });
       })
       .catch(err => {
         this.setState({ loadingSpinner: false });
@@ -37,23 +43,23 @@ class TabStory extends Component {
   }
 
   render() {
-    const { navigate } = this.props;
-    const { loadingSpinner, favorites } = this.state;
+    const { navigation } = this.props;
+    const { loadingSpinner, stories, refreshing } = this.state;
 
-    const storyCard = favorites.map((story, index) =>
-      <TouchableOpacity
-        activeOpacity={0.9}
-        key={index}
-        onPress={() => navigate('Story', { slug: story.slug })}
-      >
-        <CardStory key={index} story={story} />
-      </TouchableOpacity>
-    );
+    const StoryListWrapper = () =>
+      <Container>
+        <StoryList
+          stories={stories}
+          navigation={navigation}
+          refreshing={refreshing}
+          _onRefresh={this._onRefresh}
+        />
+      </Container>;
 
     return (
-      <ScrollView style={styles.tabSection}>
-        {loadingSpinner ? <ProgressBar /> : storyCard}
-      </ScrollView>
+      <Container style={styles.tabSection}>
+        {loadingSpinner ? <ProgressBar /> : <StoryListWrapper />}
+      </Container>
     );
   }
 }

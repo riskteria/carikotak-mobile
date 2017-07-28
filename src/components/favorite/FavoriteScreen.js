@@ -5,18 +5,15 @@ import styles from './styles';
 import FavoriteContentTab from './FavoriteContentTab';
 
 class FavoriteScreen extends Component {
+  render() {
+    const { navigation } = this.props;
 
-	render () {
-
-		const { navigate } = this.props.navigation;
-
-		return (
-			<Container>
-				<FavoriteContentTab navigate={navigate} />
-			</Container>
-		);
-	}
-
+    return (
+      <Container>
+        <FavoriteContentTab navigation={navigation} />
+      </Container>
+    );
+  }
 }
 
 export default FavoriteScreen;
