@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { FlatList, View, Picker } from 'react-native';
+import { FlatList } from 'react-native';
 
+import ProductListCategory from './ProductListCategory';
 import CardProduct from './CardProduct';
 
 import styles from './styles';
@@ -17,40 +18,16 @@ class ProductList extends Component {
   }
 
   render() {
-    const {
-      products,
-      navigation,
-      _onRefresh,
-      refreshing,
-      categories
-    } = this.props;
-
-    const { navigate } = navigation;
+    const { products, navigation, _onRefresh, refreshing } = this.props;
 
     const _keyExtractor = (item, index) => item.id;
 
     const _renderItem = ({ item }) =>
       <CardProduct product={item} navigation={navigation} />;
 
-    const _itemPicker = () =>
-      categories.map((category, index) =>
-        <Picker.Item label={category.name} value={category.id} key={index} />
-      );
-
-    const _renderItemHeader = () =>
-      <View>
-        <Picker
-          selectedValue={this.state.category}
-          onValueChange={(value, index) =>
-            navigate('ProductList', { categoryId: value })}
-        >
-          {_itemPicker()}
-        </Picker>
-      </View>;
-
     return (
       <FlatList
-        ListHeaderComponent={_renderItemHeader()}
+        ListHeaderComponent={<ProductListCategory navigation={navigation} />}
         contentContainerStyle={styles.productListHorizontal}
         refreshing={refreshing}
         onRefresh={() => _onRefresh()}

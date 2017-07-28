@@ -1,4 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+let { width } = Dimensions.get('window');
+
+width = width / 2;
 
 import colors from 'styles/_colors';
 
@@ -51,5 +55,24 @@ export default StyleSheet.create({
     backgroundColor: colors.colorLight,
     paddingBottom: 16,
     borderBottomColor: colors.colorBorderLight
+  },
+  CategoryListWrapper: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  CategoryWrapper: {
+    width: width - 8,
+    padding: 8
+  },
+  CategoryButton: {
+    padding: 0,
+    elevation: 0,
+    borderRadius: 5
+  },
+  CategoryText: {
+    fontSize: 10,
+    textAlign: 'center'
   }
 });
