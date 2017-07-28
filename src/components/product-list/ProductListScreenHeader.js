@@ -20,8 +20,8 @@ class ProductListScreenHeader extends Component {
     };
   }
 
-  _onSearchSubmited(query) {
-    this.props.navigation.navigate('ProductList', { query });
+  _onSearchSubmited(keyword) {
+    this.props.navigation.navigate('ProductList', { keyword });
     this.setState({ modalSearchVisible: false });
   }
 

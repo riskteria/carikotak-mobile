@@ -9,10 +9,10 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
 
-    const { categoryId } = this.props;
+    const { category } = this.props;
 
     this.state = {
-      category: categoryId
+      category: category
     };
   }
 

@@ -47,7 +47,7 @@ class SearchScreenCategory extends Component {
             dark
             block
             style={StyleSheet.flatten(styles.CategoryButton)}
-            onPress={() => navigate('ProductList', { categoryId: category.id })}
+            onPress={() => navigate('ProductList', { category: category.id })}
           >
             <Text>
               {category.name}

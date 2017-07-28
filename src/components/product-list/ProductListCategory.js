@@ -47,7 +47,7 @@ class ProductListCategory extends Component {
             block
             light
             style={StyleSheet.flatten(styles.CategoryButton)}
-            onPress={() => navigate('ProductList', { categoryId: category.id })}
+            onPress={() => navigate('ProductList', { category: category.id })}
           >
             <Text style={StyleSheet.flatten(styles.CategoryText)}>
               {category.name}

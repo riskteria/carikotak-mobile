@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
+import queryString from 'query-string';
 
 import { API } from 'services/APIService';
 
@@ -17,7 +18,6 @@ class ProductListScreen extends Component {
     this._onRefresh = this._onRefresh.bind(this);
     this._onFetchProducts = this._onFetchProducts.bind(this);
     this._fetchProductsByParams = this._fetchProductsByParams.bind(this);
-    this._fetchProductsByCategory = this._fetchProductsByCategory.bind(this);
     this._fetchAllCategories = this._fetchAllCategories.bind(this);
 
     this.state = {
@@ -44,14 +44,8 @@ class ProductListScreen extends Component {
   }
 
   _fetchProductsByParams(params) {
-    if (params.hasOwnProperty('categoryId')) {
-      const categoryId = params.categoryId;
-      this._fetchProductsByCategory(categoryId);
-    }
-  }
-
-  _fetchProductsByCategory(categoryId) {
-    API.get('api/product?category=' + categoryId)
+    const query = queryString.stringify(params);
+    API.get('api/product?' + query)
       .then(res => {
         this.setState({
           refreshing: false,
@@ -83,7 +77,7 @@ class ProductListScreen extends Component {
       return;
     }
 
-    this.setState({ loadingSpin: true, refreshing: true });
+    this.setState({ loadingSpin: true });
 
     this._fetchProductsByParams(params);
   }

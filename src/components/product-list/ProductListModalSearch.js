@@ -9,7 +9,7 @@ class ProductListModalSearch extends Component {
     super(props);
 
     this.state = {
-      query: ''
+      keyword: ''
     };
   }
 
@@ -40,10 +40,10 @@ class ProductListModalSearch extends Component {
           <Item style={{ backgroundColor: colors.colorSmoke }}>
             <Icon name="ios-search" />
             <Input
-              onChangeText={text => this.setState({ query: text })}
+              onChangeText={text => this.setState({ keyword: text })}
               placeholder="Search"
               autoFocus={true}
-              onSubmitEditing={() => _onSearchSubmited(this.state.query)}
+              onSubmitEditing={() => _onSearchSubmited(this.state.keyword)}
             />
           </Item>
         </Header>
