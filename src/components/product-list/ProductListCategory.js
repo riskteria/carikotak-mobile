@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Content, View, Button, Text, Icon } from 'native-base';
+import { Content, View, Button, Text } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import { API } from 'services/APIService';

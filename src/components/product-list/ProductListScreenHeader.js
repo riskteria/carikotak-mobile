@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
+import ProductListModalFilter from './ProductListModalFilter';
+import ProductListModalSearch from './ProductListModalSearch';
+
 import colors from 'styles/_colors';
 
 class ProductListScreenHeader extends Component {
   constructor(props) {
     super(props);
+
+    this._onModalFilterToggled = this._onModalFilterToggled.bind(this);
+    this._onModalSearchToggled = this._onModalSearchToggled.bind(this);
+
+    this.state = {
+      modalSearchVisible: false,
+      modalFilterVisible: false
+    };
+  }
+
+  _onModalSearchToggled() {
+    this.setState({ modalSearchVisible: !this.state.modalSearchVisible });
+  }
+
+  _onModalFilterToggled() {
+    this.setState({ modalFilterVisible: !this.state.modalFilterVisible });
   }
 
   render() {
+    const { modalFilterVisible, modalSearchVisible } = this.state;
     const { goBack } = this.props.navigation;
 
     return (
@@ -23,12 +43,27 @@ class ProductListScreenHeader extends Component {
         </Body>
         <Right>
           <Button transparent dark>
-            <Icon name="md-search" />
+            <Icon
+              name="md-search"
+              onPress={() => this._onModalSearchToggled()}
+            />
           </Button>
           <Button transparent dark>
-            <Icon name="md-options" />
+            <Icon
+              name="md-options"
+              onPress={() => this._onModalFilterToggled()}
+            />
           </Button>
         </Right>
+
+        <ProductListModalFilter
+          modalFilterVisible={modalFilterVisible}
+          _onModalFilterToggled={this._onModalFilterToggled}
+        />
+        <ProductListModalSearch
+          modalSearchVisible={modalSearchVisible}
+          _onModalSearchToggled={this._onModalSearchToggled}
+        />
       </Header>
     );
   }
