@@ -26,10 +26,13 @@ class ProductListModalFilter extends Component {
 
     this.state = {
       loadingSpin: false,
+
+      locations: [],
+      cities: [],
       province: '',
       city: '',
-      locations: [],
-      cities: []
+      type: '',
+      condition: ''
     };
   }
 
@@ -70,7 +73,15 @@ class ProductListModalFilter extends Component {
   _fetchAllCategories() {}
 
   render() {
-    const { loadingSpin, province, city, locations, cities } = this.state;
+    const {
+      loadingSpin,
+      province,
+      city,
+      locations,
+      cities,
+      type,
+      condition
+    } = this.state;
 
     const {
       modalFilterVisible,
@@ -97,22 +108,30 @@ class ProductListModalFilter extends Component {
         )}
       </Picker>;
 
-    const LocationPicker = () =>
-      <Content
-        style={{
-          padding: 16
-        }}
-      >
-        <ProvincePicker />
-        <CityPicker />
-        <Button block onPress={() => _onFilterChanged(province, city)}>
-          <Text> Ubah Filter </Text>
-        </Button>
-      </Content>;
+    const TypePicker = () =>
+      <Picker>
+        <Picker.Item label="Jual" value="jual" />
+        <Picker.Item label="Cari" value="cari" />
+      </Picker>;
+
+    const ConditionPicker = () =>
+      <Picker>
+        <Picker.Item label="Baru" value="new" />
+        <Picker.Item label="Bekas" value="second" />
+      </Picker>;
 
     const ModalFilter = () =>
-      <Content>
-        <LocationPicker />
+      <Content style={{ padding: 16 }}>
+        <ProvincePicker />
+        <CityPicker />
+        <TypePicker />
+        <ConditionPicker />
+        <Button
+          block
+          onPress={() => _onFilterChanged(province, city, type, condition)}
+        >
+          <Text> Ubah Filter </Text>
+        </Button>
       </Content>;
 
     return (

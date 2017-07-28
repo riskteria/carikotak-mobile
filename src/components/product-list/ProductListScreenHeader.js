@@ -19,12 +19,14 @@ class ProductListScreenHeader extends Component {
       modalSearchVisible: false,
       modalFilterVisible: false,
       province: '',
-      city: ''
+      city: '',
+      type: '',
+      condition: ''
     };
   }
 
-  _onFilterChanged(province = '', city = '') {
-    this.setState({ province, city });
+  _onFilterChanged(province = '', city = '', type = '', condition = '') {
+    this.setState({ province, city, type, condition });
     this._onModalFilterToggled();
   }
 
