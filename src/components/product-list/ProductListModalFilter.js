@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Picker } from 'react-native';
+import { Modal } from 'react-native';
 import {
   Header,
   Left,
@@ -8,7 +8,8 @@ import {
   Body,
   Text,
   Container,
-  Content
+  Picker,
+  Form
 } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
@@ -20,6 +21,8 @@ class ProductListModalFilter extends Component {
   constructor(props) {
     super(props);
 
+    this._onConditionValueChanged = this._onConditionValueChanged.bind(this);
+    this._onTypeValueChanged = this._onTypeValueChanged.bind(this);
     this._onCityValueChanged = this._onCityValueChanged.bind(this);
     this._onProvinceValueChanged = this._onProvinceValueChanged.bind(this);
     this._fetchAllLocation = this._fetchAllLocation.bind(this);
@@ -34,6 +37,14 @@ class ProductListModalFilter extends Component {
       type: '',
       condition: ''
     };
+  }
+
+  _onTypeValueChanged(type, index) {
+    this.setState({ type });
+  }
+
+  _onConditionValueChanged(condition, index) {
+    this.setState({ condition });
   }
 
   _onCityValueChanged(city, index) {
@@ -109,19 +120,22 @@ class ProductListModalFilter extends Component {
       </Picker>;
 
     const TypePicker = () =>
-      <Picker>
+      <Picker selectedValue={type} onValueChange={this._onTypeValueChanged}>
         <Picker.Item label="Jual" value="jual" />
         <Picker.Item label="Cari" value="cari" />
       </Picker>;
 
     const ConditionPicker = () =>
-      <Picker>
+      <Picker
+        selectedValue={condition}
+        onValueChange={this._onConditionValueChanged}
+      >
         <Picker.Item label="Baru" value="new" />
         <Picker.Item label="Bekas" value="second" />
       </Picker>;
 
     const ModalFilter = () =>
-      <Content style={{ padding: 16 }}>
+      <Form style={{ padding: 16 }}>
         <ProvincePicker />
         <CityPicker />
         <TypePicker />
@@ -132,7 +146,7 @@ class ProductListModalFilter extends Component {
         >
           <Text> Ubah Filter </Text>
         </Button>
-      </Content>;
+      </Form>;
 
     return (
       <Modal
