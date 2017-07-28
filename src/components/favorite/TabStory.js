@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
 
 import styles from './styles';
@@ -57,7 +58,7 @@ class TabStory extends Component {
       </Container>;
 
     return (
-      <Container style={styles.tabSection}>
+      <Container style={StyleSheet.flatten(styles.tabSection)}>
         {loadingSpinner ? <ProgressBar /> : <StoryListWrapper />}
       </Container>
     );

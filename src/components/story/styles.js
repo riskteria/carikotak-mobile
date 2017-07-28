@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native';
 import colors from 'styles/_colors';
 
 export default StyleSheet.create({
+  mainContainer: {
+    backgroundColor: colors.colorSmoke,
+    flex: 1
+  },
   swiperWrapper: {
     //
   },
@@ -56,6 +60,19 @@ export default StyleSheet.create({
   infoUserChildText: {
     fontSize: 14,
     color: colors.colorGrey
+  },
+  footerCol: {
+    backgroundColor: colors.colorAccent
+  },
+  footerColButton: {
+    flex: 1
+  },
+  footerColButtonIcon: {
+    fontSize: 14
+  },
+  footerColButtonText: {
+    fontSize: 12,
+    paddingLeft: 4
   },
   htmlViewStyle: {
     flex: 1,
