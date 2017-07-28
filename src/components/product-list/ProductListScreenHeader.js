@@ -21,7 +21,14 @@ class ProductListScreenHeader extends Component {
         <Body>
           <Title style={{ color: colors.colorBlack }}>Daftar Produk</Title>
         </Body>
-        <Right />
+        <Right>
+          <Button transparent dark>
+            <Icon name="md-search" />
+          </Button>
+          <Button transparent dark>
+            <Icon name="md-options" />
+          </Button>
+        </Right>
       </Header>
     );
   }
