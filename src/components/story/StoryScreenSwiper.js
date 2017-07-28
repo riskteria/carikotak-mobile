@@ -18,7 +18,7 @@ class StoryScreenSwiper extends Component {
         <Image
           key={index}
           style={styles.swiperSlide}
-          source={{ uri: loadImageProduct(image, 'medium') }}
+          source={{ uri: loadImageProduct(image, 'big') }}
         />
       );
     });

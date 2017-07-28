@@ -1,6 +1,10 @@
 import { API_URL } from 'react-native-dotenv';
 import { SQUARE_SMALL, SQUARE_MEDIUM, SQUARE_BIG } from 'constants/imageRatio';
-import { PORTRAIT_MEDIUM } from 'constants/imageRatio';
+import {
+  PORTRAIT_MEDIUM,
+  PORTRAIT_MEDIUM_BIG,
+  PORTRAIT_BIG
+} from 'constants/imageRatio';
 
 const USER_DEFAULT_IMAGE = API_URL + '/storage/users/default.png';
 const PRODUCT_DEFAULT_IMAGE = API_URL + '/';
@@ -37,6 +41,10 @@ export const loadImageProduct = (images = null, size = 'small') => {
   switch (size) {
     case 'medium':
       return PORTRAIT_MEDIUM + image;
+    case 'medium-big':
+      return PORTRAIT_MEDIUM_BIG + image;
+    case 'big':
+      return PORTRAIT_BIG + image;
     default:
       return PRODUCT_DEFAULT_IMAGE;
   }
@@ -48,6 +56,12 @@ export const loadImagePost = (image = null, size = 'small') => {
   }
 
   switch (size) {
+    case 'medium':
+      return PORTRAIT_MEDIUM + image;
+    case 'medium-big':
+      return PORTRAIT_MEDIUM_BIG + image;
+    case 'big':
+      return PORTRAIT_BIG + image;
     default:
       return POST_DEFAULT_IMAGE;
   }
