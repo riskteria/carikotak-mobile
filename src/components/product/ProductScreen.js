@@ -18,6 +18,7 @@ class ProductScreen extends Component {
 
     this._onGetProduct = this._onGetProduct.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
+    this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
 
     this.state = {
       product: false,
@@ -36,6 +37,26 @@ class ProductScreen extends Component {
           })
         });
         ToastAndroid.show('Produk ditambahkan ke favorit', ToastAndroid.SHORT);
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onUnFavoritePressed() {
+    const { product } = this.state;
+
+    API.delete('api/favorite/' + product.id + '?type=post')
+      .then(() => {
+        this.setState({
+          product: Object.assign({}, product, {
+            favorited: false
+          })
+        });
+        ToastAndroid.show('Produk dihapus dari favorit', ToastAndroid.SHORT);
       })
       .catch(err => {
         ToastAndroid.show(
@@ -82,6 +103,7 @@ class ProductScreen extends Component {
           product={product}
           navigation={navigation}
           _onFavoritePressed={this._onFavoritePressed}
+          _onUnFavoritePressed={this._onUnFavoritePressed}
         />
       </View>;
 

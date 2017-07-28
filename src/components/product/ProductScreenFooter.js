@@ -13,7 +13,7 @@ class ProductScreenFooter extends Component {
 
   render() {
     const { navigation, product } = this.props;
-    const { _onFavoritePressed } = this.props;
+    const { _onFavoritePressed, _onUnFavoritePressed } = this.props;
 
     return (
       <Footer>
@@ -38,7 +38,10 @@ class ProductScreenFooter extends Component {
           </Col>
           <Col style={{ flex: 1, backgroundColor: colors.colorTomato }}>
             <Button
-              onPress={() => _onFavoritePressed()}
+              onPress={() =>
+                product.favorited
+                  ? _onUnFavoritePressed()
+                  : _onFavoritePressed()}
               small
               transparent
               block
