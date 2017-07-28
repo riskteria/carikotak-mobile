@@ -19,7 +19,7 @@ class FeedScreen extends Component {
             <Image source={logo} style={{ width: 100, height: 15 }} />
           </Body>
           <Right style={{ position: 'absolute', right: 8 }}>
-            <Button transparent dark onPress={() => navigate('Search')}>
+            <Button transparent dark onPress={() => navigate('ProductList')}>
               <Icon name="ios-search" />
             </Button>
           </Right>

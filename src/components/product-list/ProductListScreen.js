@@ -68,10 +68,13 @@ class ProductListScreen extends Component {
     const { navigation } = this.props;
     const params = navigation.state.params;
 
-    this.setState({ loadingSpin: true, refreshing: true });
+    if (!params) {
+      return;
+    }
 
     if (params.hasOwnProperty('categoryId')) {
       const categoryId = params.categoryId;
+      this.setState({ loadingSpin: true, refreshing: true });
       this._fetchProductsByCategory(categoryId);
     }
   }
@@ -80,10 +83,13 @@ class ProductListScreen extends Component {
     const { navigation } = this.props;
     const params = navigation.state.params;
 
-    this.setState({ refreshing: true });
+    if (!params) {
+      return;
+    }
 
     if (params.hasOwnProperty('categoryId')) {
       const categoryId = params.categoryId;
+      this.setState({ refreshing: true });
       this._fetchProductsByCategory(categoryId);
     }
   }
@@ -96,14 +102,12 @@ class ProductListScreen extends Component {
   render() {
     const { loadingSpin, products, categories } = this.state;
     const { navigation } = this.props;
-    const { categoryId } = navigation.state.params;
 
     const ProductListWrapper = () =>
       <Container>
         <ProductList
           navigation={navigation}
           categories={categories}
-          categoryId={categoryId}
           products={products}
           _onRefresh={this._onRefresh}
           refreshing={this.state.refreshing}

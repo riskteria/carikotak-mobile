@@ -9,12 +9,6 @@ import styles from './styles';
 class ProductList extends Component {
   constructor(props) {
     super(props);
-
-    const { categoryId } = this.props;
-
-    this.state = {
-      category: categoryId
-    };
   }
 
   render() {
