@@ -13,16 +13,24 @@ class ProductListScreenHeader extends Component {
     this._onModalFilterToggled = this._onModalFilterToggled.bind(this);
     this._onModalSearchToggled = this._onModalSearchToggled.bind(this);
     this._onSearchSubmited = this._onSearchSubmited.bind(this);
+    this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
       modalSearchVisible: false,
-      modalFilterVisible: false
+      modalFilterVisible: false,
+      province: '',
+      city: ''
     };
+  }
+
+  _onFilterChanged(province = '', city = '') {
+    this.setState({ province, city });
+    this._onModalFilterToggled();
   }
 
   _onSearchSubmited(keyword) {
     this.props.navigation.navigate('ProductList', { keyword });
-    this.setState({ modalSearchVisible: false });
+    this._onModalSearchToggled();
   }
 
   _onModalSearchToggled() {
@@ -66,6 +74,7 @@ class ProductListScreenHeader extends Component {
         <ProductListModalFilter
           modalFilterVisible={modalFilterVisible}
           navigation={navigation}
+          _onFilterChanged={this._onFilterChanged}
           _onModalFilterToggled={this._onModalFilterToggled}
         />
         <ProductListModalSearch

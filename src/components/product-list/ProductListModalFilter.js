@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-native';
+import { Modal, Picker } from 'react-native';
 import {
   Header,
   Left,
@@ -11,6 +11,7 @@ import {
   Content
 } from 'native-base';
 
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import colors from 'styles/_colors';
 
 import { API } from 'services/APIService';
@@ -19,37 +20,100 @@ class ProductListModalFilter extends Component {
   constructor(props) {
     super(props);
 
+    this._onCityValueChanged = this._onCityValueChanged.bind(this);
+    this._onProvinceValueChanged = this._onProvinceValueChanged.bind(this);
     this._fetchAllLocation = this._fetchAllLocation.bind(this);
 
     this.state = {
       loadingSpin: false,
-      selectedProvince: {
-        id: '',
-        name: ''
-      },
-      selectedCity: {
-        id: '',
-        name: ''
-      },
+      province: '',
+      city: '',
       locations: [],
       cities: []
     };
   }
 
+  _onCityValueChanged(city, index) {
+    this.setState({ city });
+  }
+
+  _onProvinceValueChanged(province, index) {
+    const selectedProvince = this.state.locations.find(
+      location => location.id === province
+    );
+    this.setState({ province });
+
+    this.setState({
+      cities: selectedProvince.cities
+    });
+  }
+
   _fetchAllLocation() {
-    this.setState({ loadingSpin: true });
+    this.setState({
+      loadingSpin: true
+    });
     API.get('api/location?get=province&with=cities')
       .then(res => {
-        this.setState({ loadingSpin: false, locations: res.data });
+        this.setState({
+          loadingSpin: false,
+          locations: res.data
+        });
       })
       .catch(err => {
-        this.setState({ loadingSpin: false });
+        this.setState({
+          loadingSpin: false
+        });
         throw err;
       });
   }
 
+  _fetchAllCategories() {}
+
   render() {
-    const { modalFilterVisible, _onModalFilterToggled } = this.props;
+    const { loadingSpin, province, city, locations, cities } = this.state;
+
+    const {
+      modalFilterVisible,
+      _onModalFilterToggled,
+      _onFilterChanged
+    } = this.props;
+
+    const ProvincePicker = () =>
+      <Picker
+        selectedValue={province}
+        onValueChange={this._onProvinceValueChanged}
+      >
+        <Picker.Item label="Pilih Provinsi" value="" />
+        {locations.map((location, index) =>
+          <Picker.Item label={location.name} value={location.id} key={index} />
+        )}
+      </Picker>;
+
+    const CityPicker = () =>
+      <Picker selectedValue={city} onValueChange={this._onCityValueChanged}>
+        <Picker.Item label="Pilih Kota" value="" />
+        {cities.map((c, index) =>
+          <Picker.Item label={c.name} value={c.id} key={index} />
+        )}
+      </Picker>;
+
+    const LocationPicker = () =>
+      <Content
+        style={{
+          padding: 16
+        }}
+      >
+        <ProvincePicker />
+        <CityPicker />
+        <Button block onPress={() => _onFilterChanged(province, city)}>
+          <Text> Ubah Filter </Text>
+        </Button>
+      </Content>;
+
+    const ModalFilter = () =>
+      <Content>
+        <LocationPicker />
+      </Content>;
 
     return (
       <Modal
@@ -59,20 +123,27 @@ class ProductListModalFilter extends Component {
         visible={modalFilterVisible}
         onRequestClose={() => _onModalFilterToggled()}
       >
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Left style={{ flex: 0.16 }}>
+        <Header
+          style={{
+            backgroundColor: colors.colorLight,
+            elevation: 1
+          }}
+        >
+          <Left
+            style={{
+              flex: 0.16
+            }}
+          >
             <Button transparent dark onPress={() => _onModalFilterToggled()}>
               <Icon name="md-close" />
             </Button>
           </Left>
           <Body>
-            <Text>Filter Modal</Text>
+            <Text> Filter Modal </Text>
           </Body>
         </Header>
         <Container>
-          <Content>
-            <Text>Hello</Text>
-          </Content>
+          {loadingSpin ? <ProgressBar /> : <ModalFilter />}
         </Container>
       </Modal>
     );
