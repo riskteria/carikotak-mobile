@@ -16,6 +16,7 @@ class ProductListScreen extends Component {
 
     this._onRefresh = this._onRefresh.bind(this);
     this._onFetchProducts = this._onFetchProducts.bind(this);
+    this._fetchProductsByParams = this._fetchProductsByParams.bind(this);
     this._fetchProductsByCategory = this._fetchProductsByCategory.bind(this);
     this._fetchAllCategories = this._fetchAllCategories.bind(this);
 
@@ -40,6 +41,13 @@ class ProductListScreen extends Component {
         this.setState({ loadingSpin: false });
         throw err;
       });
+  }
+
+  _fetchProductsByParams(params) {
+    if (params.hasOwnProperty('categoryId')) {
+      const categoryId = params.categoryId;
+      this._fetchProductsByCategory(categoryId);
+    }
   }
 
   _fetchProductsByCategory(categoryId) {
@@ -75,11 +83,9 @@ class ProductListScreen extends Component {
       return;
     }
 
-    if (params.hasOwnProperty('categoryId')) {
-      const categoryId = params.categoryId;
-      this.setState({ loadingSpin: true, refreshing: true });
-      this._fetchProductsByCategory(categoryId);
-    }
+    this.setState({ loadingSpin: true, refreshing: true });
+
+    this._fetchProductsByParams(params);
   }
 
   _onRefresh() {
@@ -89,12 +95,9 @@ class ProductListScreen extends Component {
     if (!params) {
       return;
     }
+    this.setState({ refreshing: true });
 
-    if (params.hasOwnProperty('categoryId')) {
-      const categoryId = params.categoryId;
-      this.setState({ refreshing: true });
-      this._fetchProductsByCategory(categoryId);
-    }
+    this._fetchProductsByParams(params);
   }
 
   componentWillMount() {

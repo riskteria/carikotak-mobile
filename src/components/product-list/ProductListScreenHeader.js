@@ -12,11 +12,17 @@ class ProductListScreenHeader extends Component {
 
     this._onModalFilterToggled = this._onModalFilterToggled.bind(this);
     this._onModalSearchToggled = this._onModalSearchToggled.bind(this);
+    this._onSearchSubmited = this._onSearchSubmited.bind(this);
 
     this.state = {
       modalSearchVisible: false,
       modalFilterVisible: false
     };
+  }
+
+  _onSearchSubmited(query) {
+    this.props.navigation.navigate('ProductList', { query });
+    this.setState({ modalSearchVisible: false });
   }
 
   _onModalSearchToggled() {
@@ -29,7 +35,8 @@ class ProductListScreenHeader extends Component {
 
   render() {
     const { modalFilterVisible, modalSearchVisible } = this.state;
-    const { goBack } = this.props.navigation;
+    const { navigation } = this.props;
+    const { goBack } = navigation;
 
     return (
       <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
@@ -58,10 +65,13 @@ class ProductListScreenHeader extends Component {
 
         <ProductListModalFilter
           modalFilterVisible={modalFilterVisible}
+          navigation={navigation}
           _onModalFilterToggled={this._onModalFilterToggled}
         />
         <ProductListModalSearch
           modalSearchVisible={modalSearchVisible}
+          navigation={navigation}
+          _onSearchSubmited={this._onSearchSubmited}
           _onModalSearchToggled={this._onModalSearchToggled}
         />
       </Header>
