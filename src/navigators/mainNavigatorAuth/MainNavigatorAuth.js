@@ -22,6 +22,10 @@ import ProfileSetting from 'components/profile-setting/ProfileSettingScreen';
 // Report Component
 import ReportScreen from 'components/report/ReportScreen';
 
+// Create Component
+import CreateProductScreen from 'components/create-product/CreateProductScreen';
+import CreateStoryScreen from 'components/create-story/CreateStoryScreen';
+
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
 const routeConfiguration = {
@@ -116,6 +120,20 @@ const routeConfiguration = {
 
   ProfileOption: {
     screen: ProfileOptionScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  // Create Tab Components
+  CreateProduct: {
+    screen: CreateProductScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  CreateStory: {
+    screen: CreateStoryScreen,
     navigationOptions: {
       header: null
     }

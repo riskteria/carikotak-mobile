@@ -1,23 +1,48 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Body, Right} from 'native-base';
+import {
+  Container,
+  Content,
+  Button,
+  Text,
+  Header,
+  Title,
+  Body
+} from 'native-base';
 
-import styles from './styles';
 import colors from 'styles/_colors';
 
 class CreateScreen extends Component {
+  render() {
+    const { navigation } = this.props;
+    const { navigate } = navigation;
 
-	render () {
-		return (
-			<Container>
-				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
-					<Body style={{ alignItems: 'flex-start', flex: 1}}>
-						<Title style={{ color: colors.colorDark }}>Kiriman Baru</Title>
-					</Body>
-				</Header>
-			</Container>
-		);
-	}
-
+    return (
+      <Container>
+        <Header style={{ backgroundColor: '#fff', elevation: 1 }}>
+          <Body style={{ alignItems: 'flex-start', flex: 1 }}>
+            <Title style={{ color: colors.colorDark }}>Kiriman Baru</Title>
+          </Body>
+        </Header>
+        <Content>
+          <Button
+            block
+            onPress={() => navigate('CreateProduct', { type: 'jual' })}
+          >
+            <Text>Jual Produk</Text>
+          </Button>
+          <Button
+            block
+            onPress={() => navigate('CreateProduct', { type: 'cari' })}
+          >
+            <Text>Cari Produk</Text>
+          </Button>
+          <Button block onPress={() => navigate('CreateStory')}>
+            <Text>Tambah Cerita</Text>
+          </Button>
+        </Content>
+      </Container>
+    );
+  }
 }
 
 export default CreateScreen;
