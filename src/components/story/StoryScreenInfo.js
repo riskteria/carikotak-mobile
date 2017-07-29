@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import StoryScreenInfoBasic from './StoryScreenInfoBasic';
+import StoryScreenInfoUser from './StoryScreenInfoUser';
 import StoryScreenInfoDescription from './StoryScreenInfoDescription';
 
 class StoryScreenInfo extends Component {
@@ -11,6 +12,7 @@ class StoryScreenInfo extends Component {
     return (
       <View>
         <StoryScreenInfoBasic story={story} />
+        <StoryScreenInfoUser story={story} />
         <StoryScreenInfoDescription story={story} />
       </View>
     );

@@ -116,15 +116,6 @@ class LoginScreen extends Component {
         >
           <Text style={{ color: colors.colorAccent }}>Login</Text>
         </Button>
-
-        <View style={styles.formGroup}>
-          <Text
-            onPress={() => navigate('Forgot')}
-            style={StyleSheet.flatten(styles.forgotPassword)}
-          >
-            Lupa Kata Sandi?
-          </Text>
-        </View>
       </ScrollView>
     );
   }

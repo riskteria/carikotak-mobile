@@ -16,9 +16,9 @@ import {
 import styles from './styles';
 import { loadImageUser } from 'services/ImageFetcher';
 
-class ProductScreenInfoUser extends Component {
+class StoryScreenInfoUser extends Component {
   render() {
-    const { product } = this.props;
+    const { story } = this.props;
 
     return (
       <Content>
@@ -26,9 +26,9 @@ class ProductScreenInfoUser extends Component {
           <CardItem>
             <Body>
               <Text>
-                Dijual oleh
+                Ditulis oleh
                 <Text style={StyleSheet.flatten(styles.infoOwner)}>
-                  {' ' + product.user.name}
+                  {' ' + story.user.name}
                 </Text>
               </Text>
               <Item>
@@ -37,14 +37,14 @@ class ProductScreenInfoUser extends Component {
                   style={StyleSheet.flatten(styles.infoUserChildText)}
                 />
                 <Text note>
-                  {product.user.email}
+                  {story.user.email}
                 </Text>
               </Item>
             </Body>
             <Thumbnail
               small
               circle
-              source={{ uri: loadImageUser(product.user.avatar) }}
+              source={{ uri: loadImageUser(story.user.avatar) }}
             />
           </CardItem>
           <CardItem cardBody>
@@ -56,7 +56,7 @@ class ProductScreenInfoUser extends Component {
                     style={StyleSheet.flatten(styles.infoUserChildText)}
                   />
                   <Text style={StyleSheet.flatten(styles.infoUserChildText)}>
-                    {product.user.total_product} Produk
+                    {story.user.total_story} Produk
                   </Text>
                 </Item>
               </Col>
@@ -67,7 +67,7 @@ class ProductScreenInfoUser extends Component {
                     style={StyleSheet.flatten(styles.infoUserChildText)}
                   />
                   <Text style={StyleSheet.flatten(styles.infoUserChildText)}>
-                    {product.user.total_post} Cerita
+                    {story.user.total_post} Cerita
                   </Text>
                 </Item>
               </Col>
@@ -79,4 +79,4 @@ class ProductScreenInfoUser extends Component {
   }
 }
 
-export default ProductScreenInfoUser;
+export default StoryScreenInfoUser;

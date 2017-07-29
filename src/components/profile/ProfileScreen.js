@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
-import {
-  Button,
-  Icon,
-  Body,
-  Title,
-  Header,
-  Right,
-  Container
-} from 'native-base';
+import { ScrollView, ToastAndroid } from 'react-native';
+import { Container } from 'native-base';
 
+import ProfileScreenHeader from './ProfileScreenHeader';
+import ProfileScreenCover from './ProfileScreenCover';
+
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import styles from './styles';
-import colors from 'styles/_colors';
 
 import { API } from 'services/APIService';
 
@@ -20,15 +15,25 @@ class ProfileScreen extends Component {
     super(props);
 
     this._onFetchProfileData = this._onFetchProfileData.bind(this);
+
+    this.state = {
+      me: false,
+      loadingSpin: false
+    };
   }
 
   _onFetchProfileData() {
+    this.setState({ loadingSpin: true });
     API.get('api/me')
       .then(res => {
-        console.log(res.data);
+        this.setState({ loadingSpin: false, me: res.data });
       })
       .catch(err => {
-        console.log(err.response);
+        this.setState({ loadingSpin: false });
+        ToastAndroid.show(
+          'Error ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
       });
   }
 
@@ -37,23 +42,18 @@ class ProfileScreen extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { loadingSpin } = this.state;
+    const { navigation } = this.props;
+
+    const ProfileInfo = () =>
+      <ScrollView style={styles.parentView}>
+        <ProfileScreenCover navigation={navigation} />
+      </ScrollView>;
 
     return (
       <Container>
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Body>
-            <Title>Profile Screen</Title>
-          </Body>
-
-          <Right>
-            <Button transparent dark onPress={() => navigate('ProfileOption')}>
-              <Icon name="md-more" />
-            </Button>
-          </Right>
-        </Header>
-
-        <ScrollView style={styles.parentView} />
+        <ProfileScreenHeader navigation={navigation} />
+        {loadingSpin ? <ProgressBar /> : <ProfileInfo />}
       </Container>
     );
   }

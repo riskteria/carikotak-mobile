@@ -9,7 +9,7 @@ class MessageList extends Component {
 
 		const navigate = this.props.navigate;
 
-		const MessageNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+		const MessageNumber = [1];
 		const ListMessageCard = MessageNumber.map((data, index) => (
 			<MessageCard data={data} key={index} navigate={navigate} />
 		));
