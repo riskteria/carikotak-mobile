@@ -85,6 +85,13 @@ class CreateProductForm extends Component {
         </View>
 
         <View style={StyleSheet.flatten(styles.sectionContainer)}>
+          <Label style={StyleSheet.flatten(styles.labelControl)}>
+            Material
+          </Label>
+          <MaterialPicker />
+        </View>
+
+        <View style={StyleSheet.flatten(styles.sectionContainer)}>
           <Label style={StyleSheet.flatten(styles.labelControl)}>Kondisi</Label>
           <ConditionPicker />
         </View>
@@ -96,6 +103,16 @@ class CreateProductForm extends Component {
           <Input multiline={true} numberOfLines={2} />
         </Item>
       </Content>;
+
+    const MaterialPicker = () =>
+      <Picker
+        mode="dropdown"
+        selectedValue={condition}
+        onValueChange={value => this.setState({ condition: value })}
+      >
+        <Picker.Item label="Ivory" value="new" />
+        <Picker.Item label="Bekas" value="second" />
+      </Picker>;
 
     const CategoryPicker = () =>
       <Picker
