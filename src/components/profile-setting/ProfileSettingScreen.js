@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Container } from 'native-base';
+
+import ProfileSettingForm from './ProfileSettingForm';
+import ProfileSettingHeader from './ProfileSettingHeader';
 
 class ProfileSettingScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-	constructor(props) {
-		super(props);
-	}
+  render() {
+    const { navigation } = this.props;
 
-	render() {
-		return (
-			<Container>
-				<Text>This is Profile Setting Screen</Text>
-			</Container>
-		);
-	}
+    return (
+      <Container>
+        <ProfileSettingHeader navigation={navigation} />
 
+        <ScrollView>
+          <ProfileSettingForm navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
 }
 
 export default ProfileSettingScreen;

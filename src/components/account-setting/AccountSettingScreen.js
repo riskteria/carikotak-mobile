@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Container } from 'native-base';
+
+import AccountSettingHeader from './AccountSettingHeader';
+import AccountSettingForm from './AccountSettingForm';
 
 class AccountSettingScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-	constructor(props) {
-		super(props);
-	}
+  render() {
+    const { navigation } = this.props;
 
-	render() {
-		return (
-			<Container>
-				<Text>This is the Setting Screen</Text>
-			</Container>
-		);
-	}
+    return (
+      <Container>
+        <AccountSettingHeader navigation={navigation} />
 
+        <ScrollView>
+          <AccountSettingForm navigation={navigation} />
+        </ScrollView>
+      </Container>
+    );
+  }
 }
 
 export default AccountSettingScreen;

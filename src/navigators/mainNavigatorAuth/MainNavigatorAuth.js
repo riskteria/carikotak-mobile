@@ -103,14 +103,14 @@ const routeConfiguration = {
   AccountSetting: {
     screen: AccountSetting,
     navigationOptions: {
-      title: 'Account Setting'
+      header: null
     }
   },
 
   ProfileSetting: {
     screen: ProfileSetting,
     navigationOptions: {
-      title: 'Profile Setting'
+      header: null
     }
   },
 
