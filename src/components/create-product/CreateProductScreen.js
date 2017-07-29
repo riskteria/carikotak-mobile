@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Text } from 'native-base';
+import { ScrollView, StyleSheet } from 'react-native';
+import { Container } from 'native-base';
+
+import CreateProductForm from './CreateProductForm';
+import CreateProductHeader from './CreateProductHeader';
+
+import styles from './styles';
 
 class CreateProductScreen extends Component {
   constructor(props) {
@@ -10,12 +16,12 @@ class CreateProductScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <Container>
-        <Text>
-          {navigation.state.params.type === 'jual'
-            ? 'Jual Produk'
-            : 'Cari Produk'}
-        </Text>
+      <Container style={StyleSheet.flatten(styles.mainContainer)}>
+        <CreateProductHeader navigation={navigation} />
+
+        <ScrollView>
+          <CreateProductForm navigation={navigation} />
+        </ScrollView>
       </Container>
     );
   }

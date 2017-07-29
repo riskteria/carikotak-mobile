@@ -34,6 +34,7 @@
     "react-native-splash-screen": "^2.1.0",
     "react-native-star-rating": "^1.0.7",
     "react-native-swiper": "^1.5.4",
+    "react-native-uploader": "^0.0.10",
     "react-native-webview-bridge": "^0.33.0",
     "react-native-zss-rich-text-editor": "^1.0.2",
     "react-navigation": "^1.0.0-beta.11",

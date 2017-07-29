@@ -77,6 +77,7 @@ class ProductListModalFilter extends Component {
         this.setState({
           loadingSpin: false
         });
+        P;
         throw err;
       });
   }
