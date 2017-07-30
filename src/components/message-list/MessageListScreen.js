@@ -1,38 +1,81 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
-import { Container, Header, Button, Icon, Title, Body, Right} from 'native-base';
+import { ToastAndroid } from 'react-native';
+import { Container } from 'native-base';
 
-import colors from 'styles/_colors';
-
+import MessageListHeader from './MessageListHeader';
 import MessageList from './MessageList';
 
+import colors from 'styles/_colors';
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+
+import { API } from 'services/APIService';
+
 class MessageScreen extends Component {
+  constructor(props) {
+    super(props);
 
-	render () {
+    this._fetchChannelList = this._fetchChannelList.bind(this);
+    this._onRefresh = this._onRefresh.bind(this);
 
-		const { navigate } = this.props.navigation;
+    this.state = {
+      loadingSpin: false,
+      refreshing: false,
+      channels: []
+    };
+  }
 
-		return (
-			<Container style={{ backgroundColor: colors.colorLight }}>
-				<Header style={{ backgroundColor: '#fff', elevation: 1 }}>
-					<Body style={{ alignItems: 'flex-start', flex: 1}}>
-						<Title style={{ color: colors.colorDark }}>Pesan</Title>
-					</Body>
-					<Right style={{ position: 'absolute', right: 8 }}>
-						<Button transparent dark onPress={() => navigate('Notification')}>
-							<Icon name="ios-notifications-outline" />
-						</Button>
-					</Right>
-				</Header>
+  _fetchChannelList() {
+    this.setState({ loadingSpin: true });
+    API.get('api/channel')
+      .then(res => {
+        this.setState({ loadingSpin: false, channels: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpin: false });
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
 
-				<ScrollView>
-					<MessageList navigate={navigate} />
-				</ScrollView>
+  _onRefresh() {
+    this.setState({ refreshing: true });
+    API.get('api/channel')
+      .then(res => {
+        this.setState({ refreshing: false, channels: res.data });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
 
-			</Container>
-		);
-	}
+  componentWillMount() {
+    this._fetchChannelList();
+  }
 
+  render() {
+    const { loadingSpin, channels, refreshing } = this.state;
+    const { navigation } = this.props;
+
+    return (
+      <Container style={{ backgroundColor: colors.colorLight }}>
+        <MessageListHeader navigation={navigation} />
+        {loadingSpin
+          ? <ProgressBar />
+          : <MessageList
+              navigation={navigation}
+              channels={channels}
+              _onRefresh={this._onRefresh}
+              refreshing={refreshing}
+            />}
+      </Container>
+    );
+  }
 }
 
 export default MessageScreen;

@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { TouchableNativeFeedback } from 'react-native';
 import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 
+import { loadImageUser } from 'services/ImageFetcher';
+
 class MessageCard extends Component {
   render() {
-    const navigate = this.props.navigate;
+    const { navigation, channel } = this.props;
+    const { navigate } = navigation;
 
     return (
       <TouchableNativeFeedback
@@ -15,12 +18,14 @@ class MessageCard extends Component {
           <CardItem style={{ backgroundColor: 'transparent' }}>
             <Left>
               <Thumbnail
-                source={{ uri: 'https://unsplash.it/300x300?random' }}
+                source={{ uri: loadImageUser(channel.communicant.avatar) }}
               />
               <Body>
-                <Text>Ovinsyah Al Bayhaqy</Text>
+                <Text>
+                  {channel.communicant.name}
+                </Text>
                 <Text numberOfLines={1} note>
-                  Halo gan, produknya masih ada?
+                  {channel.lastMessage.message}
                 </Text>
               </Body>
             </Left>
