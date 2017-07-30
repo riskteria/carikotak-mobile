@@ -64,7 +64,7 @@ const routeConfiguration = {
 const tabNavigatorConfiguration = {
   tabBarPosition: 'bottom',
   swipeEnabled: false,
-  lazy: false,
+  lazy: true,
   animationEnabled: true,
   tabBarOptions: {
     activeTintColor: '#1ba39c',

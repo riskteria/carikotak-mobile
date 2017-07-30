@@ -39,7 +39,11 @@ class ProfileScreen extends Component {
 
   componentWillMount() {
     this._onFetchProfileData();
-  }
+	}
+
+	componentDidUpdate() {
+		alert('ok')
+	}
 
   render() {
     const { loadingSpin } = this.state;
