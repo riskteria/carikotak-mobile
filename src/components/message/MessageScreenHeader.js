@@ -10,7 +10,7 @@ class ProductListScreenHeader extends Component {
 
   render() {
     const { navigation, channel } = this.props;
-    const { goBack, navigate } = navigation;
+    const { goBack } = navigation;
 
     return (
       <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
@@ -28,10 +28,7 @@ class ProductListScreenHeader extends Component {
             alignItems: 'center'
           }}
         >
-          <Title
-            style={{ color: colors.colorDark }}
-            onPress={() => alert('navigate')}
-          >
+          <Title style={{ color: colors.colorDark }} onPress={() => {}}>
             {channel.id ? channel.communicant.name : ''}
           </Title>
         </Body>

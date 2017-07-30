@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { ToastAndroid, Text } from 'react-native';
-import { Container, Thumbnail } from 'native-base';
+import { ToastAndroid } from 'react-native';
+import { Container } from 'native-base';
 import { GiftedChat } from 'react-native-gifted-chat';
 
 import MessageScreenHeader from './MessageScreenHeader';
-
-import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import colors from 'styles/_colors';
 import { API } from 'services/APIService';
 
 class MessageScreen extends Component {
   constructor(props) {
     super(props);
+
+    this._fetchUserData = this._fetchUserData.bind(this);
+    this._onMessageSend = this._onMessageSend.bind(this);
+    this._onMessageSent = this._onMessageSent.bind(this);
 
     this.state = {
       channel: {
@@ -25,6 +27,32 @@ class MessageScreen extends Component {
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages)
+    }));
+  }
+
+  _onMessageSend(messages = []) {
+    const message = {
+      text: messages[0].text,
+      user_id: this.state.channel.communicant.id
+    };
+
+    API.post('api/message', message)
+      .then(() => {
+        this._onMessageSent(messages);
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onMessageSent(messages = []) {
+    this.setState(previousState => ({
+      channel: {
+        messages: GiftedChat.append(previousState.channel.messages, messages)
+      }
     }));
   }
 
@@ -44,12 +72,26 @@ class MessageScreen extends Component {
       });
   }
 
+  _fetchUserData() {
+    API.get('api/me')
+      .then(res => {
+        this.setState({ user: { _id: res.data.id, name: res.data.name } });
+        this._onLoadMessage();
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
   componentWillMount() {
-    this._onLoadMessage();
+    this._fetchUserData();
   }
 
   render() {
-    const { channel, loadingSpin } = this.state;
+    const { channel } = this.state;
     const { navigation } = this.props;
 
     return (
@@ -57,11 +99,10 @@ class MessageScreen extends Component {
         <MessageScreenHeader navigation={navigation} channel={channel} />
 
         <GiftedChat
-          renderAvatar={({ messages: { avatar } }) =>
-            <Text>
-              {JSON.stringify(avatar)}
-            </Text>}
+          onPress={this._onLoadMessage}
           messages={channel.messages}
+          onSend={this._onMessageSend}
+          user={this.state.user}
         />
       </Container>
     );
