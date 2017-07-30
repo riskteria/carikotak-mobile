@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
 import NotificationCard from './NotificationCard';
+import NotificationCardCommented from './NotificationCardCommented';
 import NotificationCardFavorite from './NotificationCardFavorite';
 import NotificationCardFollower from './NotificationCardFollower';
+import NotificationCardNewProduct from './NotificationCardNewProduct';
+import NotificationCardNewStory from './NotificationCardNewStory';
 
 class NotificationList extends Component {
   constructor(props) {
@@ -32,6 +35,30 @@ class NotificationList extends Component {
         case 'App\\Notifications\\AddedToFavorite':
           return (
             <NotificationCardFavorite
+              navigation={navigation}
+              notification={item}
+            />
+          );
+
+        case 'App\\Notifications\\PostCommented':
+          return (
+            <NotificationCardCommented
+              navigation={navigation}
+              notification={item}
+            />
+          );
+
+        case 'App\\Notifications\\PostedNewProduct':
+          return (
+            <NotificationCardNewProduct
+              navigation={navigation}
+              notification={item}
+            />
+          );
+
+        case 'App\\Notifications\\PostedNewStory':
+          return (
+            <NotificationCardNewStory
               navigation={navigation}
               notification={item}
             />
