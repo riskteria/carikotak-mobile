@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import { TouchableNativeFeedback } from 'react-native';
-import {
-  Card,
-  CardItem,
-  Left,
-  Thumbnail,
-  Body,
-  Text,
-  Right,
-  Button
-} from 'native-base';
+import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
+
+import { loadImageUser } from 'services/ImageFetcher';
 
 class NotificationCard extends Component {
   render() {
@@ -25,31 +18,19 @@ class NotificationCard extends Component {
             <Left>
               <Thumbnail
                 medium
-                source={{ uri: 'https://unsplash.it/300x300?random' }}
+                source={{ uri: loadImageUser(notification.data.user.avatar) }}
               />
               <Body>
                 <Text>
-                  <Text style={{ fontSize: 14 }}>Ovinsyah Al Bayhaqy</Text>
+                  <Text style={{ fontSize: 14 }}>
+                    {notification.data.user.name + ' '}
+                  </Text>
                   <Text style={{ fontSize: 14 }} note>
                     mulai mengikuti anda
                   </Text>
                 </Text>
               </Body>
             </Left>
-            <Right style={{ flex: 0 }}>
-              <Button
-                light
-                small
-                style={{ paddingLeft: 8, paddingRight: 8, borderRadius: 5 }}
-              >
-                <Text>Ikuti</Text>
-              </Button>
-            </Right>
-          </CardItem>
-          <CardItem>
-            <Text>
-              {JSON.stringify(notification)}
-            </Text>
           </CardItem>
         </Card>
       </TouchableNativeFeedback>

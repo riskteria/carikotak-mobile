@@ -15,11 +15,27 @@ class NotificationScreen extends Component {
     super(props);
 
     this._onFetchNotification = this._onFetchNotification.bind(this);
+    this._onRefresh = this._onRefresh.bind(this);
 
     this.state = {
       loadingSpin: false,
+      refreshing: false,
       notifications: []
     };
+  }
+
+  _onRefresh() {
+    this.setState({ refreshing: true });
+    API.get('api/notification?get=all')
+      .then(res => {
+        this.setState({ refreshing: false, notifications: res.data });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   _onFetchNotification() {
@@ -41,7 +57,7 @@ class NotificationScreen extends Component {
   }
 
   render() {
-    const { loadingSpin, notifications } = this.state;
+    const { loadingSpin, notifications, refreshing } = this.state;
     const { navigation } = this.props;
 
     return (
@@ -52,7 +68,9 @@ class NotificationScreen extends Component {
           ? <ProgressBar />
           : <NotificationList
               navigation={navigation}
+              refreshing={refreshing}
               notifications={notifications}
+              _onRefresh={this._onRefresh}
             />}
       </Container>
     );
