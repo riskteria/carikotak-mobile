@@ -4,8 +4,13 @@ import { View } from 'native-base';
 import NotificationCard from './NotificationCard';
 
 class NotificationList extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const navigate = this.props.navigate;
+    const { navigation, notifications } = this.props;
+    const navigate = navigation;
 
     const ListNotificationCard = [1].map((data, index) =>
       <NotificationCard data={data} key={index} navigate={navigate} />
