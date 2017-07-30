@@ -12,7 +12,7 @@ class MessageCard extends Component {
     return (
       <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple()}
-        onPress={() => navigate('Message')}
+        onPress={() => navigate('Message', { channel: channel.id })}
       >
         <Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
           <CardItem style={{ backgroundColor: 'transparent' }}>
@@ -25,7 +25,7 @@ class MessageCard extends Component {
                   {channel.communicant.name}
                 </Text>
                 <Text numberOfLines={1} note>
-                  {channel.lastMessage.message}
+                  {channel.lastMessage.text}
                 </Text>
               </Body>
             </Left>

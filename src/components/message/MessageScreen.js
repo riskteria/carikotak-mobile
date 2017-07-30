@@ -1,34 +1,24 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Header,
-  Body,
-  Left,
-  Button,
-  Icon,
-  Title
-} from 'native-base';
+import { ToastAndroid, Text } from 'react-native';
+import { Container, Thumbnail } from 'native-base';
 import { GiftedChat } from 'react-native-gifted-chat';
 
+import MessageScreenHeader from './MessageScreenHeader';
+
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import colors from 'styles/_colors';
+import { API } from 'services/APIService';
 
 class MessageScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      messages: [
-        {
-          _id: 1,
-          text: 'Halo gan, produknya masih ada?',
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'Ovinsyah Al Bayhaqy',
-            avatar: 'https://unsplash.it/300x300?random'
-          }
-        }
-      ]
+      channel: {
+        id: false,
+        messages: []
+      },
+      loadingSpin: false
     };
   }
 
@@ -38,38 +28,40 @@ class MessageScreen extends Component {
     }));
   }
 
+  _onLoadMessage() {
+    const { channel } = this.props.navigation.state.params;
+    this.setState({ loadingSpin: true });
+    API.get('api/channel/' + channel)
+      .then(res => {
+        this.setState({ loadingSpin: false, channel: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpin: false });
+        ToastAndroid.show(
+          'Error: ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  componentWillMount() {
+    this._onLoadMessage();
+  }
+
   render() {
-    const { goBack } = this.props.navigation;
+    const { channel, loadingSpin } = this.state;
+    const { navigation } = this.props;
 
     return (
       <Container style={{ backgroundColor: colors.colorLight }}>
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Left>
-            <Button transparent dark onPress={() => goBack()}>
-              <Icon name="md-arrow-back" />
-            </Button>
-          </Left>
-
-          <Body
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              alignItems: 'center'
-            }}
-          >
-            <Title style={{ color: colors.colorDark }}>
-              Ovinsyah Al Bayhaqy
-            </Title>
-          </Body>
-        </Header>
+        <MessageScreenHeader navigation={navigation} channel={channel} />
 
         <GiftedChat
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          user={{
-            _id: 1
-          }}
+          renderAvatar={({ messages: { avatar } }) =>
+            <Text>
+              {JSON.stringify(avatar)}
+            </Text>}
+          messages={channel.messages}
         />
       </Container>
     );
