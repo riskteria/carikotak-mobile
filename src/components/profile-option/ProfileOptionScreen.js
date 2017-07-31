@@ -1,53 +1,24 @@
 import React, { Component } from 'react';
-import { ToastAndroid, ScrollView } from 'react-native';
-import { Container, Button, Text, Header, Left, Icon } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Container } from 'native-base';
 
-import { onSignedOut } from 'services/AuthHandler';
-import colors from 'styles/_colors';
-import RNRestart from 'react-native-restart';
+import ProfileOptionsHeader from './ProfileOptionsHeader';
+import ProfileOptionList from './ProfileOptionList';
 
 class ProfileOptionScreen extends Component {
   constructor(props) {
     super(props);
   }
 
-  _onPressLogout() {
-    onSignedOut()
-      .then(() => {
-        RNRestart.Restart();
-      })
-      .catch(() => {
-        ToastAndroid.show('Could not signed out', ToastAndroid.SHORT);
-      });
-  }
-
   render() {
-    const { navigate, goBack } = this.props.navigation;
+    const { navigation } = this.props;
 
     return (
       <Container>
-        <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
-          <Left>
-            <Button transparent dark onPress={() => goBack()}>
-              <Icon name="md-arrow-back" />
-            </Button>
-          </Left>
-        </Header>
+        <ProfileOptionsHeader navigation={navigation} />
 
         <ScrollView>
-          <Button onPress={() => navigate('AccountSetting')}>
-            <Text>Account Settings</Text>
-          </Button>
-          <Button onPress={() => navigate('ProfileSetting')}>
-            <Text>Profile Settings</Text>
-          </Button>
-          <Button
-            onPress={() => {
-              this._onPressLogout();
-            }}
-          >
-            <Text>Logout</Text>
-          </Button>
+          <ProfileOptionList navigation={navigation} />
         </ScrollView>
       </Container>
     );
