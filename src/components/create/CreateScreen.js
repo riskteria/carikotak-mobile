@@ -39,6 +39,12 @@ class CreateScreen extends Component {
           <Button block onPress={() => navigate('CreateStory')}>
             <Text>Tambah Cerita</Text>
           </Button>
+          <Button
+            block
+            onPress={() => navigate('User', { username: 'administrator' })}
+          >
+            <Text>Visit User Profile</Text>
+          </Button>
         </Content>
       </Container>
     );
