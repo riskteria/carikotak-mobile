@@ -4,6 +4,7 @@ import { Container, Button, Text, Header, Left, Icon } from 'native-base';
 
 import { onSignedOut } from 'services/AuthHandler';
 import colors from 'styles/_colors';
+import RNRestart from 'react-native-restart';
 
 class ProfileOptionScreen extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ProfileOptionScreen extends Component {
   _onPressLogout() {
     onSignedOut()
       .then(() => {
-        this.props.navigation.navigate('SignedOut');
+        RNRestart.Restart();
       })
       .catch(() => {
         ToastAndroid.show('Could not signed out', ToastAndroid.SHORT);

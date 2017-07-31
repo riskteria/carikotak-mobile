@@ -14,6 +14,8 @@ import {
 } from 'react-native-dotenv';
 import Spinner from 'react-native-loading-spinner-overlay';
 
+import RNRestart from 'react-native-restart';
+
 import styles from './styles';
 import colors from 'styles/_colors';
 
@@ -53,9 +55,8 @@ class LoginScreen extends Component {
       .then(response => {
         onSignedIn(response.data.access_token, response.data.refresh_token)
           .then(res => {
-            updateAccessToken(response.data.access_token);
             this.setState({ isLoading: false });
-            this.props.navigation.navigate('SignedIn');
+            RNRestart.Restart();
           })
           .catch(() => {
             this.setState({ isLoading: false });
@@ -63,7 +64,10 @@ class LoginScreen extends Component {
           });
       })
       .catch(error => {
-        ToastAndroid.show('Credential did not match', ToastAndroid.SHORT);
+        ToastAndroid.show(
+          'Error ' + error.response.data.message,
+          ToastAndroid.SHORT
+        );
         this.setState({ isLoading: false });
       });
   }

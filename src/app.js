@@ -39,6 +39,7 @@ class App extends Component {
     isSignedIn()
       .then(res => {
         updateToken(res);
+        alert(JSON.stringify(this.props.sessionHandler));
         if (res) {
           this.setState({ authenticated: true });
         }
