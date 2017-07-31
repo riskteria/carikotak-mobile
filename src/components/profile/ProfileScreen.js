@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, ToastAndroid } from 'react-native';
+import { ScrollView, ToastAndroid, StatusBar } from 'react-native';
 import { Container } from 'native-base';
 
 import ProfileScreenHeader from './ProfileScreenHeader';
@@ -8,7 +8,7 @@ import ProfileScreenCover from './ProfileScreenCover';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import styles from './styles';
 
-import { API } from 'services/APIService';
+import { API, test } from 'services/APIService';
 
 class ProfileScreen extends Component {
   constructor(props) {
@@ -56,6 +56,7 @@ class ProfileScreen extends Component {
 
     return (
       <Container>
+        <StatusBar barStyle="light-content" backgroundColor="transparent" />
         <ProfileScreenHeader navigation={navigation} user={user} />
         {loadingSpin ? <ProgressBar /> : <ProfileInfo />}
       </Container>

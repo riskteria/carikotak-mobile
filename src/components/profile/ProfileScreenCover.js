@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Content } from 'native-base';
+
+import styles from './styles';
 
 class ProfileScreenCover extends Component {
   constructor(props) {
@@ -7,7 +10,7 @@ class ProfileScreenCover extends Component {
   }
 
   render() {
-    return <View />;
+    return <Content style={StyleSheet.flatten(styles.coverBg)} />;
   }
 }
 
