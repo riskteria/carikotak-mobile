@@ -31,7 +31,8 @@ class ProductScreenInfoSpec extends Component {
             <Body
               style={{
                 borderBottomColor: 'transparent',
-                backgroundColor: color
+                backgroundColor:
+                  color instanceof String ? color.toLowerCase() : color
               }}
             >
               <Text style={StyleSheet.flatten(styles.infoUserChildText)}>
