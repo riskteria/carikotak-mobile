@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import { connect } from 'react-redux';
 import { StyleProvider } from 'native-base';
-import { Provider } from 'react-redux';
-import SplashScreen from 'react-native-splash-screen';
 
 import { createRootNavigator } from 'navigators/rootNavigator/RootNavigator';
-
-import getTheme from 'theme/components';
-import platform from 'theme/variables/platform';
-import store from './store';
 import { isSignedIn } from 'services/AuthHandler';
 import { updateAccessToken } from 'actions/authAction';
 
-class CarikotakApp extends Component {
+import getTheme from 'theme/components';
+import platform from 'theme/variables/platform';
+
+const mapStateToProps = state => {
+  return {
+    sessionHandler: state.authSessionHandler
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateToken: token => {
+      dispatch(updateAccessToken(token));
+    }
+  };
+};
+
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -23,19 +34,17 @@ class CarikotakApp extends Component {
   }
 
   componentWillMount() {
+    const { updateToken } = this.props;
+
     isSignedIn()
       .then(res => {
-        store.dispatch(updateAccessToken(res));
+        updateToken(res);
         if (res) {
           this.setState({ authenticated: true });
         }
         this.setState({ checkedSignIn: true });
       })
       .catch(err => err);
-  }
-
-  componentDidMount() {
-    SplashScreen.hide();
   }
 
   render() {
@@ -49,14 +58,10 @@ class CarikotakApp extends Component {
 
     return (
       <StyleProvider style={getTheme(platform)}>
-        <Provider store={store}>
-          <Layout />
-        </Provider>
+        <Layout />
       </StyleProvider>
     );
   }
 }
 
-AppRegistry.registerComponent('CariKotak', () => CarikotakApp);
-
-export default CarikotakApp;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
