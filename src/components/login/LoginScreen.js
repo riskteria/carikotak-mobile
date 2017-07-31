@@ -47,7 +47,6 @@ class LoginScreen extends Component {
 
   _onPressLogin() {
     const { user } = this.state;
-    const { updateAccessToken } = this.props;
 
     this.setState({ isLoading: true });
 
@@ -73,8 +72,6 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-
     return (
       <ScrollView style={styles.container}>
         <StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />

@@ -34,13 +34,10 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const { updateToken } = this.props;
-
     isSignedIn()
       .then(res => {
-        updateToken(res);
-        alert(JSON.stringify(this.props.sessionHandler));
         if (res) {
+          this.props.updateToken(res);
           this.setState({ authenticated: true });
         }
         this.setState({ checkedSignIn: true });

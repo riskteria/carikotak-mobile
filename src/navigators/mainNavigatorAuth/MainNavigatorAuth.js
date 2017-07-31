@@ -26,6 +26,9 @@ import ReportScreen from 'components/report/ReportScreen';
 import CreateProductScreen from 'components/create-product/CreateProductScreen';
 import CreateStoryScreen from 'components/create-story/CreateStoryScreen';
 
+// User Component
+import UserScreen from 'components/user/UserScreen';
+
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
 const routeConfiguration = {
@@ -49,7 +52,7 @@ const routeConfiguration = {
   Report: {
     screen: ReportScreen,
     navigationOptions: {
-      title: 'Laporkan'
+      header: null
     }
   },
 
@@ -58,7 +61,7 @@ const routeConfiguration = {
   Find: {
     screen: FindScreen,
     navigationOptions: {
-      title: 'Temukan kotak'
+      header: null
     }
   },
   Location: {
@@ -98,8 +101,7 @@ const routeConfiguration = {
   Notification: {
     screen: NotificationScreen,
     navigationOptions: {
-      header: null,
-      title: 'Pemberitahuan'
+      header: null
     }
   },
 
@@ -134,6 +136,14 @@ const routeConfiguration = {
   },
   CreateStory: {
     screen: CreateStoryScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  // User Component
+  User: {
+    screen: UserScreen,
     navigationOptions: {
       header: null
     }
