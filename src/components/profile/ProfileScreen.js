@@ -17,7 +17,7 @@ class ProfileScreen extends Component {
     this._onFetchProfileData = this._onFetchProfileData.bind(this);
 
     this.state = {
-      me: false,
+      user: false,
       loadingSpin: false
     };
   }
@@ -26,7 +26,7 @@ class ProfileScreen extends Component {
     this.setState({ loadingSpin: true });
     API.get('api/me')
       .then(res => {
-        this.setState({ loadingSpin: false, me: res.data });
+        this.setState({ loadingSpin: false, user: res.data });
       })
       .catch(err => {
         this.setState({ loadingSpin: false });
@@ -46,7 +46,7 @@ class ProfileScreen extends Component {
   }
 
   render() {
-    const { loadingSpin } = this.state;
+    const { loadingSpin, user } = this.state;
     const { navigation } = this.props;
 
     const ProfileInfo = () =>
@@ -56,7 +56,7 @@ class ProfileScreen extends Component {
 
     return (
       <Container>
-        <ProfileScreenHeader navigation={navigation} />
+        <ProfileScreenHeader navigation={navigation} user={user} />
         {loadingSpin ? <ProgressBar /> : <ProfileInfo />}
       </Container>
     );
