@@ -7,16 +7,23 @@ import {
   ToastAndroid
 } from 'react-native';
 import { Input, Button, Text, Item, Label } from 'native-base';
-import store from 'react-native-simple-store';
 import Spinner from 'react-native-loading-spinner-overlay';
-
-import { API } from 'services/APIService';
+import RNRestart from 'react-native-restart';
 
 import colors from 'styles/_colors';
 import styles from './styles';
-// import validate from './validator';
+
+import { API } from 'services/APIService';
+import { onSignedIn } from 'services/AuthHandler';
 
 class RegisterScreen extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTintColor: '#fff',
+      headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
+    };
+  };
+
   constructor(props) {
     super(props);
 
@@ -29,41 +36,60 @@ class RegisterScreen extends Component {
       },
       isLoading: false
     };
+
+    this._onRegisterPressed = this._onRegisterPressed.bind(this);
   }
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTintColor: '#fff',
-      headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
-    };
-  };
-
-  _doRegister() {
-    const user = this.state.user;
-    // const validation = validate(user);
+  _onRegisterPressed() {
+    const { user } = this.state;
 
     this.setState({ isLoading: true });
 
-    API.post('oauth/register', user)
-      .then(response => {
-        this.state.isLoading = false;
-
-        store
-          .save('AUTHORIZATION_KEY', response.data.access_token)
-          .then(res => {
+    API.post('api/register', user)
+      .then(res => {
+        this.setState({ isLoading: false });
+        onSignedIn(res.data.access_token, res.data.refresh_token)
+          .then(() => {
             this.setState({ isLoading: false });
-            this.props.navigation.navigate('SignedIn');
+            RNRestart.Restart();
           })
-          .catch(err => {
+          .catch(() => {
             this.setState({ isLoading: false });
             ToastAndroid.show('unable to save the key', ToastAndroid.SHORT);
-            return err;
           });
       })
-      .catch(error => {
+      .catch(err => {
         this.setState({ isLoading: false });
-        ToastAndroid.show('Credential did not match', ToastAndroid.SHORT);
+        ToastAndroid.show(
+          'Error ' + err.response.data.message,
+          ToastAndroid.SHORT
+        );
       });
+  }
+
+  _onChangeText(propertyName, value) {
+    switch (propertyName) {
+      case 'name':
+        this.setState({
+          user: Object.assign({}, this.state.user, { name: value })
+        });
+        break;
+      case 'username':
+        this.setState({
+          user: Object.assign({}, this.state.user, { username: value })
+        });
+        break;
+      case 'email':
+        this.setState({
+          user: Object.assign({}, this.state.user, { email: value })
+        });
+        break;
+      case 'password':
+        this.setState({
+          user: Object.assign({}, this.state.user, { password: value })
+        });
+        break;
+    }
   }
 
   render() {
@@ -79,30 +105,30 @@ class RegisterScreen extends Component {
 
         <View>
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
-            <Label style={StyleSheet.flatten(styles.lightColor)}>NAMA</Label>
-            <Input onChangeText={name => this.setState({ user: { name } })} />
+            <Label style={StyleSheet.flatten(styles.lightColor)}>
+              Nama Lengkap
+            </Label>
+            <Input onChangeText={this._onChangeText.bind(this, 'name')} />
           </Item>
 
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
             <Label style={StyleSheet.flatten(styles.lightColor)}>
-              NAMA pENGGUNA
+              Username
             </Label>
-            <Input
-              onChangeText={username => this.setState({ user: { username } })}
-            />
+            <Input onChangeText={this._onChangeText.bind(this, 'username')} />
           </Item>
 
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
-            <Label style={StyleSheet.flatten(styles.lightColor)}>EMAIL</Label>
-            <Input onChangeText={email => this.setState({ user: { email } })} />
+            <Label style={StyleSheet.flatten(styles.lightColor)}>Email</Label>
+            <Input onChangeText={this._onChangeText.bind(this, 'email')} />
           </Item>
 
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
             <Label style={StyleSheet.flatten(styles.lightColor)}>
-              KATA SANDI
+              Kata Sandi
             </Label>
             <Input
-              onChangeText={password => this.setState({ user: { password } })}
+              onChangeText={this._onChangeText.bind(this, 'password')}
               secureTextEntry
             />
           </Item>
@@ -112,7 +138,7 @@ class RegisterScreen extends Component {
             rounded
             block
             onPress={() => {
-              this._doRegister();
+              this._onRegisterPressed();
             }}
           >
             <Text style={{ color: colors.colorAccent }}>Buat akun</Text>
