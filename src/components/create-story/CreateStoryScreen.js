@@ -26,17 +26,12 @@ class CreateStoryScreen extends Component {
   async getHTML() {
     const titleHtml = await this.richtext.getTitleHtml();
     const contentHtml = await this.richtext.getContentHtml();
-    //alert(titleHtml + ' ' + contentHtml)
   }
 
   richtext;
   setFocusHandlers() {
-    this.richtext.setTitleFocusHandler(() => {
-      // alert('title focus');
-    });
-    this.richtext.setContentFocusHandler(() => {
-      // alert('content focus');
-    });
+    this.richtext.setTitleFocusHandler(() => {});
+    this.richtext.setContentFocusHandler(() => {});
   }
 
   render() {

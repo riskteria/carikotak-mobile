@@ -42,7 +42,7 @@ class ProfileScreen extends Component {
   }
 
   componentDidUpdate() {
-    // alert('ok')
+    //
   }
 
   render() {
