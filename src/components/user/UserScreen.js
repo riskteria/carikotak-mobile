@@ -4,6 +4,7 @@ import { Container } from 'native-base';
 
 import UserScreenHeader from './UserScreenHeader';
 import UserScreenCover from './UserScreenCover';
+import UserScreenTabContent from './UserScreenTabContent';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import styles from './styles';
@@ -54,7 +55,8 @@ class UserScreen extends Component {
 
     const ProfileInfo = () =>
       <ScrollView style={styles.parentView}>
-        <UserScreenCover navigation={navigation} />
+        <UserScreenCover navigation={navigation} user={user} />
+        <UserScreenTabContent navigation={navigation} user={user} />
       </ScrollView>;
 
     return (
