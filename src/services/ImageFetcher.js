@@ -10,7 +10,7 @@ const USER_DEFAULT_IMAGE = API_URL + '/storage/users/default.png';
 const PRODUCT_DEFAULT_IMAGE = API_URL + '/';
 const POST_DEFAULT_IMAGE = API_URL + '/';
 
-export const loadImageUser = (image = null, size = 'small') => {
+export const loadImageUser = (image = null, size = 'medium') => {
   if (!image || image === 'users/default.png') {
     return USER_DEFAULT_IMAGE;
   }
@@ -27,7 +27,7 @@ export const loadImageUser = (image = null, size = 'small') => {
   }
 };
 
-export const loadImageProduct = (images = null, size = 'small') => {
+export const loadImageProduct = (images = null, size = 'medium') => {
   if (!images || images.length === 0) {
     return PRODUCT_DEFAULT_IMAGE;
   }

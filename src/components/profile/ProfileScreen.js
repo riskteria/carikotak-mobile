@@ -52,7 +52,7 @@ class ProfileScreen extends Component {
 
     const ProfileInfo = () =>
       <ScrollView style={styles.parentView}>
-        <ProfileScreenCover navigation={navigation} />
+        <ProfileScreenCover navigation={navigation} user={user} />
       </ScrollView>;
 
     return (

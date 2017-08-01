@@ -47,7 +47,7 @@ class ProfileScreenHeader extends Component {
       </Right>;
 
     return (
-      <Header style={{ backgroundColor: colors.colorAccent, elevation: 0 }}>
+      <Header style={{ backgroundColor: colors.colorLight, elevation: 0 }}>
         <Body>
           <Title style={{ color: colors.colorDark }}>
             {user.username}
