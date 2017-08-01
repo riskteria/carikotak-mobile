@@ -11,6 +11,9 @@ class StoryScreenInfoOption extends Component {
   }
 
   render() {
+    const { navigation, story } = this.props;
+    const { navigate } = navigation;
+
     return (
       <Content style={StyleSheet.flatten(styles.infoSection)}>
         <Grid>
@@ -20,13 +23,15 @@ class StoryScreenInfoOption extends Component {
               block
               dark
               style={{ borderColor: colors.colorAccent }}
+              onPress={() =>
+                navigate('Comment', { id: story.id, type: 'post' })}
             >
               <Icon
                 name="md-chatbubbles"
                 style={StyleSheet.flatten(styles.optionText)}
               />
               <Text style={StyleSheet.flatten(styles.optionText)}>
-                Komentar
+                {story.total_comments + ' Komentar'}
               </Text>
             </Button>
           </Col>

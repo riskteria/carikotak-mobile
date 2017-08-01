@@ -11,7 +11,7 @@ class ProductScreenInfoOption extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, product } = this.props;
     const { navigate } = navigation;
 
     return (
@@ -23,14 +23,15 @@ class ProductScreenInfoOption extends Component {
               block
               dark
               style={{ borderColor: colors.colorAccent }}
-              onPress={() => navigate('Comment')}
+              onPress={() =>
+                navigate('Comment', { id: product.id, type: 'product' })}
             >
               <Icon
                 name="md-chatbubbles"
                 style={StyleSheet.flatten(styles.optionText)}
               />
               <Text style={StyleSheet.flatten(styles.optionText)}>
-                Komentar
+                {product.total_comments + ' Komentar'}
               </Text>
             </Button>
           </Col>
