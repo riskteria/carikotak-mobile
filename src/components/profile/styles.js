@@ -2,11 +2,34 @@ import { StyleSheet } from 'react-native';
 
 import colors from 'styles/_colors';
 
-const styles = StyleSheet.create({
+const parentStyle = {
   parentView: {
     backgroundColor: colors.colorLight,
     flex: 1
+  }
+};
+
+const tabBarStyle = {
+  tabStyle: {
+    backgroundColor: colors.colorLight
   },
+  tabTextStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colors.colorGrey
+  },
+  tabActiveTextStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colors.colorAccent
+  },
+  tabUnderlineStyle: {
+    height: 1,
+    backgroundColor: colors.colorAccent
+  }
+};
+
+const coverStyle = {
   coverBg: {
     backgroundColor: colors.colorAccent
   },
@@ -35,24 +58,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingLeft: 32,
     paddingRight: 32
-  },
-  tabStyle: {
-    backgroundColor: colors.colorLight
-  },
-  tabTextStyle: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: colors.colorGrey
-  },
-  tabActiveTextStyle: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: colors.colorAccent
-  },
-  tabUnderlineStyle: {
-    height: 1,
-    backgroundColor: colors.colorAccent
   }
-});
+};
+
+const styles = StyleSheet.create(
+  Object.assign({}, parentStyle, tabBarStyle, coverStyle)
+);
 
 export default styles;
