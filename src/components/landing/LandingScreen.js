@@ -5,19 +5,16 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 import logo from 'images/logo-carikotak-putih.png';
 
+import GoogleSignInService from './GoogleSignInService';
+
 class LandingScreen extends Component {
   constructor(props) {
     super(props);
 
     this._onFacebookButtonPressed = this._onFacebookButtonPressed.bind(this);
-    this._onGoogleButtonPressed = this._onGoogleButtonPressed.bind(this);
   }
 
   _onFacebookButtonPressed() {
-    //
-  }
-
-  _onGoogleButtonPressed() {
     //
   }
 
@@ -54,21 +51,7 @@ class LandingScreen extends Component {
           </Button>
         </View>
 
-        <View style={styles.buttonContainer}>
-          <Button
-            full
-            danger
-            rounded
-            iconLeft
-            onPress={() => this._onGoogleButtonPressed()}
-          >
-            <Icon
-              name="logo-google"
-              style={{ position: 'absolute', left: 16 }}
-            />
-            <Text style={styles.lightText}>Masuk dengan Google</Text>
-          </Button>
-        </View>
+        <GoogleSignInService />
 
         <View style={styles.buttonContainer}>
           <Button
