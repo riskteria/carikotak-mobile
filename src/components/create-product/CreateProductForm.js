@@ -23,7 +23,8 @@ class CreateProductForm extends Component {
   }
 
   _fetchProductCategory() {
-    API.get('api/category')
+    API()
+      .get('api/category')
       .then(res => {
         this.setState({ categories: res.data });
         this._fetchProductMaterial();
@@ -38,7 +39,8 @@ class CreateProductForm extends Component {
   }
 
   _fetchProductMaterial() {
-    API.get('api/material')
+    API()
+      .get('api/material')
       .then(res => {
         this.setState({ loadingSpin: false, materials: res.data });
       })

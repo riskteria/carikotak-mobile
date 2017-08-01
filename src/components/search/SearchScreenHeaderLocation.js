@@ -59,7 +59,8 @@ class SearchScreenHeaderLocation extends Component {
 
   _fetchAllLocation() {
     this.setState({ loadingSpin: true });
-    API.get('api/location?get=province&with=cities')
+    API()
+      .get('api/location?get=province&with=cities')
       .then(res => {
         this.setState({ loadingSpin: false, locations: res.data });
       })

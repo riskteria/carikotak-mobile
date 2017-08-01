@@ -26,7 +26,8 @@ class MessageScreen extends Component {
 
   _fetchChannelList() {
     this.setState({ loadingSpin: true });
-    API.get('api/channel')
+    API()
+      .get('api/channel')
       .then(res => {
         this.setState({ loadingSpin: false, channels: res.data });
       })
@@ -41,7 +42,8 @@ class MessageScreen extends Component {
 
   _onRefresh() {
     this.setState({ refreshing: true });
-    API.get('api/channel')
+    API()
+      .get('api/channel')
       .then(res => {
         this.setState({ refreshing: false, channels: res.data });
       })

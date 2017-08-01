@@ -29,7 +29,8 @@ class ProductScreen extends Component {
   _onFavoritePressed() {
     const { product } = this.state;
 
-    API.put('api/favorite/' + product.id + '?type=product')
+    API()
+      .put('api/favorite/' + product.id + '?type=product')
       .then(() => {
         this.setState({
           product: Object.assign({}, product, {
@@ -49,7 +50,8 @@ class ProductScreen extends Component {
   _onUnFavoritePressed() {
     const { product } = this.state;
 
-    API.delete('api/favorite/' + product.id + '?type=product')
+    API()
+      .delete('api/favorite/' + product.id + '?type=product')
       .then(() => {
         this.setState({
           product: Object.assign({}, product, {
@@ -69,7 +71,8 @@ class ProductScreen extends Component {
   _onGetProduct() {
     this.setState({ loadingSpin: true });
 
-    API.get(`api/product/${this.props.navigation.state.params.slug}`)
+    API()
+      .get(`api/product/${this.props.navigation.state.params.slug}`)
       .then(res => {
         this.setState({
           loadingSpin: false,

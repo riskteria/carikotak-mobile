@@ -36,7 +36,8 @@ class MessageScreen extends Component {
       user_id: this.state.channel.communicant.id
     };
 
-    API.post('api/message', message)
+    API()
+      .post('api/message', message)
       .then(() => {
         this._onMessageSent(messages);
       })
@@ -59,7 +60,8 @@ class MessageScreen extends Component {
   _onLoadMessage() {
     const { channel } = this.props.navigation.state.params;
     this.setState({ loadingSpin: true });
-    API.get('api/channel/' + channel)
+    API()
+      .get('api/channel/' + channel)
       .then(res => {
         this.setState({ loadingSpin: false, channel: res.data });
       })
@@ -73,7 +75,8 @@ class MessageScreen extends Component {
   }
 
   _fetchUserData() {
-    API.get('api/me')
+    API()
+      .get('api/me')
       .then(res => {
         this.setState({ user: { _id: res.data.id, name: res.data.name } });
         this._onLoadMessage();

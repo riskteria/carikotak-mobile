@@ -22,7 +22,8 @@ class ProductListCategory extends Component {
   _fetchAllCategories() {
     this.setState({ loadingSpin: true });
 
-    API.get('api/category')
+    API()
+      .get('api/category')
       .then(res => {
         this.setState({ loadingSpin: false, categories: res.data });
       })

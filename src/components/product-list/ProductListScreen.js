@@ -29,7 +29,8 @@ class ProductListScreen extends Component {
   }
 
   _fetchAllProducts() {
-    API.get('api/product')
+    API()
+      .get('api/product')
       .then(res => {
         this.setState({
           loadingSpin: false,
@@ -45,7 +46,8 @@ class ProductListScreen extends Component {
 
   _fetchProductsByParams(params) {
     const query = queryString.stringify(params);
-    API.get('api/product?' + query)
+    API()
+      .get('api/product?' + query)
       .then(res => {
         this.setState({
           refreshing: false,
@@ -60,7 +62,8 @@ class ProductListScreen extends Component {
   }
 
   _fetchAllCategories() {
-    API.get('api/category')
+    API()
+      .get('api/category')
       .then(res => {
         this.setState({ categories: res.data });
       })

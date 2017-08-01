@@ -28,7 +28,8 @@ class StoryScreen extends Component {
   _onFavoritePressed() {
     const { story } = this.state;
 
-    API.put('api/favorite/' + story.id + '?type=post')
+    API()
+      .put('api/favorite/' + story.id + '?type=post')
       .then(() => {
         this.setState({
           story: Object.assign({}, story, {
@@ -48,7 +49,8 @@ class StoryScreen extends Component {
   _onUnFavoritePressed() {
     const { story } = this.state;
 
-    API.delete('api/favorite/' + story.id + '?type=post')
+    API()
+      .delete('api/favorite/' + story.id + '?type=post')
       .then(() => {
         this.setState({
           story: Object.assign({}, story, {
@@ -68,7 +70,8 @@ class StoryScreen extends Component {
   _onGetStory() {
     this.setState({ loadingSpin: true });
 
-    API.get(`api/post/${this.props.navigation.state.params.slug}`)
+    API()
+      .get(`api/post/${this.props.navigation.state.params.slug}`)
       .then(res => {
         this.setState({ loadingSpin: false, story: res.data });
       })

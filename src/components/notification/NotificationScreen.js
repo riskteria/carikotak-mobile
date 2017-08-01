@@ -26,7 +26,8 @@ class NotificationScreen extends Component {
 
   _onRefresh() {
     this.setState({ refreshing: true });
-    API.get('api/notification?get=all')
+    API()
+      .get('api/notification?get=all')
       .then(res => {
         this.setState({ refreshing: false, notifications: res.data });
       })
@@ -40,7 +41,8 @@ class NotificationScreen extends Component {
 
   _onFetchNotification() {
     this.setState({ loadingSpin: true });
-    API.get('api/notification?get=all')
+    API()
+      .get('api/notification?get=all')
       .then(res => {
         this.setState({ loadingSpin: false, notifications: res.data });
       })

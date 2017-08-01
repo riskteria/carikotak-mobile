@@ -28,7 +28,8 @@ class StoryListScreen extends Component {
   _onGetStories() {
     this.setState({ loadingSpin: true });
 
-    API.get('api/post')
+    API()
+      .get('api/post')
       .then(res => {
         this.setState({ loadingSpin: false });
         this.setState({ stories: res.data });

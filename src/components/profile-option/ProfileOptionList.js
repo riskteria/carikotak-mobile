@@ -9,14 +9,20 @@ import RNRestart from 'react-native-restart';
 class ProfileOptionsList extends Component {
   constructor(props) {
     super(props);
+
+    this._onPressLogout = this._onPressLogout.bind(this);
   }
 
   _onPressLogout() {
+    const { updateToken } = this.props;
+
     onSignedOut()
       .then(() => {
+        updateToken(null);
         RNRestart.Restart();
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         ToastAndroid.show('Could not signed out', ToastAndroid.SHORT);
       });
   }

@@ -26,7 +26,8 @@ class UserScreen extends Component {
     const { username } = this.props.navigation.state.params;
 
     this.setState({ loadingSpin: true });
-    API.get('api/user/' + username)
+    API()
+      .get('api/user/' + username)
       .then(res => {
         this.setState({ loadingSpin: false, user: res.data });
       })

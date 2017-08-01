@@ -23,7 +23,8 @@ class TabStory extends Component {
   _onRefresh() {
     this.setState({ refreshing: true });
 
-    API.get('api/me/favorite-products')
+    API()
+      .get('api/me/favorite-products')
       .then(res => {
         this.setState({ refreshing: false, products: res.data });
       })
@@ -36,7 +37,8 @@ class TabStory extends Component {
   _onFetchFavorites() {
     this.setState({ loadingSpinner: true });
 
-    API.get('api/me/favorite-products')
+    API()
+      .get('api/me/favorite-products')
       .then(res => {
         this.setState({ loadingSpinner: false, products: res.data });
       })

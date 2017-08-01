@@ -8,7 +8,7 @@ import ProfileScreenCover from './ProfileScreenCover';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import styles from './styles';
 
-import { API, test } from 'services/APIService';
+import { API } from 'services/APIService';
 
 class ProfileScreen extends Component {
   constructor(props) {
@@ -24,7 +24,8 @@ class ProfileScreen extends Component {
 
   _onFetchProfileData() {
     this.setState({ loadingSpin: true });
-    API.get('api/me')
+    API()
+      .get('api/me')
       .then(res => {
         this.setState({ loadingSpin: false, user: res.data });
       })

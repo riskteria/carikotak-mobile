@@ -66,7 +66,8 @@ class ProductListModalFilter extends Component {
     this.setState({
       loadingSpin: true
     });
-    API.get('api/location?get=province&with=cities')
+    API()
+      .get('api/location?get=province&with=cities')
       .then(res => {
         this.setState({
           loadingSpin: false,

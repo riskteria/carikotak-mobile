@@ -45,7 +45,8 @@ class RegisterScreen extends Component {
 
     this.setState({ isLoading: true });
 
-    API.post('api/register', user)
+    API()
+      .post('api/register', user)
       .then(res => {
         this.setState({ isLoading: false });
         onSignedIn(res.data.access_token, res.data.refresh_token)

@@ -50,7 +50,8 @@ class LoginScreen extends Component {
 
     this.setState({ isLoading: true });
 
-    API.post('oauth/token', user)
+    API()
+      .post('oauth/token', user)
       .then(response => {
         onSignedIn(response.data.access_token, response.data.refresh_token)
           .then(res => {

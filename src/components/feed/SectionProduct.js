@@ -22,7 +22,8 @@ class SectionProduct extends Component {
   _onGetCategories() {
     this.setState({ loadingSpinner: true });
 
-    API.get('api/category?with=product')
+    API()
+      .get('api/category?with=product')
       .then(res => {
         this.setState({ loadingSpinner: false });
         this.setState({ categories: res.data });
