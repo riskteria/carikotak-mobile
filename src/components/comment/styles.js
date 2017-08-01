@@ -33,11 +33,14 @@ const commentCard = {
     marginBottom: 0
   },
   commentText: {
-    fontSize: 12
+    fontSize: 14
   },
   commentUser: {
     color: colors.colorTomato,
     fontSize: 14
+  },
+  commentDate: {
+    fontSize: 10
   }
 };
 

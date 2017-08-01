@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 
+import moment from 'moment';
+
 import styles from './styles';
+import { loadImageUser } from 'services/ImageFetcher';
 
 class CommentCard extends Component {
   constructor(props) {
@@ -10,22 +13,28 @@ class CommentCard extends Component {
   }
 
   render() {
+    const { comment } = this.props;
+
     return (
       <Card style={StyleSheet.flatten(styles.cardComment)}>
         <CardItem>
           <Left style={{ alignItems: 'flex-start' }}>
-            <Thumbnail small source={{ uri: 'https://unsplash.it/300/300' }} />
+            <Thumbnail
+              small
+              source={{ uri: loadImageUser(comment.user.avatar) }}
+            />
             <Body>
               <Text>
                 <Text style={StyleSheet.flatten(styles.commentUser)}>
-                  Ovinsyah{' '}
+                  {`${comment.user.name} `}
                 </Text>
                 <Text note style={StyleSheet.flatten(styles.commentText)}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Exercitationem ipsum enim excepturi assumenda a.
+                  {comment.comment}
                 </Text>
               </Text>
-              <Text note>11 April</Text>
+              <Text note style={StyleSheet.flatten(styles.commentDate)}>
+                {moment(comment.created_at).format('D MMMM YYYY')}
+              </Text>
             </Body>
           </Left>
         </CardItem>
