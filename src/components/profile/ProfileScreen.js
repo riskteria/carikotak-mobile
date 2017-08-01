@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, ToastAndroid, StatusBar } from 'react-native';
-import { Container } from 'native-base';
+import { ToastAndroid, StatusBar } from 'react-native';
+import { Container, Content } from 'native-base';
 
 import ProfileScreenHeader from './ProfileScreenHeader';
 import ProfileScreenCover from './ProfileScreenCover';
+import ProductScreenTabContent from './ProductScreenTabContent';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import styles from './styles';
@@ -51,9 +52,10 @@ class ProfileScreen extends Component {
     const { navigation } = this.props;
 
     const ProfileInfo = () =>
-      <ScrollView style={styles.parentView}>
+      <Content style={styles.parentView}>
         <ProfileScreenCover navigation={navigation} user={user} />
-      </ScrollView>;
+        <ProductScreenTabContent navigation={navigation} />
+      </Content>;
 
     return (
       <Container>

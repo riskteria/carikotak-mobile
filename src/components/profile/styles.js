@@ -35,6 +35,23 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingLeft: 32,
     paddingRight: 32
+  },
+  tabStyle: {
+    backgroundColor: colors.colorLight
+  },
+  tabTextStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colors.colorGrey
+  },
+  tabActiveTextStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: colors.colorAccent
+  },
+  tabUnderlineStyle: {
+    height: 1,
+    backgroundColor: colors.colorAccent
   }
 });
 
