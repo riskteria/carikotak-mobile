@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite default and user settings.
 {
 	// Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
-	"editor.formatOnSave": true,
+	"editor.formatOnSave": false,
 	// Support using flow through your node_modules folder, WARNING: Checking this box is a security risk. When you open a project we will immediately run code contained within it.
 	"flow.useNPMPackagedFlow": true,
 	// Enable/disable JavaScript validation. (For Flow)

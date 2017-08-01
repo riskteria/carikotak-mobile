@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "847223287030",
+    "project_id": "proud-lead-167409"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847223287030:android:7aeae817e383ff3f",
+        "android_client_info": {
+          "package_name": "com.carikotak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847223287030-f7gqg427gduvogetl5bcidm1hqcfrgb8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carikotak",
+            "certificate_hash": "0afd4b58a1641c8e4ca98f64eaea713319cd1ae1"
+          }
+        },
+        {
+          "client_id": "847223287030-cipo9he30rl8iqc7unjedjtd4315f0gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGI0MWYdpQn9rZGkGUi-BX1mI2Uyt2RhA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
