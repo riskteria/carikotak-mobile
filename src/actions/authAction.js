@@ -7,7 +7,7 @@ export const updateAccessToken = token => {
   };
 };
 
-export const updateSignedinUser = user => {
+export const updateActiveUser = user => {
   return {
     type: UPDATE_ACTIVE_USER,
     user
