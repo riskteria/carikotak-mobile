@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleProvider } from 'native-base';
 
-import { createRootNavigator } from 'navigators/rootNavigator/RootNavigator';
+import MainNavigatorAuthContainer from 'navigators/mainNavigatorAuth/MainNavigatorAuthContainer';
+import MainNavigatorNoAuthContainer from 'navigators/mainNavigatorNoAuth/MainNavigatorNoAuthContainer';
+
 import { isSignedIn } from 'services/AuthHandler';
 import { updateAccessToken } from 'actions/authAction';
 
@@ -52,11 +54,11 @@ class App extends Component {
       return null;
     }
 
-    const Layout = createRootNavigator(authenticated);
-
     return (
       <StyleProvider style={getTheme(platform)}>
-        <Layout />
+        {authenticated
+          ? <MainNavigatorAuthContainer />
+          : <MainNavigatorNoAuthContainer />}
       </StyleProvider>
     );
   }

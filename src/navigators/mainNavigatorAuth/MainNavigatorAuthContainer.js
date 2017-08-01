@@ -9,6 +9,10 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
 class MainNavigatorAuthContainer extends Component {
   constructor(props) {
     super(props);
@@ -19,4 +23,6 @@ class MainNavigatorAuthContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MainNavigatorAuthContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  MainNavigatorAuthContainer
+);

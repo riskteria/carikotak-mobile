@@ -9,6 +9,10 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
 class MainNavigatorNoAuthContainer extends Component {
   constructor(props) {
     super(props);
@@ -19,4 +23,6 @@ class MainNavigatorNoAuthContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MainNavigatorNoAuthContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  MainNavigatorNoAuthContainer
+);
