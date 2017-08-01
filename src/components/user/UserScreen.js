@@ -16,6 +16,8 @@ class UserScreen extends Component {
     super(props);
 
     this._onFetchProfileData = this._onFetchProfileData.bind(this);
+    this._onFollowPressed = this._onFollowPressed.bind(this);
+    this._onUnFollowPressed = this._onUnFollowPressed.bind(this);
 
     this.state = {
       user: false,
@@ -41,6 +43,50 @@ class UserScreen extends Component {
       });
   }
 
+  _onUnFollowPressed() {
+    const { user } = this.state;
+
+    API()
+      .delete(`api/follow/${user.id}`)
+      .then(() => {
+        this.setState({
+          user: Object.assign({}, user, { isFollowedByMe: false })
+        });
+        ToastAndroid.show(
+          `Berhenti mengikuti ${user.name}`,
+          ToastAndroid.SHORT
+        );
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${err.response.data.message}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onFollowPressed() {
+    const { user } = this.state;
+
+    API()
+      .put(`api/follow/${user.id}`)
+      .then(() => {
+        this.setState({
+          user: Object.assign({}, this.state.user, { isFollowedByMe: true })
+        });
+        ToastAndroid.show(
+          `Mulai mengikuti ${this.state.user.name}`,
+          ToastAndroid.SHORT
+        );
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${err.response.data.message}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
   componentWillMount() {
     this._onFetchProfileData();
   }
@@ -55,7 +101,12 @@ class UserScreen extends Component {
 
     const ProfileInfo = () =>
       <ScrollView style={styles.parentView}>
-        <UserScreenCover navigation={navigation} user={user} />
+        <UserScreenCover
+          navigation={navigation}
+          user={user}
+          _onFollowPressed={this._onFollowPressed}
+          _onUnFollowPressed={this._onUnFollowPressed}
+        />
         <UserScreenTabContent navigation={navigation} user={user} />
       </ScrollView>;
 

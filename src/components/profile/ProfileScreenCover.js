@@ -9,8 +9,7 @@ import {
   Body,
   Text,
   Right,
-  Button,
-  Icon
+  Button
 } from 'native-base';
 
 import { loadImageUser } from 'services/ImageFetcher';
@@ -57,7 +56,7 @@ class ProfileScreenCover extends Component {
             </Left>
             <Right>
               <Button bordered small light>
-                <Text>Ikuti</Text>
+                <Text>Edit</Text>
               </Button>
             </Right>
           </CardItem>

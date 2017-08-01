@@ -9,12 +9,12 @@ import {
   Body,
   Text,
   Right,
-  Button,
-  Icon
+  Button
 } from 'native-base';
 
 import { loadImageUser } from 'services/ImageFetcher';
 
+import colors from 'styles/_colors';
 import styles from './styles';
 
 class UserScreenCover extends Component {
@@ -23,7 +23,7 @@ class UserScreenCover extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, _onFollowPressed, _onUnFollowPressed } = this.props;
 
     return (
       <Content style={StyleSheet.flatten(styles.coverBg)}>
@@ -56,9 +56,18 @@ class UserScreenCover extends Component {
               </Body>
             </Left>
             <Right>
-              <Button bordered small light>
-                <Text>Ikuti</Text>
-              </Button>
+              {user.isFollowedByMe
+                ? <Button small light onPress={() => _onUnFollowPressed()}>
+                    <Text style={{ color: colors.colorAccent }}>Diikuti</Text>
+                  </Button>
+                : <Button
+                    bordered
+                    small
+                    light
+                    onPress={() => _onFollowPressed()}
+                  >
+                    <Text>Ikuti</Text>
+                  </Button>}
             </Right>
           </CardItem>
         </Card>
