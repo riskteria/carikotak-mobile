@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import {
   Container,
   Content,
@@ -9,6 +10,7 @@ import {
   Body
 } from 'native-base';
 
+import styles from './styles';
 import colors from 'styles/_colors';
 
 class CreateScreen extends Component {
@@ -17,33 +19,42 @@ class CreateScreen extends Component {
     const { navigate } = navigation;
 
     return (
-      <Container>
+      <Container style={StyleSheet.flatten(styles.parentView)}>
         <Header style={{ backgroundColor: '#fff', elevation: 1 }}>
           <Body style={{ alignItems: 'flex-start', flex: 1 }}>
             <Title style={{ color: colors.colorDark }}>Kiriman Baru</Title>
           </Body>
         </Header>
-        <Content>
+        <Content style={StyleSheet.flatten(styles.buttonWrapper)}>
           <Button
             block
+            bordered
+            style={StyleSheet.flatten(styles.buttonContainer)}
             onPress={() => navigate('CreateProduct', { type: 'jual' })}
           >
-            <Text>Jual Produk</Text>
+            <Text style={StyleSheet.flatten(styles.buttonText)}>
+              Jual Produk
+            </Text>
           </Button>
           <Button
             block
+            bordered
+            style={StyleSheet.flatten(styles.buttonContainer)}
             onPress={() => navigate('CreateProduct', { type: 'cari' })}
           >
-            <Text>Cari Produk</Text>
-          </Button>
-          <Button block onPress={() => navigate('CreateStory')}>
-            <Text>Tambah Cerita</Text>
+            <Text style={StyleSheet.flatten(styles.buttonText)}>
+              Cari Produk
+            </Text>
           </Button>
           <Button
             block
-            onPress={() => navigate('User', { username: 'administrator' })}
+            bordered
+            style={StyleSheet.flatten(styles.buttonContainer)}
+            onPress={() => navigate('CreateStory')}
           >
-            <Text>Visit User Profile</Text>
+            <Text style={StyleSheet.flatten(styles.buttonText)}>
+              Tambah Cerita
+            </Text>
           </Button>
         </Content>
       </Container>
