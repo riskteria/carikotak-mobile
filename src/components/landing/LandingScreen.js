@@ -5,17 +5,12 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 import logo from 'images/logo-carikotak-putih.png';
 
+import FacebookLoginService from './FacebookLoginService';
 import GoogleSignInService from './GoogleSignInService';
 
 class LandingScreen extends Component {
   constructor(props) {
     super(props);
-
-    this._onFacebookButtonPressed = this._onFacebookButtonPressed.bind(this);
-  }
-
-  _onFacebookButtonPressed() {
-    //
   }
 
   render() {
@@ -35,21 +30,7 @@ class LandingScreen extends Component {
           <Image source={logo} style={styles.logo} />
         </View>
 
-        <View style={styles.buttonContainer}>
-          <Button
-            full
-            primary
-            rounded
-            iconRight
-            onPress={() => this._onFacebookButtonPressed()}
-          >
-            <Icon
-              name="logo-facebook"
-              style={{ position: 'absolute', left: 16 }}
-            />
-            <Text style={styles.lightText}>Masuk dengan Facebook</Text>
-          </Button>
-        </View>
+        <FacebookLoginService />
 
         <GoogleSignInService />
 
