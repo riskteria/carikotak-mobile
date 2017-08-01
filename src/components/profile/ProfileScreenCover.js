@@ -22,7 +22,8 @@ class ProfileScreenCover extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, navigation } = this.props;
+    const { navigate } = navigation;
 
     return (
       <Content style={StyleSheet.flatten(styles.coverBg)}>
@@ -55,7 +56,12 @@ class ProfileScreenCover extends Component {
               </Body>
             </Left>
             <Right>
-              <Button bordered small light>
+              <Button
+                bordered
+                small
+                light
+                onPress={() => navigate('ProfileSetting')}
+              >
                 <Text>Edit</Text>
               </Button>
             </Right>
