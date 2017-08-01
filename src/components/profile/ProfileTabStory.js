@@ -4,6 +4,20 @@ import { Text } from 'native-base';
 class ProfileTabStory extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      stories: []
+    };
+
+    this._fetchUserStories = this._fetchUserStories.bind(this);
+  }
+
+  _fetchUserStories() {
+    //
+  }
+
+  componentWillMount() {
+    this._fetchUserStories();
   }
 
   render() {

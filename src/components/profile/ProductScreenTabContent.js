@@ -10,7 +10,7 @@ import ProfileTabStory from './ProfileTabStory';
 
 class FeedContentTab extends Component {
   render() {
-    const { navigation } = this.props;
+    const { navigation, user } = this.props;
 
     return (
       <Tabs
@@ -24,7 +24,7 @@ class FeedContentTab extends Component {
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
           activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
         >
-          <ProfileTabStory navigation={navigation} />
+          <ProfileTabStory navigation={navigation} user={user} />
         </Tab>
         <Tab
           heading="KOTAK"
@@ -33,7 +33,7 @@ class FeedContentTab extends Component {
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
           activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
         >
-          <ProfileTabProduct navigation={navigation} />
+          <ProfileTabProduct navigation={navigation} user={user} />
         </Tab>
         <Tab
           heading="ULASAN"
@@ -42,7 +42,7 @@ class FeedContentTab extends Component {
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
           activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
         >
-          <ProfileTabReview navigation={navigation} />
+          <ProfileTabReview navigation={navigation} user={user} />
         </Tab>
       </Tabs>
     );

@@ -54,7 +54,7 @@ class ProfileScreen extends Component {
     const ProfileInfo = () =>
       <Content style={styles.parentView}>
         <ProfileScreenCover navigation={navigation} user={user} />
-        <ProductScreenTabContent navigation={navigation} />
+        <ProductScreenTabContent navigation={navigation} user={user} />
       </Content>;
 
     return (
