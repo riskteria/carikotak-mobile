@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastAndroid, StatusBar } from 'react-native';
+import { ToastAndroid, StatusBar, StyleSheet } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import ProfileScreenHeader from './ProfileScreenHeader';
@@ -52,7 +52,7 @@ class ProfileScreen extends Component {
     const { navigation } = this.props;
 
     const ProfileInfo = () =>
-      <Content style={styles.parentView}>
+      <Content style={StyleSheet.flatten(styles.parentView)}>
         <ProfileScreenCover navigation={navigation} user={user} />
         <ProductScreenTabContent navigation={navigation} user={user} />
       </Content>;
