@@ -34,12 +34,15 @@ class UserScreenHeader extends Component {
 
   render() {
     const { navigation, user } = this.props;
-    const { goBack } = navigation;
+    const { goBack, navigate } = navigation;
 
     const RightButton = () =>
       <Right>
         <Button transparent dark onPress={() => this._onPressedShare()}>
           <Icon name="md-share" />
+        </Button>
+        <Button transparent danger onPress={() => navigate('Report')}>
+          <Icon name="md-flag" />
         </Button>
       </Right>;
 

@@ -83,6 +83,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     flexWrap: 'wrap'
+  },
+  optionText: {
+    color: colors.colorAccent,
+    fontSize: 12
   }
 });
 

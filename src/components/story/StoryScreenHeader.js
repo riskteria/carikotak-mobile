@@ -46,7 +46,7 @@ class StoryScreenHeader extends Component {
           <Icon name="md-share" />
         </Button>
         <Button transparent danger onPress={() => navigate('Report')}>
-          <Icon name="ios-alert-outline" />
+          <Icon name="md-flag" />
         </Button>
       </Right>;
 
