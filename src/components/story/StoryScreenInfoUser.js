@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import {
-  Content,
   Card,
   CardItem,
   Body,
@@ -18,10 +17,14 @@ import { loadImageUser } from 'services/ImageFetcher';
 
 class StoryScreenInfoUser extends Component {
   render() {
-    const { story } = this.props;
+    const { story, navigation } = this.props;
+    const { navigate } = navigation;
 
     return (
-      <Content>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => navigate('User', { username: story.user.username })}
+      >
         <Card style={{ elevation: 0 }}>
           <CardItem>
             <Body>
@@ -74,7 +77,7 @@ class StoryScreenInfoUser extends Component {
             </Grid>
           </CardItem>
         </Card>
-      </Content>
+      </TouchableOpacity>
     );
   }
 }

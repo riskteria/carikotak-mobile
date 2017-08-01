@@ -98,7 +98,7 @@ class ProductScreen extends Component {
         <ScrollView>
           <Content>
             <ProductScreenSwiper product={product} />
-            <ProductScreenInfo product={product} />
+            <ProductScreenInfo product={product} navigation={navigation} />
           </Content>
         </ScrollView>
 

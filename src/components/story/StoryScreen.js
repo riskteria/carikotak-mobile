@@ -94,7 +94,7 @@ class StoryScreen extends Component {
         <ScrollView>
           <Content>
             <StoryScreenSwiper story={story} />
-            <StoryScreeninfo story={story} />
+            <StoryScreeninfo story={story} navigation={navigation} />
           </Content>
         </ScrollView>
 

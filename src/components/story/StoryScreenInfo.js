@@ -7,12 +7,12 @@ import StoryScreenInfoDescription from './StoryScreenInfoDescription';
 
 class StoryScreenInfo extends Component {
   render() {
-    const { story } = this.props;
+    const { story, navigation } = this.props;
 
     return (
       <View>
         <StoryScreenInfoBasic story={story} />
-        <StoryScreenInfoUser story={story} />
+        <StoryScreenInfoUser story={story} navigation={navigation} />
         <StoryScreenInfoDescription story={story} />
       </View>
     );
