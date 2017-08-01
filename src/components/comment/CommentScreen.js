@@ -23,6 +23,7 @@ class CommentScreen extends Component {
 
     this._onRefresh = this._onRefresh.bind(this);
     this._fetchAllComments = this._fetchAllComments.bind(this);
+    this._onCommentSent = this._onCommentSent.bind(this);
   }
 
   _onRefresh() {
@@ -59,6 +60,10 @@ class CommentScreen extends Component {
       });
   }
 
+  _onCommentSent(comment) {
+    this.setState({ comments: [...this.state.comments, comment] });
+  }
+
   componentWillMount() {
     this._fetchAllComments();
   }
@@ -66,6 +71,7 @@ class CommentScreen extends Component {
   render() {
     const { refreshing, comments, loadingSpin } = this.state;
     const { navigation } = this.props;
+    const { type, id } = navigation.state.params;
 
     const CommentListContaienr = () =>
       <Container style={StyleSheet.flatten(styles.commentContainer)}>
@@ -81,7 +87,11 @@ class CommentScreen extends Component {
       <Container>
         <CommentScreenHeader navigation={navigation} />
         {loadingSpin ? <ProgressBar /> : <CommentListContaienr />}
-        <CommentScreenFooter />
+        <CommentScreenFooter
+          _onCommentSent={this._onCommentSent}
+          type={type}
+          id={id}
+        />
       </Container>
     );
   }

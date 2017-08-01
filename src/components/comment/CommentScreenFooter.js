@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ToastAndroid } from 'react-native';
 import { Footer, Grid, Col, Button, Icon, Input } from 'native-base';
 
 import styles from './styles';
+
+import { API } from 'services/APIService';
 
 class CommentScreenFooter extends Component {
   constructor(props) {
@@ -16,7 +18,27 @@ class CommentScreenFooter extends Component {
   }
 
   _onPressComment() {
-    alert(this.state.comment);
+    const { _onCommentSent, type, id } = this.props;
+
+    const data = {
+      target_id: id,
+      target_type: type,
+      comment: this.state.comment
+    };
+
+    API()
+      .post('api/comment', data)
+      .then(res => {
+        this.setState({ comment: '' });
+        this._commentInput.setNativeProps({ text: '' });
+        _onCommentSent(res.data.comment);
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${err.response.data.message}`,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   render() {
@@ -25,6 +47,7 @@ class CommentScreenFooter extends Component {
         <Grid>
           <Col style={StyleSheet.flatten(styles.footerColInput)}>
             <Input
+              ref={component => (this._commentInput = component)}
               style={StyleSheet.flatten(styles.footerInput)}
               autoFocus
               onChangeText={value => this.setState({ comment: value })}
