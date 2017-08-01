@@ -5,8 +5,8 @@ import { Button, Icon } from 'native-base';
 import styles from './styles';
 import logo from 'images/logo-carikotak-putih.png';
 
-import FacebookLoginService from './FacebookLoginService';
-import GoogleSignInService from './GoogleSignInService';
+// import FacebookLoginService from './FacebookLoginService';
+// import GoogleSignInService from './GoogleSignInService';
 
 class LandingScreen extends Component {
   constructor(props) {
@@ -29,10 +29,6 @@ class LandingScreen extends Component {
         <View style={styles.logoContainer}>
           <Image source={logo} style={styles.logo} />
         </View>
-
-        <FacebookLoginService />
-
-        <GoogleSignInService />
 
         <View style={styles.buttonContainer}>
           <Button
