@@ -53,7 +53,7 @@ class ProfileTabProduct extends Component {
       });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._fetchUserProducts();
   }
 

@@ -53,7 +53,7 @@ class ProfileTabStory extends Component {
       });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._fetchUserStories();
   }
 
