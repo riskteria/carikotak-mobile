@@ -29,6 +29,9 @@ import CreateStoryScreen from 'components/create-story/CreateStoryScreen';
 // User Component
 import UserScreen from 'components/user/UserScreen';
 
+// Comment Component
+import CommentScreen from 'components/comment/CommentScreen';
+
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
 const routeConfiguration = {
@@ -144,6 +147,13 @@ const routeConfiguration = {
   // User Component
   User: {
     screen: UserScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  Comment: {
+    screen: CommentScreen,
     navigationOptions: {
       header: null
     }

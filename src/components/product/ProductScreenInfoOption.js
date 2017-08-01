@@ -11,6 +11,9 @@ class ProductScreenInfoOption extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+    const { navigate } = navigation;
+
     return (
       <Content style={StyleSheet.flatten(styles.infoSection)}>
         <Grid>
@@ -20,6 +23,7 @@ class ProductScreenInfoOption extends Component {
               block
               dark
               style={{ borderColor: colors.colorAccent }}
+              onPress={() => navigate('Comment')}
             >
               <Icon
                 name="md-chatbubbles"
