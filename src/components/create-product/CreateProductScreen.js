@@ -77,16 +77,16 @@ class CreateProductScreen extends Component {
       <Container style={StyleSheet.flatten(styles.mainContainer)}>
         <CreateProductHeader navigation={navigation} />
 
-        <ScrollView>
-          {loadingSpin
-            ? <ProgressBar />
-            : <CreateProductForm
+        {loadingSpin
+          ? <ProgressBar />
+          : <ScrollView>
+              <CreateProductForm
                 navigation={navigation}
                 categories={categories}
                 materials={materials}
                 conditions={conditions}
-              />}
-        </ScrollView>
+              />
+            </ScrollView>}
       </Container>
     );
   }
