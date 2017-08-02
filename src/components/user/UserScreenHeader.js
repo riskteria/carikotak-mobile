@@ -41,7 +41,12 @@ class UserScreenHeader extends Component {
         <Button transparent dark onPress={() => this._onPressedShare()}>
           <Icon name="md-share" />
         </Button>
-        <Button transparent danger onPress={() => navigate('Report')}>
+        <Button
+          transparent
+          danger
+          onPress={() =>
+            navigate('Report', { type: 'user', id: user.id, title: user.name })}
+        >
           <Icon name="md-flag" />
         </Button>
       </Right>;

@@ -46,7 +46,16 @@ class ProductScreenHeader extends Component {
         <Button transparent dark onPress={() => this._onPressedShare()}>
           <Icon name="md-share" />
         </Button>
-        <Button transparent danger onPress={() => navigate('Report')}>
+        <Button
+          transparent
+          danger
+          onPress={() =>
+            navigate('Report', {
+              type: 'product',
+              id: product.id,
+              title: product.name
+            })}
+        >
           <Icon name="md-flag" />
         </Button>
       </Right>;

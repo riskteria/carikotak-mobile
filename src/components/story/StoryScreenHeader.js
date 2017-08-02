@@ -45,7 +45,16 @@ class StoryScreenHeader extends Component {
         <Button transparent dark onPress={() => this._onPressedShare()}>
           <Icon name="md-share" />
         </Button>
-        <Button transparent danger onPress={() => navigate('Report')}>
+        <Button
+          transparent
+          danger
+          onPress={() =>
+            navigate('Report', {
+              type: 'post',
+              id: story.id,
+              title: story.title
+            })}
+        >
           <Icon name="md-flag" />
         </Button>
       </Right>;
