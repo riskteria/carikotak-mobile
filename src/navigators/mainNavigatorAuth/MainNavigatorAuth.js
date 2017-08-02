@@ -5,7 +5,6 @@ import StoryScreenContainer from 'components/story/StoryScreenContainer';
 
 // Feed Components
 import FindScreen from 'components/find/FindScreen';
-import LocationScreen from 'components/location/LocationScreen';
 import ProductListScreen from 'components/product-list/ProductListScreen';
 import SearchScreen from 'components/search/SearchScreen';
 import StoryListScreen from 'components/story-list/StoryListScreen';
@@ -63,12 +62,6 @@ const routeConfiguration = {
 
   Find: {
     screen: FindScreen,
-    navigationOptions: {
-      header: null
-    }
-  },
-  Location: {
-    screen: LocationScreen,
     navigationOptions: {
       header: null
     }
