@@ -18,7 +18,8 @@ class CreateStoryHeader extends Component {
   }
 
   render() {
-    const { goBack } = this.props.navigation;
+    const { navigation, onEditorSubmitted } = this.props;
+    const { goBack } = navigation;
 
     return (
       <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
@@ -31,7 +32,7 @@ class CreateStoryHeader extends Component {
           <Title style={{ color: colors.colorBlack }}>Tulis Cerita</Title>
         </Body>
         <Right>
-          <Button transparent>
+          <Button transparent onPress={() => onEditorSubmitted()}>
             <Text style={{ color: colors.colorAccent }}>Pasang</Text>
           </Button>
         </Right>

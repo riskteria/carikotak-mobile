@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, View } from 'native-base';
+import { Container, Content } from 'native-base';
 import {
   RichTextEditor,
   RichTextToolbar
@@ -16,11 +16,16 @@ class CreateStoryScreen extends Component {
 
     this.getHTML = this.getHTML.bind(this);
     this.setFocusHandlers = this.setFocusHandlers.bind(this);
+    this.onEditorSubmitted = this.onEditorSubmitted.bind(this);
   }
 
   onEditorInitialized() {
     this.setFocusHandlers();
     this.getHTML();
+  }
+
+  onEditorSubmitted() {
+    //
   }
 
   async getHTML() {
@@ -39,9 +44,12 @@ class CreateStoryScreen extends Component {
 
     return (
       <Container style={StyleSheet.flatten(styles.mainContainer)}>
-        <CreateStoryHeader navigation={navigation} />
+        <CreateStoryHeader
+          navigation={navigation}
+          onEditorSubmitted={this.onEditorSubmitted}
+        />
 
-        <View style={StyleSheet.flatten(styles.container)}>
+        <Content style={StyleSheet.flatten(styles.container)}>
           <RichTextEditor
             ref={r => (this.richtext = r)}
             style={styles.richText}
@@ -50,7 +58,7 @@ class CreateStoryScreen extends Component {
             editorInitializedCallback={() => this.onEditorInitialized()}
           />
           <RichTextToolbar getEditor={() => this.richtext} />
-        </View>
+        </Content>
       </Container>
     );
   }

@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Header,
-  Left,
-  Body,
-  Right,
-  Title,
-  Button,
-  Icon,
-  Text
-} from 'native-base';
+import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
 import colors from 'styles/_colors';
 
@@ -35,11 +26,7 @@ class CreateStoryHeader extends Component {
               : 'Cari Produk'}
           </Title>
         </Body>
-        <Right>
-          <Button transparent>
-            <Text style={{ color: colors.colorAccent }}>Pasang</Text>
-          </Button>
-        </Right>
+        <Right />
       </Header>
     );
   }
