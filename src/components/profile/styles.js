@@ -160,7 +160,8 @@ const commentCard = {
     lineHeight: 18
   },
   commentText: {
-    fontSize: 14
+    fontSize: 14,
+    fontStyle: 'italic'
   },
   commentUser: {
     color: colors.colorTomato,

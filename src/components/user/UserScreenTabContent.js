@@ -37,7 +37,7 @@ class UserScreenTabContent extends Component {
         </Tab>
 
         <Tab
-          heading="Ulasan"
+          heading="ULASAN"
           tabStyle={StyleSheet.flatten(styles.tabStyle)}
           textStyle={StyleSheet.flatten(styles.tabTextStyle)}
           activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
