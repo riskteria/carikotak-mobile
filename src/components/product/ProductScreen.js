@@ -19,6 +19,7 @@ class ProductScreen extends Component {
     this._onGetProduct = this._onGetProduct.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
     this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
+    this._onRatingGiven = this._onRatingGiven.bind(this);
 
     this.state = {
       product: false,
@@ -85,6 +86,10 @@ class ProductScreen extends Component {
       });
   }
 
+  _onRatingGiven(rating) {
+    //
+  }
+
   componentWillMount() {
     this._onGetProduct();
   }
@@ -98,7 +103,11 @@ class ProductScreen extends Component {
         <ScrollView>
           <Content>
             <ProductScreenSwiper product={product} />
-            <ProductScreenInfo product={product} navigation={navigation} />
+            <ProductScreenInfo
+              product={product}
+              navigation={navigation}
+              _onRatingGiven={this._onRatingGiven}
+            />
           </Content>
         </ScrollView>
 

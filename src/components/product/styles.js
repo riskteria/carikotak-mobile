@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     backgroundColor: colors.colorLight
   },
+  infoBasicItem: {
+    borderWidth: 0
+  },
   mainContainer: {
     backgroundColor: colors.colorSmoke,
     flex: 1
@@ -43,7 +46,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 0,
+    borderBottomColor: 'transparent'
+  },
+  infoStarRating: {
+    paddingTop: 16,
+    paddingBottom: 16,
+    elevation: 0,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 0,
+    borderBottomColor: 'transparent'
   },
   infoContentRating: {
     flexDirection: 'row',

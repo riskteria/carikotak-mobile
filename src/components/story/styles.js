@@ -32,6 +32,16 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
+  infoStarRating: {
+    paddingTop: 16,
+    paddingBottom: 16,
+    elevation: 0,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 0,
+    borderBottomColor: 'transparent'
+  },
   infoTitle: {
     fontSize: 28,
     color: colors.colorDark,

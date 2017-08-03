@@ -18,6 +18,7 @@ class StoryScreen extends Component {
     this._onGetStory = this._onGetStory.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
     this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
+    this._onRatingGiven = this._onRatingGiven.bind(this);
 
     this.state = {
       story: false,
@@ -81,6 +82,10 @@ class StoryScreen extends Component {
       });
   }
 
+  _onRatingGiven(rating) {
+    //
+  }
+
   componentWillMount() {
     this._onGetStory();
   }
@@ -94,7 +99,11 @@ class StoryScreen extends Component {
         <ScrollView>
           <Content>
             <StoryScreenSwiper story={story} />
-            <StoryScreeninfo story={story} navigation={navigation} />
+            <StoryScreeninfo
+              story={story}
+              navigation={navigation}
+              _onRatingGiven={this._onRatingGiven}
+            />
           </Content>
         </ScrollView>
 

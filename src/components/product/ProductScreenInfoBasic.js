@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+
 import { StyleSheet } from 'react-native';
-import { Content, Text, View } from 'native-base';
+import { Content, Text, View, Item } from 'native-base';
 import StarRating from 'react-native-star-rating';
 
 import styles from './styles';
@@ -12,29 +13,32 @@ class ProductScreenInfoBasic extends Component {
 
     return (
       <Content style={StyleSheet.flatten(styles.infoSection)}>
-        <View style={StyleSheet.flatten(styles.infoContent)}>
+        <Item style={StyleSheet.flatten(styles.infoContent)}>
           <Text style={StyleSheet.flatten(styles.infoName)}>
             {product.name}
           </Text>
-        </View>
-        <View style={StyleSheet.flatten(styles.infoContent)}>
-          <Text style={StyleSheet.flatten(styles.infoPrice)}>
-            Rp.{product.price}
-          </Text>
-        </View>
-        <View style={StyleSheet.flatten(styles.infoContentRating)}>
-          <StarRating
-            disabled={false}
-            maxStars={5}
-            rating={product.rating}
-            starSize={12}
-            starColor={colors.colorAccent}
-            emptyStarColor={colors.colorAccent}
-          />
-          <Text style={StyleSheet.flatten(styles.ratingText)}>
-            {product.rating}/5
-          </Text>
-        </View>
+        </Item>
+
+        <Item style={StyleSheet.flatten(styles.infoContent)}>
+          <View style={StyleSheet.flatten(styles.infoContent)}>
+            <Text style={StyleSheet.flatten(styles.infoPrice)}>
+              Rp.{product.price}
+            </Text>
+          </View>
+          <View style={StyleSheet.flatten(styles.infoContentRating)}>
+            <StarRating
+              disabled={true}
+              maxStars={5}
+              rating={product.rating}
+              starSize={12}
+              starColor={colors.colorAccent}
+              emptyStarColor={colors.colorAccent}
+            />
+            <Text style={StyleSheet.flatten(styles.ratingText)}>
+              {product.rating}/5
+            </Text>
+          </View>
+        </Item>
       </Content>
     );
   }
