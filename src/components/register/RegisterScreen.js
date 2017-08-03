@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import {
-  View,
-  StatusBar,
-  StyleSheet,
-  ScrollView,
-  ToastAndroid
-} from 'react-native';
-import { Input, Button, Text, Item, Label } from 'native-base';
+import { StatusBar, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
+import { Input, Button, Text, Item, Label, Content } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import RNRestart from 'react-native-restart';
 
@@ -104,7 +98,7 @@ class RegisterScreen extends Component {
           textStyle={{ color: '#FFF' }}
         />
 
-        <View>
+        <Content>
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
             <Label style={StyleSheet.flatten(styles.lightColor)}>
               Nama Lengkap
@@ -144,7 +138,7 @@ class RegisterScreen extends Component {
           >
             <Text style={{ color: colors.colorAccent }}>Buat akun</Text>
           </Button>
-        </View>
+        </Content>
       </ScrollView>
     );
   }

@@ -31,6 +31,9 @@ import UserScreen from 'components/user/UserScreen';
 // Comment Component
 import CommentScreen from 'components/comment/CommentScreen';
 
+// Connection Component
+import ConnectionScreen from 'components/connection/ConnectionScreen';
+
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
 const routeConfiguration = {
@@ -147,6 +150,13 @@ const routeConfiguration = {
 
   Comment: {
     screen: CommentScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  Connection: {
+    screen: ConnectionScreen,
     navigationOptions: {
       header: null
     }

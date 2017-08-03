@@ -40,6 +40,8 @@ class StoryScreenInfoOption extends Component {
               bordered
               block
               dark
+              onPress={() =>
+                navigate('Connection', { type: 'post', slug: story.slug })}
               style={{ borderColor: colors.colorAccent }}
             >
               <Icon

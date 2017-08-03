@@ -40,6 +40,8 @@ class ProductScreenInfoOption extends Component {
               bordered
               block
               dark
+              onPress={() =>
+                navigate('Connection', { type: 'product', slug: product.slug })}
               style={{ borderColor: colors.colorAccent }}
             >
               <Icon
