@@ -35,6 +35,16 @@ class UserScreenTabContent extends Component {
         >
           <UserTabProduct navigation={navigation} user={user} />
         </Tab>
+
+        <Tab
+          heading="Ulasan"
+          tabStyle={StyleSheet.flatten(styles.tabStyle)}
+          textStyle={StyleSheet.flatten(styles.tabTextStyle)}
+          activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
+          activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
+        >
+          <UserTabReview navigation={navigation} user={user} />
+        </Tab>
       </Tabs>
     );
   }

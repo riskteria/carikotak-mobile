@@ -150,8 +150,41 @@ const tabStory = {
   }
 };
 
+const commentCard = {
+  cardComment: {
+    elevation: 0,
+    marginTop: 0,
+    marginBottom: 0
+  },
+  commentTextWrapper: {
+    lineHeight: 18
+  },
+  commentText: {
+    fontSize: 14
+  },
+  commentUser: {
+    color: colors.colorTomato,
+    fontSize: 14
+  },
+  commentDate: {
+    fontSize: 10
+  },
+  commentProduct: {
+    color: colors.colorAccent,
+    fontWeight: 'bold'
+  }
+};
+
 const styles = StyleSheet.create(
-  Object.assign({}, parentStyle, tabBarStyle, coverStyle, tabProduct, tabStory)
+  Object.assign(
+    {},
+    parentStyle,
+    tabBarStyle,
+    coverStyle,
+    tabProduct,
+    tabStory,
+    commentCard
+  )
 );
 
 export default styles;

@@ -1,30 +1,74 @@
 import React, { Component } from 'react';
-import { Text } from 'native-base';
+import { ToastAndroid } from 'react-native';
+import { Text, Content } from 'native-base';
+
+import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
+import { API } from 'services/APIService';
+
+import CommentList from './CommentList';
 
 class UserTabReview extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      reviews: {
-        products: [],
-        stories: []
-      }
+      loadingSpin: false,
+      refreshing: false,
+      comments: []
     };
 
-    this._fetchUserReviews = this._fetchUserReviews.bind(this);
+    this._fetchUserComments = this._fetchUserComments.bind(this);
+    this._onRefresh = this._onRefresh.bind(this);
   }
 
-  _fetchUserReviews() {
-    //
+  _onRefresh() {
+    const { user } = this.props;
+    this.setState({ refreshing: true });
+    API()
+      .get(`api/user/${user.username}/comment-product`)
+      .then(res => {
+        this.setState({ refreshing: false, comments: res.data });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        ToastAndroid.show(`Error: ${err.response.data.message}`);
+      });
+  }
+
+  _fetchUserComments() {
+    const { user } = this.props;
+    this.setState({ loadingSpin: true });
+    API()
+      .get(`api/user/${user.username}/comment-product`)
+      .then(res => {
+        this.setState({ loadingSpin: false, comments: res.data });
+      })
+      .catch(err => {
+        this.setState({ loadingSpin: false });
+        ToastAndroid.show(`Error: ${err.response.data.message}`);
+      });
   }
 
   componentWillMount() {
-    this._fetchUserReviews();
+    this._fetchUserComments();
   }
 
   render() {
-    return <Text>Tab Review</Text>;
+    const { comments, loadingSpin, refreshing } = this.state;
+    const { navigation } = this.props;
+
+    return (
+      <Content>
+        {loadingSpin
+          ? <ProgressBar />
+          : <CommentList
+              comments={comments}
+              refreshing={refreshing}
+              navigation={navigation}
+              _onRefresh={this._onRefresh}
+            />}
+      </Content>
+    );
   }
 }
 

@@ -35,6 +35,16 @@ class FeedContentTab extends Component {
         >
           <ProfileTabProduct navigation={navigation} user={user} />
         </Tab>
+
+        <Tab
+          heading="Ulasan"
+          tabStyle={StyleSheet.flatten(styles.tabStyle)}
+          textStyle={StyleSheet.flatten(styles.tabTextStyle)}
+          activeTabStyle={StyleSheet.flatten(styles.tabStyle)}
+          activeTextStyle={StyleSheet.flatten(styles.tabActiveTextStyle)}
+        >
+          <ProfileTabReview navigation={navigation} user={user} />
+        </Tab>
       </Tabs>
     );
   }
