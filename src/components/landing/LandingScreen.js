@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StatusBar, Image } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { Button } from 'native-base';
 
 import styles from './styles';
 import logo from 'images/logo-carikotak-putih.png';
-
-// import FacebookLoginService from './FacebookLoginService';
-// import GoogleSignInService from './GoogleSignInService';
 
 class LandingScreen extends Component {
   constructor(props) {
