@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ToastAndroid } from 'react-native';
 import { Content, Body, Card, CardItem, Text } from 'native-base';
 import StarRating from 'react-native-star-rating';
 
 import styles from './styles';
 import colors from 'styles/_colors';
 
-const mapStateToProps = state => {
-  return {
-    activeUser: state.authSessionHandler.active_user
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
+import { API } from 'services/APIService';
 
 class ProductScreenInfoRating extends Component {
   constructor(props) {
@@ -24,7 +15,25 @@ class ProductScreenInfoRating extends Component {
     this._onSelectedStar = this._onSelectedStar.bind(this);
   }
 
-  _onSelectedStar() {}
+  _onSelectedStar(rating) {
+    const { product } = this.props;
+    const data = {
+      target_type: 'post',
+      target_id: product.id,
+      rating
+    };
+    API()
+      .post('api/rating', data)
+      .then(res => {
+        this.props._onRatingGiven({ rating, user_rating: rating });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
 
   render() {
     const { product } = this.props;
@@ -44,7 +53,7 @@ class ProductScreenInfoRating extends Component {
               disabled={false}
               selectedStar={this._onSelectedStar}
               maxStars={5}
-              rating={product.rating}
+              rating={product.user_rating}
               starSize={32}
               starStyle={{ marginLeft: 2, marginRight: 2 }}
               starColor={colors.colorTomato}
@@ -58,6 +67,4 @@ class ProductScreenInfoRating extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ProductScreenInfoRating
-);
+export default ProductScreenInfoRating;

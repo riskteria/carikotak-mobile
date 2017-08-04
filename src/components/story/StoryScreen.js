@@ -83,7 +83,12 @@ class StoryScreen extends Component {
   }
 
   _onRatingGiven(rating) {
-    //
+    this.setState({
+      story: Object.assign({}, this.state.story, {
+        rating: rating.rating,
+        user_rating: rating.user_rating
+      })
+    });
   }
 
   componentWillMount() {

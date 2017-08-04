@@ -87,7 +87,12 @@ class ProductScreen extends Component {
   }
 
   _onRatingGiven(rating) {
-    //
+    this.setState({
+      product: Object.assign({}, this.state.story, {
+        rating: rating.rating,
+        user_rating: rating.user_rating
+      })
+    });
   }
 
   componentWillMount() {

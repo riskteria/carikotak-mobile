@@ -19,7 +19,7 @@ class StoryScreenInfoBasic extends Component {
         </View>
         <View style={StyleSheet.flatten(styles.infoContentRating)}>
           <StarRating
-            disabled={false}
+            disabled={true}
             maxStars={5}
             rating={story.rating}
             starSize={12}
