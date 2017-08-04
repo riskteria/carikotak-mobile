@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, ToastAndroid } from 'react-native';
+import { View, ScrollView, ToastAndroid, RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
@@ -16,6 +16,7 @@ class ProductScreen extends Component {
   constructor(props) {
     super(props);
 
+    this._onRefresh = this._onRefresh.bind(this);
     this._onGetProduct = this._onGetProduct.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
     this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
@@ -23,7 +24,8 @@ class ProductScreen extends Component {
 
     this.state = {
       product: false,
-      loadingSpin: false
+      loadingSpin: false,
+      refreshing: false
     };
   }
 
@@ -86,6 +88,23 @@ class ProductScreen extends Component {
       });
   }
 
+  _onRefresh() {
+    this.setState({ refreshing: true });
+
+    API()
+      .get(`api/product/${this.props.navigation.state.params.slug}`)
+      .then(res => {
+        this.setState({
+          refreshing: false,
+          product: res.data
+        });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        throw err;
+      });
+  }
+
   _onRatingGiven(rating) {
     this.setState({
       product: Object.assign({}, this.state.story, {
@@ -100,12 +119,19 @@ class ProductScreen extends Component {
   }
 
   render() {
-    const { loadingSpin, product } = this.state;
+    const { loadingSpin, product, refreshing } = this.state;
     const { navigation } = this.props;
 
     const ProductDetail = () =>
       <View style={styles.mainContainer}>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => this._onRefresh()}
+            />
+          }
+        >
           <Content>
             <ProductScreenSwiper product={product} />
             <ProductScreenInfo

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, ToastAndroid } from 'react-native';
+import { View, ScrollView, ToastAndroid, RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
 
 import StoryScreenHeader from './StoryScreenHeader';
@@ -15,6 +15,7 @@ class StoryScreen extends Component {
   constructor(props) {
     super(props);
 
+    this._onRefresh = this._onRefresh.bind(this);
     this._onGetStory = this._onGetStory.bind(this);
     this._onFavoritePressed = this._onFavoritePressed.bind(this);
     this._onUnFavoritePressed = this._onUnFavoritePressed.bind(this);
@@ -22,7 +23,8 @@ class StoryScreen extends Component {
 
     this.state = {
       story: false,
-      loadingSpin: false
+      loadingSpin: false,
+      refreshing: false
     };
   }
 
@@ -91,17 +93,38 @@ class StoryScreen extends Component {
     });
   }
 
+  _onRefresh() {
+    this.setState({ refreshing: true });
+
+    API()
+      .get(`api/post/${this.props.navigation.state.params.slug}`)
+      .then(res => {
+        this.setState({ refreshing: false, story: res.data });
+      })
+      .catch(err => {
+        this.setState({ refreshing: false });
+        throw err;
+      });
+  }
+
   componentWillMount() {
     this._onGetStory();
   }
 
   render() {
-    const { loadingSpin, story } = this.state;
+    const { loadingSpin, story, refreshing } = this.state;
     const { navigation } = this.props;
 
     const StoryDetail = () =>
       <View style={styles.mainContainer}>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => this._onRefresh()}
+            />
+          }
+        >
           <Content>
             <StoryScreenSwiper story={story} />
             <StoryScreeninfo
