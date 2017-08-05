@@ -3,13 +3,15 @@ import { ToastAndroid } from 'react-native';
 import { connect } from 'react-redux';
 
 import { updateActiveUser } from 'actions/authAction';
+import { receiveNotifications } from 'actions/notificationAction';
 import { MainNavigatorAuth } from './MainNavigatorAuth';
 
 import { API } from 'services/APIService';
 
 const mapStateToProps = state => {
   return {
-    navigationState: state.mainNavigatorAuth
+    navigationState: state.mainNavigatorAuth,
+    dispatch: state.dispatch
   };
 };
 
@@ -29,12 +31,13 @@ class MainNavigatorAuthContainer extends Component {
   }
 
   _FetchUserData() {
-    const { updateUser } = this.props;
+    const { updateUser, dispatch } = this.props;
 
     API()
       .get('api/me')
       .then(res => {
         updateUser(res.data);
+        receiveNotifications(dispatch, res.data);
       })
       .catch(err => {
         ToastAndroid.show(

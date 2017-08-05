@@ -1,4 +1,3 @@
-import store from 'react-native-simple-store';
 import { UPDATE_ACCESS_TOKEN, UPDATE_ACTIVE_USER } from 'constants/actionTypes';
 
 const initialState = {
