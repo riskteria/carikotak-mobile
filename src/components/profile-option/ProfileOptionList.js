@@ -61,6 +61,19 @@ class ProfileOptionsList extends Component {
 
         <ListItem
           icon
+          onPress={() => navigate('ProfileSetting')}
+          style={{ paddingTop: 32, paddingBottom: 32 }}
+        >
+          <Left>
+            <Icon name="md-help" />
+          </Left>
+          <Body>
+            <Text>Bantuan</Text>
+          </Body>
+        </ListItem>
+
+        <ListItem
+          icon
           onPress={() => this._onPressLogout()}
           style={{ paddingTop: 32, paddingBottom: 32 }}
         >
