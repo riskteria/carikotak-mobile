@@ -24,7 +24,7 @@ class StoryCarousel extends Component {
     this.setState({ loadingSpin: true });
 
     API()
-      .get('api/post?page=1&&per_page=5')
+      .get('api/post?page=1&&per_page=10')
       .then(res => {
         this.setState({ loadingSpin: false });
         this.setState({ stories: res.data });
