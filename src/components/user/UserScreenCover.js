@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 
 import UserScreenInfoModal from './UserScreenInfoModal';
+import FollowModal from './FollowModal';
 import { loadImageUser } from 'services/ImageFetcher';
 
 import colors from 'styles/_colors';
@@ -23,10 +24,20 @@ class UserScreenCover extends Component {
     super(props);
 
     this.state = {
-      modalInfoVisible: false
+      modalInfoVisible: false,
+      modalFollowVisible: false,
+      modalFollowType: null
     };
 
     this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
+    this._onModalFollowToggled = this._onModalFollowToggled.bind(this);
+  }
+
+  _onModalFollowToggled(type) {
+    this.setState({
+      modalFollowType: type,
+      modalFollowVisible: !this.state.modalFollowVisible
+    });
   }
 
   _onModalInfoToggled() {
@@ -34,8 +45,18 @@ class UserScreenCover extends Component {
   }
 
   render() {
-    const { modalInfoVisible } = this.state;
-    const { user, _onFollowPressed, _onUnFollowPressed } = this.props;
+    const {
+      modalInfoVisible,
+      modalFollowType,
+      modalFollowVisible
+    } = this.state;
+
+    const {
+      user,
+      _onFollowPressed,
+      _onUnFollowPressed,
+      navigation
+    } = this.props;
 
     return (
       <Content style={StyleSheet.flatten(styles.coverBg)}>
@@ -52,7 +73,11 @@ class UserScreenCover extends Component {
                   {user.name}
                 </Text>
                 <Text>
-                  <Text note style={StyleSheet.flatten(styles.textNote)}>
+                  <Text
+                    onPress={() => this._onModalFollowToggled('follower')}
+                    note
+                    style={StyleSheet.flatten(styles.textNote)}
+                  >
                     {`${user.total_followers || 0} Pengikut`}
                   </Text>
                   <Text
@@ -61,7 +86,11 @@ class UserScreenCover extends Component {
                   >
                     {' | '}
                   </Text>
-                  <Text note style={StyleSheet.flatten(styles.textNote)}>
+                  <Text
+                    onPress={() => this._onModalFollowToggled('following')}
+                    note
+                    style={StyleSheet.flatten(styles.textNote)}
+                  >
                     {`${user.total_followings || 0} Mengikuti`}
                   </Text>
                 </Text>
@@ -100,6 +129,14 @@ class UserScreenCover extends Component {
           user={user}
           modalInfoVisible={modalInfoVisible}
           _onModalInfoToggled={this._onModalInfoToggled}
+        />
+
+        <FollowModal
+          user={user}
+          navigation={navigation}
+          modalFollowType={modalFollowType}
+          modalFollowVisible={modalFollowVisible}
+          _onModalFollowToggled={this._onModalFollowToggled}
         />
       </Content>
     );

@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 
 import ProfileScreenInfoModal from './ProfileScreenInfoModal';
+import FollowModal from './FollowModal';
 import { loadImageUser } from 'services/ImageFetcher';
 
 import styles from './styles';
@@ -22,10 +23,20 @@ class ProfileScreenCover extends Component {
     super(props);
 
     this.state = {
-      modalInfoVisible: false
+      modalInfoVisible: false,
+      modalFollowVisible: false,
+      modalFollowType: null
     };
 
     this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
+    this._onModalFollowToggled = this._onModalFollowToggled.bind(this);
+  }
+
+  _onModalFollowToggled(type) {
+    this.setState({
+      modalFollowType: type,
+      modalFollowVisible: !this.state.modalFollowVisible
+    });
   }
 
   _onModalInfoToggled() {
@@ -33,7 +44,12 @@ class ProfileScreenCover extends Component {
   }
 
   render() {
-    const { modalInfoVisible } = this.state;
+    const {
+      modalInfoVisible,
+      modalFollowType,
+      modalFollowVisible
+    } = this.state;
+
     const { user, navigation } = this.props;
     const { navigate } = navigation;
 
@@ -52,7 +68,11 @@ class ProfileScreenCover extends Component {
                   {user.name}
                 </Text>
                 <Text>
-                  <Text note style={StyleSheet.flatten(styles.textNote)}>
+                  <Text
+                    onPress={() => this._onModalFollowToggled('follower')}
+                    note
+                    style={StyleSheet.flatten(styles.textNote)}
+                  >
                     {`${user.total_followers || 0} Pengikut`}
                   </Text>
                   <Text
@@ -61,7 +81,11 @@ class ProfileScreenCover extends Component {
                   >
                     {' | '}
                   </Text>
-                  <Text note style={StyleSheet.flatten(styles.textNote)}>
+                  <Text
+                    onPress={() => this._onModalFollowToggled('following')}
+                    note
+                    style={StyleSheet.flatten(styles.textNote)}
+                  >
                     {`${user.total_followings || 0} Mengikuti`}
                   </Text>
                 </Text>
@@ -98,6 +122,14 @@ class ProfileScreenCover extends Component {
           user={user}
           modalInfoVisible={modalInfoVisible}
           _onModalInfoToggled={this._onModalInfoToggled}
+        />
+
+        <FollowModal
+          user={user}
+          navigation={navigation}
+          modalFollowType={modalFollowType}
+          modalFollowVisible={modalFollowVisible}
+          _onModalFollowToggled={this._onModalFollowToggled}
         />
       </Content>
     );

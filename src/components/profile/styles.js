@@ -200,6 +200,17 @@ const infoModal = {
   }
 };
 
+const userCard = {
+  userCardContainer: {
+    elevation: 0,
+    margin: 0,
+    padding: 0
+  },
+  userCardNote: {
+    fontSize: 12
+  }
+};
+
 const styles = StyleSheet.create(
   Object.assign(
     {},
@@ -209,7 +220,8 @@ const styles = StyleSheet.create(
     tabProduct,
     tabStory,
     commentCard,
-    infoModal
+    infoModal,
+    userCard
   )
 );
 
