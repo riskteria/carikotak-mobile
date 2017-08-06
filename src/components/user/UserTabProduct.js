@@ -23,7 +23,7 @@ class UserTabProduct extends Component {
 
   _fetchUserProducts() {
     const { user } = this.props;
-    this.setState({ loadingSpin: false });
+    this.setState({ loadingSpin: true });
     API()
       .get(`api/product?user=${user.id}`)
       .then(res => {

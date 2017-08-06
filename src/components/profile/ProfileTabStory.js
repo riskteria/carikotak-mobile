@@ -23,7 +23,7 @@ class ProfileTabStory extends Component {
 
   _fetchUserStories() {
     const { user } = this.props;
-    this.setState({ loadingSpin: false });
+    this.setState({ loadingSpin: true });
     API()
       .get(`api/post?user=${user.id}`)
       .then(res => {
