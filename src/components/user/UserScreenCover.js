@@ -31,6 +31,12 @@ class UserScreenCover extends Component {
 
     this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
     this._onModalFollowToggled = this._onModalFollowToggled.bind(this);
+    this._onUserCardClicked = this._onUserCardClicked.bind(this);
+  }
+
+  _onUserCardClicked(username, type) {
+    this._onModalFollowToggled(type);
+    this.props.navigation.navigate('User', { username });
   }
 
   _onModalFollowToggled(type) {
@@ -136,6 +142,7 @@ class UserScreenCover extends Component {
           navigation={navigation}
           modalFollowType={modalFollowType}
           modalFollowVisible={modalFollowVisible}
+          _onUserCardClicked={this._onUserCardClicked}
           _onModalFollowToggled={this._onModalFollowToggled}
         />
       </Content>

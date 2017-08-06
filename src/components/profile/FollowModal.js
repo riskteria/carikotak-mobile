@@ -82,7 +82,12 @@ class FollowModal extends Component {
   }
 
   render() {
-    const { modalFollowVisible, modalFollowType, navigation } = this.props;
+    const {
+      modalFollowVisible,
+      modalFollowType,
+      navigation,
+      _onUserCardClicked
+    } = this.props;
 
     const { users, loadingSpin, refreshing } = this.state;
 
@@ -122,6 +127,8 @@ class FollowModal extends Component {
                 navigation={navigation}
                 users={users}
                 refreshing={refreshing}
+                modalFollowType={modalFollowType}
+                _onUserCardClicked={_onUserCardClicked}
                 _onRefresh={this._onRefresh}
               />}
         </Container>

@@ -11,13 +11,12 @@ class FollowCard extends Component {
   }
 
   render() {
-    const { navigation, user } = this.props;
-    const { navigate } = navigation;
+    const { user, modalFollowType, _onUserCardClicked } = this.props;
 
     return (
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => navigate('User', { username: user.username })}
+        onPress={() => _onUserCardClicked(user.username, modalFollowType)}
       >
         <Card style={StyleSheet.flatten(styles.userCardContainer)}>
           <CardItem>

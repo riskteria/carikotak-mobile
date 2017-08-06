@@ -15,10 +15,20 @@ class FollowList extends Component {
   }
 
   render() {
-    const { users, navigation } = this.props;
+    const {
+      users,
+      navigation,
+      modalFollowType,
+      _onUserCardClicked
+    } = this.props;
 
     const _renderItem = ({ item }) =>
-      <FollowCard navigation={navigation} user={item} />;
+      <FollowCard
+        navigation={navigation}
+        user={item}
+        modalFollowType={modalFollowType}
+        _onUserCardClicked={_onUserCardClicked}
+      />;
 
     return (
       <FlatList
