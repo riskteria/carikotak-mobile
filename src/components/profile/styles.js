@@ -58,6 +58,9 @@ const coverStyle = {
     fontSize: 12,
     paddingLeft: 32,
     paddingRight: 32
+  },
+  buttonInfo: {
+    marginLeft: 16
   }
 };
 
@@ -176,6 +179,26 @@ const commentCard = {
   }
 };
 
+const infoModal = {
+  modalBackdrop: {
+    backgroundColor: 'rgba(0,0,0,0.7)'
+  },
+  modalBody: {
+    backgroundColor: '#fff',
+    margin: 16,
+    borderRadius: 4
+  },
+  infoSection: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.1)'
+  },
+  textCenter: {
+    textAlign: 'center',
+    color: colors.colorDark
+  }
+};
+
 const styles = StyleSheet.create(
   Object.assign(
     {},
@@ -184,7 +207,8 @@ const styles = StyleSheet.create(
     coverStyle,
     tabProduct,
     tabStory,
-    commentCard
+    commentCard,
+    infoModal
   )
 );
 

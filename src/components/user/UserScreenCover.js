@@ -8,10 +8,11 @@ import {
   Left,
   Body,
   Text,
-  Right,
+  Icon,
   Button
 } from 'native-base';
 
+import UserScreenInfoModal from './UserScreenInfoModal';
 import { loadImageUser } from 'services/ImageFetcher';
 
 import colors from 'styles/_colors';
@@ -20,9 +21,20 @@ import styles from './styles';
 class UserScreenCover extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalInfoVisible: false
+    };
+
+    this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
+  }
+
+  _onModalInfoToggled() {
+    this.setState({ modalInfoVisible: !this.state.modalInfoVisible });
   }
 
   render() {
+    const { modalInfoVisible } = this.state;
     const { user, _onFollowPressed, _onUnFollowPressed } = this.props;
 
     return (
@@ -55,7 +67,9 @@ class UserScreenCover extends Component {
                 </Text>
               </Body>
             </Left>
-            <Right>
+          </CardItem>
+          <CardItem style={StyleSheet.flatten(styles.profileCardItem)}>
+            <Left>
               {user.isFollowedByMe
                 ? <Button small light onPress={() => _onUnFollowPressed()}>
                     <Text style={{ color: colors.colorAccent }}>Diikuti</Text>
@@ -68,9 +82,25 @@ class UserScreenCover extends Component {
                   >
                     <Text>Ikuti</Text>
                   </Button>}
-            </Right>
+
+              <Button
+                transparent
+                small
+                light
+                onPress={() => this._onModalInfoToggled()}
+                style={StyleSheet.flatten(styles.buttonInfo)}
+              >
+                <Icon name="ios-information-circle-outline" />
+              </Button>
+            </Left>
           </CardItem>
         </Card>
+
+        <UserScreenInfoModal
+          user={user}
+          modalInfoVisible={modalInfoVisible}
+          _onModalInfoToggled={this._onModalInfoToggled}
+        />
       </Content>
     );
   }

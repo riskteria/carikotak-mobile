@@ -8,10 +8,11 @@ import {
   Left,
   Body,
   Text,
-  Right,
-  Button
+  Button,
+  Icon
 } from 'native-base';
 
+import ProfileScreenInfoModal from './ProfileScreenInfoModal';
 import { loadImageUser } from 'services/ImageFetcher';
 
 import styles from './styles';
@@ -19,9 +20,20 @@ import styles from './styles';
 class ProfileScreenCover extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalInfoVisible: false
+    };
+
+    this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
+  }
+
+  _onModalInfoToggled() {
+    this.setState({ modalInfoVisible: !this.state.modalInfoVisible });
   }
 
   render() {
+    const { modalInfoVisible } = this.state;
     const { user, navigation } = this.props;
     const { navigate } = navigation;
 
@@ -34,7 +46,7 @@ class ProfileScreenCover extends Component {
         <Card style={StyleSheet.flatten(styles.profileCard)}>
           <CardItem style={StyleSheet.flatten(styles.profileCardItem)}>
             <Left>
-              <Thumbnail source={{ uri: loadImageUser(user.avatar) }} />
+              <Thumbnail small source={{ uri: loadImageUser(user.avatar) }} />
               <Body>
                 <Text>
                   {user.name}
@@ -55,7 +67,10 @@ class ProfileScreenCover extends Component {
                 </Text>
               </Body>
             </Left>
-            <Right>
+          </CardItem>
+
+          <CardItem style={StyleSheet.flatten(styles.profileCardItem)}>
+            <Left>
               <Button
                 bordered
                 small
@@ -64,9 +79,26 @@ class ProfileScreenCover extends Component {
               >
                 <Text>Edit</Text>
               </Button>
-            </Right>
+              <Button
+                transparent
+                small
+                light
+                onPress={() => {
+                  this._onModalInfoToggled();
+                }}
+                style={StyleSheet.flatten(styles.buttonInfo)}
+              >
+                <Icon name="ios-information-circle-outline" />
+              </Button>
+            </Left>
           </CardItem>
         </Card>
+
+        <ProfileScreenInfoModal
+          user={user}
+          modalInfoVisible={modalInfoVisible}
+          _onModalInfoToggled={this._onModalInfoToggled}
+        />
       </Content>
     );
   }
