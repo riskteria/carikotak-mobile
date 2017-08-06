@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     paddingBottom: 1.6,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   cardProductName: {
     color: colors.colorDark,
