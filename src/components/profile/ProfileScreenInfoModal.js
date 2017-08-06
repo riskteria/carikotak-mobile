@@ -43,6 +43,11 @@ class ProfileScreenInfoModal extends Component {
                   </Text>
                 : null}
             </Content>
+            <Content style={StyleSheet.flatten(styles.infoSection)}>
+              <Text style={StyleSheet.flatten(styles.textCenter)}>
+                {user.phone}
+              </Text>
+            </Content>
           </Content>
         </Container>
       </Modal>
