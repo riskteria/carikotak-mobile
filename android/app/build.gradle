@@ -95,6 +95,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+				vectorDrawables.useSupportLibrary = true
     }
     splits {
         abi {
@@ -137,6 +138,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-crop-picker')
 		compile(project(":react-native-google-signin")){
         exclude group: "com.google.android.gms" // very important
     }

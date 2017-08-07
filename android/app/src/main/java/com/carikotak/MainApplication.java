@@ -3,6 +3,7 @@ package com.carikotak;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
 		protected List<ReactPackage> getPackages() {
 			return Arrays.<ReactPackage>asList(
 				new MainReactPackage(),
+            new PickerPackage(),
 				new ReactNativeRestartPackage(),
 				new SplashScreenReactPackage(),
 				new WebViewBridgePackage(),
