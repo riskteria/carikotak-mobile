@@ -124,7 +124,7 @@ class StoryScreen extends Component {
 
   render() {
     const { loadingSpin, story, refreshing } = this.state;
-    const { navigation } = this.props;
+    const { navigation, activeUser } = this.props;
 
     const StoryDetail = () =>
       <View style={styles.mainContainer}>
@@ -142,7 +142,7 @@ class StoryScreen extends Component {
             <StoryScreeninfo
               story={story}
               navigation={navigation}
-              activeUser={this.props.activeUser}
+              activeUser={activeUser}
               _onRatingGiven={this._onRatingGiven}
             />
           </Content>

@@ -17,13 +17,19 @@ import { loadImageUser } from 'services/ImageFetcher';
 
 class ProductScreenInfoUser extends Component {
   render() {
-    const { product, navigation } = this.props;
+    const { product, navigation, activeUser } = this.props;
     const { navigate } = navigation;
 
     return (
       <TouchableOpacity
         activeOpacity={0.9}
-        onPress={() => navigate('User', { username: product.user.username })}
+        onPress={() => {
+          if (activeUser.id === product.user.id) {
+            navigate('ProfileTab');
+          } else {
+            navigate('User', { username: product.user.username });
+          }
+        }}
       >
         <Card style={{ elevation: 0 }}>
           <CardItem>

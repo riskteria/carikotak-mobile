@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, ScrollView, ToastAndroid, RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
 
@@ -11,6 +12,16 @@ import ProductScreenSwiper from './ProductScreenSwiper';
 
 import { API } from 'services/APIService';
 import styles from './styles';
+
+const mapStateToProps = state => {
+  return {
+    activeUser: state.authSessionHandler.active_user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 class ProductScreen extends Component {
   constructor(props) {
@@ -120,7 +131,7 @@ class ProductScreen extends Component {
 
   render() {
     const { loadingSpin, product, refreshing } = this.state;
-    const { navigation } = this.props;
+    const { navigation, activeUser } = this.props;
 
     const ProductDetail = () =>
       <View style={styles.mainContainer}>
@@ -134,9 +145,11 @@ class ProductScreen extends Component {
         >
           <Content>
             <ProductScreenSwiper product={product} />
+
             <ProductScreenInfo
               product={product}
               navigation={navigation}
+              activeUser={activeUser}
               _onRatingGiven={this._onRatingGiven}
             />
           </Content>
@@ -160,4 +173,4 @@ class ProductScreen extends Component {
   }
 }
 
-export default ProductScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(ProductScreen);

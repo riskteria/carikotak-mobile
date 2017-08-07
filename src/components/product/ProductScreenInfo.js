@@ -10,7 +10,7 @@ import ProductScreenInfoDescription from './ProductScreenInfoDescription';
 
 class ProductScreenInfo extends Component {
   render() {
-    const { product, navigation, _onRatingGiven } = this.props;
+    const { product, navigation, _onRatingGiven, activeUser } = this.props;
 
     return (
       <View>
@@ -23,7 +23,11 @@ class ProductScreenInfo extends Component {
 
         <ProductScreenInfoOption product={product} navigation={navigation} />
 
-        <ProductScreenInfoUser product={product} navigation={navigation} />
+        <ProductScreenInfoUser
+          product={product}
+          navigation={navigation}
+          activeUser={activeUser}
+        />
 
         <ProductScreenInfoSpec product={product} />
 
