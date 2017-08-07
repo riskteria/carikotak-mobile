@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ToastAndroid } from 'react-native';
 import {
   Content,
   Input,
@@ -11,7 +11,10 @@ import {
   Text
 } from 'native-base';
 
+import CreateProductColorPicker from './CreateProductColorPicker';
+
 import styles from './styles';
+import { API } from 'services/APIService';
 
 class CreateProductForm extends Component {
   constructor(props) {
@@ -25,20 +28,59 @@ class CreateProductForm extends Component {
         price: '',
         category_id: '',
         image: [],
+        color: [],
         material: '',
         condition: '',
         description: '',
         type: this.props.navigation.state.params.type
-      }
+      },
+      modalColorVisible: false
     };
+
+    this._onModalColorToggled = this._onModalColorToggled.bind(this);
+    this._onColorSelected = this._onColorSelected.bind(this);
+    this._onRemoveColorPressed = this._onRemoveColorPressed.bind(this);
+  }
+
+  _onRemoveColorPressed(index) {
+    const { product } = this.state;
+    product.color.splice(index, 1);
+
+    this.setState({ product });
+  }
+
+  _onColorSelected(color) {
+    const { product } = this.state;
+    product.color.push(color);
+
+    this.setState({ product });
+
+    this._onModalColorToggled();
+  }
+
+  _onModalColorToggled() {
+    this.setState({ modalColorVisible: !this.state.modalColorVisible });
   }
 
   _onProductSubmit() {
-    console.log(this.state.product);
+    const { product } = this.state;
+    const { navigation } = this.props;
+    const { navigate } = navigation;
+
+    API()
+      .post('api/product', product)
+      .then(res => {
+        navigate('Product', { slug: res.data.product.slug });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${err.response.data.message}`,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   _onChangeText(propertyName, value) {
-    console.log(this.state.product);
     switch (propertyName) {
       case 'name':
         this.setState({
@@ -61,7 +103,7 @@ class CreateProductForm extends Component {
   }
 
   render() {
-    const { product } = this.state;
+    const { product, modalColorVisible } = this.state;
     const { categories, materials, conditions } = this.props;
 
     const MaterialPicker = () =>
@@ -154,6 +196,35 @@ class CreateProductForm extends Component {
         <View style={StyleSheet.flatten(styles.sectionContainer)}>
           <Label style={StyleSheet.flatten(styles.labelControl)}>Kondisi</Label>
           <ConditionPicker />
+        </View>
+
+        <View style={StyleSheet.flatten(styles.sectionContainer)}>
+          <Label style={StyleSheet.flatten(styles.labelControl)}>Warna</Label>
+
+          <View style={{ paddingVertical: 16, flexDirection: 'row' }}>
+            {product.color.map((color, index) =>
+              <Button
+                small
+                onPress={() => this._onRemoveColorPressed(index)}
+                key={index}
+                style={{ marginHorizontal: 8, backgroundColor: color }}
+              />
+            )}
+            <Button
+              small
+              light
+              onPress={() => this._onModalColorToggled()}
+              style={{ marginHorizontal: 8 }}
+            >
+              <Text>+</Text>
+            </Button>
+          </View>
+
+          <CreateProductColorPicker
+            modalColorVisible={modalColorVisible}
+            _onModalColorToggled={this._onModalColorToggled}
+            _onColorSelected={this._onColorSelected}
+          />
         </View>
 
         <Item stackedLabel style={StyleSheet.flatten(styles.sectionContainer)}>
