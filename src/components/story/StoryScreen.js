@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, ScrollView, ToastAndroid, RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
 
@@ -10,6 +11,16 @@ import StoryScreenFooter from './StoryScreenFooter';
 import styles from './styles';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import { API } from 'services/APIService';
+
+const mapStateToProps = state => {
+  return {
+    activeUser: state.authSessionHandler.active_user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 class StoryScreen extends Component {
   constructor(props) {
@@ -127,9 +138,11 @@ class StoryScreen extends Component {
         >
           <Content>
             <StoryScreenSwiper story={story} />
+
             <StoryScreeninfo
               story={story}
               navigation={navigation}
+              activeUser={this.props.activeUser}
               _onRatingGiven={this._onRatingGiven}
             />
           </Content>
@@ -137,6 +150,7 @@ class StoryScreen extends Component {
 
         <StoryScreenFooter
           story={story}
+          sessionHandler
           navigation={navigation}
           _onFavoritePressed={this._onFavoritePressed}
           _onUnFavoritePressed={this._onUnFavoritePressed}
@@ -152,4 +166,4 @@ class StoryScreen extends Component {
   }
 }
 
-export default StoryScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(StoryScreen);

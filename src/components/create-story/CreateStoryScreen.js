@@ -115,8 +115,6 @@ class CreateStoryScreen extends Component {
           type: image.mime
         };
 
-        console.log(file);
-
         data.append('image', file);
 
         API()

@@ -9,7 +9,7 @@ import StoryScreenInfoDescription from './StoryScreenInfoDescription';
 
 class StoryScreenInfo extends Component {
   render() {
-    const { story, navigation, _onRatingGiven } = this.props;
+    const { story, navigation, _onRatingGiven, activeUser } = this.props;
 
     return (
       <View>
@@ -19,7 +19,11 @@ class StoryScreenInfo extends Component {
 
         <StoryScreenInfoOption story={story} navigation={navigation} />
 
-        <StoryScreenInfoUser story={story} navigation={navigation} />
+        <StoryScreenInfoUser
+          story={story}
+          navigation={navigation}
+          activeUser={activeUser}
+        />
 
         <StoryScreenInfoDescription story={story} />
       </View>
