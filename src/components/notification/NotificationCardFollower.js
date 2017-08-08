@@ -6,11 +6,14 @@ import { loadImageUser } from 'services/ImageFetcher';
 
 class NotificationCard extends Component {
   render() {
-    const { notification } = this.props;
+    const { notification, navigation } = this.props;
 
     return (
       <TouchableNativeFeedback
-        onPress={() => null}
+        onPress={() =>
+          navigation.navigate('User', {
+            username: notification.data.user.username
+          })}
         background={TouchableNativeFeedback.Ripple()}
       >
         <Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>

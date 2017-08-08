@@ -65,9 +65,7 @@ class NotificationList extends Component {
           );
 
         default:
-          return (
-            <NotificationCard navigation={navigation} notification={item} />
-          );
+          return null;
       }
     };
 

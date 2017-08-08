@@ -4,11 +4,14 @@ import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
 
 class NotificationCardNewProduct extends Component {
   render() {
-    const { notification } = this.props;
+    const { notification, navigation } = this.props;
 
     return (
       <TouchableNativeFeedback
-        onPress={() => null}
+        onPress={() =>
+          navigation.navigate('Product', {
+            slug: notification.data.product.slug
+          })}
         background={TouchableNativeFeedback.Ripple()}
       >
         <Card style={{ elevation: 0, marginBottom: 0, marginTop: 0 }}>
@@ -20,9 +23,11 @@ class NotificationCardNewProduct extends Component {
               />
               <Body>
                 <Text>
-                  <Text style={{ fontSize: 14 }}>Ovinsyah Al Bayhaqy</Text>
+                  <Text style={{ fontSize: 14 }}>
+                    {notification.data.user.name}
+                  </Text>
                   <Text style={{ fontSize: 14 }} note>
-                    memiliki sebuah produk baru
+                    &nbsp;memiliki sebuah produk baru
                   </Text>
                 </Text>
               </Body>
