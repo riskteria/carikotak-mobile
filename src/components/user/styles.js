@@ -211,6 +211,18 @@ const userCard = {
   }
 };
 
+const messageCard = {
+  messageCardContainer: {
+    paddingVertical: 64,
+    paddingHorizontal: 16,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    justifyContent: 'center'
+  },
+  messageCardInput: {
+    fontSize: 14
+  }
+};
+
 const styles = StyleSheet.create(
   Object.assign(
     {},
@@ -221,7 +233,8 @@ const styles = StyleSheet.create(
     tabStory,
     commentCard,
     infoModal,
-    userCard
+    userCard,
+    messageCard
   )
 );
 

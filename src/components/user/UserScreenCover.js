@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, ToastAndroid } from 'react-native';
 import {
   Content,
   Thumbnail,
@@ -13,17 +13,21 @@ import {
 } from 'native-base';
 
 import UserScreenInfoModal from './UserScreenInfoModal';
+import ModalMessage from './ModalMessage';
 import FollowModal from './FollowModal';
 import { loadImageUser } from 'services/ImageFetcher';
 
 import colors from 'styles/_colors';
 import styles from './styles';
 
+import { API } from 'services/APIService';
+
 class UserScreenCover extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      modalMessageVisible: false,
       modalInfoVisible: false,
       modalFollowVisible: false,
       modalFollowType: null
@@ -32,6 +36,26 @@ class UserScreenCover extends Component {
     this._onModalInfoToggled = this._onModalInfoToggled.bind(this);
     this._onModalFollowToggled = this._onModalFollowToggled.bind(this);
     this._onUserCardClicked = this._onUserCardClicked.bind(this);
+    this._onModalMessageToggled = this._onModalMessageToggled.bind(this);
+    this._onMessageSend = this._onMessageSend.bind(this);
+  }
+
+  _onMessageSend(message) {
+    const { navigation } = this.props;
+    const { navigate } = navigation;
+
+    API()
+      .post('api/message', message)
+      .then(res => {
+        this._onModalMessageToggled();
+        navigate('Message', { channel: res.data.message.channel.id });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   _onUserCardClicked(username, type) {
@@ -46,12 +70,17 @@ class UserScreenCover extends Component {
     });
   }
 
+  _onModalMessageToggled() {
+    this.setState({ modalMessageVisible: !this.state.modalMessageVisible });
+  }
+
   _onModalInfoToggled() {
     this.setState({ modalInfoVisible: !this.state.modalInfoVisible });
   }
 
   render() {
     const {
+      modalMessageVisible,
       modalInfoVisible,
       modalFollowType,
       modalFollowVisible
@@ -119,6 +148,16 @@ class UserScreenCover extends Component {
                   </Button>}
 
               <Button
+                bordered
+                small
+                light
+                onPress={() => this._onModalMessageToggled()}
+                style={StyleSheet.flatten(styles.buttonInfo)}
+              >
+                <Text>Kirim Pesan</Text>
+              </Button>
+
+              <Button
                 transparent
                 small
                 light
@@ -144,6 +183,14 @@ class UserScreenCover extends Component {
           modalFollowVisible={modalFollowVisible}
           _onUserCardClicked={this._onUserCardClicked}
           _onModalFollowToggled={this._onModalFollowToggled}
+        />
+
+        <ModalMessage
+          user={user}
+          navigation={navigation}
+          modalMessageVisible={modalMessageVisible}
+          _onMessageSend={this._onMessageSend}
+          _onModalMessageToggled={this._onModalMessageToggled}
         />
       </Content>
     );
