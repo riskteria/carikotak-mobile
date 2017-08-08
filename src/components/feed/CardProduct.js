@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import StarRating from 'react-native-star-rating';
-
+import numeral from 'numeral';
 import { loadImageProduct } from 'services/ImageFetcher';
 import styles from './styles';
 import colors from 'styles/_colors';
@@ -24,7 +24,7 @@ class CardProduct extends Component {
           </Text>
           <View style={styles.cardProductFooterCol}>
             <Text style={styles.cardProductPrice}>
-              Rp. {product.price}
+              {`Rp. ${numeral(product.price).format('0,0')}`}
             </Text>
             <Text style={styles.cardProductStatus}>
               {product.type}

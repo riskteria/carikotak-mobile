@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   cardProductName: {
     color: colors.colorDark,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '500'
   },
   cardProductOwner: {
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   cardProductPrice: {
     color: colors.colorAccent,
-    fontWeight: 'bold'
+    fontSize: 12
   },
   cardProductLocation: {
     fontWeight: 'bold',

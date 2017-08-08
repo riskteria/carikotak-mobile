@@ -89,7 +89,7 @@ const tabProduct = {
   },
   cardProductName: {
     color: colors.colorDark,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '500'
   },
   cardProductOwner: {
@@ -102,7 +102,7 @@ const tabProduct = {
   },
   cardProductPrice: {
     color: colors.colorAccent,
-    fontWeight: 'bold'
+    fontSize: 12
   },
   cardProductLocation: {
     fontWeight: 'bold',
