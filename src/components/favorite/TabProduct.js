@@ -56,19 +56,16 @@ class TabStory extends Component {
     const { navigation } = this.props;
     const { loadingSpinner, products } = this.state;
 
-    const ProductListWrapper = () =>
-      <Container>
-        <ProductList
-          navigation={navigation}
-          products={products}
-          _onRefresh={this._onRefresh}
-          refreshing={this.state.refreshing}
-        />
-      </Container>;
-
     return (
       <Container>
-        {loadingSpinner ? <ProgressBar /> : <ProductListWrapper />}
+        {loadingSpinner
+          ? <ProgressBar />
+          : <ProductList
+              navigation={navigation}
+              products={products}
+              _onRefresh={this._onRefresh}
+              refreshing={this.state.refreshing}
+            />}
       </Container>
     );
   }

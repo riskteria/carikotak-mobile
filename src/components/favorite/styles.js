@@ -35,14 +35,15 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.colorAccent
   },
-  productListVertical: {},
+  productListHorizontal: {
+    padding: 8
+  },
   cardProductContainer: {
     backgroundColor: colors.colorLight,
     flex: 1,
     marginTop: 8,
     marginBottom: 8,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingHorizontal: 8,
     borderBottomWidth: 1,
     borderBottomColor: colors.colorBorderLight
   },
