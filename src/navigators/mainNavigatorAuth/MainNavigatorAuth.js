@@ -36,6 +36,7 @@ import ConnectionScreen from 'components/connection/ConnectionScreen';
 
 // Help Screen
 import HelpScreen from 'components/help/HelpScreen';
+import AboutScreen from 'components/about/AboutScreen';
 
 import { MainTabNavigator } from 'navigators/mainTab/MainTabNavigator';
 
@@ -167,6 +168,13 @@ const routeConfiguration = {
 
   Help: {
     screen: HelpScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  About: {
+    screen: AboutScreen,
     navigationOptions: {
       header: null
     }

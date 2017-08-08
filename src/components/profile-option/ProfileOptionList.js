@@ -61,7 +61,7 @@ class ProfileOptionsList extends Component {
 
         <ListItem
           icon
-          onPress={() => navigate('ProfileSetting')}
+          onPress={() => navigate('Help')}
           style={{ paddingTop: 32, paddingBottom: 32 }}
         >
           <Left>
@@ -69,6 +69,19 @@ class ProfileOptionsList extends Component {
           </Left>
           <Body>
             <Text>Bantuan</Text>
+          </Body>
+        </ListItem>
+
+        <ListItem
+          icon
+          onPress={() => navigate('About')}
+          style={{ paddingTop: 32, paddingBottom: 32 }}
+        >
+          <Left>
+            <Icon name="md-information-circle" />
+          </Left>
+          <Body>
+            <Text>Tentang</Text>
           </Body>
         </ListItem>
 
