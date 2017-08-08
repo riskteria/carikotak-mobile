@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
-
-import colors from 'styles/_colors';
+import { Header, Left, Right, Button, Icon } from 'native-base';
 
 class AboutScreenHeader extends Component {
   constructor(props) {
@@ -12,15 +10,12 @@ class AboutScreenHeader extends Component {
     const { goBack } = this.props.navigation;
 
     return (
-      <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
+      <Header style={{ backgroundColor: 'transparent', elevation: 0 }}>
         <Left>
           <Button transparent dark onPress={() => goBack()}>
             <Icon name="md-arrow-back" />
           </Button>
         </Left>
-        <Body>
-          <Title style={{ color: colors.colorBlack }}>Tentang</Title>
-        </Body>
         <Right />
       </Header>
     );
