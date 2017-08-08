@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableNativeFeedback } from 'react-native';
 import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
+import moment from 'moment';
 
 class NotificationCardNewStory extends Component {
   render() {
@@ -27,6 +28,12 @@ class NotificationCardNewStory extends Component {
                   <Text style={{ fontSize: 14 }} note>
                     &nbsp;menulis sebuah cerita baru
                   </Text>
+                </Text>
+                <Text note style={{ fontSize: 10 }}>
+                  {moment(
+                    notification.created_at,
+                    'YYYY-MM-DD hh:ii:ss'
+                  ).format('DD MMMM YYYY')}
                 </Text>
               </Body>
             </Left>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableNativeFeedback } from 'react-native';
 import { Card, CardItem, Left, Thumbnail, Body, Text } from 'native-base';
-
+import moment from 'moment';
 import { loadImageUser } from 'services/ImageFetcher';
 
 class NotificationCard extends Component {
@@ -31,6 +31,12 @@ class NotificationCard extends Component {
                   <Text style={{ fontSize: 14 }} note>
                     mulai mengikuti anda
                   </Text>
+                </Text>
+                <Text note style={{ fontSize: 10 }}>
+                  {moment(
+                    notification.created_at,
+                    'YYYY-MM-DD hh:ii:ss'
+                  ).format('DD MMMM YYYY')}
                 </Text>
               </Body>
             </Left>
