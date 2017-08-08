@@ -41,7 +41,7 @@ class ModalMessage extends Component {
         transparent={true}
         visible={modalMessageVisible}
         onRequestClose={_onModalMessageToggled}
-        animationType={'none'}
+        animationType={'fade'}
       >
         <Container style={StyleSheet.flatten(styles.messageCardContainer)}>
           <Form style={{ backgroundColor: '#ffffff', borderRadius: 4 }}>
