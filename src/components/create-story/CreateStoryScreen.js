@@ -1,16 +1,32 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, ToastAndroid } from 'react-native';
-import { Container, Content, Picker } from 'native-base';
+import { connect } from 'react-redux';
+import { StyleSheet, ToastAndroid } from 'react-native';
+import { Container, Picker } from 'native-base';
 import {
   RichTextEditor,
   RichTextToolbar
 } from 'react-native-zss-rich-text-editor';
+
 import ImagePicker from 'react-native-image-crop-picker';
+import RNFetchBlob from 'react-native-fetch-blob';
+
+const { Blob, File, Fetch } = RNFetchBlob.polyfill;
 
 import CreateStoryHeader from './CreateStoryHeader';
 import styles from './styles';
 
 import { API } from 'services/APIService';
+import { API_URL } from 'react-native-dotenv';
+
+const mapStateToProps = state => {
+  return {
+    accessToken: state.authSessionHandler.access_token
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 class CreateStoryScreen extends Component {
   constructor(props) {
@@ -109,21 +125,26 @@ class CreateStoryScreen extends Component {
         const data = new FormData();
         const pathParts = image.path.split('/');
 
-        const file = {
-          uri: image.path,
-          name: pathParts[pathParts.length - 1],
-          type: image.mime
-        };
+        const form = new FormData();
 
-        data.append('image', file);
-
-        API()
-          .post('api/image', data)
-          .then(res => {
-            console.log(res.data);
+        // create first file from BASE64, file IO is asynchronous therefore
+        // we need wait for the promise.
+        // The `;BASE64` in `type` is important when creating Blob/File from
+        // BASE64 encoded data.
+        File.build('image.png', image.data, { type: 'image/png;BASE64' })
+          .then(file => {
+            // add the file to form data
+            form.append('image', file);
+            // create File object from existing file path, the content type is optional
+            return File.build('image2.png', RNFetchBlob.wrap(image.path), {
+              type: 'image/png'
+            });
           })
-          .catch(err => {
-            console.log(err.response.data);
+          .then(file => {
+            form.append('image', JSON.stringify(file));
+            return API().post('api/image', form, {
+              headers: { 'Content-Type': 'multipart/form-data' }
+            });
           });
       })
       .catch(e => e);
@@ -195,4 +216,4 @@ class CreateStoryScreen extends Component {
   }
 }
 
-export default CreateStoryScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(CreateStoryScreen);

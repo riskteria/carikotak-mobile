@@ -78,6 +78,7 @@
 		953C7F98690C41CE9D71B701 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5F30C1205140B7AFA3F6AE /* SystemConfiguration.framework */; };
 		866FE3B914CC4E1BBFB8D498 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E0ACDF3C6E4861852232E5 /* AddressBook.framework */; };
 		495AB8BCF1404852914DBF74 /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8DC14B12A041529945258B /* libimageCropPicker.a */; };
+		BC11E055B0B14CD38A516431 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 129815DB8DAB4E0AA1429B27 /* libRNFetchBlob.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +345,8 @@
 		E6E0ACDF3C6E4861852232E5 /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		09CD48F7A9A94B2F9E2AF289 /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; name = "imageCropPicker.xcodeproj"; path = "../node_modules/react-native-image-crop-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		5C8DC14B12A041529945258B /* libimageCropPicker.a */ = {isa = PBXFileReference; name = "libimageCropPicker.a"; path = "libimageCropPicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		902AEF7BF0A54A21AB936964 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		129815DB8DAB4E0AA1429B27 /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +381,7 @@
 				953C7F98690C41CE9D71B701 /* SystemConfiguration.framework in Frameworks */,
 				866FE3B914CC4E1BBFB8D498 /* AddressBook.framework in Frameworks */,
 				495AB8BCF1404852914DBF74 /* libimageCropPicker.a in Frameworks */,
+				BC11E055B0B14CD38A516431 /* libRNFetchBlob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +552,7 @@
 				D058F311EE054A9EB8219FEB /* RCTRestart.xcodeproj */,
 				49DCE51366C44DCE8F7C69C2 /* RNGoogleSignin.xcodeproj */,
 				09CD48F7A9A94B2F9E2AF289 /* imageCropPicker.xcodeproj */,
+				902AEF7BF0A54A21AB936964 /* RNFetchBlob.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1171,9 +1176,11 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1198,9 +1205,11 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -1226,6 +1235,7 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1250,6 +1260,7 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1283,9 +1294,11 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1319,9 +1332,11 @@
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
@@ -1346,6 +1361,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1370,6 +1386,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
