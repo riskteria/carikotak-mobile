@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ToastAndroid } from 'react-native';
-import { Container } from 'native-base';
+import { Content } from 'native-base';
 
 import ProductList from './ProductList';
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
@@ -62,7 +62,7 @@ class ProfileTabProduct extends Component {
     const { navigation } = this.props;
 
     return (
-      <Container>
+      <Content>
         {loadingSpinner
           ? <ProgressBar />
           : <ProductList
@@ -71,7 +71,7 @@ class ProfileTabProduct extends Component {
               _onRefresh={this._onRefresh}
               refreshing={refreshing}
             />}
-      </Container>
+      </Content>
     );
   }
 }

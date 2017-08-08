@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ToastAndroid } from 'react-native';
-import { Text, Content } from 'native-base';
+import { Content } from 'native-base';
 
 import ProgressBar from 'components/_shared/progress-bar/ProgressBar';
 import { API } from 'services/APIService';
