@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ToastAndroid } from 'react-native';
 import {
   Card,
   CardItem,
@@ -11,7 +11,9 @@ import {
   Button
 } from 'native-base';
 
+import { API_URL } from 'react-native-dotenv';
 import { loadImageUser } from 'services/ImageFetcher';
+import { API } from 'services/APIService';
 
 import styles from './styles';
 
@@ -23,11 +25,33 @@ class ConnectionCard extends Component {
   }
 
   _onRecommendPressed() {
-    //
+    const { navigation, connection } = this.props;
+    const { navigate } = navigation;
+    const { type, slug } = navigation.state.params;
+
+    const url = `${API_URL}/${type}/${slug}`;
+    const text = `Hey, ${connection.name} coba lihat ini! ${url}`;
+
+    const message = {
+      user_id: connection.id,
+      text
+    };
+
+    API()
+      .post('api/message', message)
+      .then(res => {
+        navigate('Message', { channel: res.data.message.channel.id });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${err.response.data.message}`,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   render() {
-    const { connection, navigation } = this.props;
+    const { connection } = this.props;
 
     return (
       <Card style={StyleSheet.flatten(styles.cardContainer)}>
