@@ -21,7 +21,12 @@ class CommentList extends Component {
 
     const _renderItem = ({ item }) =>
       item.comment.map((comment, index) =>
-        <CommentCard comment={comment} navigation={navigation} key={index} />
+        <CommentCard
+          comment={comment}
+          product={item}
+          navigation={navigation}
+          key={index}
+        />
       );
 
     return (
