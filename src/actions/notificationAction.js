@@ -24,6 +24,24 @@ export function receiveNotifications(dispatch, user) {
 
   const channel = socket.subscribe('private.App.Models.User.' + user.id);
 
+  channel.bind(
+    'Illuminate.Notifications.Events.BroadcastNotificationCreated',
+    e => {
+      console.log(e);
+    }
+  );
+
+  channel.bind(
+    'Illuminate\\Notifications\\Events\\BroadcastNotificationCreated',
+    e => {
+      console.log(e);
+    }
+  );
+
+  channel.bind('BroadcastNotificationCreated', e => {
+    console.log(e);
+  });
+
   channel.bind_global(function(event, data) {
     console.log(`The event ${event} was triggered with data ${data}`);
   });

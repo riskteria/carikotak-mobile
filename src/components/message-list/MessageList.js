@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
 import MessageCard from './MessageCard';
+import EmptyListMessage from 'components/_shared/empty-list/EmptyListMessage';
 
 class MessageList extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class MessageList extends Component {
 
     return (
       <FlatList
+        ListEmptyComponent={EmptyListMessage}
         onRefresh={_onRefresh}
         refreshing={refreshing}
         data={channels}

@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import CardProduct from './CardProduct';
 
 import styles from './styles';
+import EmptyListProduct from 'components/_shared/empty-list/EmptyListProduct';
 
 class ProductList extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ProductList extends Component {
 
     return (
       <FlatList
+        ListEmptyComponent={EmptyListProduct}
         contentContainerStyle={styles.productListHorizontal}
         refreshing={refreshing}
         onRefresh={() => _onRefresh()}

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
-import NotificationCard from './NotificationCard';
 import NotificationCardCommented from './NotificationCardCommented';
 import NotificationCardFavorite from './NotificationCardFavorite';
 import NotificationCardFollower from './NotificationCardFollower';
 import NotificationCardNewProduct from './NotificationCardNewProduct';
 import NotificationCardNewStory from './NotificationCardNewStory';
+
+import EmptyListNotification from 'components/_shared/empty-list/EmptyListNotification';
 
 class NotificationList extends Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class NotificationList extends Component {
 
     return (
       <FlatList
+        ListEmptyComponent={EmptyListNotification}
         data={notifications}
         refreshing={refreshing}
         onRefresh={_onRefresh}

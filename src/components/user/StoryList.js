@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
 import CardStory from './CardStory';
+import EmptyListStory from 'components/_shared/empty-list/EmptyListStory';
 
 class StoryList extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class StoryList extends Component {
 
     return (
       <FlatList
+        ListEmptyComponent={EmptyListStory}
         refreshing={refreshing}
         onRefresh={_onRefresh}
         data={stories}
