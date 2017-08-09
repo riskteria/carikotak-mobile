@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
 import CommentCard from './CommentCard';
+import EmptyListComment from 'components/_shared/empty-list/EmptyListComment';
 
 class CommentList extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class CommentList extends Component {
 
     return (
       <FlatList
+        ListEmptyComponent={EmptyListComment}
         data={comments}
         refreshing={refreshing}
         onRefresh={_onRefresh}

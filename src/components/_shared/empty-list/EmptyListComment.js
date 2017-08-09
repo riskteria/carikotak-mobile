@@ -9,7 +9,7 @@ class EmptyListComment extends Component {
     return (
       <View style={StyleSheet.flatten(styles.mainContainer)}>
         <Text style={StyleSheet.flatten(styles.textContainer)}>
-          Belum ada komentar
+          Belum ada ulasan
         </Text>
         <Icon name="md-sad" style={StyleSheet.flatten(styles.iconContainer)} />
       </View>
