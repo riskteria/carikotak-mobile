@@ -7,19 +7,21 @@ const helpContainer = {
   },
   sectionContainer: {
     flexDirection: 'column',
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
+    paddingBottom: 16
   },
   textLabel: {
     paddingVertical: 16,
-    fontSize: 24
+    fontSize: 24,
+    color: colors.colorDark
   },
   textNote: {
     borderLeftWidth: 2,
     borderLeftColor: colors.colorAccent,
     paddingLeft: 16,
-    fontSize: 12,
-    color: colors.colorDark,
-    lineHeight: 18
+    fontSize: 14,
+    color: colors.colorGrey,
+    lineHeight: 22
   }
 };
 
