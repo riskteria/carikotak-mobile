@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
-import { Input, Button, Text, Item, Label, Content } from 'native-base';
+import { StatusBar, StyleSheet, ToastAndroid } from 'react-native';
+import {
+  Input,
+  Button,
+  Text,
+  Item,
+  Label,
+  Content,
+  Container
+} from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import RNRestart from 'react-native-restart';
 
@@ -10,14 +18,9 @@ import styles from './styles';
 import { API } from 'services/APIService';
 import { onSignedIn } from 'services/AuthHandler';
 
-class RegisterScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTintColor: '#fff',
-      headerPressColorAndroid: 'rgba(255, 255, 255, 0.5)'
-    };
-  };
+import RegisterScreenHeader from './RegisterScreenHeader';
 
+class RegisterScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -88,9 +91,13 @@ class RegisterScreen extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
-      <ScrollView style={styles.container}>
+      <Container style={styles.container}>
         <StatusBar backgroundColor="#1ba39c" barStyle="dark-content" />
+
+        <RegisterScreenHeader navigation={navigation} />
 
         <Spinner
           visible={this.state.isLoading}
@@ -98,7 +105,7 @@ class RegisterScreen extends Component {
           textStyle={{ color: '#FFF' }}
         />
 
-        <Content>
+        <Content style={styles.insideContainer}>
           <Item floatingLabel style={StyleSheet.flatten(styles.inputGroup)}>
             <Label style={StyleSheet.flatten(styles.lightColor)}>
               Nama Lengkap
@@ -139,7 +146,7 @@ class RegisterScreen extends Component {
             <Text style={{ color: colors.colorAccent }}>Buat akun</Text>
           </Button>
         </Content>
-      </ScrollView>
+      </Container>
     );
   }
 }
