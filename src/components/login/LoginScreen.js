@@ -65,7 +65,7 @@ class LoginScreen extends Component {
       })
       .catch(error => {
         ToastAndroid.show(
-          'Error ' + error.response.data.message,
+          'Nama pengguna atau kata sandi salah',
           ToastAndroid.SHORT
         );
         this.setState({ isLoading: false });

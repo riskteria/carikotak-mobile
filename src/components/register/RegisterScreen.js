@@ -58,10 +58,7 @@ class RegisterScreen extends Component {
       })
       .catch(err => {
         this.setState({ isLoading: false });
-        ToastAndroid.show(
-          'Error ' + err.response.data.message,
-          ToastAndroid.SHORT
-        );
+        ToastAndroid.show('Lengkapi data dengan benar', ToastAndroid.SHORT);
       });
   }
 
