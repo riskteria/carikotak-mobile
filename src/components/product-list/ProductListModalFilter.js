@@ -28,7 +28,7 @@ class ProductListModalFilter extends Component {
     this._fetchAllLocation = this._fetchAllLocation.bind(this);
 
     this.state = {
-      loadingSpin: false,
+      loadingSpin: true,
 
       locations: [],
       cities: [],
@@ -152,7 +152,7 @@ class ProductListModalFilter extends Component {
     return (
       <Modal
         onShow={() => this._fetchAllLocation()}
-        animationType={'slide'}
+        animationType={'none'}
         transparent={false}
         visible={modalFilterVisible}
         onRequestClose={() => _onModalFilterToggled()}
