@@ -7,7 +7,15 @@ export default StyleSheet.create({
   },
   inputAvatar: {
     borderBottomWidth: 0,
-    paddingVertical: 16
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  inputAvatarButton: {
+    borderColor: colors.colorGrey
+  },
+  inputAvatarButtonText: {
+    color: colors.colorGrey
   },
   inputText: {
     fontSize: 14

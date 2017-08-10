@@ -26,9 +26,22 @@ class ProfileSettingForm extends Component {
     return (
       <Content style={{ padding: 16, margin: 0 }}>
         <Item style={StyleSheet.flatten(styles.inputAvatar)}>
-          <Thumbnail circular source={{ uri: loadImageUser(user.avatar) }} />
-          <Button transparent dark>
-            <Text>Ubah Avatar</Text>
+          <Thumbnail
+            large
+            circular
+            source={{ uri: loadImageUser(user.avatar) }}
+          />
+        </Item>
+        <Item style={StyleSheet.flatten(styles.inputAvatar)}>
+          <Button
+            bordered
+            dark
+            small
+            style={StyleSheet.flatten(styles.inputAvatarButton)}
+          >
+            <Text style={StyleSheet.flatten(styles.inputAvatarButtonText)}>
+              Ubah Avatar
+            </Text>
           </Button>
         </Item>
 
