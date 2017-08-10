@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { ToastAndroid } from 'react-native';
-import { List, ListItem, Left, Body, Icon, Text } from 'native-base';
+import {
+  ToastAndroid,
+  StyleSheet,
+  TouchableNativeFeedback
+} from 'react-native';
+import { List, Item, Body, Text } from 'native-base';
+import RNRestart from 'react-native-restart';
 
 import { onSignedOut } from 'services/AuthHandler';
 
-import RNRestart from 'react-native-restart';
+import styles from './styles';
+import colors from 'styles/_colors';
 
 class ProfileOptionsList extends Component {
   constructor(props) {
@@ -33,70 +39,74 @@ class ProfileOptionsList extends Component {
 
     return (
       <List>
-        <ListItem
-          icon
-          onPress={() => navigate('AccountSetting')}
-          style={{ paddingTop: 32, paddingBottom: 32 }}
-        >
-          <Left>
-            <Icon name="md-finger-print" />
-          </Left>
-          <Body>
-            <Text>Pengaturan Akun</Text>
-          </Body>
-        </ListItem>
+        <Item style={StyleSheet.flatten(styles.itemList)}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              navigate('AccountSetting');
+            }}
+            background={TouchableNativeFeedback.Ripple(colors.colorAccent)}
+          >
+            <Body style={StyleSheet.flatten(styles.listItem)}>
+              <Text style={StyleSheet.flatten(styles.optionText)}>
+                Pengaturan Akun
+              </Text>
+            </Body>
+          </TouchableNativeFeedback>
+        </Item>
 
-        <ListItem
-          icon
-          onPress={() => navigate('ProfileSetting')}
-          style={{ paddingTop: 32, paddingBottom: 32 }}
-        >
-          <Left>
-            <Icon name="md-person" />
-          </Left>
-          <Body>
-            <Text>Edit Profil</Text>
-          </Body>
-        </ListItem>
+        <Item style={StyleSheet.flatten(styles.itemList)}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              navigate('ProfileSetting');
+            }}
+            background={TouchableNativeFeedback.Ripple(colors.colorAccent)}
+          >
+            <Body style={StyleSheet.flatten(styles.listItem)}>
+              <Text style={StyleSheet.flatten(styles.optionText)}>
+                Ubah Profil
+              </Text>
+            </Body>
+          </TouchableNativeFeedback>
+        </Item>
 
-        <ListItem
-          icon
-          onPress={() => navigate('Help')}
-          style={{ paddingTop: 32, paddingBottom: 32 }}
-        >
-          <Left>
-            <Icon name="md-help" />
-          </Left>
-          <Body>
-            <Text>Bantuan</Text>
-          </Body>
-        </ListItem>
+        <Item style={StyleSheet.flatten(styles.itemList)}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              navigate('Help');
+            }}
+            background={TouchableNativeFeedback.Ripple(colors.colorAccent)}
+          >
+            <Body style={StyleSheet.flatten(styles.listItem)}>
+              <Text style={StyleSheet.flatten(styles.optionText)}>Bantuan</Text>
+            </Body>
+          </TouchableNativeFeedback>
+        </Item>
 
-        <ListItem
-          icon
-          onPress={() => navigate('About')}
-          style={{ paddingTop: 32, paddingBottom: 32 }}
-        >
-          <Left>
-            <Icon name="md-information-circle" />
-          </Left>
-          <Body>
-            <Text>Tentang</Text>
-          </Body>
-        </ListItem>
+        <Item style={StyleSheet.flatten(styles.itemList)}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              navigate('About');
+            }}
+            background={TouchableNativeFeedback.Ripple(colors.colorAccent)}
+          >
+            <Body style={StyleSheet.flatten(styles.listItem)}>
+              <Text style={StyleSheet.flatten(styles.optionText)}>Tentang</Text>
+            </Body>
+          </TouchableNativeFeedback>
+        </Item>
 
-        <ListItem
-          icon
-          onPress={() => this._onPressLogout()}
-          style={{ paddingTop: 32, paddingBottom: 32 }}
-        >
-          <Left>
-            <Icon name="md-power" />
-          </Left>
-          <Body>
-            <Text>Keluar</Text>
-          </Body>
-        </ListItem>
+        <Item style={StyleSheet.flatten(styles.itemList)}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              this._onPressLogout();
+            }}
+            background={TouchableNativeFeedback.Ripple(colors.colorAccent)}
+          >
+            <Body style={StyleSheet.flatten(styles.listItem)}>
+              <Text style={StyleSheet.flatten(styles.optionText)}>Keluar</Text>
+            </Body>
+          </TouchableNativeFeedback>
+        </Item>
       </List>
     );
   }

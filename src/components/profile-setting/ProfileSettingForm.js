@@ -117,11 +117,7 @@ class ProfileSettingForm extends Component {
         </Item>
         <Item>
           <Icon name="md-mail" />
-          <Input
-            onChangeText={this._onChangeText.bind(this, 'email')}
-            placeholder="Email"
-            defaultValue={user.email}
-          />
+          <Input disabled placeholder="Email" defaultValue={user.email} />
         </Item>
         <Item>
           <Icon name="md-quote" />

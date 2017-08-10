@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Container } from 'native-base';
 
@@ -7,6 +7,8 @@ import ProfileOptionsHeader from './ProfileOptionsHeader';
 import ProfileOptionList from './ProfileOptionList';
 
 import { updateAccessToken } from 'actions/authAction';
+
+import styles from './styles';
 
 const mapStateToProps = state => {
   return {
@@ -33,7 +35,7 @@ class ProfileOptionScreen extends Component {
     console.log(this.props);
 
     return (
-      <Container>
+      <Container style={StyleSheet.flatten(styles.mainContainer)}>
         <ProfileOptionsHeader navigation={navigation} />
 
         <ScrollView>
