@@ -89,6 +89,7 @@ class ProfileSettingScreen extends Component {
     return (
       <Container style={StyleSheet.flatten(styles.mainContainer)}>
         <ProfileSettingHeader
+          user={user}
           navigation={navigation}
           _onSavePressed={this._onSavePressed}
         />
