@@ -42,7 +42,7 @@ class FollowModal extends Component {
         if (modalFollowType === 'follower') {
           this.setState({ users: res.data.follower });
         } else {
-          this.setState({ following: res.data.following });
+          this.setState({ users: res.data.following });
         }
       })
       .catch(err => {
@@ -66,7 +66,7 @@ class FollowModal extends Component {
         if (modalFollowType === 'follower') {
           this.setState({ users: res.data.follower });
         } else {
-          this.setState({ following: res.data.following });
+          this.setState({ users: res.data.following });
         }
       })
       .catch(err => {
