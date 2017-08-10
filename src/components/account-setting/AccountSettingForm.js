@@ -1,97 +1,56 @@
 import React, { Component } from 'react';
-import { ToastAndroid } from 'react-native';
-import { Text, Content, Item, Input, Button } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Content, Item, Input, Icon } from 'native-base';
 
-import { API } from 'services/APIService';
+import styles from './styles';
+import colors from 'styles/_colors';
 
 class AccountSettingForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      password: {
-        current_password: '',
-        new_password: '',
-        confirm_password: ''
-      }
-    };
-
-    this._onSavePressed = this._onSavePressed.bind(this);
-  }
-
-  _onChangetext(propertyName, value) {
-    switch (propertyName) {
-      case 'current_password':
-        this.setState({
-          password: Object.assign({}, this.state.password, {
-            current_password: value
-          })
-        });
-        break;
-
-      case 'new_password':
-        this.setState({
-          password: Object.assign({}, this.state.password, {
-            new_password: value
-          })
-        });
-        break;
-
-      case 'confirm_password':
-        this.setState({
-          password: Object.assign({}, this.state.password, {
-            confirm_password: value
-          })
-        });
-        break;
-    }
-  }
-
-  _onSavePressed() {
-    const { password } = this.state;
-    API()
-      .put('api/me/change-password', password)
-      .then(() => {
-        ToastAndroid.show('Password berhasil diubah', ToastAndroid.SHORT);
-        this._currentPasswordInput.setNativeProps({ text: '' });
-        this._newPasswordInput.setNativeProps({ text: '' });
-        this._confirmPasswordInput.setNativeProps({ text: '' });
-      })
-      .catch(err => {
-        ToastAndroid.show(
-          `Error ${JSON.stringify(err.response.data.message)}`,
-          ToastAndroid.SHORT
-        );
-      });
   }
 
   render() {
+    const { _onChangetext } = this.props;
+
     return (
       <Content style={{ padding: 16, margin: 0 }}>
-        <Item>
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
+            placeholderTextColor={colors.colorGrey}
             ref={component => (this._currentPasswordInput = component)}
-            onChangeText={this._onChangetext.bind(this, 'current_password')}
+            onChangeText={value => {
+              _onChangetext('current_password', value);
+            }}
             placeholder="Kata sandi"
+            style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
-        <Item ic>
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
+            placeholderTextColor={colors.colorGrey}
             ref={component => (this._newPasswordInput = component)}
-            onChangeText={this._onChangetext.bind(this, 'new_password')}
+            onChangeText={value => {
+              _onChangetext('new_password', value);
+            }}
             placeholder="Kata sandi baru"
+            style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
-        <Item>
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
+            placeholderTextColor={colors.colorGrey}
             ref={component => (this._confirmPasswordInput = component)}
-            onChangeText={this._onChangetext.bind(this, 'confirm_password')}
+            onChangeText={value => {
+              _onChangetext('confirm_password', value);
+            }}
             placeholder="Konfirmasi kata sandi"
+            style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
-        <Button block onPress={() => this._onSavePressed()}>
-          <Text>Ubah Kata Sandi</Text>
-        </Button>
       </Content>
     );
   }
