@@ -9,7 +9,8 @@ class ProfileSettingHeader extends Component {
   }
 
   render() {
-    const { goBack } = this.props.navigation;
+    const { _onSavePressed, navigation } = this.props;
+    const { goBack } = navigation;
 
     return (
       <Header style={{ backgroundColor: colors.colorLight, elevation: 1 }}>
@@ -21,7 +22,11 @@ class ProfileSettingHeader extends Component {
         <Body>
           <Title style={{ color: colors.colorBlack }}>Profil</Title>
         </Body>
-        <Right />
+        <Right>
+          <Button transparent onPress={() => _onSavePressed()}>
+            <Icon style={{ color: colors.colorAccent }} name="md-checkmark" />
+          </Button>
+        </Right>
       </Header>
     );
   }

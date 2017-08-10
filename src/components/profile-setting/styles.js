@@ -5,8 +5,16 @@ export default StyleSheet.create({
   mainContainer: {
     backgroundColor: colors.colorLight
   },
+  inputAvatar: {
+    borderBottomWidth: 0,
+    paddingVertical: 16
+  },
   inputText: {
     fontSize: 14
+  },
+  inputTextDisabled: {
+    fontSize: 14,
+    color: colors.colorGreyLight
   },
   inputIcon: {
     color: colors.colorGreyLight,

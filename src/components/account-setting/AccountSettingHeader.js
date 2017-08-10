@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
 import colors from 'styles/_colors';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { ToastAndroid } from 'react-native';
-import { connect } from 'react-redux';
+import { StyleSheet } from 'react-native';
 import {
   Text,
   Content,
@@ -11,130 +10,99 @@ import {
   Thumbnail
 } from 'native-base';
 
-import { API } from 'services/APIService';
+import styles from './styles';
+import colors from 'styles/_colors';
 
-const mapStateToProps = state => {
-  return {
-    activeUser: state.authSessionHandler.active_user
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
+import { loadImageUser } from 'services/ImageFetcher';
 
 class ProfileSettingForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      user: {
-        username: '',
-        name: '',
-        email: '',
-        phone: '',
-        description: ''
-      }
-    };
-
-    this._onSavePresses = this._onSavePresses.bind(this);
-  }
-
-  _onChangeText(propertyName, value) {
-    switch (propertyName) {
-      case 'name':
-        this.setState({
-          user: Object.assign({}, this.state.user, { name: value })
-        });
-        break;
-      case 'email':
-        this.setState({
-          user: Object.assign({}, this.state.user, { email: value })
-        });
-        break;
-      case 'phone':
-        this.setState({
-          user: Object.assign({}, this.state.user, { phone: value })
-        });
-        break;
-      case 'description':
-        this.setState({
-          user: Object.assign({}, this.state.user, { description: value })
-        });
-        break;
-    }
-  }
-
-  _onSavePresses() {
-    const { user } = this.state;
-    API()
-      .put('api/me/update-profile', user)
-      .then(() => {
-        ToastAndroid.show('Profil Berhasil Diperbaharui', ToastAndroid.SHORT);
-      })
-      .catch(err => {
-        ToastAndroid.show(
-          `Error: ${JSON.stringify(err.response.data.message)}`,
-          ToastAndroid.SHORT
-        );
-      });
-  }
-
-  componentWillMount() {
-    this.setState({ user: this.props.activeUser });
   }
 
   render() {
-    const { user } = this.state;
+    const { user, _onChangeText } = this.props;
 
     return (
       <Content style={{ padding: 16, margin: 0 }}>
-        <Item>
-          <Thumbnail circular source={{ uri: 'https://unsplash.it/300/300' }} />
+        <Item style={StyleSheet.flatten(styles.inputAvatar)}>
+          <Thumbnail circular source={{ uri: loadImageUser(user.avatar) }} />
           <Button transparent dark>
             <Text>Ubah Avatar</Text>
           </Button>
         </Item>
-        <Item disabled>
-          <Icon name="md-finger-print" />
-          <Input disabled placeholder="username" defaultValue={user.username} />
-        </Item>
-        <Item ic>
-          <Icon name="md-person" />
+
+        <Item disabled style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon
+            name="md-finger-print"
+            style={StyleSheet.flatten(styles.inputIcon)}
+          />
           <Input
-            onChangeText={this._onChangeText.bind(this, 'name')}
+            placeholderTextColor={colors.colorGreyLight}
+            disabled
+            placeholder="username"
+            defaultValue={user.username}
+            style={StyleSheet.flatten(styles.inputTextDisabled)}
+          />
+        </Item>
+
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon name="md-person" style={StyleSheet.flatten(styles.inputIcon)} />
+          <Input
+            placeholderTextColor={colors.colorGreyLight}
+            onChangeText={value => {
+              _onChangeText('name', value);
+            }}
             placeholder="Nama lengkap"
             defaultValue={user.name}
+            style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
-        <Item>
-          <Icon name="md-phone-portrait" />
+
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon
+            name="md-phone-portrait"
+            style={StyleSheet.flatten(styles.inputIcon)}
+          />
           <Input
-            onChangeText={this._onChangeText.bind(this, 'phone')}
+            placeholderTextColor={colors.colorGreyLight}
+            onChangeText={value => {
+              _onChangeText('phone', value);
+            }}
             placeholder="Handphone"
             defaultValue={user.phone}
+            style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
-        <Item>
-          <Icon name="md-mail" />
-          <Input disabled placeholder="Email" defaultValue={user.email} />
-        </Item>
-        <Item>
-          <Icon name="md-quote" />
+
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon name="md-mail" style={StyleSheet.flatten(styles.inputIcon)} />
           <Input
-            onChangeText={this._onChangeText.bind(this, 'description')}
+            placeholderTextColor={colors.colorGreyLight}
+            disabled
+            placeholder="Email"
+            defaultValue={user.email}
+            style={StyleSheet.flatten(styles.inputTextDisabled)}
+          />
+        </Item>
+
+        <Item style={StyleSheet.flatten(styles.inputItem)}>
+          <Icon name="md-quote" style={StyleSheet.flatten(styles.inputIcon)} />
+          <Input
+            placeholderTextColor={colors.colorGreyLight}
+            onChangeText={value => {
+              _onChangeText('description', value);
+            }}
             multiline={true}
             numberOfLines={2}
             placeholder="Bio"
             defaultValue={user.description}
+            style={StyleSheet.flatten(styles.inputTextDisabled)}
           />
         </Item>
-        <Button block onPress={() => this._onSavePresses()}>
-          <Text>Simpan Perubahan</Text>
-        </Button>
       </Content>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileSettingForm);
+export default ProfileSettingForm;

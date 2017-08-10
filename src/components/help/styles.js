@@ -12,7 +12,7 @@ const helpContainer = {
   },
   textLabel: {
     paddingVertical: 16,
-    fontSize: 24,
+    fontSize: 18,
     color: colors.colorDark
   },
   textNote: {

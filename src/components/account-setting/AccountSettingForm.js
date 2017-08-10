@@ -18,7 +18,7 @@ class AccountSettingForm extends Component {
         <Item style={StyleSheet.flatten(styles.inputItem)}>
           <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
-            placeholderTextColor={colors.colorGrey}
+            placeholderTextColor={colors.colorGreyLight}
             ref={component => (this._currentPasswordInput = component)}
             onChangeText={value => {
               _onChangetext('current_password', value);
@@ -27,10 +27,11 @@ class AccountSettingForm extends Component {
             style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
+
         <Item style={StyleSheet.flatten(styles.inputItem)}>
           <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
-            placeholderTextColor={colors.colorGrey}
+            placeholderTextColor={colors.colorGreyLight}
             ref={component => (this._newPasswordInput = component)}
             onChangeText={value => {
               _onChangetext('new_password', value);
@@ -39,10 +40,11 @@ class AccountSettingForm extends Component {
             style={StyleSheet.flatten(styles.inputText)}
           />
         </Item>
+
         <Item style={StyleSheet.flatten(styles.inputItem)}>
           <Icon style={StyleSheet.flatten(styles.inputIcon)} name="md-unlock" />
           <Input
-            placeholderTextColor={colors.colorGrey}
+            placeholderTextColor={colors.colorGreyLight}
             ref={component => (this._confirmPasswordInput = component)}
             onChangeText={value => {
               _onChangetext('confirm_password', value);
