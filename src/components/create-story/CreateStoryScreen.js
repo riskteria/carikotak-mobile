@@ -10,13 +10,12 @@ import {
 import ImagePicker from 'react-native-image-crop-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
 
-const { Blob, File, Fetch } = RNFetchBlob.polyfill;
+const { File } = RNFetchBlob.polyfill;
 
 import CreateStoryHeader from './CreateStoryHeader';
 import styles from './styles';
 
 import { API } from 'services/APIService';
-import { API_URL } from 'react-native-dotenv';
 
 const mapStateToProps = state => {
   return {
@@ -122,8 +121,8 @@ class CreateStoryScreen extends Component {
       includeBase64: true
     })
       .then(image => {
-        const data = new FormData();
-        const pathParts = image.path.split('/');
+        // const data = new FormData();
+        // const pathParts = image.path.split('/');
 
         const form = new FormData();
 

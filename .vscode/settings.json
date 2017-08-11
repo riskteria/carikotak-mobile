@@ -10,5 +10,8 @@
 	"javascript.format.enable": false,
 
 	"prettier.eslintIntegration": true,
-	"java.configuration.updateBuildConfiguration": "disabled"
+	"java.configuration.updateBuildConfiguration": "disabled",
+	"files.associations": {
+		"*.js": "javascriptreact"
+	}
 }
