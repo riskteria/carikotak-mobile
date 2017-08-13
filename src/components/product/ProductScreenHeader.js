@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
-import { Share } from 'react-native';
+import { connect } from 'react-redux';
+import { Share, ToastAndroid } from 'react-native';
 import { Header, Left, Right, Title, Button, Icon, Body } from 'native-base';
 import colors from 'styles/_colors';
 
+import { API } from 'services/APIService';
 import { API_URL } from 'react-native-dotenv';
+import ProductScreenOptionModal from './ProductScreenOptionModal';
+
+const mapStateToProps = state => {
+  return {
+    activeUser: state.authSessionHandler.active_user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 class ProductScreenHeader extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      modalOptionVisible: false
+    };
+
+    this._onOptionDeletePressed = this._onOptionDeletePressed.bind(this);
+    this._onModalOptionToggled = this._onModalOptionToggled.bind(this);
     this._onPressedShare = this._onPressedShare.bind(this);
   }
 
@@ -37,9 +56,32 @@ class ProductScreenHeader extends Component {
     );
   }
 
+  _onOptionDeletePressed() {
+    const { product, navigation } = this.props;
+    const { goBack } = navigation;
+
+    API()
+      .delete('api/product/' + product.id)
+      .then(() => {
+        this._onModalOptionToggled();
+        goBack();
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onModalOptionToggled() {
+    this.setState({ modalOptionVisible: !this.state.modalOptionVisible });
+  }
+
   render() {
-    const { goBack, navigate } = this.props.navigation;
-    const { product } = this.props;
+    const { modalOptionVisible } = this.state;
+    const { product, navigation } = this.props;
+    const { goBack, navigate } = navigation;
 
     const RightButton = () =>
       <Right>
@@ -58,6 +100,15 @@ class ProductScreenHeader extends Component {
         >
           <Icon name="md-flag" />
         </Button>
+        {product.user.id === this.props.activeUser.id
+          ? <Button
+              transparent
+              dark
+              onPress={() => this._onModalOptionToggled()}
+            >
+              <Icon name="md-more" />
+            </Button>
+          : null}
       </Right>;
 
     return (
@@ -74,9 +125,19 @@ class ProductScreenHeader extends Component {
         </Body>
 
         {product ? <RightButton /> : <Right />}
+
+        <ProductScreenOptionModal
+          navigation={navigation}
+          modalOptionVisible={modalOptionVisible}
+          product={product}
+          _onModalOptionToggled={this._onModalOptionToggled}
+          _onOptionDeletePressed={this._onOptionDeletePressed}
+        />
       </Header>
     );
   }
 }
 
-export default ProductScreenHeader;
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ProductScreenHeader
+);

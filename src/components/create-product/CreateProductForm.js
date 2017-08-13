@@ -29,7 +29,7 @@ class CreateProductForm extends Component {
         category_id: '',
         image: [],
         color: [],
-        material: '',
+        material_id: '',
         condition: '',
         description: '',
         type: this.props.navigation.state.params.type
@@ -112,7 +112,7 @@ class CreateProductForm extends Component {
         selectedValue={product.material}
         onValueChange={value =>
           this.setState({
-            product: Object.assign({}, product, { material: value })
+            product: Object.assign({}, product, { material_id: value })
           })}
       >
         <Picker.Item label="Pilih material" value="" />
