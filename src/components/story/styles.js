@@ -90,8 +90,17 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     flexWrap: 'wrap'
   },
+
   optionText: {
     color: colors.colorAccent,
     fontSize: 12
+  },
+  modalOptionContainer: {
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    padding: 32
+  },
+  modalOptionList: {
+    backgroundColor: colors.colorLight
   }
 });

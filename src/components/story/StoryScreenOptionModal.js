@@ -12,11 +12,9 @@ class StoryScreenOptionModal extends Component {
   render() {
     const {
       modalOptionVisible,
-      product,
-      navigation,
-      _onModalOptionToggled
+      _onModalOptionToggled,
+      _onOptionDeletePressed
     } = this.props;
-    const { navigate } = navigation;
 
     return (
       <Modal
@@ -33,7 +31,12 @@ class StoryScreenOptionModal extends Component {
               </Button>
             </Item>
             <Item>
-              <Button block transparent dark>
+              <Button
+                block
+                transparent
+                dark
+                onPress={() => _onOptionDeletePressed()}
+              >
                 <Text>Hapus</Text>
               </Button>
             </Item>

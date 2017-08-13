@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
-import { Share } from 'react-native';
+import { connect } from 'react-redux';
+import { Share, ToastAndroid } from 'react-native';
 import { Header, Left, Body, Right, Title, Button, Icon } from 'native-base';
 
 import colors from 'styles/_colors';
 
 import { API_URL } from 'react-native-dotenv';
+import { API } from 'services/APIService';
+import StoryScreenOptionModal from './StoryScreenOptionModal';
+
+const mapStateToProps = state => {
+  return {
+    activeUser: state.authSessionHandler.active_user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 class StoryScreenHeader extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      modalOptionVisible: false
+    };
+
+    this._onOptionDeletePressed = this._onOptionDeletePressed.bind(this);
+    this._onModalOptionToggled = this._onModalOptionToggled.bind(this);
     this._onPressedShare = this._onPressedShare.bind(this);
   }
 
@@ -36,9 +55,32 @@ class StoryScreenHeader extends Component {
     );
   }
 
+  _onOptionDeletePressed() {
+    const { story, navigation } = this.props;
+    const { goBack } = navigation;
+
+    API()
+      .delete('api/post/' + story.id)
+      .then(() => {
+        this._onModalOptionToggled();
+        goBack();
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
+  _onModalOptionToggled() {
+    this.setState({ modalOptionVisible: !this.state.modalOptionVisible });
+  }
+
   render() {
-    const { story } = this.props;
-    const { goBack, navigate } = this.props.navigation;
+    const { modalOptionVisible } = this.state;
+    const { story, navigation } = this.props;
+    const { goBack, navigate } = navigation;
 
     const RightButton = () =>
       <Right>
@@ -57,6 +99,15 @@ class StoryScreenHeader extends Component {
         >
           <Icon name="md-flag" />
         </Button>
+        {story.user.id === this.props.activeUser.id
+          ? <Button
+              transparent
+              dark
+              onPress={() => this._onModalOptionToggled()}
+            >
+              <Icon name="md-more" />
+            </Button>
+          : null}
       </Right>;
 
     return (
@@ -72,9 +123,17 @@ class StoryScreenHeader extends Component {
           </Title>
         </Body>
         {story ? <RightButton /> : <Right />}
+
+        <StoryScreenOptionModal
+          navigation={navigation}
+          modalOptionVisible={modalOptionVisible}
+          story={story}
+          _onModalOptionToggled={this._onModalOptionToggled}
+          _onOptionDeletePressed={this._onOptionDeletePressed}
+        />
       </Header>
     );
   }
 }
 
-export default StoryScreenHeader;
+export default connect(mapStateToProps, mapDispatchToProps)(StoryScreenHeader);

@@ -12,11 +12,9 @@ class ProductScreenOptionModal extends Component {
   render() {
     const {
       modalOptionVisible,
-      navigation,
       _onModalOptionToggled,
       _onOptionDeletePressed
     } = this.props;
-    const { navigate } = navigation;
 
     return (
       <Modal
