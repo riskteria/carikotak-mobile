@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-native';
+import { Modal, ToastAndroid } from 'react-native';
 import {
   Header,
   Left,
@@ -21,11 +21,13 @@ class ProductListModalFilter extends Component {
   constructor(props) {
     super(props);
 
+    this._onMaterialValueChanged = this._onMaterialValueChanged.bind(this);
     this._onConditionValueChanged = this._onConditionValueChanged.bind(this);
     this._onTypeValueChanged = this._onTypeValueChanged.bind(this);
     this._onCityValueChanged = this._onCityValueChanged.bind(this);
     this._onProvinceValueChanged = this._onProvinceValueChanged.bind(this);
     this._fetchAllLocation = this._fetchAllLocation.bind(this);
+    this._fetchAllMaterials = this._fetchAllMaterials.bind(this);
 
     this.state = {
       loadingSpin: true,
@@ -33,10 +35,16 @@ class ProductListModalFilter extends Component {
       locations: [],
       cities: [],
       province: '',
+      material: '',
       city: '',
       type: '',
-      condition: ''
+      condition: '',
+      materials: []
     };
+  }
+
+  _onMaterialValueChanged(material, index) {
+    this.setState({ material });
   }
 
   _onTypeValueChanged(type, index) {
@@ -73,12 +81,27 @@ class ProductListModalFilter extends Component {
           loadingSpin: false,
           locations: res.data
         });
+        this._fetchAllMaterials();
       })
       .catch(err => {
         this.setState({
           loadingSpin: false
         });
         throw err;
+      });
+  }
+
+  _fetchAllMaterials() {
+    API()
+      .get('api/material')
+      .then(res => {
+        this.setState({ materials: res.data });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
       });
   }
 
@@ -92,7 +115,9 @@ class ProductListModalFilter extends Component {
       locations,
       cities,
       type,
-      condition
+      condition,
+      material,
+      materials
     } = this.state;
 
     const {
@@ -100,6 +125,17 @@ class ProductListModalFilter extends Component {
       _onModalFilterToggled,
       _onFilterChanged
     } = this.props;
+
+    const MaterialPicker = () =>
+      <Picker
+        selectedValue={material}
+        onValueChange={this._onMaterialValueChanged}
+      >
+        <Picker.Item label="Pilih Material" value="" />
+        {materials.map((m, index) =>
+          <Picker.Item label={m.label} value={m.id} key={index} />
+        )}
+      </Picker>;
 
     const ProvincePicker = () =>
       <Picker
@@ -137,10 +173,9 @@ class ProductListModalFilter extends Component {
 
     const ModalFilter = () =>
       <Form style={{ padding: 16 }}>
-        <ProvincePicker />
-        <CityPicker />
         <TypePicker />
         <ConditionPicker />
+        <MaterialPicker />
         <Button
           block
           onPress={() => _onFilterChanged(province, city, type, condition)}
