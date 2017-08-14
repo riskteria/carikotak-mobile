@@ -25,6 +25,10 @@ import ReportScreen from 'components/report/ReportScreen';
 import CreateProductScreen from 'components/create-product/CreateProductScreen';
 import CreateStoryScreen from 'components/create-story/CreateStoryScreen';
 
+// Edit Component
+import EditProductScreen from 'components/edit-product/EditProductScreen';
+import EditStoryScreen from 'components/edit-story/EditStoryScreen';
+
 // User Component
 import UserScreen from 'components/user/UserScreen';
 
@@ -139,6 +143,20 @@ const routeConfiguration = {
   },
   CreateStory: {
     screen: CreateStoryScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  EditProduct: {
+    screen: EditProductScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+
+  EditStory: {
+    screen: EditStoryScreen,
     navigationOptions: {
       header: null
     }

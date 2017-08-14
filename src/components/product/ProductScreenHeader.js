@@ -26,6 +26,7 @@ class ProductScreenHeader extends Component {
       modalOptionVisible: false
     };
 
+    this._onOptionEditPressed = this._onOptionEditPressed.bind(this);
     this._onOptionDeletePressed = this._onOptionDeletePressed.bind(this);
     this._onModalOptionToggled = this._onModalOptionToggled.bind(this);
     this._onPressedShare = this._onPressedShare.bind(this);
@@ -72,6 +73,14 @@ class ProductScreenHeader extends Component {
           ToastAndroid.SHORT
         );
       });
+  }
+
+  _onOptionEditPressed() {
+    const { product, navigation } = this.props;
+    const { navigate } = navigation;
+
+    this._onModalOptionToggled();
+    navigate('EditProduct', { slug: product.slug });
   }
 
   _onModalOptionToggled() {
@@ -132,6 +141,7 @@ class ProductScreenHeader extends Component {
           product={product}
           _onModalOptionToggled={this._onModalOptionToggled}
           _onOptionDeletePressed={this._onOptionDeletePressed}
+          _onOptionEditPressed={this._onOptionEditPressed}
         />
       </Header>
     );
