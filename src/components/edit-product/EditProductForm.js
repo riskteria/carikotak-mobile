@@ -68,7 +68,7 @@ class EditProductForm extends Component {
     const { navigate } = navigation;
 
     API()
-      .post('api/product', product)
+      .put('api/product/' + product.id, product)
       .then(res => {
         navigate('Product', { slug: res.data.product.slug });
       })
@@ -100,6 +100,21 @@ class EditProductForm extends Component {
         });
         break;
     }
+  }
+
+  componentWillMount() {
+    const { slug } = this.props.navigation.state.params;
+    API()
+      .get('api/product/' + slug)
+      .then(res => {
+        this.setState({ product: res.data });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
   }
 
   render() {

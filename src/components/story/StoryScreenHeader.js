@@ -27,6 +27,7 @@ class StoryScreenHeader extends Component {
       modalOptionVisible: false
     };
 
+    this._onOptionEditPressed = this._onOptionEditPressed.bind(this);
     this._onOptionDeletePressed = this._onOptionDeletePressed.bind(this);
     this._onModalOptionToggled = this._onModalOptionToggled.bind(this);
     this._onPressedShare = this._onPressedShare.bind(this);
@@ -71,6 +72,14 @@ class StoryScreenHeader extends Component {
           ToastAndroid.SHORT
         );
       });
+  }
+
+  _onOptionEditPressed() {
+    const { story, navigation } = this.props;
+    const { navigate } = navigation;
+
+    this._onModalOptionToggled();
+    navigate('EditStory', { slug: story.slug });
   }
 
   _onModalOptionToggled() {
@@ -128,6 +137,7 @@ class StoryScreenHeader extends Component {
           navigation={navigation}
           modalOptionVisible={modalOptionVisible}
           story={story}
+          _onOptionEditPressed={this._onOptionEditPressed}
           _onModalOptionToggled={this._onModalOptionToggled}
           _onOptionDeletePressed={this._onOptionDeletePressed}
         />

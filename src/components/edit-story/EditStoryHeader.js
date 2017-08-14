@@ -29,7 +29,7 @@ class EditStoryHeader extends Component {
           </Button>
         </Left>
         <Body>
-          <Title style={{ color: colors.colorBlack }}>Tulis Cerita</Title>
+          <Title style={{ color: colors.colorBlack }}>Edit Cerita</Title>
         </Body>
         <Right>
           <Button transparent onPress={() => onEditorSubmitted()}>

@@ -13,7 +13,8 @@ class StoryScreenOptionModal extends Component {
     const {
       modalOptionVisible,
       _onModalOptionToggled,
-      _onOptionDeletePressed
+      _onOptionDeletePressed,
+      _onOptionEditPressed
     } = this.props;
 
     return (
@@ -26,7 +27,12 @@ class StoryScreenOptionModal extends Component {
         <Container style={StyleSheet.flatten(styles.modalOptionContainer)}>
           <List style={StyleSheet.flatten(styles.modalOptionList)}>
             <Item>
-              <Button block transparent dark>
+              <Button
+                block
+                transparent
+                dark
+                onPress={() => _onOptionEditPressed()}
+              >
                 <Text>Edit</Text>
               </Button>
             </Item>

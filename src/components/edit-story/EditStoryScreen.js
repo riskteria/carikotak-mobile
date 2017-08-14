@@ -48,6 +48,7 @@ class EditStoryScreen extends Component {
     this.onCoverChanged = this.onCoverChanged.bind(this);
     this.onPressAddImage = this.onPressAddImage.bind(this);
     this._fetchProductCategory = this._fetchProductCategory.bind(this);
+    this._fetchStoryInfo = this._fetchStoryInfo.bind(this);
   }
 
   _fetchProductCategory() {
@@ -165,8 +166,24 @@ class EditStoryScreen extends Component {
     this.richtext.setContentFocusHandler(() => {});
   }
 
+  _fetchStoryInfo() {
+    const { slug } = this.props.navigation.state.params;
+    API()
+      .get('api/post/' + slug)
+      .then(res => {
+        this.setState({ story: res.data });
+      })
+      .catch(err => {
+        ToastAndroid.show(
+          `Error: ${JSON.stringify(err.response.data.message)}`,
+          ToastAndroid.SHORT
+        );
+      });
+  }
+
   componentWillMount() {
     this._fetchProductCategory();
+    this._fetchStoryInfo();
   }
 
   render() {
@@ -197,6 +214,8 @@ class EditStoryScreen extends Component {
           onEditorSubmitted={this.onEditorSubmitted}
         />
         <RichTextEditor
+          initialTitleHtml={story.title}
+          initialContentHtml={story.body}
           ref={r => (this.richtext = r)}
           style={styles.richText}
           titlePlaceholder={'Judul Cerita'}
