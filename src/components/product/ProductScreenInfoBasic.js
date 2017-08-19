@@ -39,6 +39,20 @@ class ProductScreenInfoBasic extends Component {
             </Text>
           </View>
         </Item>
+
+        <Item style={StyleSheet.flatten(styles.infoContent)}>
+          <View>
+            <Text note>
+              Difavoritkan {product.total_favoriters} orang
+            </Text>
+          </View>
+
+          <View>
+            <Text note>
+              Dirating {product.total_ratings} orang
+            </Text>
+          </View>
+        </Item>
       </Content>
     );
   }
